@@ -96,7 +96,7 @@ To use the jvmBasic maven moojo from the command line:
 
 `mvn clean jvmbasic:jvmbasic jar:jar`
 
-This will build the BASIC files, and produce a jar that can be run from the command line
+This will build the BASIC files, and produce a jar that can be run from the command line.  jvmbasicrt.jar must be on the command line.
 
 
 
