@@ -94,7 +94,7 @@ The examples are standard maven builds, and require the jvmBASIC maven mojo "jvm
 
 To use the jvmBasic maven moojo from the command line:
 
-'mvn clean jvmbasic:jvmbasic jar:jar`
+`mvn clean jvmbasic:jvmbasic jar:jar`
 
 This will build the BASIC files, and produce a jar that can be run from the command line
 
