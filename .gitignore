@@ -22,3 +22,14 @@
 /examples/.settings/org.maven.ide.eclipse.prefs
 /examples/.project
 /jvmbasicrt/test-output/
+/jvmbasicwww/target/
+/jvmbasicmojo/target/
+/examples/helloworld/target/
+/examples/example1/target/
+/examples/bottlesofbeer/target/
+/print.jar
+/PRINT.class
+/jvmbasicrt.jar
+/jvmbasicc.jar
+/.settings/
+/.project
