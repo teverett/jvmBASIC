@@ -107,6 +107,12 @@ jvmBASIC WWW is a very simple web server that produces HTML output from BASIC fi
 
 The basic files to compile are the directory specified by -bspdir and the generated classes are in the directory specified by -classdir.  The HTTP port to bind is specified by -port.  The default page is served by INDEX.bas.
 
+to run the example use:
+
+`sh run.sh` and point your browser to `http://localhost:8080/`
+
+
+
 
 
 
