@@ -98,6 +98,14 @@ To use the jvmBasic maven moojo from the command line:
 
 This will build the BASIC files, and produce a jar that can be run from the command line.  jvmbasicrt.jar must be on the command line.
 
+jvmBASIC WWW
+---------
+
+jvmBASIC WWW is a very simple web server that produces HTML output from BASIC files.  To run it use a command line similar to this:
+
+`java -jar target/jvmbasicwww.jar -bspdir src/test/resources -classdir classfiles/ -port 8080`
+
+The basic files to compile are the directory specified by -bspdir and the generated classes are in the directory specified by -classdir.  The HTTP port to bind is specified by -port.  The default page is served by INDEX.bas.
 
 
 
