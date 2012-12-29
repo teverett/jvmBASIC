@@ -58,7 +58,7 @@ The grammar
 
 The ANTLR grammar is at 
 
-`vmbasicc/src/main/antlr3/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g`
+`jvmbasicc/src/main/antlr3/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g`
 
 There is an excellent ANTLR grammar editor here:
 
