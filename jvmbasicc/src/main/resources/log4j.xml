@@ -7,7 +7,7 @@
 			<param name="ConversionPattern" value="%5p [%t] (%F:%L) - %m%n" />
 		</layout>
 	</appender>
-	<logger name="com.khubla.jasicc">
+	<logger name="com.khubla.jvmbasic.jvmbasicc">
 		<level value="info" />
 	</logger>
 	<root>
