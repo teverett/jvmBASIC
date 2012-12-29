@@ -1,0 +1,50 @@
+package test.com.khubla.jvmbasic.jvmbasicrt;
+
+import java.io.InputStream;
+import java.io.PrintStream;
+
+import com.khubla.jvmbasic.jvmbasicrt.Array;
+import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
+import com.khubla.jvmbasic.jvmbasicrt.Value;
+
+/**
+ * @author tome
+ */
+public class ExampleProgram {
+   public static void main(String[] args) {
+      final ExampleProgram exampleProgram = new ExampleProgram();
+      try {
+         exampleProgram.inputStream = System.in;
+         exampleProgram.outputStream = System.out;
+         exampleProgram.program();
+      } catch (final Exception e) {
+         e.printStackTrace();
+      }
+   }
+
+   public ExecutionContext executionContext = new ExecutionContext();
+   public InputStream inputStream;
+   public PrintStream outputStream;
+
+   public void forExample() throws Exception {
+      /*
+       * FOR
+       */
+      final int start = executionContext.resolveValue(executionContext.pop()).getInteger();
+      final int end = executionContext.resolveValue(executionContext.pop()).getInteger();
+      final int step = executionContext.resolveValue(executionContext.pop()).getInteger();
+      int i = start;
+      executionContext.setVariable("I", i);
+      /*
+       * NEXT
+       */
+      if (i < end) {
+         i = i + step;
+         executionContext.setVariable("I", i);
+      }
+   }
+
+   public void program() throws Exception {
+      executionContext.setVariable(executionContext.pop().getString(), new Value(new Array()));
+   }
+}
