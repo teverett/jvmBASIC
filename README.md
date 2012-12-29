@@ -72,7 +72,12 @@ If you wish to use jvmBasicMojo, you will have to install the generated jvmBasic
 
 `mvn clean package install`
 
+Running the Examples
+---------
 
+The examples are standard maven builds, and require the jvmBASIC maven mojo "jvmBasicmojo".  In order for the examples to work propertly jvmbasicc.jar, jvmbasicrt.jar and jvmbasicmojo.jar must all have been compiled and installed.  The easiest way to do this is to run this command from the root jvmBasic directory
+
+`mvn clean package install`
 
 
 
