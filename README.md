@@ -35,6 +35,19 @@ Getting started
 * run "update.sh" to copy the jvmBasicc.jar and jvmBasicrt.jar files into the demo directory
 * run "run.sh" to compile the BAS file, produce a jar and run the jar
 
+---------
+
+Looking at the compiled code
+
+To view the generated class at the command line, use javap.  For example to view the generated output for "bottlesofbeer.bas" type
+
+`javap botttlesofbeer`
+
+to produce more verbose output from javap use
+
+`javap -c bottlesofbeer`
+
+
 
 
 
