@@ -53,6 +53,30 @@ to produce more verbose output from javap use
 
 `javap -c bottlesofbeer`
 
+The grammar
+---------
+
+The ANTLR grammar is at 
+
+`vmbasicc/src/main/antlr3/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g`
+
+There is an excellent ANTLR grammar editor here:
+
+[ANTLRWorks](http://www.antlr.org/works/)
+
+Once you have created the grammar you need, recompile jvmBasicc:
+
+`mvn clean package jvmBasicc`
+
+If you wish to use jvmBasicMojo, you will have to install the generated jvmBasic compiler:
+
+`mvn clean package install`
+
+
+
+
+
+
 
 
 
