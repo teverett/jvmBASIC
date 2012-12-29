@@ -66,7 +66,7 @@ There is an excellent ANTLR grammar editor here:
 
 Once you have created the grammar you need, recompile jvmBasicc:
 
-`mvn clean package jvmBasicc`
+`mvn clean package`
 
 If you wish to use jvmBasicMojo, you will have to install the generated jvmBasic compiler:
 
