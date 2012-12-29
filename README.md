@@ -32,8 +32,10 @@ Getting started
 
 * cd to the "demo" directory
 * Optionally edit the BASIC file "bottlesofbeer.bas"
-* run "update.sh" to copy the jvmBasicc.jar and jvmBasicrt.jar files 
-* run "run.sh" to compile the BAS file, produce and jar and run it.
+* run "update.sh" to copy the jvmBasicc.jar and jvmBasicrt.jar files into the demo directory
+* run "run.sh" to compile the BAS file, produce a jar and run the jar
+
+
 
 
 
