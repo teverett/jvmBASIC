@@ -57,7 +57,7 @@
 				<artifactId>maven-plugin-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<goalPrefix>jasic</goalPrefix>
+					<goalPrefix>jvmbasic	</goalPrefix>
 				</configuration>
 				<executions>
 					<execution>

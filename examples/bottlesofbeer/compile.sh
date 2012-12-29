@@ -1,1 +1,1 @@
-mvn clean jasic:jasic jar:jar
+mvn clean compile jar:jar
