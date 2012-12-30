@@ -7,6 +7,11 @@ jvmBASIC is a bytecode compiler which is capable of consuming a BASIC file (.bas
 
 In order to use the generated .class file from Java code, the public class members "inputStream" and "outputStream" must be set, in order for the BASIC program to consume input and produce output.
 
+License
+---------
+
+jvmBASIC is distributed until the GPL v3  For more information please see the [GPL](http://www.gnu.org/licenses/gpl.txt).
+
 Modules
 ---------
 
