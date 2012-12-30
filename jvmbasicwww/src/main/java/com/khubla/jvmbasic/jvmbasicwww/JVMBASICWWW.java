@@ -73,9 +73,13 @@ public class JVMBASICWWW {
          System.out.println("Class directory: " + classdir);
          System.out.println("HTTP port: " + port);
          /*
+          * configuration
+          */
+         final ServerConfiguration serverConfiguration = new ServerConfiguration(sourceDir, classdir, port);
+         /*
           * server
           */
-         final JVMBasicWebServer jvmBasicWebServer = new JVMBasicWebServer(sourceDir, classdir, port);
+         final JVMBasicWebServer jvmBasicWebServer = new JVMBasicWebServer(serverConfiguration);
          jvmBasicWebServer.listen();
       } catch (final Exception e) {
          e.printStackTrace();
