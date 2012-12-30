@@ -10,7 +10,7 @@ In order to use the generated .class file from Java code, the public class membe
 License
 ---------
 
-jvmBASIC is distributed until the GPL v3  For more information please see the [GPL](http://www.gnu.org/licenses/gpl.txt).
+jvmBASIC is distributed until the GPL v3. For more information please see the [GPL](http://www.gnu.org/licenses/gpl.txt).
 
 Modules
 ---------
