@@ -7,6 +7,7 @@
 	<name>khubla.com jvmbasic</name>
 	<properties>
 		<commons-cli.version>1.2</commons-cli.version>
+		<commons-io.version>2.4</commons-io.version>
 		<antlr.version>3.4</antlr.version>
 		<asm.version>4.1</asm.version>
 		<testng.version>6.8</testng.version>

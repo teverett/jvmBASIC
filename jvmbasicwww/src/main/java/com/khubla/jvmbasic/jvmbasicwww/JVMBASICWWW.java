@@ -15,7 +15,7 @@ public class JVMBASICWWW {
    /**
     * dir option
     */
-   private static final String BSPDIR_OPTION = "bspdir";
+   private static final String SOURCEDIR_OPTION = "sourcedir";
    /**
     * classdir option
     */
@@ -28,13 +28,13 @@ public class JVMBASICWWW {
    @SuppressWarnings("static-access")
    public static void main(String[] args) {
       try {
-         System.out.println("khubla.com jvmBasic bsp server");
+         System.out.println("khubla.com jvmBasic www server");
          /*
           * options
           */
          final Options options = new Options();
-         final Option bspo = OptionBuilder.withArgName(BSPDIR_OPTION).isRequired().hasArg().withDescription("bsp dir").create(BSPDIR_OPTION);
-         options.addOption(bspo);
+         final Option sourcediroption = OptionBuilder.withArgName(SOURCEDIR_OPTION).isRequired().hasArg().withDescription("source dir").create(SOURCEDIR_OPTION);
+         options.addOption(sourcediroption);
          final Option clso = OptionBuilder.withArgName(CLASSDIR_OPTION).isRequired().hasArg().withDescription("class dir").create(CLASSDIR_OPTION);
          options.addOption(clso);
          final Option po = OptionBuilder.isRequired(false).withArgName(PORT_OPTION).hasArg().withDescription("TCP port").create(PORT_OPTION);
@@ -54,7 +54,7 @@ public class JVMBASICWWW {
          /*
           * input dir
           */
-         final String bspdir = cmd.getOptionValue(BSPDIR_OPTION);
+         final String sourceDir = cmd.getOptionValue(SOURCEDIR_OPTION);
          /*
           * class dir
           */
@@ -67,9 +67,15 @@ public class JVMBASICWWW {
             port = Integer.parseInt(cmd.getOptionValue(PORT_OPTION));
          }
          /*
+          * output the config
+          */
+         System.out.println("Source directory: " + sourceDir);
+         System.out.println("Class directory: " + classdir);
+         System.out.println("HTTP port: " + port);
+         /*
           * server
           */
-         final JVMBasicWebServer jvmBasicWebServer = new JVMBasicWebServer(bspdir, classdir, port);
+         final JVMBasicWebServer jvmBasicWebServer = new JVMBasicWebServer(sourceDir, classdir, port);
          jvmBasicWebServer.listen();
       } catch (final Exception e) {
          e.printStackTrace();

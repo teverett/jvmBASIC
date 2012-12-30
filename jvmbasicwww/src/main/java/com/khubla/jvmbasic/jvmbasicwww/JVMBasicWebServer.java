@@ -4,19 +4,14 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.HashMap;
 
-import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import org.apache.commons.io.IOUtils;
 
 /**
  * @author tome
@@ -25,7 +20,7 @@ public class JVMBasicWebServer {
    /**
     * where to find the BAS files
     */
-   private final String bspdir;
+   private final String sourceDir;
    /**
     * where to store the class files
     */
@@ -33,11 +28,11 @@ public class JVMBasicWebServer {
    /**
     * class files
     */
-   private final HashMap<String, Class<?>> bspClasses = new HashMap<String, Class<?>>();
+   private final HashMap<String, BASFile> basFiles = new HashMap<String, BASFile>();
    /**
     * the index
     */
-   private static final String INDEX = "INDEX";
+   private static final String INDEX = "INDEX.bas";
    /**
     * the port
     */
@@ -46,8 +41,8 @@ public class JVMBasicWebServer {
    /**
     * ctor
     */
-   public JVMBasicWebServer(String bspdir, String classdir, int port) {
-      this.bspdir = bspdir;
+   public JVMBasicWebServer(String sourceDir, String classdir, int port) {
+      this.sourceDir = sourceDir;
       this.classdir = classdir;
       this.port = port;
    }
@@ -74,83 +69,24 @@ public class JVMBasicWebServer {
       }
    }
 
-   private void callBASClassInstance(Class<?> cls, Object instance, InputStream inputStream, OutputStream outputStream) throws Exception {
-      try {
-         /*
-          * find the field inputstream
-          */
-         final Field inputStreamField = cls.getField("inputStream");
-         if (null != inputStreamField) {
-            inputStreamField.set(instance, inputStream);
-         } else {
-            throw new Exception("Unable to find inputStream field");
-         }
-         /*
-          * find the field outputstream
-          */
-         final Field outputStreamField = cls.getField("outputStream");
-         if (null != outputStreamField) {
-            outputStreamField.set(instance, new PrintStream(outputStream));
-         } else {
-            throw new Exception("Unable to find outputStream field");
-         }
-         /*
-          * find the program method
-          */
-         final Method programMethod = cls.getMethod("program");
-         if (null != programMethod) {
-            programMethod.invoke(instance);
-         } else {
-            throw new Exception("Unable to find program method");
-         }
-      } catch (final Exception e) {
-         throw new Exception("Exception in callBASClassInstance", e);
-      }
-   }
-
    /**
-    * compile bas file
+    * find all the BAS files
     */
-   @SuppressWarnings("deprecation")
-   private void compileBASFile(File file) throws Exception {
+   private void findAllBASFiles() throws Exception {
       try {
-         /*
-          * compile
-          */
-         final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
-         final String classname = JVMBasicCompiler.classNameFromFileName(file.getName());
-         System.out.println("Compiling '" + file.getName() + "'");
-         final byte[] byteCode = jvmBasicCompiler.compile(new FileInputStream(file), classname, false);
-         JVMBasicCompiler.writeClassFile(byteCode, classname, classdir);
-         /*
-          * load with the class loader
-          */
-         final URL[] urls = new URL[] { new File(classdir).toURL() };
-         final ClassLoader loader = new URLClassLoader(urls);
-         final Class<?> cls = loader.loadClass(classname);
-         if (null == cls) {
-            throw new Exception("Unable to load class '" + classname + "'");
-         }
-         /*
-          * remember this guy
-          */
-         bspClasses.put(classname, cls);
-      } catch (final Exception e) {
-         throw new Exception("Exception in compileBASFile", e);
-      }
-   }
-
-   /**
-    * generate classes from .bas files
-    */
-   private void generateClasses() throws Exception {
-      try {
-         final File inputDir = new File(bspdir);
+         final File inputDir = new File(sourceDir);
          if (inputDir.exists()) {
             final File[] files = inputDir.listFiles();
             if (null != files) {
                for (int i = 0; i < files.length; i++) {
-                  compileBASFile(files[i]);
+                  /*
+                   * the file
+                   */
+                  final BASFile basFile = new BASFile(files[i], classdir);
+                  /*
+                   * remember it
+                   */
+                  basFiles.put(basFile.getClassname() + ".bas", basFile);
                }
             }
          }
@@ -190,8 +126,13 @@ public class JVMBasicWebServer {
     */
    private String getRequest(String requestline) throws Exception {
       try {
-         final String[] parts = requestline.split(" ");
-         return parts[1];
+         if (null != requestline) {
+            final String[] parts = requestline.split(" ");
+            if ((null != parts) && (parts.length > 1)) {
+               return parts[1];
+            }
+         }
+         return null;
       } catch (final Exception e) {
          throw new Exception("Exception in getContextPath", e);
       }
@@ -200,9 +141,9 @@ public class JVMBasicWebServer {
    public void listen() throws Exception {
       try {
          /*
-          * generate the classes
+          * index all the BAS files
           */
-         generateClasses();
+         findAllBASFiles();
          /*
           * accept
           */
@@ -230,21 +171,35 @@ public class JVMBasicWebServer {
           */
          final String parameters = getRequest(requestline);
          /*
-          * get the class file
+          * is a .bas?
           */
-         final Class<?> cls = bspClasses.get(contextPath);
-         if (null != cls) {
+         if (contextPath.trim().toLowerCase().endsWith(".bas")) {
             /*
-             * get instance
+             * get the file record
              */
-            final Object o = cls.newInstance();
-            /*
-             * call
-             */
-            callBASClassInstance(cls, o, new ByteArrayInputStream(parameters.getBytes()), clientSocket.getOutputStream());
+            final BASFile basFile = basFiles.get(contextPath);
+            if (null != basFile) {
+               basFile.callBASClassInstance(new ByteArrayInputStream(parameters.getBytes()), clientSocket.getOutputStream());
+            } else {
+               throw new Exception("Unable to find BAS file for context path '" + contextPath + "'");
+            }
+         } else {
+            returnStaticFile(contextPath, clientSocket.getOutputStream());
          }
       } catch (final Exception e) {
          throw new Exception("Exception in processConnection", e);
+      }
+   }
+
+   /**
+    * return static content
+    */
+   private void returnStaticFile(String contextPath, OutputStream outputStream) throws Exception {
+      final File file = new File(sourceDir + "/" + contextPath);
+      if (file.exists()) {
+         IOUtils.copy(new FileInputStream(file), outputStream);
+      } else {
+         new PrintStream(outputStream).println("404");
       }
    }
 }
