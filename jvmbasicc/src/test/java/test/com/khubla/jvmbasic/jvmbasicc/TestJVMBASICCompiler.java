@@ -1,5 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
-
+package test.com.khubla.jvmbasic.jvmbasicc;
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -16,19 +15,31 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA  02110-1301, USA.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
-import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
-public class DATAFunction extends BaseFunction {
-   @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+
+/**
+ * test compiler
+ * 
+ * @author tom
+ */
+public class TestJVMBASICCompiler {
+   @Test
+   public void test1() {
       try {
-         /*
-          * do nothing, we did it already in the PROG declaration
-          */
-         return true;
+         final String fileName = "src/test/resources/bas/easy/print.bas";
+         final InputStream inputStream = new FileInputStream(fileName);
+         final JVMBasicCompiler compiler = new JVMBasicCompiler();
+         final byte[] bytecode = compiler.compile(inputStream, "print", true);
+         Assert.assertNotNull(bytecode);
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         e.printStackTrace();
+         Assert.fail();
       }
    }
 }
