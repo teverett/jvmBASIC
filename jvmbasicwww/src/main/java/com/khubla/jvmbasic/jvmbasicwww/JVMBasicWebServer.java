@@ -104,14 +104,16 @@ public class JVMBasicWebServer {
           * get the servlet
           */
          String servlet = getRequest(requestline);
-         final int idx = servlet.indexOf("?");
-         if (-1 != idx) {
-            servlet = servlet.substring(0, idx);
+         if (null != servlet) {
+            final int idx = servlet.indexOf("?");
+            if (-1 != idx) {
+               servlet = servlet.substring(0, idx);
+            }
          }
          /*
           * is root?
           */
-         if (servlet.toLowerCase().trim().compareTo("/") == 0) {
+         if ((null == servlet) || (servlet.toLowerCase().trim().compareTo("/") == 0)) {
             return INDEX;
          } else {
             return servlet;
