@@ -1,4 +1,4 @@
-// $ANTLR 3.4 com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g 2012-12-30 14:02:15
+// $ANTLR 3.4 com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g 2012-12-30 17:38:41
 
     package com.khubla.jvmbasic.jvmbasicc.antlr;
 
@@ -11,10 +11,8 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class jvmBasicLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__121=121;
-    public static final int T__122=122;
-    public static final int T__123=123;
     public static final int T__124=124;
+    public static final int T__125=125;
     public static final int ABS=4;
     public static final int AMPERSAND=5;
     public static final int AND=6;
@@ -31,107 +29,110 @@ public class jvmBasicLexer extends Lexer {
     public static final int CR=17;
     public static final int DATA=18;
     public static final int DEF=19;
-    public static final int DIM=20;
-    public static final int DIV=21;
-    public static final int DRAW=22;
-    public static final int END=23;
-    public static final int EQ=24;
-    public static final int EXP=25;
-    public static final int EXPONENT=26;
-    public static final int FLASH=27;
-    public static final int FN=28;
-    public static final int FOR=29;
-    public static final int FRE=30;
-    public static final int GET=31;
-    public static final int GOSUB=32;
-    public static final int GOTO=33;
-    public static final int GR=34;
-    public static final int GT=35;
-    public static final int GTE=36;
-    public static final int HCOLOR=37;
-    public static final int HGR=38;
-    public static final int HGR2=39;
-    public static final int HIMEM=40;
-    public static final int HLIN=41;
-    public static final int HOME=42;
-    public static final int HPLOT=43;
-    public static final int HTAB=44;
-    public static final int IF=45;
-    public static final int INNUMBER=46;
-    public static final int INPUT=47;
-    public static final int INTF=48;
-    public static final int INVERSE=49;
-    public static final int LEFT=50;
-    public static final int LEN=51;
-    public static final int LET=52;
-    public static final int LETTERS=53;
-    public static final int LIST=54;
-    public static final int LOAD=55;
-    public static final int LOG=56;
-    public static final int LOMEM=57;
-    public static final int LPAREN=58;
-    public static final int LT=59;
-    public static final int LTE=60;
-    public static final int MID=61;
-    public static final int MINUS=62;
-    public static final int NEXT=63;
-    public static final int NORMAL=64;
-    public static final int NOT=65;
-    public static final int NOTRACE=66;
-    public static final int NUMBER=67;
-    public static final int ON=68;
-    public static final int ONERR=69;
-    public static final int OR=70;
-    public static final int PDL=71;
-    public static final int PEEK=72;
-    public static final int PLOT=73;
-    public static final int PLUS=74;
-    public static final int POKE=75;
-    public static final int POP=76;
-    public static final int POS=77;
-    public static final int PRINT=78;
-    public static final int PRNUMBER=79;
-    public static final int QUESTION=80;
-    public static final int READ=81;
-    public static final int RECALL=82;
-    public static final int REM=83;
-    public static final int RESTORE=84;
-    public static final int RETURN=85;
-    public static final int RIGHT=86;
-    public static final int RND=87;
-    public static final int ROT=88;
-    public static final int RPAREN=89;
-    public static final int RUN=90;
-    public static final int SAVE=91;
-    public static final int SCALE=92;
-    public static final int SCRN=93;
-    public static final int SEMICOLON=94;
-    public static final int SGN=95;
-    public static final int SHLOAD=96;
-    public static final int SIN=97;
-    public static final int SPC=98;
-    public static final int SPEED=99;
-    public static final int SQR=100;
-    public static final int STEP=101;
-    public static final int STOP=102;
-    public static final int STORE=103;
-    public static final int STR=104;
-    public static final int STRINGLITERAL=105;
-    public static final int TAB=106;
-    public static final int TAN=107;
-    public static final int TEXT=108;
-    public static final int THEN=109;
-    public static final int TIMES=110;
-    public static final int TO=111;
-    public static final int TRACE=112;
-    public static final int USR=113;
-    public static final int VAL=114;
-    public static final int VLIN=115;
-    public static final int VPLOT=116;
-    public static final int VTAB=117;
-    public static final int WAIT=118;
-    public static final int WS=119;
-    public static final int XDRAW=120;
+    public static final int DIGIT=20;
+    public static final int DIM=21;
+    public static final int DIV=22;
+    public static final int DRAW=23;
+    public static final int END=24;
+    public static final int EQ=25;
+    public static final int EXP=26;
+    public static final int EXPONENT=27;
+    public static final int FLASH=28;
+    public static final int FLOAT=29;
+    public static final int FN=30;
+    public static final int FOR=31;
+    public static final int FRE=32;
+    public static final int GET=33;
+    public static final int GOSUB=34;
+    public static final int GOTO=35;
+    public static final int GR=36;
+    public static final int GT=37;
+    public static final int GTE=38;
+    public static final int HCOLOR=39;
+    public static final int HGR=40;
+    public static final int HGR2=41;
+    public static final int HIMEM=42;
+    public static final int HLIN=43;
+    public static final int HOME=44;
+    public static final int HPLOT=45;
+    public static final int HTAB=46;
+    public static final int IF=47;
+    public static final int INNUMBER=48;
+    public static final int INPUT=49;
+    public static final int INTF=50;
+    public static final int INVERSE=51;
+    public static final int LEFT=52;
+    public static final int LEN=53;
+    public static final int LET=54;
+    public static final int LETTERS=55;
+    public static final int LIST=56;
+    public static final int LOAD=57;
+    public static final int LOG=58;
+    public static final int LOMEM=59;
+    public static final int LPAREN=60;
+    public static final int LT=61;
+    public static final int LTE=62;
+    public static final int MID=63;
+    public static final int MINUS=64;
+    public static final int NEQ=65;
+    public static final int NEXT=66;
+    public static final int NORMAL=67;
+    public static final int NOT=68;
+    public static final int NOTRACE=69;
+    public static final int NUMBER=70;
+    public static final int ON=71;
+    public static final int ONERR=72;
+    public static final int OR=73;
+    public static final int PDL=74;
+    public static final int PEEK=75;
+    public static final int PLOT=76;
+    public static final int PLUS=77;
+    public static final int POKE=78;
+    public static final int POP=79;
+    public static final int POS=80;
+    public static final int PRINT=81;
+    public static final int PRNUMBER=82;
+    public static final int QUESTION=83;
+    public static final int READ=84;
+    public static final int RECALL=85;
+    public static final int REM=86;
+    public static final int RESTORE=87;
+    public static final int RETURN=88;
+    public static final int RIGHT=89;
+    public static final int RND=90;
+    public static final int ROT=91;
+    public static final int RPAREN=92;
+    public static final int RUN=93;
+    public static final int SAVE=94;
+    public static final int SCALE=95;
+    public static final int SCRN=96;
+    public static final int SEMICOLON=97;
+    public static final int SGN=98;
+    public static final int SHLOAD=99;
+    public static final int SIN=100;
+    public static final int SPC=101;
+    public static final int SPEED=102;
+    public static final int SQR=103;
+    public static final int STEP=104;
+    public static final int STOP=105;
+    public static final int STORE=106;
+    public static final int STR=107;
+    public static final int STRINGLITERAL=108;
+    public static final int TAB=109;
+    public static final int TAN=110;
+    public static final int TEXT=111;
+    public static final int THEN=112;
+    public static final int TIMES=113;
+    public static final int TO=114;
+    public static final int TRACE=115;
+    public static final int USR=116;
+    public static final int VAL=117;
+    public static final int VLIN=118;
+    public static final int VPLOT=119;
+    public static final int VTAB=120;
+    public static final int WAIT=121;
+    public static final int WS=122;
+    public static final int XDRAW=123;
 
     // delegates
     // delegators
@@ -1439,13 +1440,36 @@ public class jvmBasicLexer extends Lexer {
     }
     // $ANTLR end "MINUS"
 
+    // $ANTLR start "NEQ"
+    public final void mNEQ() throws RecognitionException {
+        try {
+            int _type = NEQ;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:63:5: ( '< >' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:63:7: '< >'
+            {
+            match("< >"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "NEQ"
+
     // $ANTLR start "NEXT"
     public final void mNEXT() throws RecognitionException {
         try {
             int _type = NEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:63:6: ( 'NEXT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:63:8: 'NEXT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:64:6: ( 'NEXT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:64:8: 'NEXT'
             {
             match("NEXT"); 
 
@@ -1467,8 +1491,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = NORMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:64:8: ( 'NORMAL' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:64:10: 'NORMAL'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:65:8: ( 'NORMAL' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:65:10: 'NORMAL'
             {
             match("NORMAL"); 
 
@@ -1490,8 +1514,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:65:5: ( 'NOT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:65:7: 'NOT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:66:5: ( 'NOT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:66:7: 'NOT'
             {
             match("NOT"); 
 
@@ -1513,8 +1537,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = NOTRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:66:9: ( 'NOTRACE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:66:11: 'NOTRACE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:67:9: ( 'NOTRACE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:67:11: 'NOTRACE'
             {
             match("NOTRACE"); 
 
@@ -1536,8 +1560,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = ON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:67:4: ( 'ON' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:67:6: 'ON'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:68:4: ( 'ON' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:68:6: 'ON'
             {
             match("ON"); 
 
@@ -1559,8 +1583,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = ONERR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:68:7: ( 'ONERR' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:68:9: 'ONERR'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:69:7: ( 'ONERR' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:69:9: 'ONERR'
             {
             match("ONERR"); 
 
@@ -1582,8 +1606,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:69:4: ( 'OR' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:69:6: 'OR'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:70:4: ( 'OR' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:70:6: 'OR'
             {
             match("OR"); 
 
@@ -1605,8 +1629,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PDL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:70:5: ( 'PDL' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:70:7: 'PDL'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:71:5: ( 'PDL' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:71:7: 'PDL'
             {
             match("PDL"); 
 
@@ -1628,8 +1652,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PEEK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:71:6: ( 'PEEK' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:71:8: 'PEEK'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:72:6: ( 'PEEK' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:72:8: 'PEEK'
             {
             match("PEEK"); 
 
@@ -1651,8 +1675,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PLOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:72:6: ( 'PLOT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:72:8: 'PLOT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:73:6: ( 'PLOT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:73:8: 'PLOT'
             {
             match("PLOT"); 
 
@@ -1674,8 +1698,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:73:6: ( '+' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:73:8: '+'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:74:6: ( '+' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:74:8: '+'
             {
             match('+'); 
 
@@ -1695,8 +1719,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = POKE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:74:6: ( 'POKE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:74:8: 'POKE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:75:6: ( 'POKE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:75:8: 'POKE'
             {
             match("POKE"); 
 
@@ -1718,8 +1742,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = POP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:75:5: ( 'POP' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:75:7: 'POP'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:76:5: ( 'POP' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:76:7: 'POP'
             {
             match("POP"); 
 
@@ -1741,8 +1765,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = POS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:76:5: ( 'POS' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:76:7: 'POS'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:77:5: ( 'POS' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:77:7: 'POS'
             {
             match("POS"); 
 
@@ -1764,8 +1788,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PRINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:77:7: ( 'PRINT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:77:9: 'PRINT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:78:7: ( 'PRINT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:78:9: 'PRINT'
             {
             match("PRINT"); 
 
@@ -1787,8 +1811,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = PRNUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:78:10: ( 'PR#' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:78:12: 'PR#'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:79:10: ( 'PR#' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:79:12: 'PR#'
             {
             match("PR#"); 
 
@@ -1810,8 +1834,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = QUESTION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:79:10: ( '?' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:79:12: '?'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:80:10: ( '?' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:80:12: '?'
             {
             match('?'); 
 
@@ -1831,8 +1855,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = READ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:80:6: ( 'READ' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:80:8: 'READ'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:81:6: ( 'READ' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:81:8: 'READ'
             {
             match("READ"); 
 
@@ -1854,8 +1878,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RECALL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:81:8: ( 'RECALL' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:81:10: 'RECALL'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:82:8: ( 'RECALL' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:82:10: 'RECALL'
             {
             match("RECALL"); 
 
@@ -1877,8 +1901,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = REM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:82:5: ( 'REM' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:82:7: 'REM'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:83:5: ( 'REM' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:83:7: 'REM'
             {
             match("REM"); 
 
@@ -1900,8 +1924,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RESTORE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:83:9: ( 'RESTORE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:83:11: 'RESTORE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:84:9: ( 'RESTORE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:84:11: 'RESTORE'
             {
             match("RESTORE"); 
 
@@ -1923,8 +1947,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RETURN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:84:8: ( 'RETURN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:84:10: 'RETURN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:85:8: ( 'RETURN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:85:10: 'RETURN'
             {
             match("RETURN"); 
 
@@ -1946,8 +1970,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RIGHT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:85:7: ( 'RIGHT$' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:85:9: 'RIGHT$'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:86:7: ( 'RIGHT$' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:86:9: 'RIGHT$'
             {
             match("RIGHT$"); 
 
@@ -1969,8 +1993,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:86:5: ( 'RND' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:86:7: 'RND'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:87:5: ( 'RND' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:87:7: 'RND'
             {
             match("RND"); 
 
@@ -1992,8 +2016,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = ROT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:87:5: ( 'ROT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:87:7: 'ROT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:88:5: ( 'ROT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:88:7: 'ROT'
             {
             match("ROT"); 
 
@@ -2015,8 +2039,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:88:8: ( ')' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:88:10: ')'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:89:8: ( ')' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:89:10: ')'
             {
             match(')'); 
 
@@ -2036,8 +2060,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = RUN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:89:5: ( 'RUN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:89:7: 'RUN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:90:5: ( 'RUN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:90:7: 'RUN'
             {
             match("RUN"); 
 
@@ -2059,8 +2083,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SAVE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:90:6: ( 'SAVE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:90:8: 'SAVE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:91:6: ( 'SAVE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:91:8: 'SAVE'
             {
             match("SAVE"); 
 
@@ -2082,8 +2106,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SCALE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:91:7: ( 'SCALE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:91:9: 'SCALE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:92:7: ( 'SCALE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:92:9: 'SCALE'
             {
             match("SCALE"); 
 
@@ -2105,8 +2129,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SCRN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:92:6: ( 'SCRN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:92:8: 'SCRN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:93:6: ( 'SCRN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:93:8: 'SCRN'
             {
             match("SCRN"); 
 
@@ -2128,8 +2152,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SEMICOLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:93:11: ( ';' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:93:13: ';'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:94:11: ( ';' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:94:13: ';'
             {
             match(';'); 
 
@@ -2149,8 +2173,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:94:5: ( 'SGN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:94:7: 'SGN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:95:5: ( 'SGN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:95:7: 'SGN'
             {
             match("SGN"); 
 
@@ -2172,8 +2196,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SHLOAD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:95:8: ( 'SHLOAD' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:95:10: 'SHLOAD'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:96:8: ( 'SHLOAD' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:96:10: 'SHLOAD'
             {
             match("SHLOAD"); 
 
@@ -2195,8 +2219,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:96:5: ( 'SIN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:96:7: 'SIN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:97:5: ( 'SIN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:97:7: 'SIN'
             {
             match("SIN"); 
 
@@ -2218,8 +2242,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SPC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:97:5: ( 'SPC' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:97:7: 'SPC'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:98:5: ( 'SPC' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:98:7: 'SPC'
             {
             match("SPC"); 
 
@@ -2241,8 +2265,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SPEED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:98:7: ( 'SPEED' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:98:9: 'SPEED'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:99:7: ( 'SPEED' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:99:9: 'SPEED'
             {
             match("SPEED"); 
 
@@ -2264,8 +2288,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = SQR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:99:5: ( 'SQR' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:99:7: 'SQR'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:100:5: ( 'SQR' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:100:7: 'SQR'
             {
             match("SQR"); 
 
@@ -2287,8 +2311,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = STEP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:100:6: ( 'STEP' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:100:8: 'STEP'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:101:6: ( 'STEP' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:101:8: 'STEP'
             {
             match("STEP"); 
 
@@ -2310,8 +2334,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = STOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:101:6: ( 'STOP' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:101:8: 'STOP'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:102:6: ( 'STOP' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:102:8: 'STOP'
             {
             match("STOP"); 
 
@@ -2333,8 +2357,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = STORE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:102:7: ( 'STORE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:102:9: 'STORE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:103:7: ( 'STORE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:103:9: 'STORE'
             {
             match("STORE"); 
 
@@ -2356,8 +2380,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = STR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:103:5: ( 'STR$' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:103:7: 'STR$'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:104:5: ( 'STR$' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:104:7: 'STR$'
             {
             match("STR$"); 
 
@@ -2379,8 +2403,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TAB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:104:5: ( 'TAB' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:104:7: 'TAB'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:105:5: ( 'TAB' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:105:7: 'TAB'
             {
             match("TAB"); 
 
@@ -2402,8 +2426,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:105:5: ( 'TAN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:105:7: 'TAN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:106:5: ( 'TAN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:106:7: 'TAN'
             {
             match("TAN"); 
 
@@ -2425,8 +2449,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:106:6: ( 'TEXT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:106:8: 'TEXT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:107:6: ( 'TEXT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:107:8: 'TEXT'
             {
             match("TEXT"); 
 
@@ -2448,8 +2472,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:107:6: ( 'THEN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:107:8: 'THEN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:108:6: ( 'THEN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:108:8: 'THEN'
             {
             match("THEN"); 
 
@@ -2471,8 +2495,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TIMES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:108:7: ( '*' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:108:9: '*'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:109:7: ( '*' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:109:9: '*'
             {
             match('*'); 
 
@@ -2492,8 +2516,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:109:4: ( 'TO' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:109:6: 'TO'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:110:4: ( 'TO' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:110:6: 'TO'
             {
             match("TO"); 
 
@@ -2515,8 +2539,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = TRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:110:7: ( 'TRACE' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:110:9: 'TRACE'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:111:7: ( 'TRACE' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:111:9: 'TRACE'
             {
             match("TRACE"); 
 
@@ -2538,8 +2562,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = USR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:111:5: ( 'USR' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:111:7: 'USR'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:112:5: ( 'USR' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:112:7: 'USR'
             {
             match("USR"); 
 
@@ -2561,8 +2585,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = VAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:112:5: ( 'VAL' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:112:7: 'VAL'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:113:5: ( 'VAL' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:113:7: 'VAL'
             {
             match("VAL"); 
 
@@ -2584,8 +2608,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = VLIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:113:6: ( 'VLIN' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:113:8: 'VLIN'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:114:6: ( 'VLIN' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:114:8: 'VLIN'
             {
             match("VLIN"); 
 
@@ -2607,8 +2631,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = VPLOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:114:7: ( 'VPLOT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:114:9: 'VPLOT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:115:7: ( 'VPLOT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:115:9: 'VPLOT'
             {
             match("VPLOT"); 
 
@@ -2630,8 +2654,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = VTAB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:115:6: ( 'VTAB' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:115:8: 'VTAB'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:116:6: ( 'VTAB' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:116:8: 'VTAB'
             {
             match("VTAB"); 
 
@@ -2653,8 +2677,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = WAIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:116:6: ( 'WAIT' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:116:8: 'WAIT'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:117:6: ( 'WAIT' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:117:8: 'WAIT'
             {
             match("WAIT"); 
 
@@ -2676,8 +2700,8 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = XDRAW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:117:7: ( 'XDRAW' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:117:9: 'XDRAW'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:118:7: ( 'XDRAW' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:118:9: 'XDRAW'
             {
             match("XDRAW"); 
 
@@ -2694,13 +2718,13 @@ public class jvmBasicLexer extends Lexer {
     }
     // $ANTLR end "XDRAW"
 
-    // $ANTLR start "T__121"
-    public final void mT__121() throws RecognitionException {
+    // $ANTLR start "T__124"
+    public final void mT__124() throws RecognitionException {
         try {
-            int _type = T__121;
+            int _type = T__124;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:118:8: ( '$' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:118:10: '$'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:119:8: ( '$' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:119:10: '$'
             {
             match('$'); 
 
@@ -2713,15 +2737,15 @@ public class jvmBasicLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__121"
+    // $ANTLR end "T__124"
 
-    // $ANTLR start "T__122"
-    public final void mT__122() throws RecognitionException {
+    // $ANTLR start "T__125"
+    public final void mT__125() throws RecognitionException {
         try {
-            int _type = T__122;
+            int _type = T__125;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:119:8: ( '%' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:119:10: '%'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:120:8: ( '%' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:120:10: '%'
             {
             match('%'); 
 
@@ -2734,61 +2758,19 @@ public class jvmBasicLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__122"
-
-    // $ANTLR start "T__123"
-    public final void mT__123() throws RecognitionException {
-        try {
-            int _type = T__123;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:120:8: ( '0' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:120:10: '0'
-            {
-            match('0'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__123"
-
-    // $ANTLR start "T__124"
-    public final void mT__124() throws RecognitionException {
-        try {
-            int _type = T__124;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:121:8: ( '9' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:121:10: '9'
-            {
-            match('9'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__124"
+    // $ANTLR end "T__125"
 
     // $ANTLR start "STRINGLITERAL"
     public final void mSTRINGLITERAL() throws RecognitionException {
         try {
             int _type = STRINGLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:261:14: ( '\"' (~ ( '\"' | '\\\\' ) )* '\"' )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:261:16: '\"' (~ ( '\"' | '\\\\' ) )* '\"'
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:14: ( '\"' (~ ( '\"' | '\\\\' ) )* '\"' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:16: '\"' (~ ( '\"' | '\\\\' ) )* '\"'
             {
             match('\"'); 
 
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:261:20: (~ ( '\"' | '\\\\' ) )*
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:20: (~ ( '\"' | '\\\\' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -2840,10 +2822,10 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = LETTERS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:262:9: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:262:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:9: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:262:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt2=0;
             loop2:
             do {
@@ -2946,15 +2928,41 @@ public class jvmBasicLexer extends Lexer {
     }
     // $ANTLR end "LETTERS"
 
+    // $ANTLR start "DIGIT"
+    public final void mDIGIT() throws RecognitionException {
+        try {
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:266:17: ( ( '0' .. '9' ) )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:
+            {
+            if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+            }
+
+
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "DIGIT"
+
     // $ANTLR start "NUMBER"
     public final void mNUMBER() throws RecognitionException {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:9: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:11: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:267:8: ( ( DIGIT )+ )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:267:10: ( DIGIT )+
             {
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:11: ( '0' .. '9' )+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:267:10: ( DIGIT )+
             int cnt3=0;
             loop3:
             do {
@@ -3004,78 +3012,6 @@ public class jvmBasicLexer extends Lexer {
             } while (true);
 
 
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:23: ( '.' ( '0' .. '9' )+ )?
-            int alt5=2;
-            switch ( input.LA(1) ) {
-                case '.':
-                    {
-                    alt5=1;
-                    }
-                    break;
-            }
-
-            switch (alt5) {
-                case 1 :
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:24: '.' ( '0' .. '9' )+
-                    {
-                    match('.'); 
-
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:263:28: ( '0' .. '9' )+
-                    int cnt4=0;
-                    loop4:
-                    do {
-                        int alt4=2;
-                        switch ( input.LA(1) ) {
-                        case '0':
-                        case '1':
-                        case '2':
-                        case '3':
-                        case '4':
-                        case '5':
-                        case '6':
-                        case '7':
-                        case '8':
-                        case '9':
-                            {
-                            alt4=1;
-                            }
-                            break;
-
-                        }
-
-                        switch (alt4) {
-                    	case 1 :
-                    	    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:
-                    	    {
-                    	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-                    	        input.consume();
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    if ( cnt4 >= 1 ) break loop4;
-                                EarlyExitException eee =
-                                    new EarlyExitException(4, input);
-                                throw eee;
-                        }
-                        cnt4++;
-                    } while (true);
-
-
-                    }
-                    break;
-
-            }
-
-
             }
 
             state.type = _type;
@@ -3087,15 +3023,131 @@ public class jvmBasicLexer extends Lexer {
     }
     // $ANTLR end "NUMBER"
 
+    // $ANTLR start "FLOAT"
+    public final void mFLOAT() throws RecognitionException {
+        try {
+            int _type = FLOAT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:268:7: ( ( DIGIT )* '.' ( DIGIT )+ )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:268:9: ( DIGIT )* '.' ( DIGIT )+
+            {
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:268:9: ( DIGIT )*
+            loop4:
+            do {
+                int alt4=2;
+                switch ( input.LA(1) ) {
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    {
+                    alt4=1;
+                    }
+                    break;
+
+                }
+
+                switch (alt4) {
+            	case 1 :
+            	    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:
+            	    {
+            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+            	        input.consume();
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop4;
+                }
+            } while (true);
+
+
+            match('.'); 
+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:268:20: ( DIGIT )+
+            int cnt5=0;
+            loop5:
+            do {
+                int alt5=2;
+                switch ( input.LA(1) ) {
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    {
+                    alt5=1;
+                    }
+                    break;
+
+                }
+
+                switch (alt5) {
+            	case 1 :
+            	    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:
+            	    {
+            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+            	        input.consume();
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt5 >= 1 ) break loop5;
+                        EarlyExitException eee =
+                            new EarlyExitException(5, input);
+                        throw eee;
+                }
+                cnt5++;
+            } while (true);
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "FLOAT"
+
     // $ANTLR start "CR"
     public final void mCR() throws RecognitionException {
         try {
             int _type = CR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:7: ( ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' ) )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:13: ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:7: ( ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' ) )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:13: ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' )
             {
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:13: ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:13: ( '\\r' | '\\n' | '\\r\\n' | '\\n\\r' )
             int alt6=4;
             switch ( input.LA(1) ) {
             case '\r':
@@ -3136,21 +3188,21 @@ public class jvmBasicLexer extends Lexer {
 
             switch (alt6) {
                 case 1 :
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:14: '\\r'
+                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:14: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 2 :
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:20: '\\n'
+                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:20: '\\n'
                     {
                     match('\n'); 
 
                     }
                     break;
                 case 3 :
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:27: '\\r\\n'
+                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:27: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -3159,7 +3211,7 @@ public class jvmBasicLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:264:35: '\\n\\r'
+                    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:269:35: '\\n\\r'
                     {
                     match("\n\r"); 
 
@@ -3187,10 +3239,10 @@ public class jvmBasicLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:9: ( ( ' ' )+ )
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:15: ( ' ' )+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:270:9: ( ( ' ' )+ )
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:270:15: ( ' ' )+
             {
-            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:15: ( ' ' )+
+            // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:270:15: ( ' ' )+
             int cnt7=0;
             loop7:
             do {
@@ -3206,7 +3258,7 @@ public class jvmBasicLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:265:16: ' '
+            	    // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:270:16: ' '
             	    {
             	    match(' '); 
 
@@ -3237,7 +3289,7 @@ public class jvmBasicLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:8: ( ABS | AMPERSAND | AND | ASC | AT | ATN | CALL | CHR | CLEAR | COLON | COLOR | COMMA | COS | DATA | DEF | DIM | DIV | DRAW | END | EQ | EXP | EXPONENT | FLASH | FN | FOR | FRE | GET | GOSUB | GOTO | GR | GT | GTE | HCOLOR | HGR | HGR2 | HIMEM | HLIN | HOME | HPLOT | HTAB | IF | INNUMBER | INPUT | INTF | INVERSE | LEFT | LEN | LET | LIST | LOAD | LOG | LOMEM | LPAREN | LT | LTE | MID | MINUS | NEXT | NORMAL | NOT | NOTRACE | ON | ONERR | OR | PDL | PEEK | PLOT | PLUS | POKE | POP | POS | PRINT | PRNUMBER | QUESTION | READ | RECALL | REM | RESTORE | RETURN | RIGHT | RND | ROT | RPAREN | RUN | SAVE | SCALE | SCRN | SEMICOLON | SGN | SHLOAD | SIN | SPC | SPEED | SQR | STEP | STOP | STORE | STR | TAB | TAN | TEXT | THEN | TIMES | TO | TRACE | USR | VAL | VLIN | VPLOT | VTAB | WAIT | XDRAW | T__121 | T__122 | T__123 | T__124 | STRINGLITERAL | LETTERS | NUMBER | CR | WS )
+        // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:8: ( ABS | AMPERSAND | AND | ASC | AT | ATN | CALL | CHR | CLEAR | COLON | COLOR | COMMA | COS | DATA | DEF | DIM | DIV | DRAW | END | EQ | EXP | EXPONENT | FLASH | FN | FOR | FRE | GET | GOSUB | GOTO | GR | GT | GTE | HCOLOR | HGR | HGR2 | HIMEM | HLIN | HOME | HPLOT | HTAB | IF | INNUMBER | INPUT | INTF | INVERSE | LEFT | LEN | LET | LIST | LOAD | LOG | LOMEM | LPAREN | LT | LTE | MID | MINUS | NEQ | NEXT | NORMAL | NOT | NOTRACE | ON | ONERR | OR | PDL | PEEK | PLOT | PLUS | POKE | POP | POS | PRINT | PRNUMBER | QUESTION | READ | RECALL | REM | RESTORE | RETURN | RIGHT | RND | ROT | RPAREN | RUN | SAVE | SCALE | SCRN | SEMICOLON | SGN | SHLOAD | SIN | SPC | SPEED | SQR | STEP | STOP | STORE | STR | TAB | TAN | TEXT | THEN | TIMES | TO | TRACE | USR | VAL | VLIN | VPLOT | VTAB | WAIT | XDRAW | T__124 | T__125 | STRINGLITERAL | LETTERS | NUMBER | FLOAT | CR | WS )
         int alt8=121;
         alt8 = dfa8.predict(input);
         switch (alt8) {
@@ -3698,503 +3750,503 @@ public class jvmBasicLexer extends Lexer {
                 }
                 break;
             case 58 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:291: NEXT
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:291: NEQ
+                {
+                mNEQ(); 
+
+
+                }
+                break;
+            case 59 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:295: NEXT
                 {
                 mNEXT(); 
 
 
                 }
                 break;
-            case 59 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:296: NORMAL
+            case 60 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:300: NORMAL
                 {
                 mNORMAL(); 
 
 
                 }
                 break;
-            case 60 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:303: NOT
+            case 61 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:307: NOT
                 {
                 mNOT(); 
 
 
                 }
                 break;
-            case 61 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:307: NOTRACE
+            case 62 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:311: NOTRACE
                 {
                 mNOTRACE(); 
 
 
                 }
                 break;
-            case 62 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:315: ON
+            case 63 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:319: ON
                 {
                 mON(); 
 
 
                 }
                 break;
-            case 63 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:318: ONERR
+            case 64 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:322: ONERR
                 {
                 mONERR(); 
 
 
                 }
                 break;
-            case 64 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:324: OR
+            case 65 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:328: OR
                 {
                 mOR(); 
 
 
                 }
                 break;
-            case 65 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:327: PDL
+            case 66 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:331: PDL
                 {
                 mPDL(); 
 
 
                 }
                 break;
-            case 66 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:331: PEEK
+            case 67 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:335: PEEK
                 {
                 mPEEK(); 
 
 
                 }
                 break;
-            case 67 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:336: PLOT
+            case 68 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:340: PLOT
                 {
                 mPLOT(); 
 
 
                 }
                 break;
-            case 68 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:341: PLUS
+            case 69 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:345: PLUS
                 {
                 mPLUS(); 
 
 
                 }
                 break;
-            case 69 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:346: POKE
+            case 70 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:350: POKE
                 {
                 mPOKE(); 
 
 
                 }
                 break;
-            case 70 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:351: POP
+            case 71 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:355: POP
                 {
                 mPOP(); 
 
 
                 }
                 break;
-            case 71 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:355: POS
+            case 72 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:359: POS
                 {
                 mPOS(); 
 
 
                 }
                 break;
-            case 72 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:359: PRINT
+            case 73 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:363: PRINT
                 {
                 mPRINT(); 
 
 
                 }
                 break;
-            case 73 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:365: PRNUMBER
+            case 74 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:369: PRNUMBER
                 {
                 mPRNUMBER(); 
 
 
                 }
                 break;
-            case 74 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:374: QUESTION
+            case 75 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:378: QUESTION
                 {
                 mQUESTION(); 
 
 
                 }
                 break;
-            case 75 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:383: READ
+            case 76 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:387: READ
                 {
                 mREAD(); 
 
 
                 }
                 break;
-            case 76 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:388: RECALL
+            case 77 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:392: RECALL
                 {
                 mRECALL(); 
 
 
                 }
                 break;
-            case 77 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:395: REM
+            case 78 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:399: REM
                 {
                 mREM(); 
 
 
                 }
                 break;
-            case 78 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:399: RESTORE
+            case 79 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:403: RESTORE
                 {
                 mRESTORE(); 
 
 
                 }
                 break;
-            case 79 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:407: RETURN
+            case 80 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:411: RETURN
                 {
                 mRETURN(); 
 
 
                 }
                 break;
-            case 80 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:414: RIGHT
+            case 81 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:418: RIGHT
                 {
                 mRIGHT(); 
 
 
                 }
                 break;
-            case 81 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:420: RND
+            case 82 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:424: RND
                 {
                 mRND(); 
 
 
                 }
                 break;
-            case 82 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:424: ROT
+            case 83 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:428: ROT
                 {
                 mROT(); 
 
 
                 }
                 break;
-            case 83 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:428: RPAREN
+            case 84 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:432: RPAREN
                 {
                 mRPAREN(); 
 
 
                 }
                 break;
-            case 84 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:435: RUN
+            case 85 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:439: RUN
                 {
                 mRUN(); 
 
 
                 }
                 break;
-            case 85 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:439: SAVE
+            case 86 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:443: SAVE
                 {
                 mSAVE(); 
 
 
                 }
                 break;
-            case 86 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:444: SCALE
+            case 87 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:448: SCALE
                 {
                 mSCALE(); 
 
 
                 }
                 break;
-            case 87 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:450: SCRN
+            case 88 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:454: SCRN
                 {
                 mSCRN(); 
 
 
                 }
                 break;
-            case 88 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:455: SEMICOLON
+            case 89 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:459: SEMICOLON
                 {
                 mSEMICOLON(); 
 
 
                 }
                 break;
-            case 89 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:465: SGN
+            case 90 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:469: SGN
                 {
                 mSGN(); 
 
 
                 }
                 break;
-            case 90 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:469: SHLOAD
+            case 91 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:473: SHLOAD
                 {
                 mSHLOAD(); 
 
 
                 }
                 break;
-            case 91 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:476: SIN
+            case 92 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:480: SIN
                 {
                 mSIN(); 
 
 
                 }
                 break;
-            case 92 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:480: SPC
+            case 93 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:484: SPC
                 {
                 mSPC(); 
 
 
                 }
                 break;
-            case 93 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:484: SPEED
+            case 94 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:488: SPEED
                 {
                 mSPEED(); 
 
 
                 }
                 break;
-            case 94 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:490: SQR
+            case 95 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:494: SQR
                 {
                 mSQR(); 
 
 
                 }
                 break;
-            case 95 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:494: STEP
+            case 96 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:498: STEP
                 {
                 mSTEP(); 
 
 
                 }
                 break;
-            case 96 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:499: STOP
+            case 97 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:503: STOP
                 {
                 mSTOP(); 
 
 
                 }
                 break;
-            case 97 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:504: STORE
+            case 98 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:508: STORE
                 {
                 mSTORE(); 
 
 
                 }
                 break;
-            case 98 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:510: STR
+            case 99 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:514: STR
                 {
                 mSTR(); 
 
 
                 }
                 break;
-            case 99 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:514: TAB
+            case 100 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:518: TAB
                 {
                 mTAB(); 
 
 
                 }
                 break;
-            case 100 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:518: TAN
+            case 101 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:522: TAN
                 {
                 mTAN(); 
 
 
                 }
                 break;
-            case 101 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:522: TEXT
+            case 102 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:526: TEXT
                 {
                 mTEXT(); 
 
 
                 }
                 break;
-            case 102 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:527: THEN
+            case 103 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:531: THEN
                 {
                 mTHEN(); 
 
 
                 }
                 break;
-            case 103 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:532: TIMES
+            case 104 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:536: TIMES
                 {
                 mTIMES(); 
 
 
                 }
                 break;
-            case 104 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:538: TO
+            case 105 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:542: TO
                 {
                 mTO(); 
 
 
                 }
                 break;
-            case 105 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:541: TRACE
+            case 106 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:545: TRACE
                 {
                 mTRACE(); 
 
 
                 }
                 break;
-            case 106 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:547: USR
+            case 107 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:551: USR
                 {
                 mUSR(); 
 
 
                 }
                 break;
-            case 107 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:551: VAL
+            case 108 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:555: VAL
                 {
                 mVAL(); 
 
 
                 }
                 break;
-            case 108 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:555: VLIN
+            case 109 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:559: VLIN
                 {
                 mVLIN(); 
 
 
                 }
                 break;
-            case 109 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:560: VPLOT
+            case 110 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:564: VPLOT
                 {
                 mVPLOT(); 
 
 
                 }
                 break;
-            case 110 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:566: VTAB
+            case 111 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:570: VTAB
                 {
                 mVTAB(); 
 
 
                 }
                 break;
-            case 111 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:571: WAIT
+            case 112 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:575: WAIT
                 {
                 mWAIT(); 
 
 
                 }
                 break;
-            case 112 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:576: XDRAW
+            case 113 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:580: XDRAW
                 {
                 mXDRAW(); 
 
 
                 }
                 break;
-            case 113 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:582: T__121
-                {
-                mT__121(); 
-
-
-                }
-                break;
             case 114 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:589: T__122
-                {
-                mT__122(); 
-
-
-                }
-                break;
-            case 115 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:596: T__123
-                {
-                mT__123(); 
-
-
-                }
-                break;
-            case 116 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:603: T__124
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:586: T__124
                 {
                 mT__124(); 
 
 
                 }
                 break;
-            case 117 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:610: STRINGLITERAL
+            case 115 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:593: T__125
+                {
+                mT__125(); 
+
+
+                }
+                break;
+            case 116 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:600: STRINGLITERAL
                 {
                 mSTRINGLITERAL(); 
 
 
                 }
                 break;
-            case 118 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:624: LETTERS
+            case 117 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:614: LETTERS
                 {
                 mLETTERS(); 
 
 
                 }
                 break;
-            case 119 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:632: NUMBER
+            case 118 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:622: NUMBER
                 {
                 mNUMBER(); 
 
 
                 }
                 break;
+            case 119 :
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:629: FLOAT
+                {
+                mFLOAT(); 
+
+
+                }
+                break;
             case 120 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:639: CR
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:635: CR
                 {
                 mCR(); 
 
@@ -4202,7 +4254,7 @@ public class jvmBasicLexer extends Lexer {
                 }
                 break;
             case 121 :
-                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:642: WS
+                // com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g:1:638: WS
                 {
                 mWS(); 
 
@@ -4217,44 +4269,44 @@ public class jvmBasicLexer extends Lexer {
 
     protected DFA8 dfa8 = new DFA8(this);
     static final String DFA8_eotS =
-        "\1\uffff\1\51\1\uffff\1\51\2\uffff\1\51\1\uffff\1\51\2\uffff\2\51"+
-        "\1\103\3\51\1\uffff\1\121\1\51\1\uffff\3\51\2\uffff\1\51\1\uffff"+
-        "\1\51\1\uffff\1\51\1\uffff\4\51\2\uffff\1\165\1\166\5\uffff\3\51"+
-        "\1\173\13\51\1\u0088\4\51\1\u008e\2\uffff\7\51\1\u0096\4\51\2\uffff"+
-        "\3\51\1\u00a7\1\u00a8\25\51\1\u00ca\10\51\2\uffff\1\u00d3\1\u00d4"+
-        "\1\u00d5\1\u00d6\1\uffff\4\51\1\u00db\1\51\1\u00dd\1\u00de\1\51"+
-        "\1\u00e0\1\u00e1\1\51\1\uffff\1\u00e3\1\u00e4\1\u00e5\2\51\1\uffff"+
-        "\1\51\1\u00ea\5\51\2\uffff\1\51\1\u00f1\2\51\1\u00f4\1\u00f5\2\51"+
-        "\1\u00f8\4\51\1\u00fe\1\51\2\uffff\1\u0100\3\51\1\u0104\1\u0105"+
-        "\1\51\1\uffff\2\51\1\u0109\3\51\1\u010d\1\u010e\1\u010f\3\51\1\u0113"+
-        "\1\51\1\u0115\1\u0116\1\51\1\u0118\3\51\1\u011d\1\u011e\2\51\1\uffff"+
-        "\1\51\1\u0122\1\u0123\5\51\4\uffff\1\u0129\1\uffff\2\51\1\uffff"+
-        "\1\u012c\2\uffff\1\u012d\2\uffff\1\51\3\uffff\1\51\1\u0130\1\51"+
-        "\2\uffff\1\51\1\u0133\1\u0134\1\51\1\u0136\1\51\1\uffff\2\51\2\uffff"+
-        "\1\u013a\1\u013b\1\uffff\1\51\1\uffff\1\u013d\2\51\1\uffff\1\51"+
-        "\1\uffff\1\u0141\1\u0142\1\u0143\2\uffff\1\51\1\u0145\1\51\1\uffff"+
-        "\3\51\3\uffff\1\u014a\1\51\1\u014c\1\uffff\1\51\2\uffff\1\51\1\uffff"+
-        "\1\u014f\1\u0150\1\51\3\uffff\1\u0152\1\u0153\1\51\2\uffff\1\u0155"+
-        "\1\51\1\u0157\1\u0158\1\51\1\uffff\1\u015a\1\u015b\2\uffff\1\u015c"+
-        "\1\u015d\1\uffff\1\51\1\u015f\2\uffff\1\u0160\1\uffff\1\u0161\1"+
-        "\51\3\uffff\1\u0163\1\uffff\2\51\1\u0166\3\uffff\1\u0167\1\uffff"+
-        "\4\51\1\uffff\1\u016c\1\uffff\1\51\1\u016e\2\uffff\1\u016f\2\uffff"+
-        "\1\u0170\1\uffff\1\u0171\2\uffff\1\u0172\4\uffff\1\u0173\3\uffff"+
-        "\1\51\1\uffff\1\u0175\1\51\2\uffff\1\u0177\1\51\1\u0179\2\uffff"+
-        "\1\u017a\6\uffff\1\u017b\1\uffff\1\u017c\1\uffff\1\u017d\5\uffff";
+        "\1\uffff\1\47\1\uffff\1\47\2\uffff\1\47\1\uffff\1\47\2\uffff\2\47"+
+        "\1\102\3\47\1\uffff\1\121\1\47\1\uffff\3\47\2\uffff\1\47\1\uffff"+
+        "\1\47\1\uffff\1\47\1\uffff\4\47\4\uffff\1\165\3\uffff\3\47\1\172"+
+        "\13\47\1\u0087\4\47\1\u008d\2\uffff\7\47\1\u0095\4\47\3\uffff\3"+
+        "\47\1\u00a6\1\u00a7\25\47\1\u00c9\10\47\1\uffff\1\u00d2\1\u00d3"+
+        "\1\u00d4\1\u00d5\1\uffff\4\47\1\u00da\1\47\1\u00dc\1\u00dd\1\47"+
+        "\1\u00df\1\u00e0\1\47\1\uffff\1\u00e2\1\u00e3\1\u00e4\2\47\1\uffff"+
+        "\1\47\1\u00e9\5\47\2\uffff\1\47\1\u00f0\2\47\1\u00f3\1\u00f4\2\47"+
+        "\1\u00f7\4\47\1\u00fd\1\47\2\uffff\1\u00ff\3\47\1\u0103\1\u0104"+
+        "\1\47\1\uffff\2\47\1\u0108\3\47\1\u010c\1\u010d\1\u010e\3\47\1\u0112"+
+        "\1\47\1\u0114\1\u0115\1\47\1\u0117\3\47\1\u011c\1\u011d\2\47\1\uffff"+
+        "\1\47\1\u0121\1\u0122\5\47\4\uffff\1\u0128\1\uffff\2\47\1\uffff"+
+        "\1\u012b\2\uffff\1\u012c\2\uffff\1\47\3\uffff\1\47\1\u012f\1\47"+
+        "\2\uffff\1\47\1\u0132\1\u0133\1\47\1\u0135\1\47\1\uffff\2\47\2\uffff"+
+        "\1\u0139\1\u013a\1\uffff\1\47\1\uffff\1\u013c\2\47\1\uffff\1\47"+
+        "\1\uffff\1\u0140\1\u0141\1\u0142\2\uffff\1\47\1\u0144\1\47\1\uffff"+
+        "\3\47\3\uffff\1\u0149\1\47\1\u014b\1\uffff\1\47\2\uffff\1\47\1\uffff"+
+        "\1\u014e\1\u014f\1\47\3\uffff\1\u0151\1\u0152\1\47\2\uffff\1\u0154"+
+        "\1\47\1\u0156\1\u0157\1\47\1\uffff\1\u0159\1\u015a\2\uffff\1\u015b"+
+        "\1\u015c\1\uffff\1\47\1\u015e\2\uffff\1\u015f\1\uffff\1\u0160\1"+
+        "\47\3\uffff\1\u0162\1\uffff\2\47\1\u0165\3\uffff\1\u0166\1\uffff"+
+        "\4\47\1\uffff\1\u016b\1\uffff\1\47\1\u016d\2\uffff\1\u016e\2\uffff"+
+        "\1\u016f\1\uffff\1\u0170\2\uffff\1\u0171\4\uffff\1\u0172\3\uffff"+
+        "\1\47\1\uffff\1\u0174\1\47\2\uffff\1\u0176\1\47\1\u0178\2\uffff"+
+        "\1\u0179\6\uffff\1\u017a\1\uffff\1\u017b\1\uffff\1\u017c\5\uffff";
     static final String DFA8_eofS =
-        "\u017e\uffff";
+        "\u017d\uffff";
     static final String DFA8_minS =
         "\1\12\1\102\1\uffff\1\101\2\uffff\1\101\1\uffff\1\116\2\uffff\1"+
-        "\114\1\105\1\75\1\103\1\106\1\105\1\uffff\1\75\1\111\1\uffff\1\105"+
+        "\114\1\105\1\75\1\103\1\106\1\105\1\uffff\1\40\1\111\1\uffff\1\105"+
         "\1\116\1\104\2\uffff\1\105\1\uffff\1\101\1\uffff\1\101\1\uffff\1"+
-        "\123\2\101\1\104\2\uffff\2\56\5\uffff\1\123\1\104\1\103\1\101\1"+
+        "\123\2\101\1\104\4\uffff\1\56\3\uffff\1\123\1\104\1\103\1\101\1"+
         "\114\1\122\1\105\1\114\1\124\1\106\1\115\1\101\1\104\1\120\2\101"+
         "\1\122\1\105\1\124\1\123\1\101\2\uffff\1\117\1\122\1\115\1\111\1"+
-        "\115\1\114\2\101\1\43\1\106\1\123\1\101\2\uffff\1\104\1\130\1\122"+
+        "\115\1\114\2\101\1\43\1\106\1\123\1\101\3\uffff\1\104\1\130\1\122"+
         "\2\101\1\114\1\105\1\117\1\113\1\43\1\101\1\107\1\104\1\124\1\116"+
         "\1\126\1\101\1\116\1\114\1\116\1\103\1\122\1\105\1\102\1\130\1\105"+
-        "\2\101\1\122\1\114\1\111\1\114\1\101\1\111\1\122\2\uffff\4\101\1"+
+        "\2\101\1\122\1\114\1\111\1\114\1\101\1\111\1\122\1\uffff\4\101\1"+
         "\uffff\1\114\1\44\1\101\1\117\4\101\1\127\2\101\1\123\1\uffff\3"+
         "\101\1\125\1\117\1\uffff\1\114\1\62\1\105\1\116\1\105\1\117\1\102"+
         "\2\uffff\1\125\1\101\1\105\1\124\2\101\1\124\1\104\1\101\1\105\1"+
@@ -4279,13 +4331,13 @@ public class jvmBasicLexer extends Lexer {
         "\1\172\1\124\1\uffff\1\117\2\uffff\1\122\1\uffff\1\130\2\uffff\2"+
         "\122\1\75\1\124\1\116\1\117\1\uffff\1\75\1\111\1\uffff\1\117\2\122"+
         "\2\uffff\1\125\1\uffff\1\124\1\uffff\1\122\1\uffff\1\123\1\124\1"+
-        "\101\1\104\2\uffff\2\71\5\uffff\1\123\1\104\1\103\1\172\1\114\1"+
+        "\101\1\104\4\uffff\1\71\3\uffff\1\123\1\104\1\103\1\172\1\114\1"+
         "\122\1\105\1\123\1\124\1\106\1\115\1\101\1\104\1\120\1\101\1\172"+
         "\1\122\1\105\2\124\1\172\2\uffff\1\117\1\122\1\115\1\111\1\115\1"+
-        "\114\1\101\1\172\1\126\1\124\1\123\1\115\2\uffff\1\104\1\130\1\124"+
+        "\114\1\101\1\172\1\126\1\124\1\123\1\115\3\uffff\1\104\1\130\1\124"+
         "\2\172\1\114\1\105\1\117\1\123\1\111\1\124\1\107\1\104\1\124\1\116"+
         "\1\126\1\122\1\116\1\114\1\116\1\105\2\122\1\116\1\130\1\105\1\172"+
-        "\1\101\1\122\1\114\1\111\1\114\1\101\1\111\1\122\2\uffff\4\172\1"+
+        "\1\101\1\122\1\114\1\111\1\114\1\101\1\111\1\122\1\uffff\4\172\1"+
         "\uffff\1\114\1\44\1\101\1\117\1\172\1\101\2\172\1\127\2\172\1\123"+
         "\1\uffff\3\172\1\125\1\117\1\uffff\1\114\1\172\1\105\1\116\1\105"+
         "\1\117\1\102\2\uffff\1\125\1\172\1\105\1\124\2\172\1\124\1\104\1"+
@@ -4308,52 +4360,52 @@ public class jvmBasicLexer extends Lexer {
         "\1\172\1\uffff\1\172\5\uffff";
     static final String DFA8_acceptS =
         "\2\uffff\1\2\1\uffff\1\12\1\14\1\uffff\1\21\1\uffff\1\24\1\26\6"+
-        "\uffff\1\65\2\uffff\1\71\3\uffff\1\104\1\112\1\uffff\1\123\1\uffff"+
-        "\1\130\1\uffff\1\147\4\uffff\1\161\1\162\2\uffff\1\165\1\166\1\167"+
-        "\1\170\1\171\25\uffff\1\40\1\37\14\uffff\1\67\1\66\43\uffff\1\163"+
-        "\1\164\4\uffff\1\5\14\uffff\1\30\5\uffff\1\36\7\uffff\1\51\1\52"+
-        "\17\uffff\1\76\1\100\7\uffff\1\111\31\uffff\1\150\10\uffff\1\1\1"+
+        "\uffff\1\65\2\uffff\1\71\3\uffff\1\105\1\113\1\uffff\1\124\1\uffff"+
+        "\1\131\1\uffff\1\150\4\uffff\1\162\1\163\1\164\1\165\1\uffff\1\167"+
+        "\1\170\1\171\25\uffff\1\40\1\37\14\uffff\1\67\1\72\1\66\43\uffff"+
+        "\1\166\4\uffff\1\5\14\uffff\1\30\5\uffff\1\36\7\uffff\1\51\1\52"+
+        "\17\uffff\1\77\1\101\7\uffff\1\112\31\uffff\1\151\10\uffff\1\1\1"+
         "\3\1\4\1\6\1\uffff\1\10\2\uffff\1\15\1\uffff\1\17\1\20\1\uffff\1"+
         "\23\1\25\1\uffff\1\31\1\32\1\33\3\uffff\1\43\1\42\6\uffff\1\54\2"+
-        "\uffff\1\57\1\60\2\uffff\1\63\1\uffff\1\70\3\uffff\1\74\1\uffff"+
-        "\1\101\3\uffff\1\106\1\107\3\uffff\1\115\3\uffff\1\121\1\122\1\124"+
-        "\3\uffff\1\131\1\uffff\1\133\1\134\1\uffff\1\136\3\uffff\1\142\1"+
-        "\143\1\144\3\uffff\1\152\1\153\5\uffff\1\7\2\uffff\1\16\1\22\2\uffff"+
+        "\uffff\1\57\1\60\2\uffff\1\63\1\uffff\1\70\3\uffff\1\75\1\uffff"+
+        "\1\102\3\uffff\1\107\1\110\3\uffff\1\116\3\uffff\1\122\1\123\1\125"+
+        "\3\uffff\1\132\1\uffff\1\134\1\135\1\uffff\1\137\3\uffff\1\143\1"+
+        "\144\1\145\3\uffff\1\153\1\154\5\uffff\1\7\2\uffff\1\16\1\22\2\uffff"+
         "\1\35\2\uffff\1\45\1\46\1\uffff\1\50\2\uffff\1\56\1\61\1\62\1\uffff"+
-        "\1\72\3\uffff\1\102\1\103\1\105\1\uffff\1\113\4\uffff\1\125\1\uffff"+
-        "\1\127\2\uffff\1\137\1\140\1\uffff\1\145\1\146\1\uffff\1\154\1\uffff"+
-        "\1\156\1\157\1\uffff\1\11\1\13\1\27\1\34\1\uffff\1\44\1\47\1\53"+
-        "\1\uffff\1\64\2\uffff\1\77\1\110\3\uffff\1\120\1\126\1\uffff\1\135"+
-        "\1\141\1\151\1\155\1\160\1\41\1\uffff\1\73\1\uffff\1\114\1\uffff"+
-        "\1\117\1\132\1\55\1\75\1\116";
+        "\1\73\3\uffff\1\103\1\104\1\106\1\uffff\1\114\4\uffff\1\126\1\uffff"+
+        "\1\130\2\uffff\1\140\1\141\1\uffff\1\146\1\147\1\uffff\1\155\1\uffff"+
+        "\1\157\1\160\1\uffff\1\11\1\13\1\27\1\34\1\uffff\1\44\1\47\1\53"+
+        "\1\uffff\1\64\2\uffff\1\100\1\111\3\uffff\1\121\1\127\1\uffff\1"+
+        "\136\1\142\1\152\1\156\1\161\1\41\1\uffff\1\74\1\uffff\1\115\1\uffff"+
+        "\1\120\1\133\1\55\1\76\1\117";
     static final String DFA8_specialS =
-        "\u017e\uffff}>";
+        "\u017d\uffff}>";
     static final String[] DFA8_transitionS = {
-            "\1\53\2\uffff\1\53\22\uffff\1\54\1\uffff\1\50\1\uffff\1\44\1"+
-            "\45\1\2\1\uffff\1\21\1\33\1\37\1\30\1\5\1\24\1\uffff\1\7\1\46"+
-            "\10\52\1\47\1\4\1\35\1\22\1\11\1\15\1\31\1\uffff\1\1\1\51\1"+
-            "\3\1\6\1\10\1\13\1\14\1\16\1\17\2\51\1\20\1\23\1\25\1\26\1\27"+
-            "\1\51\1\32\1\34\1\36\1\40\1\41\1\42\1\43\2\51\3\uffff\1\12\2"+
-            "\uffff\32\51",
-            "\1\55\13\uffff\1\56\4\uffff\1\57\1\60",
+            "\1\52\2\uffff\1\52\22\uffff\1\53\1\uffff\1\46\1\uffff\1\44\1"+
+            "\45\1\2\1\uffff\1\21\1\33\1\37\1\30\1\5\1\24\1\51\1\7\12\50"+
+            "\1\4\1\35\1\22\1\11\1\15\1\31\1\uffff\1\1\1\47\1\3\1\6\1\10"+
+            "\1\13\1\14\1\16\1\17\2\47\1\20\1\23\1\25\1\26\1\27\1\47\1\32"+
+            "\1\34\1\36\1\40\1\41\1\42\1\43\2\47\3\uffff\1\12\2\uffff\32"+
+            "\47",
+            "\1\54\13\uffff\1\55\4\uffff\1\56\1\57",
             "",
-            "\1\61\6\uffff\1\62\3\uffff\1\63\2\uffff\1\64",
-            "",
-            "",
-            "\1\65\3\uffff\1\66\3\uffff\1\67\10\uffff\1\70",
-            "",
-            "\1\71\11\uffff\1\72",
+            "\1\60\6\uffff\1\61\3\uffff\1\62\2\uffff\1\63",
             "",
             "",
-            "\1\73\1\uffff\1\74\1\75\2\uffff\1\76",
-            "\1\77\11\uffff\1\100\2\uffff\1\101",
-            "\1\102",
-            "\1\104\3\uffff\1\105\1\uffff\1\106\2\uffff\1\107\2\uffff\1"+
-            "\110\1\111\3\uffff\1\112",
-            "\1\113\7\uffff\1\114",
-            "\1\115\3\uffff\1\116\5\uffff\1\117",
+            "\1\64\3\uffff\1\65\3\uffff\1\66\10\uffff\1\67",
             "",
-            "\1\120",
+            "\1\70\11\uffff\1\71",
+            "",
+            "",
+            "\1\72\1\uffff\1\73\1\74\2\uffff\1\75",
+            "\1\76\11\uffff\1\77\2\uffff\1\100",
+            "\1\101",
+            "\1\103\3\uffff\1\104\1\uffff\1\105\2\uffff\1\106\2\uffff\1"+
+            "\107\1\110\3\uffff\1\111",
+            "\1\112\7\uffff\1\113",
+            "\1\114\3\uffff\1\115\5\uffff\1\116",
+            "",
+            "\1\120\34\uffff\1\117",
             "\1\122",
             "",
             "\1\123\11\uffff\1\124",
@@ -4375,78 +4427,79 @@ public class jvmBasicLexer extends Lexer {
             "\1\164",
             "",
             "",
-            "\1\52\1\uffff\12\52",
-            "\1\52\1\uffff\12\52",
+            "",
+            "",
+            "\1\51\1\uffff\12\50",
             "",
             "",
             "",
-            "",
-            "",
+            "\1\166",
             "\1\167",
             "\1\170",
-            "\1\171",
-            "\15\51\1\172\14\51\6\uffff\32\51",
+            "\15\47\1\171\14\47\6\uffff\32\47",
+            "\1\173",
             "\1\174",
             "\1\175",
-            "\1\176",
-            "\1\177\6\uffff\1\u0080",
+            "\1\176\6\uffff\1\177",
+            "\1\u0080",
             "\1\u0081",
             "\1\u0082",
             "\1\u0083",
             "\1\u0084",
             "\1\u0085",
             "\1\u0086",
-            "\1\u0087",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0088",
             "\1\u0089",
             "\1\u008a",
-            "\1\u008b",
-            "\1\u008c\1\u008d",
-            "\32\51\6\uffff\32\51",
+            "\1\u008b\1\u008c",
+            "\32\47\6\uffff\32\47",
             "",
             "",
+            "\1\u008e",
             "\1\u008f",
             "\1\u0090",
             "\1\u0091",
             "\1\u0092",
             "\1\u0093",
             "\1\u0094",
-            "\1\u0095",
-            "\32\51\6\uffff\32\51",
-            "\1\u0097\54\uffff\1\u0098\3\uffff\1\u0099\1\uffff\1\u009a",
-            "\1\u009b\7\uffff\1\u009c\5\uffff\1\u009d",
-            "\1\u009e",
-            "\1\u009f\5\uffff\1\u00a0\5\uffff\1\u00a1",
+            "\32\47\6\uffff\32\47",
+            "\1\u0096\54\uffff\1\u0097\3\uffff\1\u0098\1\uffff\1\u0099",
+            "\1\u009a\7\uffff\1\u009b\5\uffff\1\u009c",
+            "\1\u009d",
+            "\1\u009e\5\uffff\1\u009f\5\uffff\1\u00a0",
             "",
             "",
+            "",
+            "\1\u00a1",
             "\1\u00a2",
-            "\1\u00a3",
-            "\1\u00a4\1\uffff\1\u00a5",
-            "\4\51\1\u00a6\25\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\1\u00a3\1\uffff\1\u00a4",
+            "\4\47\1\u00a5\25\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u00a8",
             "\1\u00a9",
             "\1\u00aa",
-            "\1\u00ab",
-            "\1\u00ac\4\uffff\1\u00ad\2\uffff\1\u00ae",
-            "\1\u00b0\45\uffff\1\u00af",
-            "\1\u00b1\1\uffff\1\u00b2\11\uffff\1\u00b3\5\uffff\1\u00b4\1"+
-            "\u00b5",
+            "\1\u00ab\4\uffff\1\u00ac\2\uffff\1\u00ad",
+            "\1\u00af\45\uffff\1\u00ae",
+            "\1\u00b0\1\uffff\1\u00b1\11\uffff\1\u00b2\5\uffff\1\u00b3\1"+
+            "\u00b4",
+            "\1\u00b5",
             "\1\u00b6",
             "\1\u00b7",
             "\1\u00b8",
             "\1\u00b9",
-            "\1\u00ba",
-            "\1\u00bb\20\uffff\1\u00bc",
+            "\1\u00ba\20\uffff\1\u00bb",
+            "\1\u00bc",
             "\1\u00bd",
             "\1\u00be",
-            "\1\u00bf",
-            "\1\u00c0\1\uffff\1\u00c1",
-            "\1\u00c2",
-            "\1\u00c3\11\uffff\1\u00c4\2\uffff\1\u00c5",
-            "\1\u00c6\13\uffff\1\u00c7",
+            "\1\u00bf\1\uffff\1\u00c0",
+            "\1\u00c1",
+            "\1\u00c2\11\uffff\1\u00c3\2\uffff\1\u00c4",
+            "\1\u00c5\13\uffff\1\u00c6",
+            "\1\u00c7",
             "\1\u00c8",
-            "\1\u00c9",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u00ca",
             "\1\u00cb",
             "\1\u00cc",
             "\1\u00cd",
@@ -4454,267 +4507,265 @@ public class jvmBasicLexer extends Lexer {
             "\1\u00cf",
             "\1\u00d0",
             "\1\u00d1",
-            "\1\u00d2",
             "",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
             "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "",
+            "\1\u00d6",
             "\1\u00d7",
             "\1\u00d8",
             "\1\u00d9",
-            "\1\u00da",
-            "\32\51\6\uffff\32\51",
-            "\1\u00dc",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u00df",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u00e2",
+            "\32\47\6\uffff\32\47",
+            "\1\u00db",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u00de",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u00e1",
             "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u00e5",
             "\1\u00e6",
-            "\1\u00e7",
             "",
-            "\1\u00e8",
-            "\1\u00e9\16\uffff\32\51\6\uffff\32\51",
+            "\1\u00e7",
+            "\1\u00e8\16\uffff\32\47\6\uffff\32\47",
+            "\1\u00ea",
             "\1\u00eb",
             "\1\u00ec",
             "\1\u00ed",
             "\1\u00ee",
+            "",
+            "",
             "\1\u00ef",
-            "",
-            "",
-            "\1\u00f0",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u00f1",
             "\1\u00f2",
-            "\1\u00f3",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u00f5",
             "\1\u00f6",
-            "\1\u00f7",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u00f8",
             "\1\u00f9",
             "\1\u00fa",
             "\1\u00fb",
-            "\1\u00fc",
-            "\21\51\1\u00fd\10\51\6\uffff\32\51",
-            "\1\u00ff",
+            "\21\47\1\u00fc\10\47\6\uffff\32\47",
+            "\1\u00fe",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0100",
             "\1\u0101",
             "\1\u0102",
-            "\1\u0103",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0106",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0105",
             "",
+            "\1\u0106",
             "\1\u0107",
-            "\1\u0108",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0109",
             "\1\u010a",
             "\1\u010b",
-            "\1\u010c",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u010f",
             "\1\u0110",
             "\1\u0111",
-            "\1\u0112",
-            "\32\51\6\uffff\32\51",
-            "\1\u0114",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0117",
-            "\32\51\6\uffff\32\51",
-            "\1\u0119",
-            "\1\u011a\1\uffff\1\u011b",
-            "\1\u011c",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0113",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0116",
+            "\32\47\6\uffff\32\47",
+            "\1\u0118",
+            "\1\u0119\1\uffff\1\u011a",
+            "\1\u011b",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u011e",
             "\1\u011f",
-            "\1\u0120",
             "",
-            "\1\u0121",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\1\u0120",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0123",
             "\1\u0124",
             "\1\u0125",
             "\1\u0126",
             "\1\u0127",
-            "\1\u0128",
             "",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
+            "\1\u0129",
             "\1\u012a",
-            "\1\u012b",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "",
+            "",
+            "\1\u012d",
+            "",
             "",
             "",
             "\1\u012e",
+            "\32\47\6\uffff\32\47",
+            "\1\u0130",
             "",
             "",
-            "",
-            "\1\u012f",
-            "\32\51\6\uffff\32\51",
             "\1\u0131",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0134",
+            "\32\47\6\uffff\32\47",
+            "\1\u0136",
             "",
-            "",
-            "\1\u0132",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0135",
-            "\32\51\6\uffff\32\51",
             "\1\u0137",
-            "",
             "\1\u0138",
-            "\1\u0139",
             "",
             "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
             "",
-            "\1\u013c",
+            "\1\u013b",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u013d",
             "\1\u013e",
+            "",
             "\1\u013f",
             "",
-            "\1\u0140",
-            "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
             "",
             "",
-            "\1\u0144",
-            "\32\51\6\uffff\32\51",
+            "\1\u0143",
+            "\32\47\6\uffff\32\47",
+            "\1\u0145",
+            "",
             "\1\u0146",
-            "",
             "\1\u0147",
             "\1\u0148",
-            "\1\u0149",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
-            "\1\u014b",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u014a",
+            "\32\47\6\uffff\32\47",
+            "",
+            "\1\u014c",
+            "",
             "",
             "\1\u014d",
             "",
-            "",
-            "\1\u014e",
-            "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0151",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0150",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0154",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0153",
             "",
             "",
-            "\32\51\6\uffff\32\51",
-            "\1\u0156",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "\1\u0159",
+            "\32\47\6\uffff\32\47",
+            "\1\u0155",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
+            "\1\u0158",
             "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "",
-            "",
-            "\32\51\6\uffff\32\51",
-            "\32\51\6\uffff\32\51",
-            "",
-            "\1\u015e",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\32\47\6\uffff\32\47",
             "",
-            "\32\51\6\uffff\32\51",
-            "\1\u0162",
+            "\1\u015d",
+            "\32\47\6\uffff\32\47",
+            "",
+            "",
+            "\32\47\6\uffff\32\47",
+            "",
+            "\32\47\6\uffff\32\47",
+            "\1\u0161",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
+            "\1\u0163",
             "\1\u0164",
-            "\1\u0165",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
+            "\1\u0167",
             "\1\u0168",
             "\1\u0169",
             "\1\u016a",
-            "\1\u016b",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
-            "\1\u016d",
-            "\32\51\6\uffff\32\51",
-            "",
-            "",
-            "\32\51\6\uffff\32\51",
+            "\1\u016c",
+            "\32\47\6\uffff\32\47",
             "",
             "",
-            "\32\51\6\uffff\32\51",
-            "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
+            "\32\47\6\uffff\32\47",
+            "",
+            "",
+            "\32\47\6\uffff\32\47",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "",
+            "\32\47\6\uffff\32\47",
             "",
             "",
             "",
-            "\1\u0174",
+            "\1\u0173",
             "",
-            "\32\51\6\uffff\32\51",
-            "\1\u0176",
-            "",
-            "",
-            "\32\51\6\uffff\32\51",
-            "\1\u0178",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0175",
             "",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "\1\u0177",
+            "\32\47\6\uffff\32\47",
             "",
+            "",
+            "\32\47\6\uffff\32\47",
             "",
             "",
             "",
             "",
             "",
-            "\32\51\6\uffff\32\51",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
             "",
-            "\32\51\6\uffff\32\51",
+            "\32\47\6\uffff\32\47",
+            "",
+            "\32\47\6\uffff\32\47",
             "",
             "",
             "",
@@ -4752,7 +4803,7 @@ public class jvmBasicLexer extends Lexer {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( ABS | AMPERSAND | AND | ASC | AT | ATN | CALL | CHR | CLEAR | COLON | COLOR | COMMA | COS | DATA | DEF | DIM | DIV | DRAW | END | EQ | EXP | EXPONENT | FLASH | FN | FOR | FRE | GET | GOSUB | GOTO | GR | GT | GTE | HCOLOR | HGR | HGR2 | HIMEM | HLIN | HOME | HPLOT | HTAB | IF | INNUMBER | INPUT | INTF | INVERSE | LEFT | LEN | LET | LIST | LOAD | LOG | LOMEM | LPAREN | LT | LTE | MID | MINUS | NEXT | NORMAL | NOT | NOTRACE | ON | ONERR | OR | PDL | PEEK | PLOT | PLUS | POKE | POP | POS | PRINT | PRNUMBER | QUESTION | READ | RECALL | REM | RESTORE | RETURN | RIGHT | RND | ROT | RPAREN | RUN | SAVE | SCALE | SCRN | SEMICOLON | SGN | SHLOAD | SIN | SPC | SPEED | SQR | STEP | STOP | STORE | STR | TAB | TAN | TEXT | THEN | TIMES | TO | TRACE | USR | VAL | VLIN | VPLOT | VTAB | WAIT | XDRAW | T__121 | T__122 | T__123 | T__124 | STRINGLITERAL | LETTERS | NUMBER | CR | WS );";
+            return "1:1: Tokens : ( ABS | AMPERSAND | AND | ASC | AT | ATN | CALL | CHR | CLEAR | COLON | COLOR | COMMA | COS | DATA | DEF | DIM | DIV | DRAW | END | EQ | EXP | EXPONENT | FLASH | FN | FOR | FRE | GET | GOSUB | GOTO | GR | GT | GTE | HCOLOR | HGR | HGR2 | HIMEM | HLIN | HOME | HPLOT | HTAB | IF | INNUMBER | INPUT | INTF | INVERSE | LEFT | LEN | LET | LIST | LOAD | LOG | LOMEM | LPAREN | LT | LTE | MID | MINUS | NEQ | NEXT | NORMAL | NOT | NOTRACE | ON | ONERR | OR | PDL | PEEK | PLOT | PLUS | POKE | POP | POS | PRINT | PRNUMBER | QUESTION | READ | RECALL | REM | RESTORE | RETURN | RIGHT | RND | ROT | RPAREN | RUN | SAVE | SCALE | SCRN | SEMICOLON | SGN | SHLOAD | SIN | SPC | SPEED | SQR | STEP | STOP | STORE | STR | TAB | TAN | TEXT | THEN | TIMES | TO | TRACE | USR | VAL | VLIN | VPLOT | VTAB | WAIT | XDRAW | T__124 | T__125 | STRINGLITERAL | LETTERS | NUMBER | FLOAT | CR | WS );";
         }
     }
  

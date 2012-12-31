@@ -22,6 +22,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ABSFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ATANFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.CALLFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.COLONFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.COMMAFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.COSFunction;
@@ -32,11 +33,13 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.DIVFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ENDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.EQFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.EXPFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.FLOATFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GOSUBFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GOTOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GTEFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GTFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.HTABFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.IFFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INPUTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INTFunction;
@@ -50,6 +53,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.LTEFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.LTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.MIDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.MINUSFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.NEQFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NUMBERFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PLUSFunction;
@@ -73,6 +77,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.THENFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TIMESFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.VALFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.VTABFunction;
 
 /**
  * @author tome
@@ -153,6 +158,11 @@ public class FunctionRegistry {
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RESTORE], new RESTOREFunction());
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.QUESTION], new PRINTFunction());
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.SPC], new SPCFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.FLOAT], new FLOATFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.VTAB], new VTABFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.HTAB], new HTABFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.CALL], new CALLFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.NEQ], new NEQFunction());
    }
 
    /**

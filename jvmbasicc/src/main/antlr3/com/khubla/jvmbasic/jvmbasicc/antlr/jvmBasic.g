@@ -50,6 +50,7 @@ tokens {
  GT = '>';
  LT = '<';
  EQ = '=';
+ NEQ= '< >';
  COMMA = ',';
  LIST = 'LIST';
  RUN = 'RUN';
@@ -148,6 +149,8 @@ tokens {
     package com.khubla.jvmbasic.jvmbasicc.antlr;
 } 
 
+	 
+
 // a program is a collection of lines
 prog : line + ;
 
@@ -166,51 +169,51 @@ variableassignment : vardecl EQ^ exprlist;
 relop :lte | gte | neq | EQ | GT | LT ;
 gte : GTE | (GT EQ) | (EQ GT);
 lte : LTE | (LT EQ) | (EQ LT);
-neq : LT GT;
+neq : NEQ;
 ifstmt : IF^ expression THEN? statement;
 forstmt : FOR^  vardecl EQ expression TO expression (STEP expression)? ;
 nextstmt : NEXT^ varlist?;
-inputstmt : INPUT^ (stringliteral COMMA)? varlist; 
+inputstmt : INPUT^ (stringliteral (COMMA| SEMICOLON))? varlist; 
 readstmt: READ^ varlist;   
 dimstmt : DIM^ varlist;
 gotostmt: GOTO^ linenumber;
 gosubstmt: GOSUB^ linenumber;
 pokestmt: POKE expression COMMA expression;
 comment: REM^ (options {greedy=false;} : (~(CR)))*;
-callstmt: CALL exprlist;
-hplotstmt: HPLOT (expression COMMA expression)? (TO expression COMMA expression)*;
-vplotstmt: VPLOT (expression COMMA expression)? (TO expression COMMA expression)*;
+callstmt: CALL^ exprlist;
+hplotstmt: HPLOT^ (expression COMMA expression)? (TO expression COMMA expression)*;
+vplotstmt: VPLOT^ (expression COMMA expression)? (TO expression COMMA expression)*;
 plotstmt: PLOT expression COMMA expression;
 ongotostmt : ON expression GOTO linenumber (COMMA linenumber)*;
 ongosubstmt : ON expression GOSUB linenumber (COMMA linenumber)*;
-vtabstmnt : VTAB expression;
-htabstmnt : HTAB expression;
-himemstmt: HIMEM COLON expression;
-lomemstmt: LOMEM COLON expression;
+vtabstmnt : VTAB^ expression;
+htabstmnt : HTAB^ expression;
+himemstmt: HIMEM^ COLON expression;
+lomemstmt: LOMEM^ COLON expression;
 datastmt: DATA^ expression (COMMA expression?)*;
-waitstmt: WAIT expression COMMA expression (COMMA expression)?;
-xdrawstmt: XDRAW expression (AT expression COMMA expression)?;
-drawstmt: DRAW expression (AT expression COMMA expression)?;
+waitstmt: WAIT^ expression COMMA expression (COMMA expression)?;
+xdrawstmt: XDRAW^ expression (AT expression COMMA expression)?;
+drawstmt: DRAW^ expression (AT expression COMMA expression)?;
 defstmt: DEF FN var LPAREN var RPAREN EQ expression;
-tabstmt: TAB LPAREN expression RPAREN;
-speedstmt: SPEED EQ expression;
-rotstmt: ROT EQ expression;
-scalestmt: SCALE EQ expression;
-colorstmt: COLOR EQ expression;
-hcolorstmt: HCOLOR EQ expression;
-hlinstmt: HLIN expression COMMA expression AT expression;
-vlinstmt: VLIN expression COMMA expression AT expression;
+tabstmt: TAB^ LPAREN expression RPAREN;
+speedstmt: SPEED^ EQ expression;
+rotstmt: ROT^ EQ expression;
+scalestmt: SCALE^ EQ expression;
+colorstmt: COLOR^ EQ expression;
+hcolorstmt: HCOLOR^ EQ expression;
+hlinstmt: HLIN^ expression COMMA expression AT expression;
+vlinstmt: VLIN^ expression COMMA expression AT expression;
 onerrstmt: ONERR GOTO linenumber;
-prstmt: PRNUMBER NUMBER;
-instmt: INNUMBER NUMBER;
+prstmt: PRNUMBER^ NUMBER;
+instmt: INNUMBER^ NUMBER;
 storestmt: STORE vardecl;
 recallstmt: RECALL vardecl;
-liststmt: LIST expression;
-popstmt	: POP (expression COMMA expression)?;
-amptstmt: AMPERSAND expression;
+liststmt: LIST^ expression?;
+popstmt	: POP^ (expression COMMA expression)?;
+amptstmt: AMPERSAND^ expression;
 	 
 // expressions and such
-func : vardecl | stringliteral | NUMBER |  chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
+func : vardecl | stringliteral | NUMBER | FLOAT | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
 signExpression : NOT? ((PLUS|MINUS))* func;
 exponentExpression : signExpression (EXPONENT signExpression)*;
 multiplyingExpression  : exponentExpression ((TIMES|DIV)^ exponentExpression)*;
@@ -220,7 +223,7 @@ expression: relationalExpression ((AND|OR) relationalExpression^)*;
 
 // lists
 var: varname^ varsuffix?;
-varname	: LETTERS (LETTERS |'0'..'9')*;
+varname	: LETTERS (LETTERS |DIGIT)*;
 varsuffix:('$' | '%');	 
 varlist : vardecl (COMMA! vardecl^)*;
 exprlist : expression (COMMA! expression^)*;
@@ -260,7 +263,9 @@ absfunc : ABS^ LPAREN expression RPAREN;
 
 STRINGLITERAL: '"' ( ~('"'|'\\'))* '"' ;
 LETTERS	:('a'..'z' |'A'..'Z' )+;
-NUMBER  : ('0'..'9')+ ('.' ('0'..'9')+)?;
+fragment DIGIT  : ('0'..'9');
+NUMBER	: DIGIT+;
+FLOAT	: DIGIT* '.' DIGIT+;
 CR    :     ('\r' |'\n' | '\r\n'| '\n\r');
 WS      :     (' ')+ {$channel=HIDDEN;};
 

@@ -57,7 +57,8 @@ public class DefaultStatementProcessor implements StatementProcessor {
          final GenerationContext subGenerationContext = new GenerationContext(generationContext, statement.getCommonTree(), statement.getLineDeclaration().getBasicLine());
          return Dispatcher.dispatch(subGenerationContext);
       } catch (final Exception e) {
-         throw new Exception("Exception in processStatement", e);
+         throw new Exception("Exception in processStatement at basic line: '" + statement.getLineDeclaration().getBasicLine() + "' on input line: '" + statement.getLineDeclaration().getCodeLine()
+               + "'", e);
       }
    }
 }

@@ -19,7 +19,7 @@
 		<module>jvmbasicc</module>
 		<module>jvmbasicwww</module>
 		<module>jvmbasicmojo</module>
-		<module>examples</module>
+		<!-- <module>examples</module>  -->
 	</modules>
 	<build>
 		<plugins>
