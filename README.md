@@ -10,7 +10,7 @@ In order to use the generated .class file from Java code, the public class membe
 License
 ---------
 
-jvmBASIC is distributed until the GPL v3  For more information please see the [GPL](http://www.gnu.org/licenses/gpl.txt).
+jvmBASIC is distributed until the GPL v3. For more information please see the [GPL](http://www.gnu.org/licenses/gpl.txt).
 
 Modules
 ---------
@@ -108,9 +108,9 @@ jvmBASIC WWW
 
 jvmBASIC WWW is a very simple web server that produces HTML output from BASIC files.  To run it use a command line similar to this:
 
-`java -jar target/jvmbasicwww.jar -bspdir src/test/resources -classdir classfiles/ -port 8080`
+`java -jar target/jvmbasicwww.jar -sourcedir src/test/resources -classdir classfiles/ -port 8080`
 
-The basic files to compile are the directory specified by -bspdir and the generated classes are in the directory specified by -classdir.  The HTTP port to bind is specified by -port.  The default page is served by INDEX.bas.
+The basic files to compile are the directory specified by -sourcedir and the generated classes are in the directory specified by -classdir.  The HTTP port to bind is specified by -port.  The default page is served by INDEX.bas.
 
 to run the example use:
 
