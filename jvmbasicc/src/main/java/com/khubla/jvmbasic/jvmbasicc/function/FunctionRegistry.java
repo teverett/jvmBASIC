@@ -41,6 +41,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.GTEFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.HTABFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.IFFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.INCLUDEFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INPUTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.LEFTFunction;
@@ -163,6 +164,7 @@ public class FunctionRegistry {
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.HTAB], new HTABFunction());
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.CALL], new CALLFunction());
       functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.NEQ], new NEQFunction());
+      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.INCLUDE], new INCLUDEFunction());
    }
 
    /**

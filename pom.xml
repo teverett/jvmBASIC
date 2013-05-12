@@ -3,7 +3,7 @@
 	<groupId>com.khubla.jvmbasic</groupId>
 	<artifactId>jvmBasic</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.4</version>
 	<name>khubla.com jvmbasic</name>
 	<properties>
 		<commons-cli.version>1.2</commons-cli.version>
@@ -57,6 +57,14 @@
 			</roles>
 		</developer>
 	</developers>
+	<distributionManagement>
+		<repository>
+			<id>jvmBasic</id>
+			<name>jvmBasic Repository</name>
+			<url>file://repo</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 	<scm>
 		<connection>scm:git:git@github.com:teverett/jvmBASIC.git</connection>
 		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
