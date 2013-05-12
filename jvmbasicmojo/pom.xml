@@ -3,7 +3,7 @@
 	<groupId>com.khubla.jvmbasic</groupId>
 	<artifactId>jvmbasic-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<name>khubla.com jvmBasic Maven Mojo</name>
 	<dependencies>
 		<dependency>
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>com.khubla.jvmbasic</groupId>
 			<artifactId>jvmbasicc</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>1.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
