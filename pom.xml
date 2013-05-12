@@ -70,4 +70,15 @@
 		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
 		<url>https://github.com/teverett/jvmBASIC.git</url>
 	</scm>
+	<organization>
+		<name>khubla.com</name>
+		<url>http://www.khubla.com</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>GNU General Public License, version 3</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 </project>	
