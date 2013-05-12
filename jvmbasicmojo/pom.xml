@@ -71,4 +71,12 @@
 		</plugins>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 	</build>
+		<distributionManagement>
+		<repository>
+			<id>jvmBasic-maven</id>
+			<name>jvmBasic Maven Mojo Repository</name>
+			<url>file://repo</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 </project>
