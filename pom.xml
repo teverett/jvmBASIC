@@ -62,4 +62,12 @@
 		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
 		<url>https://github.com/teverett/jvmBASIC.git</url>
 	</scm>
+	<distributionManagement>
+		<repository>
+			<id>jvmBasic</id>
+			<name>jvmBasic Repository</name>
+			<url>file://repo</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 </project>	
