@@ -3,7 +3,7 @@
 	<groupId>com.khubla.jvmbasic</groupId>
 	<artifactId>jvmBasic</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>khubla.com jvmbasic</name>
 	<properties>
 		<commons-cli.version>1.2</commons-cli.version>
@@ -19,7 +19,7 @@
 		<module>jvmbasicc</module>
 		<module>jvmbasicwww</module>
 		<module>jvmbasicmojo</module>
-		<!-- <module>examples</module>  -->
+		<!--<module>examples</module>-->
 	</modules>
 	<build>
 		<plugins>
@@ -47,4 +47,19 @@
 			</plugin>
 		</plugins>
 	</build>
+	<developers>
+		<developer>
+			<email>tom@khubla.com</email>
+			<name>Tom Everett</name>
+			<id>khubla</id>
+			<roles>
+				<role>Original developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:teverett/jvmBASIC.git</connection>
+		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
+		<url>https://github.com/teverett/jvmBASIC.git</url>
+	</scm>
 </project>	

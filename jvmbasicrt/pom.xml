@@ -4,11 +4,10 @@
 	<artifactId>jvmbasicrt</artifactId>
 	<packaging>jar</packaging>
 	<name>khubla.com jvmBasic Runtime</name>
-	<version>1.0</version>
 	<parent>
 		<groupId>com.khubla.jvmbasic</groupId>
 		<artifactId>jvmBasic</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
