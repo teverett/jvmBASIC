@@ -57,11 +57,6 @@
 			</roles>
 		</developer>
 	</developers>
-	<scm>
-		<connection>scm:git:git@github.com:teverett/jvmBASIC.git</connection>
-		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
-		<url>https://github.com/teverett/jvmBASIC.git</url>
-	</scm>
 	<distributionManagement>
 		<repository>
 			<id>jvmBasic</id>
@@ -70,4 +65,9 @@
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
+	<scm>
+		<connection>scm:git:git@github.com:teverett/jvmBASIC.git</connection>
+		<developerConnection>scm:git:git@github.com:teverett/jvmBASIC.git</developerConnection>
+		<url>https://github.com/teverett/jvmBASIC.git</url>
+	</scm>
 </project>	
