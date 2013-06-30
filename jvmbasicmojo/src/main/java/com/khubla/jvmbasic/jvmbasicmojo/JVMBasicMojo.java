@@ -5,22 +5,23 @@ import java.io.FileInputStream;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Execute;
+import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 
+/*
+ * mvn help:describe -DartifactId=jvmbasic-maven-plugin -DgroupId=com.khubla.jvmbasic -Dgoal=jvmbasic -Ddetail
+ */
 /**
- * <p>
- * maven mojo to a jvmBASIC build
- * <p>
+ * jvmBASIC compiler
  * 
  * @author tome
  */
-@Mojo(name = "jvmbasic", defaultPhase = LifecyclePhase.COMPILE)
-@Execute(goal = "jvmbasic", phase = LifecyclePhase.COMPILE, lifecycle = "")
+@Mojo(name = "jvmbasic", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true)
 public class JVMBasicMojo extends AbstractMojo {
    /**
     * where to find the sources
@@ -37,6 +38,11 @@ public class JVMBasicMojo extends AbstractMojo {
     */
    @Parameter
    private boolean verbose = false;
+   /**
+    * project
+    */
+   @Component
+   private MavenProject project;
 
    /**
     * default ctor
@@ -49,6 +55,10 @@ public class JVMBasicMojo extends AbstractMojo {
 
    public void execute() throws MojoExecutionException {
       try {
+         if (null != project) {
+            sourceDir = project.getBasedir().toString() + "/" + sourceDir;
+            targetDir = project.getBasedir().toString() + "/" + targetDir;
+         }
          /*
           * drop the config
           */

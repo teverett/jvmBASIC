@@ -1,1 +1,1 @@
-mvn clean compile jar:jar
+mvn clean jvmbasic:jvmbasic jar:jar
