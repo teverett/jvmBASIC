@@ -3,7 +3,7 @@
 	<groupId>com.khubla.jvmbasic</groupId>
 	<artifactId>jvmBasic</artifactId>
 	<packaging>pom</packaging>
-	<version>1.6</version>
+	<version>1.6-SNAPSHOT</version>
 	<name>khubla.com jvmbasic</name>
 	<properties>
 		<commons-cli.version>1.2</commons-cli.version>
@@ -19,7 +19,7 @@
 		<module>jvmbasicc</module>
 		<module>jvmbasicwww</module>
 		<module>jvmbasicmojo</module>
-		<!--<module>examples</module>-->
+		<module>examples</module>
 	</modules>
 	<build>
 		<plugins>

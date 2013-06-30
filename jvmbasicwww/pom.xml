@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.khubla.jvmbasic</groupId>
 		<artifactId>jvmBasic</artifactId>
-		<version>1.6</version>
+		<version>1.6-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
@@ -27,14 +27,14 @@
 		<dependency>
 			<groupId>com.khubla.jvmbasic</groupId>
 			<artifactId>jvmbasicc</artifactId>
-			<version>1.6</version>
+			<version>1.6-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.khubla.jvmbasic</groupId>
 			<artifactId>jvmbasicrt</artifactId>
-			<version>1.6</version>
+			<version>1.6-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>

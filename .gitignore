@@ -43,3 +43,7 @@
 /jvmbasicwww/.settings/
 /jvmbasicmojo/.settings/
 /target/
+/examples/example1/.settings/
+/examples/helloworld/.settings/
+/examples/bottlesofbeer/.settings/
+/examples/.settings/

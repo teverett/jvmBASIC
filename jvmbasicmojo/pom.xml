@@ -3,36 +3,50 @@
 	<groupId>com.khubla.jvmbasic</groupId>
 	<artifactId>jvmbasic-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.6</version>
+	<version>1.6-SNAPSHOT</version>
 	<name>khubla.com jvmBasic Maven Mojo</name>
+	<properties>
+		<maven.version>3.0.5</maven.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
-			<version>2.2.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-			<version>2.2.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.shared</groupId>
-			<artifactId>maven-plugin-testing-harness</artifactId>
-			<version>1.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<version>${maven.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.khubla.jvmbasic</groupId>
 			<artifactId>jvmbasicc</artifactId>
-			<version>1.6</version>
+			<version>1.6-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugin-tools</groupId>
+			<artifactId>maven-plugin-annotations</artifactId>
+			<version>3.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugin-testing</groupId>
+			<artifactId>maven-plugin-testing-harness</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-compat</artifactId>
+			<version>${maven.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -46,22 +60,22 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.8.1</version>
-				<configuration>
-					<!-- <skipTests>true</skipTests> -->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.2</version>
 				<configuration>
-					<goalPrefix>jvmbasic	</goalPrefix>
+					<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
+					<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
 				</configuration>
 				<executions>
 					<execution>
-						<id>generated-helpmojo</id>
+						<id>mojo-descriptor</id>
+						<goals>
+							<goal>descriptor</goal>
+						</goals>
+					</execution>
+					<!-- if you want to generate help goal -->
+					<execution>
+						<id>help-goal</id>
 						<goals>
 							<goal>helpmojo</goal>
 						</goals>
@@ -71,7 +85,7 @@
 		</plugins>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 	</build>
-		<distributionManagement>
+	<distributionManagement>
 		<repository>
 			<id>jvmBasic-maven</id>
 			<name>jvmBasic Maven Mojo Repository</name>

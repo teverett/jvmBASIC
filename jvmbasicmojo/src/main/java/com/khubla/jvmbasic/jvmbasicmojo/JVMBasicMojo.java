@@ -1,51 +1,42 @@
 package com.khubla.jvmbasic.jvmbasicmojo;
 
-/*
- * jvmBasic Copyright 2012, khubla.com
- *
- * This copyrighted material is made available to anyone wishing to use,
- * modify, copy, or redistribute it subject to the terms and conditions
- * of the GNU Lesser General Public License, v. 2.1.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT A
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
- * PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public License,
- * v.2.1 along with this distribution; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA  02110-1301, USA.
- */
 import java.io.File;
 import java.io.FileInputStream;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.Execute;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 
 /**
+ * <p>
+ * maven mojo to a jvmBASIC build
+ * <p>
+ * 
  * @author tome
- *         <p>
- *         maven mojo to a jvmBASIC build
- *         <p>
  */
-/**
- * @goal jvmbasic
- */
+@Mojo(name = "jvmbasic", defaultPhase = LifecyclePhase.COMPILE)
+@Execute(goal = "jvmbasic", phase = LifecyclePhase.COMPILE)
 public class JVMBasicMojo extends AbstractMojo {
    /**
     * where to find the sources
     */
+   @Parameter
    private String sourceDir = "src/main/basic";
    /**
     * target dir
     */
+   @Parameter
    private String targetDir = "target/classes/";
    /**
     * verbose
     */
-   private final boolean verbose = false;
+   @Parameter
+   private boolean verbose = false;
 
    /**
     * default ctor
@@ -91,6 +82,10 @@ public class JVMBasicMojo extends AbstractMojo {
       return targetDir;
    }
 
+   public boolean isVerbose() {
+      return verbose;
+   }
+
    /**
     * process a single .bas file
     */
@@ -111,5 +106,9 @@ public class JVMBasicMojo extends AbstractMojo {
 
    public void setTargetDir(String targetDir) {
       this.targetDir = targetDir;
+   }
+
+   public void setVerbose(boolean verbose) {
+      this.verbose = verbose;
    }
 }
