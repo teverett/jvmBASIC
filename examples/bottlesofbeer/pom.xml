@@ -23,14 +23,7 @@
 			<plugin>
 				<groupId>com.khubla.jvmbasic</groupId>
 				<artifactId>jvmbasic-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jvmbasic</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>1.6-SNAPSHOT</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
