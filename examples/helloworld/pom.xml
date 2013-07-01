@@ -24,7 +24,7 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>jvmbasic</goal>
+							<goal>compile</goal>
 						</goals>
 					</execution>
 				</executions>
