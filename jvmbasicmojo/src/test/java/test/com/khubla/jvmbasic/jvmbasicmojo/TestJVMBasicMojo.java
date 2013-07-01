@@ -17,7 +17,7 @@ public class TestJVMBasicMojo extends AbstractMojoTestCase {
    /**
     * goal
     */
-   private static final String GOAL = "jvmbasic";
+   private static final String GOAL = "compile";
 
    @Override
    protected void setUp() throws Exception {

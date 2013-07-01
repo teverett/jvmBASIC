@@ -21,7 +21,7 @@ import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
  * 
  * @author tome
  */
-@Mojo(name = "jvmbasic", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true)
+@Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true, threadSafe = true)
 public class JVMBasicMojo extends AbstractMojo {
    /**
     * where to find the sources
