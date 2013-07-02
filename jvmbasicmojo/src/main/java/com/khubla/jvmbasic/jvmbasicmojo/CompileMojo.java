@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -14,15 +15,15 @@ import org.apache.maven.project.MavenProject;
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 
 /*
- * mvn help:describe -DartifactId=jvmbasic-maven-plugin -DgroupId=com.khubla.jvmbasic -Dgoal=jvmbasic -Ddetail
+ * mvn help:describe -DartifactId=jvmbasic-maven-plugin -DgroupId=com.khubla.jvmbasic -Dgoal=compile -Ddetail
  */
 /**
  * jvmBASIC compiler
  * 
  * @author tome
  */
-@Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true, threadSafe = true)
-public class JVMBasicMojo extends AbstractMojo {
+@Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true, threadSafe = false)
+public class CompileMojo extends AbstractMojo {
    /**
     * where to find the sources
     */
@@ -44,16 +45,7 @@ public class JVMBasicMojo extends AbstractMojo {
    @Component
    private MavenProject project;
 
-   /**
-    * default ctor
-    * <p>
-    * used by maven
-    * </p>
-    */
-   public JVMBasicMojo() {
-   }
-
-   public void execute() throws MojoExecutionException {
+   public void execute() throws MojoExecutionException, MojoFailureException {
       try {
          if (null != project) {
             sourceDir = project.getBasedir().toString() + "/" + sourceDir;

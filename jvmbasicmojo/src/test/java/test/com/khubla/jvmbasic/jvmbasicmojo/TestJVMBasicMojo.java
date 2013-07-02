@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 
-import com.khubla.jvmbasic.jvmbasicmojo.JVMBasicMojo;
+import com.khubla.jvmbasic.jvmbasicmojo.CompileMojo;
 
 /**
  * @author tome
@@ -39,7 +39,7 @@ public class TestJVMBasicMojo extends AbstractMojoTestCase {
          final File pom = getTestFile(POMFILE);
          assertNotNull(pom);
          assertTrue(pom.exists());
-         final JVMBasicMojo jvmBasicMojo = (JVMBasicMojo) lookupMojo(GOAL, pom);
+         final CompileMojo jvmBasicMojo = (CompileMojo) lookupMojo(GOAL, pom);
          assertNotNull(jvmBasicMojo);
          jvmBasicMojo.execute();
       } catch (final Exception e) {
@@ -55,7 +55,7 @@ public class TestJVMBasicMojo extends AbstractMojoTestCase {
          final File pom = getTestFile(POMFILE);
          assertNotNull(pom);
          assertTrue(pom.exists());
-         final JVMBasicMojo jvmBasicMojo = (JVMBasicMojo) lookupMojo(GOAL, pom);
+         final CompileMojo jvmBasicMojo = (CompileMojo) lookupMojo(GOAL, pom);
          assertNotNull(jvmBasicMojo);
       } catch (final Exception e) {
          e.printStackTrace();
