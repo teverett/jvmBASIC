@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.khubla.jvmbasic</groupId>
@@ -42,8 +43,9 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugin-tools</groupId>
-			<artifactId>maven-plugin-tools-annotations</artifactId>
+			<artifactId>maven-plugin-annotations</artifactId>
 			<version>3.2</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -60,15 +62,22 @@
 				<artifactId>maven-plugin-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
-					<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
-					<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+					<goalPrefix>jvmbasic</goalPrefix>
 				</configuration>
 				<executions>
 					<execution>
-						<id>mojo-descriptor</id>
+						<id>default-descriptor</id>
 						<goals>
 							<goal>descriptor</goal>
 						</goals>
+						<phase>process-classes</phase>
+					</execution>
+					<execution>
+						<id>help-descriptor</id>
+						<goals>
+							<goal>helpmojo</goal>
+						</goals>
+						<phase>process-classes</phase>
 					</execution>
 				</executions>
 			</plugin>

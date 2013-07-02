@@ -21,6 +21,13 @@
 	<build>
 		<plugins>
 			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>com.khubla.jvmbasic</groupId>
 				<artifactId>jvmbasic-maven-plugin</artifactId>
 				<version>1.6-SNAPSHOT</version>
