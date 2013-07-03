@@ -1,21 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>example1</artifactId>
-	<packaging>jar</packaging>
-	<name>khubla.com jvmBasic Example1</name>
+
 	<parent>
 		<groupId>com.khubla.jvmbasic</groupId>
 		<artifactId>examples</artifactId>
 		<version>1.6-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
+
+	<artifactId>example1</artifactId>
+	<name>khubla.com jvmBasic Example1</name>
+
 	<dependencies>
 		<dependency>
-			<groupId>com.khubla.jvmbasic</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>jvmbasicrt</artifactId>
-			<version>1.6-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -23,6 +23,7 @@
 			<plugin>
 				<groupId>com.khubla.jvmbasic</groupId>
 				<artifactId>jvmbasic-maven-plugin</artifactId>
+				<version>${project.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -34,7 +35,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
 				<configuration>
 					<archive>
 						<manifest>
