@@ -8,8 +8,6 @@
 	<properties>
 		<commons-cli.version>1.2</commons-cli.version>
 		<commons-io.version>2.4</commons-io.version>
-		<antlr.version>3.5</antlr.version>
-		<asm.version>4.1</asm.version>
 		<testng.version>6.8.5</testng.version>
 		<log4j.version>1.2.17</log4j.version>
 		<target.jvm>1.6</target.jvm>
