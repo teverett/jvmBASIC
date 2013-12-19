@@ -1,6 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
 import org.antlr.v4.runtime.CommonToken;
+import org.antlr.v4.runtime.ParserRuleContext;
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -52,6 +53,11 @@ public class TreePrinter {
                   System.out.println(sb.toString() + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + childTree.getText());
                }
             } else {
+               ParserRuleContext parserRuleContext = (ParserRuleContext) o;
+               System.out.println(sb.toString() + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
+               /*
+                * recurse
+                */
                printTree(childTree, indent + 1);
             }
          }
