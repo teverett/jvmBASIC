@@ -29,8 +29,8 @@ public class jvmBasicParser extends Parser {
 		HLIN=91, VLIN=92, SCRN=93, POP=94, SHLOAD=95, SIN=96, COS=97, TAN=98, 
 		ATN=99, RND=100, SGN=101, EXP=102, LOG=103, ABS=104, STORE=105, RECALL=106, 
 		GET=107, EXPONENT=108, AMPERSAND=109, GR=110, NOT=111, RESTORE=112, SAVE=113, 
-		LOAD=114, QUESTION=115, INCLUDE=116, STRINGLITERAL=117, LETTERS=118, DIGIT=119, 
-		NUMBER=120, FLOAT=121, CR=122, WS=123;
+		LOAD=114, QUESTION=115, INCLUDE=116, STRINGLITERAL=117, LETTERS=118, NUMBER=119, 
+		FLOAT=120, CR=121, WS=122;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'$'", "'%'", "'RETURN'", "'PRINT'", "'GOTO'", "'GOSUB'", 
 		"'IF'", "'NEXT'", "'THEN'", "'REM'", "'CHR$'", "'MID$'", "'LEFT$'", "'RIGHT$'", 
@@ -47,7 +47,7 @@ public class jvmBasicParser extends Parser {
 		"'SCRN'", "'POP'", "'SHLOAD'", "'SIN'", "'COS'", "'TAN'", "'ATN'", "'RND'", 
 		"'SGN'", "'EXP'", "'LOG'", "'ABS'", "'STORE'", "'RECALL'", "'GET'", "'^'", 
 		"'&'", "'GR'", "'NOT'", "'RESTORE'", "'SAVE'", "'LOAD'", "'?'", "'INCLUDE'", 
-		"STRINGLITERAL", "LETTERS", "DIGIT", "NUMBER", "FLOAT", "CR", "WS"
+		"STRINGLITERAL", "LETTERS", "NUMBER", "FLOAT", "CR", "WS"
 	};
 	public static final int
 		RULE_prog = 0, RULE_line = 1, RULE_amperoper = 2, RULE_linenumber = 3, 
@@ -3754,22 +3754,22 @@ public class jvmBasicParser extends Parser {
 		try {
 			setState(630);
 			switch (_input.LA(1)) {
-			case LETTERS:
+			case NUMBER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(595); vardecl();
+				setState(595); match(NUMBER);
+				}
+				break;
+			case LETTERS:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(596); vardecl();
 				}
 				break;
 			case STRINGLITERAL:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(596); match(STRINGLITERAL);
-				}
-				break;
-			case NUMBER:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(597); match(NUMBER);
+				setState(597); match(STRINGLITERAL);
 				}
 				break;
 			case FLOAT:
@@ -4424,11 +4424,11 @@ public class jvmBasicParser extends Parser {
 	}
 
 	public static class VarnameContext extends ParserRuleContext {
-		public TerminalNode DIGIT(int i) {
-			return getToken(jvmBasicParser.DIGIT, i);
+		public TerminalNode NUMBER(int i) {
+			return getToken(jvmBasicParser.NUMBER, i);
 		}
-		public List<TerminalNode> DIGIT() { return getTokens(jvmBasicParser.DIGIT); }
 		public List<TerminalNode> LETTERS() { return getTokens(jvmBasicParser.LETTERS); }
+		public List<TerminalNode> NUMBER() { return getTokens(jvmBasicParser.NUMBER); }
 		public TerminalNode LETTERS(int i) {
 			return getToken(jvmBasicParser.LETTERS, i);
 		}
@@ -4464,7 +4464,7 @@ public class jvmBasicParser extends Parser {
 					{
 					setState(689);
 					_la = _input.LA(1);
-					if ( !(_la==LETTERS || _la==DIGIT) ) {
+					if ( !(_la==LETTERS || _la==NUMBER) ) {
 					_errHandler.recoverInline(this);
 					}
 					consume();
@@ -5873,7 +5873,7 @@ public class jvmBasicParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3}\u035e\4\2\t\2\4"+
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3|\u035e\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -5929,8 +5929,8 @@ public class jvmBasicParser extends Parser {
 		"*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084"+
 		"\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c"+
 		"\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4"+
-		"\u00b6\u00b8\u00ba\u00bc\u00be\u00c0\u00c2\2\13\3\3||\4\2\6\6uu\4\2\36"+
-		"\36((\3\2||\3\2\24\25\3\2\26\27\3\2LM\3\2xy\3\2\3\4\u0389\2\u00c5\3\2"+
+		"\u00b6\u00b8\u00ba\u00bc\u00be\u00c0\u00c2\2\13\3\3{{\4\2\6\6uu\4\2\36"+
+		"\36((\3\2{{\3\2\24\25\3\2\26\27\3\2LM\3\2xy\3\2\3\4\u0389\2\u00c5\3\2"+
 		"\2\2\4\u00c9\3\2\2\2\6\u00d6\3\2\2\2\b\u00d8\3\2\2\2\n\u00db\3\2\2\2\f"+
 		"\u011f\3\2\2\2\16\u0121\3\2\2\2\20\u012b\3\2\2\2\22\u012f\3\2\2\2\24\u0139"+
 		"\3\2\2\2\26\u013d\3\2\2\2\30\u0141\3\2\2\2\32\u014b\3\2\2\2\34\u0152\3"+
@@ -5961,7 +5961,7 @@ public class jvmBasicParser extends Parser {
 		"\3\2\2\2\u00cf\u00cb\3\2\2\2\u00d0\u00d3\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d1"+
 		"\u00d2\3\2\2\2\u00d2\u00d4\3\2\2\2\u00d3\u00d1\3\2\2\2\u00d4\u00d5\t\2"+
 		"\2\2\u00d5\5\3\2\2\2\u00d6\u00d7\7o\2\2\u00d7\7\3\2\2\2\u00d8\u00d9\7"+
-		"z\2\2\u00d9\t\3\2\2\2\u00da\u00dc\5\6\4\2\u00db\u00da\3\2\2\2\u00db\u00dc"+
+		"y\2\2\u00d9\t\3\2\2\2\u00da\u00dc\5\6\4\2\u00db\u00da\3\2\2\2\u00db\u00dc"+
 		"\3\2\2\2\u00dc\u00dd\3\2\2\2\u00dd\u00de\5\f\7\2\u00de\13\3\2\2\2\u00df"+
 		"\u0120\7t\2\2\u00e0\u0120\7s\2\2\u00e1\u0120\7r\2\2\u00e2\u0120\7J\2\2"+
 		"\u00e3\u0120\7K\2\2\u00e4\u0120\7B\2\2\u00e5\u0120\7C\2\2\u00e6\u0120"+
@@ -6086,16 +6086,16 @@ public class jvmBasicParser extends Parser {
 		"\2\2\u022d\u022e\7^\2\2\u022e\u022f\5\u0082B\2\u022f\u0230\7\36\2\2\u0230"+
 		"\u0231\5\u0082B\2\u0231\u0232\7S\2\2\u0232\u0233\5\u0082B\2\u0233c\3\2"+
 		"\2\2\u0234\u0235\7E\2\2\u0235\u0236\7\7\2\2\u0236\u0237\5\b\5\2\u0237"+
-		"e\3\2\2\2\u0238\u0239\7\64\2\2\u0239\u023a\7z\2\2\u023ag\3\2\2\2\u023b"+
-		"\u023c\7\65\2\2\u023c\u023d\7z\2\2\u023di\3\2\2\2\u023e\u023f\7k\2\2\u023f"+
+		"e\3\2\2\2\u0238\u0239\7\64\2\2\u0239\u023a\7y\2\2\u023ag\3\2\2\2\u023b"+
+		"\u023c\7\65\2\2\u023c\u023d\7y\2\2\u023di\3\2\2\2\u023e\u023f\7k\2\2\u023f"+
 		"\u0240\5\16\b\2\u0240k\3\2\2\2\u0241\u0242\7l\2\2\u0242\u0243\5\16\b\2"+
 		"\u0243m\3\2\2\2\u0244\u0246\7\37\2\2\u0245\u0247\5\u0082B\2\u0246\u0245"+
 		"\3\2\2\2\u0246\u0247\3\2\2\2\u0247o\3\2\2\2\u0248\u024d\7`\2\2\u0249\u024a"+
 		"\5\u0082B\2\u024a\u024b\7\36\2\2\u024b\u024c\5\u0082B\2\u024c\u024e\3"+
 		"\2\2\2\u024d\u0249\3\2\2\2\u024d\u024e\3\2\2\2\u024eq\3\2\2\2\u024f\u0250"+
 		"\7o\2\2\u0250\u0251\5\u0082B\2\u0251s\3\2\2\2\u0252\u0253\7v\2\2\u0253"+
-		"\u0254\5\u0082B\2\u0254u\3\2\2\2\u0255\u0279\5\16\b\2\u0256\u0279\7w\2"+
-		"\2\u0257\u0279\7z\2\2\u0258\u0279\7{\2\2\u0259\u0279\5\u0090I\2\u025a"+
+		"\u0254\5\u0082B\2\u0254u\3\2\2\2\u0255\u0279\7y\2\2\u0256\u0279\5\16\b"+
+		"\2\u0257\u0279\7w\2\2\u0258\u0279\7z\2\2\u0259\u0279\5\u0090I\2\u025a"+
 		"\u0279\5\u008eH\2\u025b\u0279\5\u0092J\2\u025c\u0279\5\u00aaV\2\u025d"+
 		"\u0279\5\u0094K\2\u025e\u0279\5\u00b0Y\2\u025f\u0279\5\u0096L\2\u0260"+
 		"\u0279\5\u0098M\2\u0261\u0279\5\u009aN\2\u0262\u0279\5\u009cO\2\u0263"+

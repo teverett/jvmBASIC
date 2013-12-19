@@ -22,7 +22,6 @@ import java.io.InputStream;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -65,8 +64,7 @@ public class JVMBasicCompiler {
             sb = sb.append("   ");
          }
          for (int i = 0; i < parseTree.getChildCount(); i++) {
-            final Token t = (Token) parseTree.getChild(i).getPayload();
-            System.out.println(sb.toString() + " " + jvmBasicParser.tokenNames[t.getType()] + " " + parseTree.getChild(i).toString());
+            System.out.println(sb.toString() + " " + parseTree.getChild(i).getText());
             dumpTree(parseTree.getChild(i), indent + 1);
          }
       }

@@ -18,10 +18,10 @@ grammar jvmBasic;
  */
  
 // a program is a collection of lines
-prog : line + ;
+prog : line+ ;
 
 // a line starts with an INT and ends with a CR or a COLON
-line : linenumber  amprstmt (COLON amprstmt?)* (CR | EOF);
+line : linenumber amprstmt (COLON amprstmt?)* (CR | EOF);
 amperoper: AMPERSAND;
 linenumber: NUMBER;
 amprstmt: amperoper? statement;
@@ -45,7 +45,7 @@ dimstmt : DIM varlist;
 gotostmt: GOTO linenumber;
 gosubstmt: GOSUB linenumber;
 pokestmt: POKE expression COMMA expression;
-comment: REM  (~(CR))*;
+comment: REM (~(CR))*;
 callstmt: CALL exprlist;
 hplotstmt: HPLOT (expression COMMA expression)? (TO expression COMMA expression)*;
 vplotstmt: VPLOT (expression COMMA expression)? (TO expression COMMA expression)*;
@@ -80,7 +80,7 @@ amptstmt: AMPERSAND expression;
 includestmt : INCLUDE expression;	
 	 
 // expressions and such
-func : vardecl | STRINGLITERAL | NUMBER | FLOAT | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
+func : NUMBER | vardecl | STRINGLITERAL | FLOAT | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
 signExpression : NOT? ((PLUS|MINUS))* func;
 exponentExpression : signExpression (EXPONENT signExpression)*;
 multiplyingExpression  : exponentExpression ((TIMES|DIV) exponentExpression)*;
@@ -90,7 +90,7 @@ expression: relationalExpression ((AND|OR) relationalExpression)*;
 
 // lists
 var: varname varsuffix?;
-varname	: LETTERS (LETTERS |DIGIT)*;
+varname	: LETTERS (LETTERS |NUMBER)*;
 varsuffix:(DOLLAR | PERCENT);	 
 varlist : vardecl (COMMA vardecl)*;
 exprlist : expression (COMMA expression)*;
@@ -244,10 +244,8 @@ INCLUDE : 'INCLUDE';
 
 STRINGLITERAL : '"' ( ~('"'|'\\'))* '"' ;
 LETTERS	:('a'..'z' |'A'..'Z' )+;
-DIGIT : ('0'..'9');
-NUMBER : DIGIT+;
-FLOAT : DIGIT* '.' DIGIT+;
+
+NUMBER : ('0'..'9')+ ( ('e' | 'E')  NUMBER)*;
+FLOAT : ('0'..'9')* '.' ('0'..'9')+ ( ('e' | 'E')  NUMBER)*;
 CR : ('\r' |'\n' | '\r\n'| '\n\r');
 WS : [ \t\r\n]+ -> skip;
-
-    
