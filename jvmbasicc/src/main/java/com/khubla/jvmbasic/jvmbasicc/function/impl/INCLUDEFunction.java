@@ -26,10 +26,7 @@ public class INCLUDEFunction extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         /*
-          * get the name
-          */
-         String name = generationContext.getChildValue(0);
+         generationContext.getChildValue(0);
          /*
           * load it
           */

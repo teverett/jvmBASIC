@@ -59,11 +59,26 @@ public class JVMBasic {
           * options
           */
          final Options options = new Options();
-         final Option oo = OptionBuilder.withArgName(OUTPUT_OPTION).isRequired(false).withType(String.class).hasArg().withDescription("target directory to output to").create(OUTPUT_OPTION);
+         OptionBuilder.withArgName(OUTPUT_OPTION);
+         OptionBuilder.isRequired(false);
+         OptionBuilder.withType(String.class);
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("target directory to output to");
+         final Option oo = OptionBuilder.create(OUTPUT_OPTION);
          options.addOption(oo);
-         final Option fo = OptionBuilder.withArgName(FILE_OPTION).isRequired().withType(String.class).hasArg().withDescription("file to compile").create(FILE_OPTION);
+         OptionBuilder.withArgName(FILE_OPTION);
+         OptionBuilder.isRequired();
+         OptionBuilder.withType(String.class);
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("file to compile");
+         final Option fo = OptionBuilder.create(FILE_OPTION);
          options.addOption(fo);
-         final Option vo = OptionBuilder.withArgName(VERBOSE_OPTION).hasArg().withDescription("verbose output").isRequired(false).withType(Boolean.class).create(VERBOSE_OPTION);
+         OptionBuilder.withArgName(VERBOSE_OPTION);
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("verbose output");
+         OptionBuilder.isRequired(false);
+         OptionBuilder.withType(Boolean.class);
+         final Option vo = OptionBuilder.create(VERBOSE_OPTION);
          options.addOption(vo);
          /*
           * parse

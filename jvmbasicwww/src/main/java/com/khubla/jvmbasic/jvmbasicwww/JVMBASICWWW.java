@@ -49,11 +49,23 @@ public class JVMBASICWWW {
           * options
           */
          final Options options = new Options();
-         final Option sourcediroption = OptionBuilder.withArgName(SOURCEDIR_OPTION).isRequired().hasArg().withDescription("source dir").create(SOURCEDIR_OPTION);
+         OptionBuilder.withArgName(SOURCEDIR_OPTION);
+         OptionBuilder.isRequired();
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("source dir");
+         final Option sourcediroption = OptionBuilder.create(SOURCEDIR_OPTION);
          options.addOption(sourcediroption);
-         final Option clso = OptionBuilder.withArgName(CLASSDIR_OPTION).isRequired().hasArg().withDescription("class dir").create(CLASSDIR_OPTION);
+         OptionBuilder.withArgName(CLASSDIR_OPTION);
+         OptionBuilder.isRequired();
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("class dir");
+         final Option clso = OptionBuilder.create(CLASSDIR_OPTION);
          options.addOption(clso);
-         final Option po = OptionBuilder.isRequired(false).withArgName(PORT_OPTION).hasArg().withDescription("TCP port").create(PORT_OPTION);
+         OptionBuilder.isRequired(false);
+         OptionBuilder.withArgName(PORT_OPTION);
+         OptionBuilder.hasArg();
+         OptionBuilder.withDescription("TCP port");
+         final Option po = OptionBuilder.create(PORT_OPTION);
          options.addOption(po);
          /*
           * parse
