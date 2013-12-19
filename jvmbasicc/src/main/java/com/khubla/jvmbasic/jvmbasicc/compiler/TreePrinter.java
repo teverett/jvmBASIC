@@ -19,6 +19,8 @@ import org.antlr.v4.runtime.CommonToken;
  */
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+
 public class TreePrinter {
    /**
     * indent level
@@ -42,11 +44,16 @@ public class TreePrinter {
             sb = sb.append(" ");
          }
          for (int i = 0; i < t.getChildCount(); i++) {
-            Object o = t.getChild(i).getPayload();
+            ParseTree childTree = t.getChild(i);
+            Object o = childTree.getPayload();
             if (o.getClass() == CommonToken.class) {
-               System.out.println(sb.toString() + t.getChild(i).getText());
+               CommonToken commonToken = (CommonToken) o;
+               if (commonToken.getType() != -1) {
+                  System.out.println(sb.toString() + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + childTree.getText());
+               }
+            } else {
+               printTree(childTree, indent + 1);
             }
-            printTree(t.getChild(i), indent + 1);
          }
       }
    }

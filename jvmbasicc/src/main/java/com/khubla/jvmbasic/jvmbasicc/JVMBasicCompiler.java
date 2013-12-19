@@ -100,7 +100,7 @@ public class JVMBasicCompiler {
          /*
           * a message
           */
-         System.out.println("Parsing input");
+         System.out.println("Parsing input for classname: '" + classname + "'");
          /*
           * get tree
           */
