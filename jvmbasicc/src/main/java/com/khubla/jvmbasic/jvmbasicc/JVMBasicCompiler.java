@@ -34,6 +34,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.LocalVariableDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
+import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ProgramStaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
@@ -47,27 +48,6 @@ public class JVMBasicCompiler {
     */
    public static String classNameFromFileName(String filename) {
       return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
-   }
-
-   /**
-    * dump a tree to the console
-    */
-   public static void dumpTree(ParseTree parseTree, int indent) {
-      if (null != parseTree) {
-         StringBuffer sb = new StringBuffer(indent);
-         if (parseTree.getParent() == null) {
-            if (null != parseTree.getText()) {
-               System.out.println(sb.toString() + parseTree.getText().toString());
-            }
-         }
-         for (int i = 0; i < indent; i++) {
-            sb = sb.append("   ");
-         }
-         for (int i = 0; i < parseTree.getChildCount(); i++) {
-            System.out.println(sb.toString() + " " + parseTree.getChild(i).getText());
-            dumpTree(parseTree.getChild(i), indent + 1);
-         }
-      }
    }
 
    /**
@@ -126,9 +106,9 @@ public class JVMBasicCompiler {
           */
          final ParseTree parseTree = parse(inputStream);
          /*
-          * dump tree
+          * print tree
           */
-         dumpTree(parseTree, 0);
+         TreePrinter.printTree(parseTree);
          /*
           * a message
           */
