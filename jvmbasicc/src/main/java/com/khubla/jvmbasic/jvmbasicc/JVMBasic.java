@@ -51,7 +51,6 @@ public class JVMBasic {
     * -file src\test\resources\bas\easy\print.bas -verbose true
     * </p>
     */
-   @SuppressWarnings("static-access")
    public static void main(String[] args) {
       try {
          System.out.println("khubla.com jvmBASIC Compiler");
