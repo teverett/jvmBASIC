@@ -19,7 +19,8 @@ package com.khubla.jvmbasic.jvmbasicrt;
 import java.util.Hashtable;
 import java.util.Stack;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author tome
@@ -28,7 +29,7 @@ public class ExecutionContext {
    /**
     * logger
     */
-   private static final Logger logger = Logger.getLogger(Value.class);
+   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
    /**
     * the value stack
     */

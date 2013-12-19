@@ -36,13 +36,6 @@
          <scope>compile</scope>
       </dependency>
       <dependency>
-         <groupId>log4j</groupId>
-         <artifactId>log4j</artifactId>
-         <version>${log4j.version}</version>
-         <type>jar</type>
-         <scope>compile</scope>
-      </dependency>
-      <dependency>
          <groupId>org.ow2.asm</groupId>
          <artifactId>asm</artifactId>
          <version>${asm.version}</version>
@@ -62,6 +55,11 @@
          <version>${asm.version}</version>
          <type>jar</type>
          <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>ch.qos.logback</groupId>
+         <artifactId>logback-classic</artifactId>
+         <version>${logback.version}</version>
       </dependency>
    </dependencies>
    <build>
