@@ -45,15 +45,15 @@ public class TreePrinter {
             sb = sb.append(" ");
          }
          for (int i = 0; i < t.getChildCount(); i++) {
-            ParseTree childTree = t.getChild(i);
-            Object o = childTree.getPayload();
+            final ParseTree childTree = t.getChild(i);
+            final Object o = childTree.getPayload();
             if (o.getClass() == CommonToken.class) {
-               CommonToken commonToken = (CommonToken) o;
+               final CommonToken commonToken = (CommonToken) o;
                if (commonToken.getType() != -1) {
                   System.out.println(sb.toString() + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + childTree.getText());
                }
             } else {
-               ParserRuleContext parserRuleContext = (ParserRuleContext) o;
+               final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
                System.out.println(sb.toString() + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
                /*
                 * recurse
