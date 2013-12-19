@@ -16,7 +16,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.Opcodes;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
@@ -47,7 +47,7 @@ public class EQFunction extends BaseFunction {
           * the tree should have 2 sub nodes
           */
          String variableName = null;
-         if (generationContext.getCommonTree().getChildCount() == 2) {
+         if (generationContext.getParseTree().getChildCount() == 2) {
             /*
              * get the variable name
              */
@@ -55,11 +55,11 @@ public class EQFunction extends BaseFunction {
             /*
              * get the tree for the value. this should push the value onto the ExecutionContextStack
              */
-            final CommonTree subTree = (CommonTree) generationContext.getCommonTree().getChild(1);
+            final ParseTree subTree = generationContext.getParseTree().getChild(1);
             final GenerationContext subGenerationContext = new GenerationContext(generationContext, subTree);
             Dispatcher.dispatch(subGenerationContext);
          } else {
-            throw new Exception("Invalid number of arguments '" + generationContext.getCommonTree().getChildCount() + "'");
+            throw new Exception("Invalid number of arguments '" + generationContext.getParseTree().getChildCount() + "'");
          }
          /*
           * store the top of the stack into slot 1

@@ -16,6 +16,8 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import org.antlr.v4.runtime.Token;
+
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -30,7 +32,8 @@ public class FLOATFunction extends BaseFunction {
          /*
           * num
           */
-         final String num = generationContext.getCommonTree().getToken().getText();
+         final Token token = (Token) generationContext.getParseTree().getPayload();
+         final String num = token.getText();
          /*
           * check for decimal
           */

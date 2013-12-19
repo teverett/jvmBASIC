@@ -16,6 +16,8 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import org.antlr.v4.runtime.Token;
+
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -30,11 +32,12 @@ public class LETTERSFunction extends BaseFunction {
          /*
           * push the letter
           */
-         String letter = generationContext.getCommonTree().getToken().getText();
+         final Token token = (Token) generationContext.getParseTree().getPayload();
+         String letter = token.getText();
          /*
           * is there a suffix like "$" or "%" on this letters?
           */
-         if (generationContext.getCommonTree().getChildCount() == 1) {
+         if (generationContext.getParseTree().getChildCount() == 1) {
             letter += generationContext.getChildValue(0);
          }
          /*

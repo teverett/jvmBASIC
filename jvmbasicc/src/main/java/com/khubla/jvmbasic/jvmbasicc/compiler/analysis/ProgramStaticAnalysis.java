@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.Tree;
 import org.objectweb.asm.Label;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
@@ -41,15 +43,16 @@ public class ProgramStaticAnalysis {
    /**
     * find all the line numbers and produce labels for them. This is for GOTO, GOSUB etc.
     */
-   private void addAllLines(CommonTree commonTree) throws Exception {
+   private void addAllLines(Tree commonTree) throws Exception {
       try {
          if (commonTree.getChildCount() > 0) {
             for (int i = 0; i < commonTree.getChildCount(); i++) {
-               final CommonTree subTree = (CommonTree) commonTree.getChild(i);
+               final ParseTree subTree = (ParseTree) commonTree.getChild(i);
                final int basicLineNumber = Integer.parseInt(subTree.getText());
                int codeLineNumber = 0;
-               if (null != subTree.token) {
-                  codeLineNumber = subTree.token.getLine();
+               if (null != subTree.getPayload()) {
+                  final Token token = (Token) subTree.getPayload();
+                  codeLineNumber = token.getLine();
                }
                addLine(codeLineNumber, basicLineNumber, new Label());
             }
@@ -92,7 +95,7 @@ public class ProgramStaticAnalysis {
                /*
                 * show the statement
                 */
-               System.out.println("     Statement: '" + statement.getLineIndex() + "' " + statement.getCommonTree().getText());
+               System.out.println("     Statement: '" + statement.getLineIndex() + "' " + statement.getParseTree().getText());
             }
          }
       } catch (final Exception e) {
@@ -169,22 +172,22 @@ public class ProgramStaticAnalysis {
    /**
     * statically analyse the program
     */
-   public void performStaticAnalysis(CommonTree commonTree) throws Exception {
+   public void performStaticAnalysis(ParseTree parseTree) throws Exception {
       try {
          /*
           * firstly add all lines and produce ASM labels for every line
           */
-         addAllLines(commonTree);
+         addAllLines(parseTree);
          /*
           * process the DATA declarations
           */
-         processDATADeclarations(commonTree);
+         processDATADeclarations(parseTree);
          /*
           * process every line
           */
-         if (commonTree.getChildCount() > 0) {
-            for (int i = 0; i < commonTree.getChildCount(); i++) {
-               final CommonTree subTree = (CommonTree) commonTree.getChild(i);
+         if (parseTree.getChildCount() > 0) {
+            for (int i = 0; i < parseTree.getChildCount(); i++) {
+               final ParseTree subTree = parseTree.getChild(i);
                processLine(subTree);
             }
          }
@@ -196,12 +199,13 @@ public class ProgramStaticAnalysis {
    /**
     * find all the DATA declarations
     */
-   private void processDATADeclarations(CommonTree commonTree) throws Exception {
+   private void processDATADeclarations(ParseTree parseTree) throws Exception {
       try {
-         for (int i = 0; i < commonTree.getChildCount(); i++) {
-            final CommonTree subTree = (CommonTree) commonTree.getChild(i);
+         for (int i = 0; i < parseTree.getChildCount(); i++) {
+            final ParseTree subTree = parseTree.getChild(i);
             if (null != subTree) {
-               if (jvmBasicParser.DATA == subTree.getType()) {
+               final Token token = (Token) subTree.getPayload();
+               if (jvmBasicParser.DATA == token.getType()) {
                   final List<String> dataValues = new ArrayList<String>();
                   for (int j = 0; j < subTree.getChildCount(); j += 2) {
                      final String v = subTree.getChild(j).getText();
@@ -226,16 +230,17 @@ public class ProgramStaticAnalysis {
    /**
     * process a single line of BASIC code
     */
-   private void processLine(CommonTree commonTree) throws Exception {
+   private void processLine(ParseTree parseTree) throws Exception {
       try {
          /*
           * check that there's a line number
           */
-         if (commonTree.getToken().getType() == jvmBasicParser.NUMBER) {
+         final Token token = (Token) parseTree.getPayload();
+         if (token.getType() == jvmBasicParser.NUMBER) {
             /*
              * the line number of the basic program
              */
-            final int basicLineNumber = Integer.parseInt(commonTree.getText());
+            final int basicLineNumber = Integer.parseInt(parseTree.getText());
             /*
              * get the line for this line number and do the visit
              */
@@ -244,11 +249,11 @@ public class ProgramStaticAnalysis {
                /*
                 * its possible that there are more than 1 children, for example in cases where colons have been used to put multiple statements on a line.
                 */
-               for (int i = 0; i < commonTree.getChildCount(); i++) {
+               for (int i = 0; i < parseTree.getChildCount(); i++) {
                   /*
                    * parse the sub tree
                    */
-                  final CommonTree subTree = (CommonTree) commonTree.getChild(i);
+                  final ParseTree subTree = parseTree.getChild(i);
                   /*
                    * create statement
                    */

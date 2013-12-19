@@ -39,7 +39,7 @@ public class DIVFunction extends BaseFunction {
          /*
           * there should be at least two values
           */
-         if (generationContext.getCommonTree().getChildCount() >= 2) {
+         if (generationContext.getParseTree().getChildCount() >= 2) {
             /*
              * swap the stack arguments so we have the prompt on top and the variable name next
              */

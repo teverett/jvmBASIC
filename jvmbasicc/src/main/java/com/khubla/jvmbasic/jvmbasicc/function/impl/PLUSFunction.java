@@ -36,7 +36,7 @@ public class PLUSFunction extends BaseFunction {
          /*
           * there should be at least two values
           */
-         if (generationContext.getCommonTree().getChildCount() >= 2) {
+         if (generationContext.getParseTree().getChildCount() >= 2) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);

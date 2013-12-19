@@ -32,7 +32,7 @@ public class GOTOFunction extends BaseFunction {
          /*
           * we expect a single argument, a line number
           */
-         if (generationContext.getCommonTree().getChildCount() == 1) {
+         if (generationContext.getParseTree().getChildCount() == 1) {
             /*
              * get the line number
              */

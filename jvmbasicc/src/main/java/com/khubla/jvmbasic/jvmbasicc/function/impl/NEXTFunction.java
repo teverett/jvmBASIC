@@ -35,7 +35,7 @@ public class NEXTFunction extends BaseFunction {
          /*
           * check # parameters
           */
-         if (generationContext.getCommonTree().getChildCount() == 1) {
+         if (generationContext.getParseTree().getChildCount() == 1) {
             /*
              * get variable name
              */

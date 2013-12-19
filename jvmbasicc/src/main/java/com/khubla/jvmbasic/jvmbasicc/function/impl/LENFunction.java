@@ -39,7 +39,7 @@ public class LENFunction extends BaseFunction {
          /*
           * there should be 3 values, of which are ( <var> )
           */
-         if (generationContext.getCommonTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 3) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);

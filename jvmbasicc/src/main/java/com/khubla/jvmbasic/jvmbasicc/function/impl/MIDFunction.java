@@ -43,7 +43,7 @@ public class MIDFunction extends BaseFunction {
          /*
           * there should be 7 values, of which are ( <string>, <start>, <length> )
           */
-         if (generationContext.getCommonTree().getChildCount() == 7) {
+         if (generationContext.getParseTree().getChildCount() == 7) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);

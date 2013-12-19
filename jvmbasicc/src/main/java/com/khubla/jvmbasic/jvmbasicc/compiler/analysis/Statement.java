@@ -1,5 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
+import org.antlr.v4.runtime.tree.ParseTree;
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -16,8 +18,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.tree.CommonTree;
-
 /**
  * @author tome
  */
@@ -25,7 +25,7 @@ public class Statement {
    /**
     * commontree
     */
-   private final CommonTree commonTree;
+   private final ParseTree parseTree;
    /**
     * line index
     */
@@ -38,14 +38,10 @@ public class Statement {
    /**
     * ctor
     */
-   public Statement(CommonTree commonTree, int lineIndex, LineDeclaration lineDeclaration) {
-      this.commonTree = commonTree;
+   public Statement(ParseTree parseTree, int lineIndex, LineDeclaration lineDeclaration) {
+      this.parseTree = parseTree;
       this.lineIndex = lineIndex;
       this.lineDeclaration = lineDeclaration;
-   }
-
-   public CommonTree getCommonTree() {
-      return commonTree;
    }
 
    public LineDeclaration getLineDeclaration() {
@@ -54,5 +50,9 @@ public class Statement {
 
    public int getLineIndex() {
       return lineIndex;
+   }
+
+   public ParseTree getParseTree() {
+      return parseTree;
    }
 }

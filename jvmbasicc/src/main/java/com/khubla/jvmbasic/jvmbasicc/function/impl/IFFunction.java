@@ -16,7 +16,6 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.tree.CommonTree;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 
@@ -37,14 +36,14 @@ public class IFFunction extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         if (generationContext.getCommonTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 3) {
             /*
              * so the subtree under the <IF> here will be <relational operator tree> <THEN> <statement>
              */
             /*
              * process the relational operator. this will push a TRUE or FALSE onto the generation context stack
              */
-            final GenerationContext subGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(0));
+            final GenerationContext subGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
             Dispatcher.dispatch(subGenerationContext);
             /*
              * check the result
@@ -62,7 +61,7 @@ public class IFFunction extends BaseFunction {
             /*
              * process the contained tree
              */
-            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(2));
+            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
             Dispatcher.dispatch(conditionalGenerationContext);
             /*
              * label to skip to
@@ -70,14 +69,14 @@ public class IFFunction extends BaseFunction {
             generationContext.getMethodVisitor().visitLabel(l1);
             generationContext.getMethodVisitor().visitFrame(Opcodes.F_SAME, 0, null, 0, null);
             return true;
-         } else if (generationContext.getCommonTree().getChildCount() == 2) {
+         } else if (generationContext.getParseTree().getChildCount() == 2) {
             /*
              * so the subtree under the <IF> here will be <relational operator tree> <statement>
              */
             /*
              * process the relational operator. this will push a TRUE or FALSE onto the generation context stack
              */
-            final GenerationContext subGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(0));
+            final GenerationContext subGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
             Dispatcher.dispatch(subGenerationContext);
             /*
              * check the result
@@ -95,7 +94,7 @@ public class IFFunction extends BaseFunction {
             /*
              * process the contained tree
              */
-            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(1));
+            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(1));
             Dispatcher.dispatch(conditionalGenerationContext);
             /*
              * label to skip to
@@ -104,7 +103,7 @@ public class IFFunction extends BaseFunction {
             generationContext.getMethodVisitor().visitFrame(Opcodes.F_SAME, 0, null, 0, null);
             return true;
          } else {
-            throw new Exception("Invalid number of tokens in subtree '" + generationContext.getCommonTree().getChildCount() + "' expected 3 on line number: " + generationContext.getLineNumber());
+            throw new Exception("Invalid number of tokens in subtree '" + generationContext.getParseTree().getChildCount() + "' expected 3 on line number: " + generationContext.getLineNumber());
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

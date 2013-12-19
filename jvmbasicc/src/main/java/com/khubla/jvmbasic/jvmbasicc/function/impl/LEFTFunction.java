@@ -42,7 +42,7 @@ public class LEFTFunction extends BaseFunction {
          /*
           * there should be 5 values, of which are ( <string>, <length> )
           */
-         if (generationContext.getCommonTree().getChildCount() == 5) {
+         if (generationContext.getParseTree().getChildCount() == 5) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);

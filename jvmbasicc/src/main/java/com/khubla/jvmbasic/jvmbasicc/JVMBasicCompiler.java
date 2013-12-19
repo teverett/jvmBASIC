@@ -20,9 +20,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
@@ -52,20 +53,21 @@ public class JVMBasicCompiler {
    /**
     * dump a tree to the console
     */
-   public static void dumpTree(CommonTree commonTree, int indent) {
-      if (null != commonTree) {
+   public static void dumpTree(ParseTree parseTree, int indent) {
+      if (null != parseTree) {
          StringBuffer sb = new StringBuffer(indent);
-         if (commonTree.getParent() == null) {
-            if (null != commonTree.getText()) {
-               System.out.println(sb.toString() + commonTree.getText().toString());
+         if (parseTree.getParent() == null) {
+            if (null != parseTree.getText()) {
+               System.out.println(sb.toString() + parseTree.getText().toString());
             }
          }
          for (int i = 0; i < indent; i++) {
             sb = sb.append("   ");
          }
-         for (int i = 0; i < commonTree.getChildCount(); i++) {
-            System.out.println(sb.toString() + " " + jvmBasicParser.tokenNames[commonTree.getChild(i).getType()] + " " + commonTree.getChild(i).toString());
-            dumpTree((CommonTree) commonTree.getChild(i), indent + 1);
+         for (int i = 0; i < parseTree.getChildCount(); i++) {
+            final Token t = (Token) parseTree.getChild(i).getPayload();
+            System.out.println(sb.toString() + " " + jvmBasicParser.tokenNames[t.getType()] + " " + parseTree.getChild(i).toString());
+            dumpTree(parseTree.getChild(i), indent + 1);
          }
       }
    }
@@ -73,15 +75,14 @@ public class JVMBasicCompiler {
    /**
     * parse an input file
     */
-   public static CommonTree parse(InputStream inputStream) throws Exception {
+   public static ParseTree parse(InputStream inputStream) throws Exception {
       try {
          if (null != inputStream) {
             final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(inputStream));
             final CommonTokenStream tokens = new CommonTokenStream(jvmBasicLexer);
             final jvmBasicParser jvmBasicParser = new jvmBasicParser(tokens);
-            final jvmBasicParser.prog_return ret = jvmBasicParser.prog();
-            final CommonTree tree = (CommonTree) ret.getTree();
-            return tree;
+            jvmBasicParser.setBuildParseTree(true);
+            return jvmBasicParser.prog();
          } else {
             throw new IllegalArgumentException();
          }
@@ -125,11 +126,11 @@ public class JVMBasicCompiler {
          /*
           * get tree
           */
-         final CommonTree commonTree = parse(inputStream);
+         final ParseTree parseTree = parse(inputStream);
          /*
           * dump tree
           */
-         dumpTree(commonTree, 0);
+         dumpTree(parseTree, 0);
          /*
           * a message
           */
@@ -165,7 +166,7 @@ public class JVMBasicCompiler {
          /*
           * program
           */
-         generateProgram(classname, classWriter, commonTree);
+         generateProgram(classname, classWriter, parseTree);
          /*
           * generate the class
           */
@@ -324,7 +325,7 @@ public class JVMBasicCompiler {
     * Java prototype is "public program()"
     * </p>
     */
-   protected void generateProgram(String classname, ClassWriter classWriter, CommonTree commonTree) throws Exception {
+   protected void generateProgram(String classname, ClassWriter classWriter, ParseTree parseTree) throws Exception {
       try {
          final MethodVisitor methodVisitor = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "program", "()V", null, new String[] { "java/lang/Exception" });
          methodVisitor.visitCode();
@@ -337,7 +338,7 @@ public class JVMBasicCompiler {
           * do the static analysis
           */
          final ProgramStaticAnalysis programStaticAnalysis = new ProgramStaticAnalysis();
-         programStaticAnalysis.performStaticAnalysis(commonTree);
+         programStaticAnalysis.performStaticAnalysis(parseTree);
          /*
           * show the static analysis
           */
@@ -346,7 +347,7 @@ public class JVMBasicCompiler {
           * recurse into the parse tree
           */
          final Function function = new PROGFunction();
-         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, commonTree, programStaticAnalysis);
+         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, parseTree, programStaticAnalysis);
          function.execute(generationContext);
          /*
           * return

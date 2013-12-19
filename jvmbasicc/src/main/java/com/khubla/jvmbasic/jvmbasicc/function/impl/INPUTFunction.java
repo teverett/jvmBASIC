@@ -51,7 +51,7 @@ public class INPUTFunction extends BaseFunction {
          /*
           * input with a prompt? INPUT <prompt> , <variable>
           */
-         if (generationContext.getCommonTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 3) {
             /*
              * swap the stack arguments so we have the prompt on top and the variable name next
              */

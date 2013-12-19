@@ -16,8 +16,6 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.tree.CommonTree;
-
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
@@ -107,7 +105,7 @@ public class FORFunction extends BaseFunction {
          /*
           * If there are 5 parameters they are "<variablename> = <fromfar> TO <tovar>
           */
-         if (generationContext.getCommonTree().getChildCount() == 5) {
+         if (generationContext.getParseTree().getChildCount() == 5) {
             /*
              * push the step value of 1
              */
@@ -115,32 +113,32 @@ public class FORFunction extends BaseFunction {
             /*
              * recurse into the to, to get the value of the from onto the execution context stack
              */
-            final GenerationContext toGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(4));
+            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(4));
             Dispatcher.dispatch(toGenerationContext);
             /*
              * recurse into the from, to get the value of the from onto the execution context stack
              */
-            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(2));
+            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
             Dispatcher.dispatch(fromGenerationContext);
          }
          /*
           * If there are 5 parameters they are "<variablename> = <fromfar> TO <tovar> STEP <varname>
           */
-         else if (generationContext.getCommonTree().getChildCount() == 7) {
+         else if (generationContext.getParseTree().getChildCount() == 7) {
             /*
              * recurse into the step, to get the value of the from onto the execution context stack
              */
-            final GenerationContext stepGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(6));
+            final GenerationContext stepGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(6));
             Dispatcher.dispatch(stepGenerationContext);
             /*
              * recurse into the to, to get the value of the from onto the execution context stack
              */
-            final GenerationContext toGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(4));
+            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(4));
             Dispatcher.dispatch(toGenerationContext);
             /*
              * recurse into the from, to get the value of the from onto the execution context stack
              */
-            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(2));
+            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
             Dispatcher.dispatch(fromGenerationContext);
          } else {
             throw new Exception("Invalid number of parameters to FOR");

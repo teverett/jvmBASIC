@@ -11,7 +11,7 @@
    </parent>
    <properties>
       <asm.version>4.1</asm.version>
-      <antlr.version>3.5</antlr.version>
+      <antlr.version>4.1</antlr.version>
    </properties>
    <dependencies>
       <dependency>
@@ -30,7 +30,7 @@
       </dependency>
       <dependency>
          <groupId>org.antlr</groupId>
-         <artifactId>antlr</artifactId>
+         <artifactId>antlr4-runtime</artifactId>
          <version>${antlr.version}</version>
          <type>jar</type>
          <scope>compile</scope>
@@ -66,18 +66,10 @@
       <plugins>
          <plugin>
             <groupId>org.antlr</groupId>
-            <artifactId>antlr3-maven-plugin</artifactId>
-            <version>3.4</version>
-            <executions>
-               <execution>
-                  <phase>process-sources</phase>
-                  <goals>
-                     <goal>antlr</goal>
-                  </goals>
-               </execution>
-            </executions>
+            <artifactId>antlr4-maven-plugin</artifactId>
+            <version>${antlr.version}</version>
             <configuration>
-               <grammars>jvmBasic.g</grammars>
+               <grammars>jvmBasic.g4</grammars>
                <outputDirectory>src/main/java</outputDirectory>
             </configuration>
          </plugin>

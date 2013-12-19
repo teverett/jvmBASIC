@@ -16,8 +16,6 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.tree.CommonTree;
-
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -34,11 +32,11 @@ public class DIMFunction extends BaseFunction {
          /*
           * so the subtree under the <DIM> here will be <varname> <NUMBER> )
           */
-         if (generationContext.getCommonTree().getChildCount() == 4) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             /*
              * get the variable name
              */
-            final GenerationContext nameGenerationContext = new GenerationContext(generationContext, (CommonTree) generationContext.getCommonTree().getChild(0));
+            final GenerationContext nameGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
             Dispatcher.dispatch(nameGenerationContext);
             /*
              * executionContext.setVariable(executionContext.pop().getString(), new Value(new Array()));
