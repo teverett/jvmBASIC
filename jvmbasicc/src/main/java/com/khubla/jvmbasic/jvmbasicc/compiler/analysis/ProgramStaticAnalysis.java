@@ -26,6 +26,8 @@ import org.antlr.v4.runtime.tree.Tree;
 import org.objectweb.asm.Label;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
 
 /**
  * @author tome
@@ -47,13 +49,10 @@ public class ProgramStaticAnalysis {
       try {
          if (commonTree.getChildCount() > 0) {
             for (int i = 0; i < commonTree.getChildCount(); i++) {
-               final ParseTree subTree = (ParseTree) commonTree.getChild(i);
-               final int basicLineNumber = Integer.parseInt(subTree.getText());
-               int codeLineNumber = 0;
-               if (null != subTree.getPayload()) {
-                  final Token token = (Token) subTree.getPayload();
-                  codeLineNumber = token.getLine();
-               }
+               final LineContext lineContext = (LineContext) commonTree.getChild(i);
+               final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
+               final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
+               int codeLineNumber = lineContext.start.getLine();
                addLine(codeLineNumber, basicLineNumber, new Label());
             }
          }
