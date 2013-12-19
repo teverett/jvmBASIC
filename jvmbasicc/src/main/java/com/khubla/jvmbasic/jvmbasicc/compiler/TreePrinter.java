@@ -1,5 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
+import org.antlr.v4.runtime.CommonToken;
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -41,7 +42,10 @@ public class TreePrinter {
             sb = sb.append(" ");
          }
          for (int i = 0; i < t.getChildCount(); i++) {
-            System.out.println(sb.toString() + t.getChild(i).getText());
+            Object o = t.getChild(i).getPayload();
+            if (o.getClass() == CommonToken.class) {
+               System.out.println(sb.toString() + t.getChild(i).getText());
+            }
             printTree(t.getChild(i), indent + 1);
          }
       }
