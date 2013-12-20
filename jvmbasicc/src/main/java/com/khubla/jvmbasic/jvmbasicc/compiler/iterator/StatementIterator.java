@@ -6,6 +6,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LinesDatabase;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -27,7 +28,12 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
  * @author tom
  */
 public class StatementIterator implements LineIteratorCallback {
+   private final LinesDatabase linesDatabase;
    private StatementIteratorCallback statementIteratorCallback;
+
+   public StatementIterator(LinesDatabase linesDatabase) {
+      this.linesDatabase = linesDatabase;
+   }
 
    public void iterate(ParseTree parseTree, StatementIteratorCallback statementIteratorCallback) {
       this.statementIteratorCallback = statementIteratorCallback;
@@ -38,7 +44,7 @@ public class StatementIterator implements LineIteratorCallback {
    public void line(LineContext lineContext) {
       final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
       final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
-      final int codeLineNumber = lineContext.start.getLine();
+      lineContext.start.getLine();
       int lineIndex = 0;
       for (int i = 0; i < lineContext.getChildCount(); i++) {
          /*
@@ -50,9 +56,12 @@ public class StatementIterator implements LineIteratorCallback {
           */
          if (subTree.getClass() == AmprstmtContext.class) {
             /*
+             * get the line declaration
+             */
+            final LineDeclaration lineDeclaration = linesDatabase.getLine(basicLineNumber);
+            /*
              * Line declaration
              */
-            final LineDeclaration lineDeclaration = new LineDeclaration(lineContext, codeLineNumber, basicLineNumber, null);
             statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, lineIndex);
             /*
              * next statement on the line

@@ -27,7 +27,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementsData
 public class StaticAnalysis {
    private final DatasDatabase datasDatabase = new DatasDatabase();
    private final LinesDatabase linesDatabase = new LinesDatabase();
-   private final StatementsDatabase statementsDatabase = new StatementsDatabase();
+   private final StatementsDatabase statementsDatabase = new StatementsDatabase(linesDatabase);
    private final Analyser[] analysers = { datasDatabase, linesDatabase, statementsDatabase };
 
    public DatasDatabase getDatasDatabase() {

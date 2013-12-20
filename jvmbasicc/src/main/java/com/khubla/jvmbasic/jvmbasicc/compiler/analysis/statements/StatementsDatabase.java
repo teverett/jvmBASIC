@@ -6,6 +6,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LinesDatabase;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIterator;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIteratorCallback;
 
@@ -33,10 +34,15 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
     * all lines
     */
    private final TreeMap<Integer, StatementDeclaration> statements = new TreeMap<Integer, StatementDeclaration>();
+   private final LinesDatabase linesDatabase;
+
+   public StatementsDatabase(LinesDatabase linesDatabase) {
+      this.linesDatabase = linesDatabase;
+   }
 
    @Override
    public void analyse(ProgContext progContext) throws Exception {
-      final StatementIterator statementIterator = new StatementIterator();
+      final StatementIterator statementIterator = new StatementIterator(linesDatabase);
       statementIterator.iterate(progContext, this);
    }
 
