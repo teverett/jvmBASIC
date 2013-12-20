@@ -21,46 +21,34 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalker;
+import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalkerCallback;
 
-public class TreePrinter {
-   /**
-    * indent level
-    */
-   private static final int INDENT_LEVEL = 2;
+public class TreePrinter implements SimpleTreeWalkerCallback {
+   private String indentString(int ctxlevel) {
+      StringBuffer sb = new StringBuffer(ctxlevel);
+      for (int i = 0; i < ctxlevel; i++) {
+         sb = sb.append(" ");
+      }
+      return sb.toString();
+   }
 
-   /**
-    * print a parse tree to the console
-    */
-   public static void printTree(ParseTree t) {
-      printTree(t, INDENT_LEVEL);
+   @Override
+   public void parserRule(ParserRuleContext parserRuleContext, int ctxlevel) {
+      System.out.println(indentString(ctxlevel) + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
    }
 
    /**
     * print a parse tree to the console
     */
-   private static void printTree(ParseTree t, int indent) {
-      if (t != null) {
-         StringBuffer sb = new StringBuffer(indent);
-         for (int i = 0; i < indent; i++) {
-            sb = sb.append(" ");
-         }
-         for (int i = 0; i < t.getChildCount(); i++) {
-            final ParseTree childTree = t.getChild(i);
-            final Object o = childTree.getPayload();
-            if (o.getClass() == CommonToken.class) {
-               final CommonToken commonToken = (CommonToken) o;
-               if (commonToken.getType() != -1) {
-                  System.out.println(sb.toString() + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + childTree.getText());
-               }
-            } else {
-               final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
-               System.out.println(sb.toString() + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
-               /*
-                * recurse
-                */
-               printTree(childTree, indent + 1);
-            }
-         }
+   public void printTree(ParseTree t) {
+      SimpleTreeWalker.iterate(t, this);
+   }
+
+   @Override
+   public void token(CommonToken commonToken, int ctxlevel) {
+      if (commonToken.getType() != -1) {
+         System.out.println(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + commonToken.getText());
       }
    }
 }

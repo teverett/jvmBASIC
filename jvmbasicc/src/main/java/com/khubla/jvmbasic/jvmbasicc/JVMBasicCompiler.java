@@ -108,7 +108,8 @@ public class JVMBasicCompiler {
          /*
           * print tree
           */
-         TreePrinter.printTree(parseTree);
+         final TreePrinter treePrinter = new TreePrinter();
+         treePrinter.printTree(parseTree);
          /*
           * a message
           */

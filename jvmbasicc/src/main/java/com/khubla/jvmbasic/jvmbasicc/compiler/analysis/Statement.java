@@ -1,6 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -23,9 +23,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 public class Statement {
    /**
-    * commontree
+    * AmprstmtContext
     */
-   private final ParseTree parseTree;
+   private final AmprstmtContext amprstmtContext;
    /**
     * line index
     */
@@ -38,10 +38,14 @@ public class Statement {
    /**
     * ctor
     */
-   public Statement(ParseTree parseTree, int lineIndex, LineDeclaration lineDeclaration) {
-      this.parseTree = parseTree;
+   public Statement(AmprstmtContext amprstmtContext, int lineIndex, LineDeclaration lineDeclaration) {
+      this.amprstmtContext = amprstmtContext;
       this.lineIndex = lineIndex;
       this.lineDeclaration = lineDeclaration;
+   }
+
+   public AmprstmtContext getAmprstmtContext() {
+      return amprstmtContext;
    }
 
    public LineDeclaration getLineDeclaration() {
@@ -50,9 +54,5 @@ public class Statement {
 
    public int getLineIndex() {
       return lineIndex;
-   }
-
-   public ParseTree getParseTree() {
-      return parseTree;
    }
 }

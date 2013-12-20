@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.Tree;
 import org.objectweb.asm.Label;
 
-import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatastmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
 
@@ -52,7 +52,7 @@ public class ProgramStaticAnalysis {
                final LineContext lineContext = (LineContext) commonTree.getChild(i);
                final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
                final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
-               int codeLineNumber = lineContext.start.getLine();
+               final int codeLineNumber = lineContext.start.getLine();
                addLine(codeLineNumber, basicLineNumber, new Label());
             }
          }
@@ -94,7 +94,7 @@ public class ProgramStaticAnalysis {
                /*
                 * show the statement
                 */
-               System.out.println("     Statement: '" + statement.getLineIndex() + "' " + statement.getParseTree().getText());
+               System.out.println("     Statement: '" + statement.getLineIndex() + "' " + statement.getAmprstmtContext().getText());
             }
          }
       } catch (final Exception e) {
@@ -203,8 +203,8 @@ public class ProgramStaticAnalysis {
          for (int i = 0; i < parseTree.getChildCount(); i++) {
             final ParseTree subTree = parseTree.getChild(i);
             if (null != subTree) {
-               final Token token = (Token) subTree.getPayload();
-               if (jvmBasicParser.DATA == token.getType()) {
+               final Object o = subTree.getPayload();
+               if (o.getClass() == DatastmtContext.class) {
                   final List<String> dataValues = new ArrayList<String>();
                   for (int j = 0; j < subTree.getChildCount(); j += 2) {
                      final String v = subTree.getChild(j).getText();
@@ -234,39 +234,41 @@ public class ProgramStaticAnalysis {
          /*
           * check that there's a line number
           */
-         final Token token = (Token) parseTree.getPayload();
-         if (token.getType() == jvmBasicParser.NUMBER) {
+         final LineContext lineContext = (LineContext) parseTree.getPayload();
+         /*
+          * the line number of the basic program
+          */
+         final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
+         final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
+         /*
+          * get the line for this line number and do the visit
+          */
+         final LineDeclaration lineDeclaration = getLine(basicLineNumber);
+         if (null != lineDeclaration) {
             /*
-             * the line number of the basic program
+             * its possible that there are more than 1 children, for example in cases where colons have been used to put multiple statements on a line.
              */
-            final int basicLineNumber = Integer.parseInt(parseTree.getText());
-            /*
-             * get the line for this line number and do the visit
-             */
-            final LineDeclaration lineDeclaration = getLine(basicLineNumber);
-            if (null != lineDeclaration) {
+            for (int i = 0; i < parseTree.getChildCount(); i++) {
                /*
-                * its possible that there are more than 1 children, for example in cases where colons have been used to put multiple statements on a line.
+                * parse the sub tree
                 */
-               for (int i = 0; i < parseTree.getChildCount(); i++) {
-                  /*
-                   * parse the sub tree
-                   */
-                  final ParseTree subTree = parseTree.getChild(i);
+               final ParseTree subTree = parseTree.getChild(i);
+               /*
+                * check
+                */
+               if (subTree.getClass() == AmprstmtContext.class) {
                   /*
                    * create statement
                    */
-                  final Statement statement = new Statement(subTree, i, lineDeclaration);
+                  final Statement statement = new Statement((AmprstmtContext) subTree, i, lineDeclaration);
                   /*
                    * add to the line
                    */
                   lineDeclaration.addStatement(statement);
                }
-            } else {
-               throw new Exception("Could not find label for line number '" + basicLineNumber + "'");
             }
          } else {
-            throw new Exception("Expected line number");
+            throw new Exception("Could not find label for line number '" + basicLineNumber + "'");
          }
       } catch (final Exception e) {
          throw new Exception("Exception in processLine", e);
