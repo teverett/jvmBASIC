@@ -30,6 +30,7 @@ public class StatementIterator implements LineIteratorCallback {
    private StatementIteratorCallback statementIteratorCallback;
 
    public void iterate(ParseTree parseTree, StatementIteratorCallback statementIteratorCallback) {
+      this.statementIteratorCallback = statementIteratorCallback;
       LineIterator.iterate(parseTree, this);
    }
 
@@ -50,7 +51,7 @@ public class StatementIterator implements LineIteratorCallback {
             /*
              * Line declaration
              */
-            final LineDeclaration lineDeclaration = new LineDeclaration(codeLineNumber, basicLineNumber, null);
+            final LineDeclaration lineDeclaration = new LineDeclaration(lineContext, codeLineNumber, basicLineNumber, null);
             statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
          }
       }

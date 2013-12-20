@@ -40,27 +40,18 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
       statementIterator.iterate(progContext, this);
    }
 
-   public TreeMap<Integer, StatementDeclaration> getStatements() {
-      return statements;
+   @Override
+   public void dumpAnalysis() throws Exception {
+      /*
+       * walk the statements
+       */
+      for (final StatementDeclaration statementDeclaration : statements.values()) {
+         System.out.println("Line '" + statementDeclaration.getLineIndex() + "' " + statementDeclaration.getAmprstmtContext().getText());
+      }
    }
 
-   /**
-    * show the static analysis
-    */
-   public void showAllStatements() throws Exception {
-      try {
-         /*
-          * walk the statements
-          */
-         for (final StatementDeclaration statementDeclaration : statements.values()) {
-            /*
-             * show the statement
-             */
-            System.out.println("Line '" + statementDeclaration.getLineIndex() + " " + statementDeclaration.getAmprstmtContext().getText());
-         }
-      } catch (final Exception e) {
-         throw new Exception("Exception in dumpStaticAnalysis", e);
-      }
+   public TreeMap<Integer, StatementDeclaration> getStatements() {
+      return statements;
    }
 
    @Override

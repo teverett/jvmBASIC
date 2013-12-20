@@ -39,6 +39,11 @@ public class DatasDatabase implements Analyser {
       processDATADeclarations(progContext);
    }
 
+   @Override
+   public void dumpAnalysis() throws Exception {
+      // TODO Auto-generated method stub
+   }
+
    public String[] getData() {
       return data;
    }

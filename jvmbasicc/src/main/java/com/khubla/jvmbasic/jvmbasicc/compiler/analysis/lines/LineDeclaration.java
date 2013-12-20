@@ -16,12 +16,9 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.util.ArrayList;
-import java.util.List;
-
 import org.objectweb.asm.Label;
 
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 
 /**
  * @author tome
@@ -40,21 +37,18 @@ public class LineDeclaration {
     */
    private final Label label;
    /**
-    * statements
+    * LineContext
     */
-   private final List<StatementDeclaration> statements = new ArrayList<StatementDeclaration>();
+   private final LineContext lineContext;
 
    /**
     * ctor
     */
-   public LineDeclaration(int codeLine, int basicLine, Label label) {
+   public LineDeclaration(LineContext lineContext, int codeLine, int basicLine, Label label) {
       this.codeLine = codeLine;
       this.basicLine = basicLine;
       this.label = label;
-   }
-
-   public void addStatement(StatementDeclaration statement) {
-      statements.add(statement);
+      this.lineContext = lineContext;
    }
 
    public int getBasicLine() {
@@ -69,7 +63,7 @@ public class LineDeclaration {
       return label;
    }
 
-   public List<StatementDeclaration> getStatements() {
-      return statements;
+   public LineContext getLineContext() {
+      return lineContext;
    }
 }

@@ -20,4 +20,6 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
  */
 public interface Analyser {
    void analyse(ProgContext progContext) throws Exception;
+
+   void dumpAnalysis() throws Exception;
 }

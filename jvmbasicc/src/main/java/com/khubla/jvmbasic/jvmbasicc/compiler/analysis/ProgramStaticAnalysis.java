@@ -54,4 +54,17 @@ public class ProgramStaticAnalysis {
          throw new Exception("Exception in performStaticAnalysis", e);
       }
    }
+
+   /**
+    * show analysis results
+    */
+   public void showAnalysisResults() throws Exception {
+      try {
+         for (int i = 0; i < analysers.length; i++) {
+            analysers[i].dumpAnalysis();
+         }
+      } catch (final Exception e) {
+         throw new Exception("Exception in showAnalysisResults", e);
+      }
+   }
 }

@@ -319,6 +319,10 @@ public class JVMBasicCompiler {
          final ProgramStaticAnalysis programStaticAnalysis = new ProgramStaticAnalysis();
          programStaticAnalysis.performStaticAnalysis(progContext);
          /*
+          * show the static analysis
+          */
+         programStaticAnalysis.showAnalysisResults();
+         /*
           * recurse into the parse tree
           */
          final Function function = new PROGFunction();

@@ -39,9 +39,9 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
    /**
     * add a label
     */
-   private LineDeclaration addLine(int codeLine, int basicLine, Label label) {
+   private LineDeclaration addLine(LineContext lineContext, int codeLine, int basicLine, Label label) {
       if (null == getLine(basicLine)) {
-         final LineDeclaration lineDeclaration = new LineDeclaration(codeLine, basicLine, label);
+         final LineDeclaration lineDeclaration = new LineDeclaration(lineContext, codeLine, basicLine, label);
          lines.put(basicLine, lineDeclaration);
          return lineDeclaration;
       } else {
@@ -52,6 +52,13 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
    @Override
    public void analyse(ProgContext progContext) throws Exception {
       LineIterator.iterate(progContext, this);
+   }
+
+   @Override
+   public void dumpAnalysis() throws Exception {
+      for (final LineDeclaration lineDeclaraction : lines.values()) {
+         System.out.println("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
+      }
    }
 
    /**
@@ -73,6 +80,6 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
       final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
       final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
       final int codeLineNumber = lineContext.start.getLine();
-      addLine(codeLineNumber, basicLineNumber, new Label());
+      addLine(lineContext, codeLineNumber, basicLineNumber, new Label());
    }
 }
