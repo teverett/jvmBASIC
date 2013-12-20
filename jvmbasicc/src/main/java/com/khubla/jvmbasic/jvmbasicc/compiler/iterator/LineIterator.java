@@ -1,8 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
 
-import org.antlr.v4.runtime.CommonToken;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -23,19 +23,12 @@ import org.antlr.v4.runtime.tree.ParseTree;
 /**
  * @author tom
  */
-public class SimpleTreeWalker {
-   public static void iterate(ParseTree parseTree, SimpleTreeWalkerCallback simpleTreeWalkerCallback) {
-      iterate(parseTree, simpleTreeWalkerCallback, 0);
-   }
-
-   private static void iterate(ParseTree parseTree, SimpleTreeWalkerCallback tokenCallback, int ctxlevel) {
+public class LineIterator {
+   public static void iterate(ParseTree parseTree, LineIteratorCallback lineIteratorCallback) {
       for (int i = 0; i < parseTree.getChildCount(); i++) {
          final Object o = parseTree.getChild(i).getPayload();
-         if (o.getClass() == CommonToken.class) {
-            tokenCallback.token((CommonToken) o, ctxlevel);
-         } else {
-            tokenCallback.parserRule((ParserRuleContext) o, ctxlevel);
-            iterate((ParseTree) o, tokenCallback, ctxlevel + 1);
+         if (o.getClass() == LineContext.class) {
+            lineIteratorCallback.line((LineContext) o);
          }
       }
    }
