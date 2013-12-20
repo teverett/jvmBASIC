@@ -20,8 +20,8 @@ grammar jvmBasic;
 // a program is a collection of lines
 prog : line+ ;
 
-// a line starts with an INT and ends with a CR or a COLON
-line : linenumber amprstmt (COLON amprstmt?)* (CR | EOF);
+// a line starts with an INT and ends with a CR
+line : (linenumber amprstmt (COLON amprstmt?)* (CR | EOF)) | CR;
 amperoper: AMPERSAND;
 linenumber: NUMBER;
 amprstmt: amperoper? statement;
@@ -242,10 +242,9 @@ LOAD : 'LOAD';
 QUESTION : '?';
 INCLUDE : 'INCLUDE';
 
-STRINGLITERAL : '"' ( ~('"'|'\\'))* '"' ;
+STRINGLITERAL : '"' ( ~('\n'|'\r') )*? '"';
 LETTERS	:('a'..'z' |'A'..'Z' )+;
-
 NUMBER : ('0'..'9')+ ( ('e' | 'E')  NUMBER)*;
 FLOAT : ('0'..'9')* '.' ('0'..'9')+ ( ('e' | 'E')  NUMBER)*;
 CR : ('\r' |'\n' | '\r\n'| '\n\r');
-WS : [ \t\r\n]+ -> skip;
+WS : [ \t]+ -> skip;

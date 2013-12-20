@@ -46,7 +46,7 @@ public class StatementIterator implements LineIteratorCallback {
           * check
           */
          if (subTree.getClass() == AmprstmtContext.class) {
-            statementIteratorCallback.line((AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
+            statementIteratorCallback.line(lineContext, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
          }
       }
    }

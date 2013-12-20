@@ -1,6 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -22,5 +23,5 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
  * @author tom
  */
 public interface StatementIteratorCallback {
-   void line(AmprstmtContext amprstmtContext, int codeLine, int fileLine);
+   void line(LineContext lineContext, AmprstmtContext amprstmtContext, int codeLine, int fileLine);
 }
