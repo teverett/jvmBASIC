@@ -32,7 +32,7 @@ public class PROGFunction extends BaseFunction {
           * walk the statements
           */
          final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-         StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
+         final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
          statementsProcessor.process(defaultStatementProcessor);
          /*
           * keep going

@@ -50,7 +50,7 @@ public class StatementIterator implements LineIteratorCallback {
             /*
              * Line declaration
              */
-            LineDeclaration lineDeclaration = new LineDeclaration(codeLineNumber, basicLineNumber, null);
+            final LineDeclaration lineDeclaration = new LineDeclaration(codeLineNumber, basicLineNumber, null);
             statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
          }
       }

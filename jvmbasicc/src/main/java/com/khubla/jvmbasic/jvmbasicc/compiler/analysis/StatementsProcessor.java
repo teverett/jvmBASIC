@@ -50,7 +50,7 @@ public class StatementsProcessor {
          /*
           * find the line
           */
-         LineDeclaration lineDeclaration = programStaticAnalysis.getLinesDatabase().getLine(lineNumber);
+         final LineDeclaration lineDeclaration = programStaticAnalysis.getLinesDatabase().getLine(lineNumber);
          while (null != lineDeclaration) {
             /*
              * walk the statements

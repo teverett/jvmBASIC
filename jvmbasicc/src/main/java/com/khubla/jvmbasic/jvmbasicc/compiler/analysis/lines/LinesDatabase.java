@@ -36,13 +36,6 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
     */
    private final TreeMap<Integer, LineDeclaration> lines = new TreeMap<Integer, LineDeclaration>();
 
-   public void line(LineContext lineContext) {
-      final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
-      final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
-      final int codeLineNumber = lineContext.start.getLine();
-      addLine(codeLineNumber, basicLineNumber, new Label());
-   }
-
    /**
     * add a label
     */
@@ -54,6 +47,11 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
       } else {
          return null;
       }
+   }
+
+   @Override
+   public void analyse(ProgContext progContext) throws Exception {
+      LineIterator.iterate(progContext, this);
    }
 
    /**
@@ -71,7 +69,10 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
    }
 
    @Override
-   public void analyse(ProgContext progContext) throws Exception {
-      LineIterator.iterate(progContext, this);
+   public void line(LineContext lineContext) {
+      final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
+      final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
+      final int codeLineNumber = lineContext.start.getLine();
+      addLine(codeLineNumber, basicLineNumber, new Label());
    }
 }

@@ -2,7 +2,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 
-
 /*
  * jvmBasic Copyright 2012, khubla.com
  *

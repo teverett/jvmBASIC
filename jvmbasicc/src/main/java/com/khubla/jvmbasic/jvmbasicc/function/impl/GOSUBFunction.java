@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.DefaultStatementProcessor;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementsProcessor;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -44,7 +45,8 @@ public class GOSUBFunction extends BaseFunction {
              * iterate from the line number to a RETURN
              */
             final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-            GenerationContext.getProgramStaticAnalysis().processFromLine(lineNumber, defaultStatementProcessor);
+            final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
+            statementsProcessor.ProcessFromLine(lineNumber, defaultStatementProcessor);
          }
          return true;
       } catch (final Exception e) {

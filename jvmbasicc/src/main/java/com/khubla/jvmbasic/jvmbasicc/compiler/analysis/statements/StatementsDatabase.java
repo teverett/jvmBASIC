@@ -34,14 +34,14 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
     */
    private final TreeMap<Integer, StatementDeclaration> statements = new TreeMap<Integer, StatementDeclaration>();
 
-   public TreeMap<Integer, StatementDeclaration> getStatements() {
-      return statements;
-   }
-
    @Override
    public void analyse(ProgContext progContext) throws Exception {
-      StatementIterator statementIterator = new StatementIterator();
+      final StatementIterator statementIterator = new StatementIterator();
       statementIterator.iterate(progContext, this);
+   }
+
+   public TreeMap<Integer, StatementDeclaration> getStatements() {
+      return statements;
    }
 
    /**
@@ -65,7 +65,7 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
 
    @Override
    public void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int codeLine, int fileLine) {
-      StatementDeclaration statementDeclaration = new StatementDeclaration(amprstmtContext, codeLine, lineDeclaration);
-      this.statements.put(codeLine, statementDeclaration);
+      final StatementDeclaration statementDeclaration = new StatementDeclaration(amprstmtContext, codeLine, lineDeclaration);
+      statements.put(codeLine, statementDeclaration);
    }
 }

@@ -29,6 +29,18 @@ public class ProgramStaticAnalysis {
    private final LinesDatabase linesDatabase = new LinesDatabase();
    private final StatementsDatabase statementsDatabase = new StatementsDatabase();
 
+   public DatasDatabase getDatasDatabase() {
+      return datasDatabase;
+   }
+
+   public LinesDatabase getLinesDatabase() {
+      return linesDatabase;
+   }
+
+   public StatementsDatabase getStatementsDatabase() {
+      return statementsDatabase;
+   }
+
    /**
     * statically analyse the program
     */
@@ -40,17 +52,5 @@ public class ProgramStaticAnalysis {
       } catch (final Exception e) {
          throw new Exception("Exception in performStaticAnalysis", e);
       }
-   }
-
-   public DatasDatabase getDatasDatabase() {
-      return datasDatabase;
-   }
-
-   public LinesDatabase getLinesDatabase() {
-      return linesDatabase;
-   }
-
-   public StatementsDatabase getStatementsDatabase() {
-      return statementsDatabase;
    }
 }

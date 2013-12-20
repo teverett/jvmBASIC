@@ -29,10 +29,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
  * @author tom
  */
 public class DatasDatabase implements Analyser {
-   public String[] getData() {
-      return data;
-   }
-
    /**
     * DATA declarations
     */
@@ -41,6 +37,10 @@ public class DatasDatabase implements Analyser {
    @Override
    public void analyse(ProgContext progContext) throws Exception {
       processDATADeclarations(progContext);
+   }
+
+   public String[] getData() {
+      return data;
    }
 
    /**
