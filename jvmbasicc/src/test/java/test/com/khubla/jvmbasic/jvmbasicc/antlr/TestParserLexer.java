@@ -20,10 +20,12 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
 import com.khubla.jvmbasic.jvmbasicc.util.TestUtil;
 
 /**
@@ -47,7 +49,9 @@ public class TestParserLexer {
             if (null != inputStream) {
                System.out.println("Parsing: " + filename);
                try {
-                  JVMBasicCompiler.parse(inputStream);
+                  ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
+                  TreePrinter treePrinter = new TreePrinter();
+                  treePrinter.printTree(parseTree);
                } catch (final Exception e) {
                   failures++;
                   e.printStackTrace();
