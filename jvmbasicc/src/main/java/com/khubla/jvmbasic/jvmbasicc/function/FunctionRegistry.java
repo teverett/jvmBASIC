@@ -171,8 +171,8 @@ public class FunctionRegistry {
     * get
     */
    public Function getFunction(String name) throws Exception {
-      if (functions.containsKey(name)) {
-         return functions.get(name);
+      if (functions.containsKey("'" + name + "'")) {
+         return functions.get("'" + name + "'");
       } else {
          throw new Exception("Unknown function '" + name + "'");
       }

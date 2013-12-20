@@ -33,10 +33,10 @@ public class TestJVMBASICCompiler {
    @Test
    public void test1() {
       try {
-         final String fileName = "src/test/resources/bas/easy/print.bas";
+         final String fileName = "src/test/resources/bas/a/hello.bas";
          final InputStream inputStream = new FileInputStream(fileName);
          final JVMBasicCompiler compiler = new JVMBasicCompiler();
-         final byte[] bytecode = compiler.compile(inputStream, "print", true);
+         final byte[] bytecode = compiler.compile(inputStream, "hello", true);
          Assert.assertNotNull(bytecode);
       } catch (final Exception e) {
          e.printStackTrace();

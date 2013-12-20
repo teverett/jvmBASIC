@@ -16,7 +16,8 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.CommonToken;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
@@ -32,10 +33,17 @@ public class Dispatcher {
    public static boolean dispatch(GenerationContext generationContext) throws Exception {
       try {
          if (null != generationContext.getParseTree()) {
-            final Token token = (Token) generationContext.getParseTree().getPayload();
-            final String tokenName = jvmBasicParser.tokenNames[token.getType()];
-            final Function function = FunctionRegistry.getInstance().getFunction(tokenName);
-            return function.execute(generationContext);
+            final Object o = generationContext.getParseTree().getPayload();
+            if (o.getClass() == CommonToken.class) {
+               final CommonToken commonToken = (CommonToken) o;
+               final String tokenName = jvmBasicParser.tokenNames[commonToken.getType()];
+               final Function function = FunctionRegistry.getInstance().getFunction(tokenName);
+               return function.execute(generationContext);
+            } else {
+               final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
+               final Function function = FunctionRegistry.getInstance().getFunction(parserRuleContext.start.getText());
+               return function.execute(generationContext);
+            }
          }
          return true;
       } catch (final Exception e) {
