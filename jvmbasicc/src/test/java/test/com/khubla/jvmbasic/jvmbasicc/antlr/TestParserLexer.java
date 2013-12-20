@@ -16,16 +16,15 @@ package test.com.khubla.jvmbasic.jvmbasicc.antlr;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import com.khubla.jvmbasic.jvmbasicc.util.TestUtil;
 
 /**
  * @author tom
@@ -36,27 +35,10 @@ public class TestParserLexer {
     */
    private static final String BASROOT = "src/test/resources/bas/";
 
-   private List<String> getTestFiles(String dir, List<String> files) throws Exception {
-      final File file = new File(dir);
-      final String[] list = file.list();
-      for (int i = 0; i < list.length; i++) {
-         {
-            final String fileName = dir + list[i];
-            final File f2 = new File(fileName);
-            if (f2.isDirectory()) {
-               getTestFiles(fileName + "/", files);
-            } else {
-               files.add(fileName);
-            }
-         }
-      }
-      return files;
-   }
-
    @Test
    public void test1() {
       try {
-         final List<String> testFiles = getTestFiles(BASROOT, new ArrayList<String>());
+         final List<String> testFiles = TestUtil.getTestFiles(BASROOT);
          int failures = 0;
          System.out.println("Found " + testFiles.size() + " test files");
          for (int i = 0; i < testFiles.size(); i++) {
@@ -70,7 +52,6 @@ public class TestParserLexer {
                   failures++;
                   e.printStackTrace();
                }
-               System.out.println("Done");
             }
          }
          /*
