@@ -28,6 +28,7 @@ public class ProgramStaticAnalysis {
    private final DatasDatabase datasDatabase = new DatasDatabase();
    private final LinesDatabase linesDatabase = new LinesDatabase();
    private final StatementsDatabase statementsDatabase = new StatementsDatabase();
+   private final Analyser[] analysers = { datasDatabase, linesDatabase, statementsDatabase };
 
    public DatasDatabase getDatasDatabase() {
       return datasDatabase;
@@ -46,9 +47,9 @@ public class ProgramStaticAnalysis {
     */
    public void performStaticAnalysis(ProgContext progContext) throws Exception {
       try {
-         datasDatabase.analyse(progContext);
-         linesDatabase.analyse(progContext);
-         statementsDatabase.analyse(progContext);
+         for (int i = 0; i < analysers.length; i++) {
+            analysers[i].analyse(progContext);
+         }
       } catch (final Exception e) {
          throw new Exception("Exception in performStaticAnalysis", e);
       }
