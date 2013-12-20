@@ -1,5 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -23,5 +26,5 @@ public interface StatementProcessor {
    /**
     * return true if continue to iterate, false otherwise
     */
-   boolean processStatement(Statement statement) throws Exception;
+   boolean processStatement(StatementDeclaration statement) throws Exception;
 }

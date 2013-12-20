@@ -173,7 +173,7 @@ public class GenerationContext {
     * read data
     */
    public String readData() {
-      return programStaticAnalysis.getData()[dataPointer++];
+      return programStaticAnalysis.getDatasDatabase().getData()[dataPointer++];
    }
 
    /**

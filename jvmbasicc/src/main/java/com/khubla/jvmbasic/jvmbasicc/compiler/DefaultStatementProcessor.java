@@ -1,7 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Statement;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementProcessor;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -36,7 +36,7 @@ public class DefaultStatementProcessor implements StatementProcessor {
    }
 
    @Override
-   public boolean processStatement(Statement statement) throws Exception {
+   public boolean processStatement(StatementDeclaration statement) throws Exception {
       try {
          /*
           * first statement on the line?

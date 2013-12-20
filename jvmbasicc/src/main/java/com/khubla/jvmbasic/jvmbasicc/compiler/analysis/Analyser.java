@@ -1,7 +1,6 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
+package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
-import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -19,9 +18,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/**
- * @author tom
- */
-public interface StatementIteratorCallback {
-   void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int codeLine, int fileLine);
+public interface Analyser {
+   void analyse(ProgContext progContext) throws Exception;
 }

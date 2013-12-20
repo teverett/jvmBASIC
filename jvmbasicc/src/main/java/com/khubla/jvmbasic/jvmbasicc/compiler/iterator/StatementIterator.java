@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -46,7 +47,11 @@ public class StatementIterator implements LineIteratorCallback {
           * check
           */
          if (subTree.getClass() == AmprstmtContext.class) {
-            statementIteratorCallback.line(lineContext, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
+            /*
+             * Line declaration
+             */
+            LineDeclaration lineDeclaration = new LineDeclaration(codeLineNumber, basicLineNumber, null);
+            statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
          }
       }
    }

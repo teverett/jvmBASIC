@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.DefaultStatementProcessor;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementsProcessor;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -31,7 +32,8 @@ public class PROGFunction extends BaseFunction {
           * walk the statements
           */
          final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-         GenerationContext.getProgramStaticAnalysis().iterate(defaultStatementProcessor);
+         StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
+         statementsProcessor.process(defaultStatementProcessor);
          /*
           * keep going
           */

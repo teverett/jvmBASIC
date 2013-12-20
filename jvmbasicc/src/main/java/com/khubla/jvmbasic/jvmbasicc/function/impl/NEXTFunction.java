@@ -51,11 +51,11 @@ public class NEXTFunction extends BaseFunction {
                /*
                 * figure out the next line after the for; this is the loop target
                 */
-               final int nextLine = GenerationContext.getProgramStaticAnalysis().getNextLineNumber(loopDeclaration.getLineNumber());
+               final int nextLine = GenerationContext.getProgramStaticAnalysis().getLinesDatabase().getNextLineNumber(loopDeclaration.getLineNumber());
                /*
                 * find the label for that line
                 */
-               final Label loopTargetLabel = GenerationContext.getProgramStaticAnalysis().getLine(nextLine).getLabel();
+               final Label loopTargetLabel = GenerationContext.getProgramStaticAnalysis().getLinesDatabase().getLine(nextLine).getLabel();
                /*
                 * compare the operands
                 */

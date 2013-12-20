@@ -1,7 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
-
-import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
+package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.datas;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -22,6 +19,5 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 /**
  * @author tom
  */
-public interface StatementIteratorCallback {
-   void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int codeLine, int fileLine);
+public class Data {
 }

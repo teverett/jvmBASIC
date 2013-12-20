@@ -40,7 +40,7 @@ public class GOTOFunction extends BaseFunction {
             /*
              * find the label for the line number
              */
-            final Label label = GenerationContext.getProgramStaticAnalysis().getLine(lineNumber).getLabel();
+            final Label label = GenerationContext.getProgramStaticAnalysis().getLinesDatabase().getLine(lineNumber).getLabel();
             /*
              * check
              */

@@ -44,7 +44,7 @@ public class GOSUBFunction extends BaseFunction {
              * iterate from the line number to a RETURN
              */
             final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-            GenerationContext.getProgramStaticAnalysis().iterateFromLine(lineNumber, defaultStatementProcessor);
+            GenerationContext.getProgramStaticAnalysis().processFromLine(lineNumber, defaultStatementProcessor);
          }
          return true;
       } catch (final Exception e) {

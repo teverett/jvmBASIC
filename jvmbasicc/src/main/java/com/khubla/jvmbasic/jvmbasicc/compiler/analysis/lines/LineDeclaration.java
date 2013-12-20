@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
+package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -21,6 +21,8 @@ import java.util.List;
 
 import org.objectweb.asm.Label;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+
 /**
  * @author tome
  */
@@ -40,7 +42,7 @@ public class LineDeclaration {
    /**
     * statements
     */
-   private final List<Statement> statements = new ArrayList<Statement>();
+   private final List<StatementDeclaration> statements = new ArrayList<StatementDeclaration>();
 
    /**
     * ctor
@@ -51,7 +53,7 @@ public class LineDeclaration {
       this.label = label;
    }
 
-   public void addStatement(Statement statement) {
+   public void addStatement(StatementDeclaration statement) {
       statements.add(statement);
    }
 
@@ -67,7 +69,7 @@ public class LineDeclaration {
       return label;
    }
 
-   public List<Statement> getStatements() {
+   public List<StatementDeclaration> getStatements() {
       return statements;
    }
 }

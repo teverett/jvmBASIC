@@ -1,6 +1,7 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
+package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -21,7 +22,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 /**
  * @author tome
  */
-public class Statement {
+public class StatementDeclaration {
    /**
     * AmprstmtContext
     */
@@ -38,7 +39,7 @@ public class Statement {
    /**
     * ctor
     */
-   public Statement(AmprstmtContext amprstmtContext, int lineIndex, LineDeclaration lineDeclaration) {
+   public StatementDeclaration(AmprstmtContext amprstmtContext, int lineIndex, LineDeclaration lineDeclaration) {
       this.amprstmtContext = amprstmtContext;
       this.lineIndex = lineIndex;
       this.lineDeclaration = lineDeclaration;

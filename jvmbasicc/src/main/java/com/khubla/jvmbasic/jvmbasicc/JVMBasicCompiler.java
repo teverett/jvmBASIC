@@ -22,7 +22,6 @@ import java.io.InputStream;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
@@ -31,6 +30,7 @@ import org.objectweb.asm.Opcodes;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.LocalVariableDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
@@ -53,7 +53,7 @@ public class JVMBasicCompiler {
    /**
     * parse an input file
     */
-   public static ParseTree parse(InputStream inputStream) throws Exception {
+   public static ProgContext parse(InputStream inputStream) throws Exception {
       try {
          if (null != inputStream) {
             final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(inputStream));
@@ -104,12 +104,12 @@ public class JVMBasicCompiler {
          /*
           * get tree
           */
-         final ParseTree parseTree = parse(inputStream);
+         final ProgContext progContext = parse(inputStream);
          /*
           * print tree
           */
          final TreePrinter treePrinter = new TreePrinter();
-         treePrinter.printTree(parseTree);
+         treePrinter.printTree(progContext);
          /*
           * a message
           */
@@ -145,7 +145,7 @@ public class JVMBasicCompiler {
          /*
           * program
           */
-         generateProgram(classname, classWriter, parseTree);
+         generateProgram(classname, classWriter, progContext);
          /*
           * generate the class
           */
@@ -304,7 +304,7 @@ public class JVMBasicCompiler {
     * Java prototype is "public program()"
     * </p>
     */
-   protected void generateProgram(String classname, ClassWriter classWriter, ParseTree parseTree) throws Exception {
+   protected void generateProgram(String classname, ClassWriter classWriter, ProgContext progContext) throws Exception {
       try {
          final MethodVisitor methodVisitor = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "program", "()V", null, new String[] { "java/lang/Exception" });
          methodVisitor.visitCode();
@@ -317,16 +317,12 @@ public class JVMBasicCompiler {
           * do the static analysis
           */
          final ProgramStaticAnalysis programStaticAnalysis = new ProgramStaticAnalysis();
-         programStaticAnalysis.performStaticAnalysis(parseTree);
-         /*
-          * show the static analysis
-          */
-         programStaticAnalysis.dumpStaticAnalysis();
+         programStaticAnalysis.performStaticAnalysis(progContext);
          /*
           * recurse into the parse tree
           */
          final Function function = new PROGFunction();
-         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, parseTree, programStaticAnalysis);
+         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, progContext, programStaticAnalysis);
          function.execute(generationContext);
          /*
           * return
