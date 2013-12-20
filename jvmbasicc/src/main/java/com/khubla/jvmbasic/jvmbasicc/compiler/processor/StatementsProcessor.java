@@ -1,5 +1,6 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
+package com.khubla.jvmbasic.jvmbasicc.compiler.processor;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 
@@ -20,9 +21,9 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDecla
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class StatementsProcessor {
-   private final ProgramStaticAnalysis programStaticAnalysis;
+   private final StaticAnalysis programStaticAnalysis;
 
-   public StatementsProcessor(ProgramStaticAnalysis programStaticAnalysis) {
+   public StatementsProcessor(StaticAnalysis programStaticAnalysis) {
       this.programStaticAnalysis = programStaticAnalysis;
    }
 

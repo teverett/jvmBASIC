@@ -39,6 +39,7 @@ public class StatementIterator implements LineIteratorCallback {
       final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
       final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
       final int codeLineNumber = lineContext.start.getLine();
+      int lineIndex = 0;
       for (int i = 0; i < lineContext.getChildCount(); i++) {
          /*
           * parse the sub tree
@@ -52,7 +53,11 @@ public class StatementIterator implements LineIteratorCallback {
              * Line declaration
              */
             final LineDeclaration lineDeclaration = new LineDeclaration(lineContext, codeLineNumber, basicLineNumber, null);
-            statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, basicLineNumber, codeLineNumber);
+            statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, lineIndex);
+            /*
+             * next statement on the line
+             */
+            lineIndex++;
          }
       }
    }

@@ -23,7 +23,7 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ForDeclaration;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ProgramStaticAnalysis;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 
 /**
  * @author tome
@@ -37,7 +37,7 @@ public class GenerationContext {
       return localVariables;
    }
 
-   public static ProgramStaticAnalysis getProgramStaticAnalysis() {
+   public static StaticAnalysis getProgramStaticAnalysis() {
       return programStaticAnalysis;
    }
 
@@ -76,7 +76,7 @@ public class GenerationContext {
    /**
     * the static analysis
     */
-   private static ProgramStaticAnalysis programStaticAnalysis = null;
+   private static StaticAnalysis programStaticAnalysis = null;
    /**
     * all the variables
     */
@@ -110,7 +110,7 @@ public class GenerationContext {
       this.lineNumber = lineNumber;
    }
 
-   public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, ParseTree parseTree, ProgramStaticAnalysis staticAnalysis) {
+   public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, ParseTree parseTree, StaticAnalysis staticAnalysis) {
       this.methodVisitor = methodVisitor;
       this.parseTree = parseTree;
       this.classWriter = classWriter;

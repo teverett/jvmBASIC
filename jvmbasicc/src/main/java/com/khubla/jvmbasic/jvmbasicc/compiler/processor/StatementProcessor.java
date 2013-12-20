@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
+package com.khubla.jvmbasic.jvmbasicc.compiler.processor;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 

@@ -28,11 +28,11 @@ public class StatementDeclaration {
     */
    private final AmprstmtContext amprstmtContext;
    /**
-    * line index
+    * line index. Index on the line of this statement. A single statement line will have this zero
     */
    private final int lineIndex;
    /**
-    * the line
+    * the line. the Line that this statement is on
     */
    private final LineDeclaration lineDeclaration;
 

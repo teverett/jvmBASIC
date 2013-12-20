@@ -1,7 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementProcessor;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.compiler.processor.StatementProcessor;
 
 /*
  * jvmBasic Copyright 2012, khubla.com

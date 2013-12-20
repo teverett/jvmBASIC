@@ -24,7 +24,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementsData
 /**
  * @author tome
  */
-public class ProgramStaticAnalysis {
+public class StaticAnalysis {
    private final DatasDatabase datasDatabase = new DatasDatabase();
    private final LinesDatabase linesDatabase = new LinesDatabase();
    private final StatementsDatabase statementsDatabase = new StatementsDatabase();

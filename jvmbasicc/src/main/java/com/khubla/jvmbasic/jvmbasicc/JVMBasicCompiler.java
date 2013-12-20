@@ -35,7 +35,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.LocalVariableDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ProgramStaticAnalysis;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
 
@@ -316,7 +316,7 @@ public class JVMBasicCompiler {
          /*
           * do the static analysis
           */
-         final ProgramStaticAnalysis programStaticAnalysis = new ProgramStaticAnalysis();
+         final StaticAnalysis programStaticAnalysis = new StaticAnalysis();
          programStaticAnalysis.performStaticAnalysis(progContext);
          /*
           * show the static analysis

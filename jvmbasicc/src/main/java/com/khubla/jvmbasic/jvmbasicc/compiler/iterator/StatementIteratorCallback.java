@@ -23,5 +23,5 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
  * @author tom
  */
 public interface StatementIteratorCallback {
-   void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int codeLine, int fileLine);
+   void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int lineIndex);
 }

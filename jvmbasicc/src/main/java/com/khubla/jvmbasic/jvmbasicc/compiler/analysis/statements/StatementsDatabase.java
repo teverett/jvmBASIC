@@ -55,8 +55,8 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
    }
 
    @Override
-   public void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int codeLine, int fileLine) {
-      final StatementDeclaration statementDeclaration = new StatementDeclaration(amprstmtContext, codeLine, lineDeclaration);
-      statements.put(codeLine, statementDeclaration);
+   public void statement(LineDeclaration lineDeclaration, AmprstmtContext amprstmtContext, int lineIndex) {
+      final StatementDeclaration statementDeclaration = new StatementDeclaration(amprstmtContext, lineIndex, lineDeclaration);
+      statements.put(lineDeclaration.getBasicLine(), statementDeclaration);
    }
 }

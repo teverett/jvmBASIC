@@ -18,7 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.DefaultStatementProcessor;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementsProcessor;
+import com.khubla.jvmbasic.jvmbasicc.compiler.processor.StatementsProcessor;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
