@@ -36,7 +36,7 @@ relop :lte | gte | neq | EQ | GT | LT ;
 gte : GTE | (GT EQ) | (EQ GT);
 lte : LTE | (LT EQ) | (EQ LT);
 neq : NEQ;
-ifstmt : IF expression THEN? statement;
+ifstmt : IF expression THEN? (statement | linenumber);
 forstmt : FOR  vardecl EQ expression TO expression (STEP expression)? ;
 nextstmt : NEXT varlist?;
 inputstmt : INPUT (STRINGLITERAL (COMMA| SEMICOLON))? varlist; 
