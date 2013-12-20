@@ -46,7 +46,8 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
        * walk the statements
        */
       for (final StatementDeclaration statementDeclaration : statements.values()) {
-         System.out.println("Line '" + statementDeclaration.getLineIndex() + "' " + statementDeclaration.getAmprstmtContext().getText());
+         System.out.println("Line '" + statementDeclaration.getLineDeclaration().getBasicLine() + "' Statement  '" + statementDeclaration.getLineIndex() + "' "
+               + statementDeclaration.getAmprstmtContext().getText());
       }
    }
 
