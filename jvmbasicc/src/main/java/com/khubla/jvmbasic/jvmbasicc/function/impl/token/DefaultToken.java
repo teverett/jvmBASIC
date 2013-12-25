@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -16,21 +16,16 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
- * @author tome
+ * @author tom
  */
-public class signExpressionRule extends BaseFunction {
+public class DefaultToken extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         Dispatcher.dispatchChildren(generationContext);
-         /*
-          * keep going
-          */
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

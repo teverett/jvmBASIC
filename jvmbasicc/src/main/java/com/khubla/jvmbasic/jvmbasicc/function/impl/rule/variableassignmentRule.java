@@ -16,7 +16,6 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.Opcodes;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
@@ -50,21 +49,7 @@ public class variableassignmentRule extends BaseFunction {
          /*
           * the tree should have 3 sub nodes
           */
-         String variableName = null;
-         if (generationContext.getParseTree().getChildCount() == 3) {
-            /*
-             * get the variable name
-             */
-            variableName = generationContext.getChildValue(0);
-            /*
-             * get the tree for the value. this should push the value onto the ExecutionContextStack
-             */
-            final ParseTree subTree = generationContext.getParseTree().getChild(2);
-            final GenerationContext subGenerationContext = new GenerationContext(generationContext, subTree);
-            Dispatcher.dispatch(subGenerationContext);
-         } else {
-            throw new Exception("Invalid number of arguments '" + generationContext.getParseTree().getChildCount() + "'");
-         }
+         String variableName = generationContext.getCompilerStack().pop();
          /*
           * store the top of the stack into slot 1
           */

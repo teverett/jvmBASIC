@@ -69,31 +69,16 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.TIMESFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.VALFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.VTABFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.addingExpressionRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.amprstmtRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.expressionRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.funcRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.letstmtRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.lineRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.DefaultRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.linenumberRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printlistRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.relationalExpressionRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.signExpressionRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.statementRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.varRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.vardeclRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.variableassignmentRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.varnameRule;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.token.COMMENTToken;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.token.CRToken;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.token.DefaultToken;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.token.FLOATToken;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.token.LETTERSToken;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.token.NUMBERToken;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.token.PRINTToken;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.token.STRINGLITERALToken;
 
 /**
@@ -150,34 +135,36 @@ public class FunctionRegistry {
 
    private void populateRuleRegistry() {
       ruleFunctions.put(jvmBasicParser.RULE_prog, new progRule());
-      ruleFunctions.put(jvmBasicParser.RULE_amprstmt, new amprstmtRule());
-      ruleFunctions.put(jvmBasicParser.RULE_line, new lineRule());
+      ruleFunctions.put(jvmBasicParser.RULE_amprstmt, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_line, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_linenumber, new linenumberRule());
-      ruleFunctions.put(jvmBasicParser.RULE_statement, new statementRule());
+      ruleFunctions.put(jvmBasicParser.RULE_statement, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_printstmt1, new printRule());
-      ruleFunctions.put(jvmBasicParser.RULE_printlist, new printlistRule());
-      ruleFunctions.put(jvmBasicParser.RULE_expression, new expressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_relationalExpression, new relationalExpressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_addingExpression, new addingExpressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_multiplyingExpression, new multiplyingExpressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_exponentExpression, new exponentExpressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_signExpression, new signExpressionRule());
-      ruleFunctions.put(jvmBasicParser.RULE_func, new funcRule());
-      ruleFunctions.put(jvmBasicParser.RULE_letstmt, new letstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_printlist, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_expression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_relationalExpression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_addingExpression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_multiplyingExpression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_exponentExpression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_signExpression, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_func, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_letstmt, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_variableassignment, new variableassignmentRule());
-      ruleFunctions.put(jvmBasicParser.RULE_vardecl, new vardeclRule());
-      ruleFunctions.put(jvmBasicParser.RULE_var, new varRule());
+      ruleFunctions.put(jvmBasicParser.RULE_vardecl, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_var, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_varname, new varnameRule());
+      ruleFunctions.put(jvmBasicParser.RULE_exprlist, new DefaultRule());
    }
 
    private void populateTokenRegistry() {
-      tokenFunctions.put(jvmBasicParser.PRINT, new PRINTToken());
-      tokenFunctions.put(jvmBasicParser.COMMENT, new COMMENTToken());
+      tokenFunctions.put(jvmBasicParser.EQ, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.PRINT, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.COMMENT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALToken());
       tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERToken());
       tokenFunctions.put(jvmBasicLexer.PLUS, new PLUSFunction());
       tokenFunctions.put(jvmBasicParser.TIMES, new TIMESFunction());
-      tokenFunctions.put(jvmBasicParser.CR, new CRToken());
+      tokenFunctions.put(jvmBasicParser.CR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LETTERS, new LETTERSToken());
       tokenFunctions.put(jvmBasicParser.FOR, new FORFunction());
       tokenFunctions.put(jvmBasicParser.NEXT, new NEXTFunction());
