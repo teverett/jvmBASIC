@@ -56,8 +56,9 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
 
    @Override
    public void dumpAnalysis() throws Exception {
+      System.out.println("Lines");
       for (final LineDeclaration lineDeclaraction : lines.values()) {
-         System.out.println("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
+         System.out.print("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
       }
    }
 

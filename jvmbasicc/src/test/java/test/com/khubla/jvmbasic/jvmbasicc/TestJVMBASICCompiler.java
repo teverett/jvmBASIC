@@ -76,12 +76,12 @@ public class TestJVMBASICCompiler {
       }
    }
 
-   @Test(enabled = true)
+   @Test(enabled = false)
    public void testHelloBas() {
       testSingleBASFile("src/test/resources/bas/a/hello.bas");
    }
 
-   @Test(enabled = false)
+   @Test(enabled = true)
    public void testEBas() {
       testSingleBASFile("src/test/resources/bas/a/e.bas");
    }
