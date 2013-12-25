@@ -49,7 +49,7 @@ public class variableassignmentRule extends BaseFunction {
          /*
           * the tree should have 3 sub nodes
           */
-         String variableName = generationContext.getCompilerStack().pop();
+         final String variableName = generationContext.getCompilerStack().pop();
          /*
           * store the top of the stack into slot 1
           */

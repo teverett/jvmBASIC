@@ -91,10 +91,6 @@ public class GenerationContext {
     */
    private final Stack<String> compilerStack;
 
-   public Stack<String> getCompilerStack() {
-      return compilerStack;
-   }
-
    /**
     * copy ctor
     */
@@ -105,7 +101,7 @@ public class GenerationContext {
       className = parent.className;
       forDeclarations = parent.forDeclarations;
       lineNumber = parent.lineNumber;
-      this.compilerStack = parent.compilerStack;
+      compilerStack = parent.compilerStack;
    }
 
    /**
@@ -118,7 +114,7 @@ public class GenerationContext {
       className = parent.className;
       forDeclarations = parent.forDeclarations;
       this.lineNumber = lineNumber;
-      this.compilerStack = parent.compilerStack;
+      compilerStack = parent.compilerStack;
    }
 
    public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, ParseTree parseTree, StaticAnalysis staticAnalysis) {
@@ -129,7 +125,7 @@ public class GenerationContext {
       programStaticAnalysis = staticAnalysis;
       forDeclarations = new Hashtable<String, ForDeclaration>();
       lineNumber = 0;
-      this.compilerStack = new Stack<String>();
+      compilerStack = new Stack<String>();
    }
 
    /**
@@ -160,6 +156,10 @@ public class GenerationContext {
 
    public ClassWriter getClassWriter() {
       return classWriter;
+   }
+
+   public Stack<String> getCompilerStack() {
+      return compilerStack;
    }
 
    public int getLineNumber() {

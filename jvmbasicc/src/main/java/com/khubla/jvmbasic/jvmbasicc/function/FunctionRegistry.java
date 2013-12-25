@@ -199,7 +199,6 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.DATA, new DATAFunction());
       tokenFunctions.put(jvmBasicParser.READ, new READFunction());
       tokenFunctions.put(jvmBasicParser.RESTORE, new RESTOREFunction());
-      tokenFunctions.put(jvmBasicParser.QUESTION, new printRule());
       tokenFunctions.put(jvmBasicParser.SPC, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.FLOAT, new FLOATToken());
       tokenFunctions.put(jvmBasicParser.VTAB, new DefaultToken());

@@ -29,7 +29,7 @@ public class varnameRule extends BaseFunction {
          /*
           * get the name onto the stack
           */
-         String varName = generationContext.getParseTree().getChild(0).getText();
+         final String varName = generationContext.getParseTree().getChild(0).getText();
          generationContext.getCompilerStack().push(varName);
          /*
           * keep going, without recursing down
