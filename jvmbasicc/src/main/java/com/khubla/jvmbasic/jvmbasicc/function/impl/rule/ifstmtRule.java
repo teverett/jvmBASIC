@@ -36,15 +36,11 @@ public class ifstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         if (generationContext.getParseTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             /*
              * so the subtree under the <IF> here will be <relational operator tree> <THEN> <statement>
              */
-            /*
-             * process the relational operator. this will push a TRUE or FALSE onto the generation context stack
-             */
-            final GenerationContext subGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
-            Dispatcher.dispatch(subGenerationContext);
+            Dispatcher.dispatchChildren(generationContext);
             /*
              * check the result
              */
@@ -69,15 +65,11 @@ public class ifstmtRule extends BaseFunction {
             generationContext.getMethodVisitor().visitLabel(l1);
             generationContext.getMethodVisitor().visitFrame(Opcodes.F_SAME, 0, null, 0, null);
             return true;
-         } else if (generationContext.getParseTree().getChildCount() == 2) {
+         } else if (generationContext.getParseTree().getChildCount() == 3) {
             /*
              * so the subtree under the <IF> here will be <relational operator tree> <statement>
              */
-            /*
-             * process the relational operator. this will push a TRUE or FALSE onto the generation context stack
-             */
-            final GenerationContext subGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
-            Dispatcher.dispatch(subGenerationContext);
+            Dispatcher.dispatchChildren(generationContext);
             /*
              * check the result
              */

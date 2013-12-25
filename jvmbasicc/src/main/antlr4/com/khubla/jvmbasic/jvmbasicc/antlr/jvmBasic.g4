@@ -95,7 +95,6 @@ varsuffix:(DOLLAR | PERCENT);
 varlist : vardecl (COMMA vardecl)*;
 exprlist : expression (COMMA expression)*;
 
-//fragment exponentliteral: ('+' | '-')?	('E' INTEGERS);
 // functions
 sqrfunc : SQR LPAREN expression RPAREN;
 chrfunc	: CHR LPAREN expression RPAREN;

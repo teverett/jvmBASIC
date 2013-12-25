@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -25,8 +25,11 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
+ *         <p>
+ *         this.executionContext.push(this.executionContext.resolveValue(this.executionContext.pop()).getDouble() * this.executionContext.resolveValue(this.executionContext.pop()).getDouble());
+ *         </p>
  */
-public class PLUSFunction extends BaseFunction {
+public class multiplyingExpressionRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -58,12 +61,12 @@ public class PLUSFunction extends BaseFunction {
                   "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "getDouble", "()Ljava/lang/Double;");
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Double", "doubleValue", "()D");
-            generationContext.getMethodVisitor().visitInsn(Opcodes.DADD);
+            generationContext.getMethodVisitor().visitInsn(Opcodes.DMUL);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Double", "valueOf", "(D)Ljava/lang/Double;");
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V");
             return true;
          } else {
-            throw new Exception("PLUS requires two or more values");
+            throw new Exception("TIMES requires two or more values");
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);
