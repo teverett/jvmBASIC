@@ -43,11 +43,11 @@ public class TestParserLexer {
    /**
     * parse tree dir
     */
-   private static final String PARSETREE = "parsetree/";
+   private static final String TESTOUTPUT = "jvmbasic-test-output/";
 
    @BeforeTest
    public void setup() {
-      new File(PARSETREE).mkdirs();
+      new File(TESTOUTPUT).mkdirs();
    }
 
    @Test
@@ -63,7 +63,7 @@ public class TestParserLexer {
                System.out.println("Parsing: " + filename);
                try {
                   final ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
-                  String fn = "parsetree/" + FilenameUtil.classNameFromFileName(filename) + ".txt";
+                  String fn = TESTOUTPUT + FilenameUtil.classNameFromFileName(filename) + ".txt";
                   FileOutputStream fos = new FileOutputStream(fn);
                   final TreePrinter treePrinter = new TreePrinter(fos);
                   treePrinter.printTree(parseTree);

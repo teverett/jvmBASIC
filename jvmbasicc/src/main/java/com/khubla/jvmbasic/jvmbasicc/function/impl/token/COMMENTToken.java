@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -17,15 +17,18 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
-import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.Function;
 
 /**
  * @author tome
  */
-public class EXPRESSIONFunction extends BaseFunction {
+public class COMMENTToken implements Function {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
+         /**
+          * ignore everything under the comment token
+          */
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

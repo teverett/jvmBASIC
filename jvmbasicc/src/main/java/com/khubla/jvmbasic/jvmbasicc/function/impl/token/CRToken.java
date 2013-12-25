@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -19,7 +19,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
-public class NEQFunction extends BaseFunction {
+public class CRToken extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {

@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -39,15 +39,19 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *         </code>
  *         </p>
  */
-public class EQFunction extends BaseFunction {
+public class variableassignmentRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * the tree should have 2 sub nodes
+          * recurse into the children
+          */
+         Dispatcher.dispatchChildren(generationContext);
+         /*
+          * the tree should have 3 sub nodes
           */
          String variableName = null;
-         if (generationContext.getParseTree().getChildCount() == 2) {
+         if (generationContext.getParseTree().getChildCount() == 3) {
             /*
              * get the variable name
              */
@@ -55,7 +59,7 @@ public class EQFunction extends BaseFunction {
             /*
              * get the tree for the value. this should push the value onto the ExecutionContextStack
              */
-            final ParseTree subTree = generationContext.getParseTree().getChild(1);
+            final ParseTree subTree = generationContext.getParseTree().getChild(2);
             final GenerationContext subGenerationContext = new GenerationContext(generationContext, subTree);
             Dispatcher.dispatch(subGenerationContext);
          } else {
