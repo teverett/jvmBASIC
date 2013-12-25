@@ -44,13 +44,6 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
  */
 public class JVMBasicCompiler {
    /**
-    * generate the class name from the supplied BASIC filename
-    */
-   public static String classNameFromFileName(String filename) {
-      return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
-   }
-
-   /**
     * parse an input file
     */
    public static ProgContext parse(InputStream inputStream) throws Exception {

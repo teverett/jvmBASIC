@@ -1,5 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.ParserRuleContext;
 /*
@@ -24,7 +27,23 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalker;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalkerCallback;
 
+/**
+ * @author tom
+ */
 public class TreePrinter implements SimpleTreeWalkerCallback {
+   /**
+    * output stream
+    */
+   private final PrintStream printStream;
+
+   public TreePrinter() {
+      printStream = System.out;
+   }
+
+   public TreePrinter(OutputStream outputStream) {
+      printStream = new PrintStream(outputStream);
+   }
+
    private String indentString(int ctxlevel) {
       StringBuffer sb = new StringBuffer(ctxlevel);
       for (int i = 0; i < ctxlevel; i++) {
@@ -35,7 +54,7 @@ public class TreePrinter implements SimpleTreeWalkerCallback {
 
    @Override
    public void parserRule(ParserRuleContext parserRuleContext, int ctxlevel) {
-      System.out.println(indentString(ctxlevel) + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
+      printStream.println(indentString(ctxlevel) + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
    }
 
    /**
@@ -48,7 +67,7 @@ public class TreePrinter implements SimpleTreeWalkerCallback {
    @Override
    public void token(CommonToken commonToken, int ctxlevel) {
       if (commonToken.getType() != -1) {
-         System.out.println(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + commonToken.getText());
+         printStream.println(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + commonToken.getText());
       }
    }
 }

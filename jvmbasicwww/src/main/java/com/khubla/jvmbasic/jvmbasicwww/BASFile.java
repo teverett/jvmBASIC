@@ -27,6 +27,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /**
  * A simple index of all the BAS files
@@ -138,7 +139,7 @@ public class BASFile {
     * get the name of the generated JVM class
     */
    public String getClassname() {
-      return JVMBasicCompiler.classNameFromFileName(basFile.getName());
+      return FilenameUtil.classNameFromFileName(basFile.getName());
    }
 
    /**

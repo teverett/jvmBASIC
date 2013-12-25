@@ -28,6 +28,8 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
 
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
+
 /**
  * @author tom
  */
@@ -120,7 +122,7 @@ public class JVMBasic {
                /*
                 * output filename
                 */
-               final String fn = JVMBasicCompiler.classNameFromFileName(filename);
+               final String fn = FilenameUtil.classNameFromFileName(filename);
                /*
                 * compile
                 */

@@ -19,7 +19,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.ParserRuleContext;
 
-import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.FunctionRegistry;
 
@@ -36,12 +35,11 @@ public class Dispatcher {
             final Object o = generationContext.getParseTree().getPayload();
             if (o.getClass() == CommonToken.class) {
                final CommonToken commonToken = (CommonToken) o;
-               final String tokenName = jvmBasicParser.tokenNames[commonToken.getType()];
-               final Function function = FunctionRegistry.getInstance().getFunction(tokenName);
+               final Function function = FunctionRegistry.getInstance().getTokenFunction(commonToken.getType());
                return function.execute(generationContext);
             } else {
                final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
-               final Function function = FunctionRegistry.getInstance().getFunction(parserRuleContext.start.getText());
+               final Function function = FunctionRegistry.getInstance().getRuleFunction(parserRuleContext.getRuleIndex());
                return function.execute(generationContext);
             }
          }

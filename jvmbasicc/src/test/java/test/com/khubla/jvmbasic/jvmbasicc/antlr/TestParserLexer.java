@@ -16,16 +16,20 @@ package test.com.khubla.jvmbasic.jvmbasicc.antlr;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 import com.khubla.jvmbasic.jvmbasicc.util.TestUtil;
 
 /**
@@ -36,6 +40,15 @@ public class TestParserLexer {
     * root
     */
    private static final String BASROOT = "src/test/resources/bas/";
+   /**
+    * parse tree dir
+    */
+   private static final String PARSETREE = "parsetree/";
+
+   @BeforeTest
+   public void setup() {
+      new File(PARSETREE).mkdirs();
+   }
 
    @Test
    public void test1() {
@@ -50,7 +63,9 @@ public class TestParserLexer {
                System.out.println("Parsing: " + filename);
                try {
                   final ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
-                  final TreePrinter treePrinter = new TreePrinter();
+                  String fn = "parsetree/" + FilenameUtil.classNameFromFileName(filename) + ".txt";
+                  FileOutputStream fos = new FileOutputStream(fn);
+                  final TreePrinter treePrinter = new TreePrinter(fos);
                   treePrinter.printTree(parseTree);
                } catch (final Exception e) {
                   failures++;

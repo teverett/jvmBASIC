@@ -1,1 +1,2 @@
-100 PRINT 'Hello world"
+100 PRINT "Hello world"
+

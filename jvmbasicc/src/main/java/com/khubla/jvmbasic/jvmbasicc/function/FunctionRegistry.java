@@ -59,6 +59,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NUMBERFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PLUSFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PRINTFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.REMFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
@@ -97,84 +98,106 @@ public class FunctionRegistry {
    }
 
    /**
-    * hash of all functions
+    * hash of token functions
     */
-   private final Hashtable<String, Function> functions = new Hashtable<String, Function>();
+   private final Hashtable<Integer, Function> tokenFunctions = new Hashtable<Integer, Function>();
+   /**
+    * hash of rule functions
+    */
+   private final Hashtable<Integer, Function> ruleFunctions = new Hashtable<Integer, Function>();
 
    /**
     * ctor
     */
    private FunctionRegistry() {
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.REM], new REMFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.PRINT], new PRINTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.STRINGLITERAL], new STRINGLITERALFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.NUMBER], new NUMBERFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.PLUS], new PLUSFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.TIMES], new TIMESFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.CR], new CRFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LET], new LETFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.EQ], new EQFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LETTERS], new LETTERSFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.FOR], new FORFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.NEXT], new NEXTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.TO], new TOFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.STEP], new STEPFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.END], new ENDFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RND], new RNDFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LPAREN], new LPARENFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RPAREN], new RPARENFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.INPUT], new INPUTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.COMMA], new COMMAFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.IF], new IFFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LT], new LTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.GT], new GTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.THEN], new THENFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LTE], new LTEFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.GTE], new GTEFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.DIM], new DIMFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.ABS], new ABSFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.MINUS], new MINUSFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.DIV], new DIVFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.SEMICOLON], new SEMICOLONFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.COLON], new COLONFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.GOTO], new GOTOFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.SQR], new SQRFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LEN], new LENFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.SIN], new SINFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.COS], new COSFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.TAN], new TANFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.ATN], new ATANFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LOG], new LOGFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.EXP], new EXPFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.INTF], new INTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.GOSUB], new GOSUBFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RETURN], new RETURNFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.MID], new MIDFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.LEFT], new LEFTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RIGHT], new RIGHTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.STR], new STRFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.VAL], new VALFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.DATA], new DATAFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.READ], new READFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.RESTORE], new RESTOREFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.QUESTION], new PRINTFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.SPC], new SPCFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.FLOAT], new FLOATFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.VTAB], new VTABFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.HTAB], new HTABFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.CALL], new CALLFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.NEQ], new NEQFunction());
-      functions.put(jvmBasicParser.tokenNames[jvmBasicLexer.INCLUDE], new INCLUDEFunction());
+      populateTokenRegistry();
+      populateRuleRegistry();
+   }
+
+   public Function getRuleFunction(int id) throws Exception {
+      if (ruleFunctions.containsKey(id)) {
+         return ruleFunctions.get(id);
+      } else {
+         throw new Exception("Unknown rule function '" + id + "'");
+      }
    }
 
    /**
     * get
     */
-   public Function getFunction(String name) throws Exception {
-      if (functions.containsKey("'" + name + "'")) {
-         return functions.get("'" + name + "'");
+   public Function getTokenFunction(int id) throws Exception {
+      if (tokenFunctions.containsKey(id)) {
+         return tokenFunctions.get(id);
       } else {
-         throw new Exception("Unknown function '" + name + "'");
+         throw new Exception("Unknown token function '" + id + "'");
       }
+   }
+
+   private void populateRuleRegistry() {
+      ruleFunctions.put(jvmBasicParser.RULE_prog, new PROGFunction());
+      ruleFunctions.put(jvmBasicParser.RULE_amprstmt, new PROGFunction());
+   }
+
+   private void populateTokenRegistry() {
+      tokenFunctions.put(jvmBasicParser.REM, new REMFunction());
+      tokenFunctions.put(jvmBasicParser.PRINT, new PRINTFunction());
+      tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALFunction());
+      tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERFunction());
+      tokenFunctions.put(jvmBasicLexer.PLUS, new PLUSFunction());
+      tokenFunctions.put(jvmBasicParser.TIMES, new TIMESFunction());
+      tokenFunctions.put(jvmBasicParser.CR, new CRFunction());
+      tokenFunctions.put(jvmBasicParser.LET, new LETFunction());
+      tokenFunctions.put(jvmBasicParser.EQ, new EQFunction());
+      tokenFunctions.put(jvmBasicParser.LETTERS, new LETTERSFunction());
+      tokenFunctions.put(jvmBasicParser.FOR, new FORFunction());
+      tokenFunctions.put(jvmBasicParser.NEXT, new NEXTFunction());
+      tokenFunctions.put(jvmBasicParser.TO, new TOFunction());
+      tokenFunctions.put(jvmBasicParser.STEP, new STEPFunction());
+      tokenFunctions.put(jvmBasicParser.END, new ENDFunction());
+      tokenFunctions.put(jvmBasicParser.RND, new RNDFunction());
+      tokenFunctions.put(jvmBasicParser.LPAREN, new LPARENFunction());
+      tokenFunctions.put(jvmBasicParser.RPAREN, new RPARENFunction());
+      tokenFunctions.put(jvmBasicParser.INPUT, new INPUTFunction());
+      tokenFunctions.put(jvmBasicParser.COMMA, new COMMAFunction());
+      tokenFunctions.put(jvmBasicParser.IF, new IFFunction());
+      tokenFunctions.put(jvmBasicParser.LT, new LTFunction());
+      tokenFunctions.put(jvmBasicParser.GT, new GTFunction());
+      tokenFunctions.put(jvmBasicParser.THEN, new THENFunction());
+      tokenFunctions.put(jvmBasicParser.LTE, new LTEFunction());
+      tokenFunctions.put(jvmBasicParser.GTE, new GTEFunction());
+      tokenFunctions.put(jvmBasicParser.DIM, new DIMFunction());
+      tokenFunctions.put(jvmBasicParser.ABS, new ABSFunction());
+      tokenFunctions.put(jvmBasicParser.MINUS, new MINUSFunction());
+      tokenFunctions.put(jvmBasicParser.DIV, new DIVFunction());
+      tokenFunctions.put(jvmBasicParser.SEMICOLON, new SEMICOLONFunction());
+      tokenFunctions.put(jvmBasicParser.COLON, new COLONFunction());
+      tokenFunctions.put(jvmBasicParser.GOTO, new GOTOFunction());
+      tokenFunctions.put(jvmBasicParser.SQR, new SQRFunction());
+      tokenFunctions.put(jvmBasicParser.LEN, new LENFunction());
+      tokenFunctions.put(jvmBasicParser.SIN, new SINFunction());
+      tokenFunctions.put(jvmBasicParser.COS, new COSFunction());
+      tokenFunctions.put(jvmBasicParser.TAN, new TANFunction());
+      tokenFunctions.put(jvmBasicParser.ATN, new ATANFunction());
+      tokenFunctions.put(jvmBasicParser.LOG, new LOGFunction());
+      tokenFunctions.put(jvmBasicParser.EXP, new EXPFunction());
+      tokenFunctions.put(jvmBasicParser.INTF, new INTFunction());
+      tokenFunctions.put(jvmBasicParser.GOSUB, new GOSUBFunction());
+      tokenFunctions.put(jvmBasicParser.RETURN, new RETURNFunction());
+      tokenFunctions.put(jvmBasicParser.MID, new MIDFunction());
+      tokenFunctions.put(jvmBasicParser.LEFT, new LEFTFunction());
+      tokenFunctions.put(jvmBasicParser.RIGHT, new RIGHTFunction());
+      tokenFunctions.put(jvmBasicParser.STR, new STRFunction());
+      tokenFunctions.put(jvmBasicParser.VAL, new VALFunction());
+      tokenFunctions.put(jvmBasicParser.DATA, new DATAFunction());
+      tokenFunctions.put(jvmBasicParser.READ, new READFunction());
+      tokenFunctions.put(jvmBasicParser.RESTORE, new RESTOREFunction());
+      tokenFunctions.put(jvmBasicParser.QUESTION, new PRINTFunction());
+      tokenFunctions.put(jvmBasicParser.SPC, new SPCFunction());
+      tokenFunctions.put(jvmBasicParser.FLOAT, new FLOATFunction());
+      tokenFunctions.put(jvmBasicParser.VTAB, new VTABFunction());
+      tokenFunctions.put(jvmBasicParser.HTAB, new HTABFunction());
+      tokenFunctions.put(jvmBasicParser.CALL, new CALLFunction());
+      tokenFunctions.put(jvmBasicParser.NEQ, new NEQFunction());
+      tokenFunctions.put(jvmBasicParser.INCLUDE, new INCLUDEFunction());
    }
 }

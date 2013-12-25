@@ -1,8 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicc.util;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -23,25 +21,11 @@ import java.util.List;
 /**
  * @author tom
  */
-public class TestUtil {
-   public static List<String> getTestFiles(String dir) throws Exception {
-      return getTestFiles(dir, new ArrayList<String>());
-   }
-
-   private static List<String> getTestFiles(String dir, List<String> files) throws Exception {
-      final File file = new File(dir);
-      final String[] list = file.list();
-      for (int i = 0; i < list.length; i++) {
-         {
-            final String fileName = dir + list[i];
-            final File f2 = new File(fileName);
-            if (f2.isDirectory()) {
-               getTestFiles(fileName + "/", files);
-            } else {
-               files.add(fileName);
-            }
-         }
-      }
-      return files;
+public class FilenameUtil {
+   /**
+    * generate the class name from the supplied BASIC filename
+    */
+   public static String classNameFromFileName(String filename) {
+      return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
    }
 }

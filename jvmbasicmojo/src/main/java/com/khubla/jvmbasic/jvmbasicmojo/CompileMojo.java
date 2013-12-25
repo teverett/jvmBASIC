@@ -13,6 +13,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /*
  * mvn help:describe -DartifactId=jvmbasic-maven-plugin -DgroupId=com.khubla.jvmbasic -Dgoal=compile -Ddetail
@@ -94,7 +95,7 @@ public class CompileMojo extends AbstractMojo {
    private void processFile(File file) throws Exception {
       try {
          final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
-         final String classname = JVMBasicCompiler.classNameFromFileName(file.getName());
+         final String classname = FilenameUtil.classNameFromFileName(file.getName());
          System.out.println("Compiling '" + file.getName() + "'");
          final byte[] byteCode = jvmBasicCompiler.compile(new FileInputStream(file), classname, verbose);
          JVMBasicCompiler.writeClassFile(byteCode, classname, targetDir);
