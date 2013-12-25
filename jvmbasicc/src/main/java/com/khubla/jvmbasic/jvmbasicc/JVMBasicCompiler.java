@@ -88,21 +88,6 @@ public class JVMBasicCompiler {
    }
 
    /**
-    * compile a BAS file to a class file and return the classname
-    */
-   public String compileToClassfile(String filename, String outputDir, boolean verboseOutput) throws Exception {
-      try {
-         FileInputStream fis = new FileInputStream(filename);
-         final String className = FilenameUtil.classNameFromFileName(filename);
-         byte[] classbytes = compile(fis, className, verboseOutput);
-         writeClassFile(classbytes, className, outputDir);
-         return className;
-      } catch (Exception e) {
-         throw new Exception("Exception in compileToClassfile", e);
-      }
-   }
-
-   /**
     * compile. This method generates the class definition
     */
    public byte[] compile(InputStream inputStream, String classname, boolean verboseOutput) throws Exception {
@@ -176,6 +161,21 @@ public class JVMBasicCompiler {
          System.out.println("Compiling '" + filename + "' to class: '" + className + "'");
       }
       return this.compile(inputStream, className, verboseOutput);
+   }
+
+   /**
+    * compile a BAS file to a class file and return the classname
+    */
+   public String compileToClassfile(String filename, String outputDir, boolean verboseOutput) throws Exception {
+      try {
+         final FileInputStream fis = new FileInputStream(filename);
+         final String className = FilenameUtil.classNameFromFileName(filename);
+         final byte[] classbytes = compile(fis, className, verboseOutput);
+         writeClassFile(classbytes, className, outputDir);
+         return className;
+      } catch (final Exception e) {
+         throw new Exception("Exception in compileToClassfile", e);
+      }
    }
 
    /**

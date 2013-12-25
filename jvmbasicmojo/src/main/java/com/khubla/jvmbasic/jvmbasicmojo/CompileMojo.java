@@ -1,7 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicmojo;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -13,7 +12,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
-import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /*
  * mvn help:describe -DartifactId=jvmbasic-maven-plugin -DgroupId=com.khubla.jvmbasic -Dgoal=compile -Ddetail
@@ -95,11 +93,10 @@ public class CompileMojo extends AbstractMojo {
    private void processFile(File file) throws Exception {
       try {
          final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
-         final String classname = FilenameUtil.classNameFromFileName(file.getName());
-         System.out.println("Compiling '" + file.getName() + "' to class '" + classname + "'");
-         final byte[] byteCode = jvmBasicCompiler.compile(new FileInputStream(file), classname, verbose);
-         JVMBasicCompiler.writeClassFile(byteCode, classname, targetDir);
+         final String classname = jvmBasicCompiler.compileToClassfile(file.getAbsolutePath(), targetDir, verbose);
+         System.out.println("Compiled '" + file.getName() + "' to class '" + classname + "'");
       } catch (final Exception e) {
+         throw e;
       }
    }
 
