@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -47,7 +48,7 @@ public class INPUTFunction extends BaseFunction {
          /*
           * process the contained nodes. This will push the String prompt onto the stack, and a variable name
           */
-         processTree(generationContext);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * input with a prompt? INPUT <prompt> , <variable>
           */

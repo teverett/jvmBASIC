@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -38,7 +39,7 @@ public class READFunction extends BaseFunction {
          /*
           * process subtree
           */
-         processTree(generationContext);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * get the data
           */

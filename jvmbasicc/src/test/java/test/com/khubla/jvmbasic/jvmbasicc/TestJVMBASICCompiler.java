@@ -16,9 +16,6 @@ package test.com.khubla.jvmbasic.jvmbasicc;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.io.FileInputStream;
-import java.io.InputStream;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,9 +31,8 @@ public class TestJVMBASICCompiler {
    public void test1() {
       try {
          final String fileName = "src/test/resources/bas/a/hello.bas";
-         final InputStream inputStream = new FileInputStream(fileName);
          final JVMBasicCompiler compiler = new JVMBasicCompiler();
-         final byte[] bytecode = compiler.compile(inputStream, "hello", true);
+         final byte[] bytecode = compiler.compile(fileName, true);
          Assert.assertNotNull(bytecode);
       } catch (final Exception e) {
          e.printStackTrace();

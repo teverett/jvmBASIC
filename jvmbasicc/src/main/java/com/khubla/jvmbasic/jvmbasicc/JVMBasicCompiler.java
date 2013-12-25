@@ -17,6 +17,7 @@ package com.khubla.jvmbasic.jvmbasicc;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
@@ -37,7 +38,8 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /**
  * @author tom
@@ -147,6 +149,18 @@ public class JVMBasicCompiler {
       } catch (final Exception e) {
          throw new Exception("Exception in compile", e);
       }
+   }
+
+   /**
+    * compile. This method generates the class definition
+    */
+   public byte[] compile(String filename, boolean verboseOutput) throws Exception {
+      final InputStream inputStream = new FileInputStream(filename);
+      final String className = FilenameUtil.classNameFromFileName(filename);
+      if (verboseOutput) {
+         System.out.println("Compiling '" + filename + "' to class: '" + className + "'");
+      }
+      return this.compile(inputStream, className, verboseOutput);
    }
 
    /**
@@ -314,11 +328,12 @@ public class JVMBasicCompiler {
          /*
           * show the static analysis
           */
+         System.out.println("Static analyis results for '" + classname + "'");
          programStaticAnalysis.showAnalysisResults();
          /*
           * recurse into the parse tree
           */
-         final Function function = new PROGFunction();
+         final Function function = new progRule();
          final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, progContext, programStaticAnalysis);
          function.execute(generationContext);
          /*

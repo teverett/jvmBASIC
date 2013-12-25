@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -16,24 +16,18 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.DefaultStatementProcessor;
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
-import com.khubla.jvmbasic.jvmbasicc.compiler.processor.StatementsProcessor;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
  */
-public class PROGFunction extends BaseFunction {
+public class printlistRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         /*
-          * walk the statements
-          */
-         final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-         final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
-         statementsProcessor.process(defaultStatementProcessor);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * keep going
           */

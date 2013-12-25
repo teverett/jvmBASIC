@@ -19,6 +19,9 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
+/**
+ * @author tom
+ */
 public class DATAFunction extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {

@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -23,14 +23,14 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tome
  */
-public class TOFunction extends BaseFunction {
+public class lineRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         /*
-          * get the operands
-          */
          Dispatcher.dispatchChildren(generationContext);
+         /*
+          * keep going
+          */
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

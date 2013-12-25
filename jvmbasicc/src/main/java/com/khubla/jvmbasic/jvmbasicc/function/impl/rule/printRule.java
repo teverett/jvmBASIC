@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -30,14 +31,14 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * </code>
  *         </p>
  */
-public class PRINTFunction extends BaseFunction {
+public class printRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
           * process the subnodes
           */
-         processTree(generationContext);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * pop and print
           */

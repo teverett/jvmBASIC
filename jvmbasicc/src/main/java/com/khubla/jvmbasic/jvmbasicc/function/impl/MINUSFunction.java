@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -32,7 +33,7 @@ public class MINUSFunction extends BaseFunction {
          /*
           * get the operands
           */
-         processTree(generationContext);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * there should be at least two values
           */

@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -16,21 +16,28 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
+import org.antlr.v4.runtime.Token;
+
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
  */
-public class TOFunction extends BaseFunction {
+public class STRINGLITERALToken extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * get the operands
+          * get the literal
           */
-         Dispatcher.dispatchChildren(generationContext);
+         final Token token = (Token) generationContext.getParseTree().getPayload();
+         final String literal = token.getText();
+         /*
+          * push onto value stack
+          */
+         RTLHelper.push(generationContext, literal);
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

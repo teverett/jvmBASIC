@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
@@ -29,7 +30,7 @@ public class RIGHTFunction extends BaseFunction {
          /*
           * get the operands
           */
-         processTree(generationContext);
+         Dispatcher.dispatchChildren(generationContext);
          /*
           * there should be 5 values, of which are ( <string>, <length> )
           */

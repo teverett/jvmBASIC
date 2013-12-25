@@ -56,10 +56,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.MIDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.MINUSFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEQFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.NUMBERFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.PLUSFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.PRINTFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.REMFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
@@ -73,13 +70,29 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.SPCFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.SQRFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.STEPFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.STRFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.STRINGLITERALFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TANFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.THENFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TIMESFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.TOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.VALFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.VTABFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.addingExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.amprstmtRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.expressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.funcRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.lineRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.linenumberRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printlistRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.relationalExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.signExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.statementRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.token.NUMBERToken;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.token.PRINTToken;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.token.STRINGLITERALToken;
 
 /**
  * @author tome
@@ -118,7 +131,7 @@ public class FunctionRegistry {
       if (ruleFunctions.containsKey(id)) {
          return ruleFunctions.get(id);
       } else {
-         throw new Exception("Unknown rule function '" + id + "'");
+         throw new Exception("Unknown rule function '" + jvmBasicParser.ruleNames[id] + " (" + id + ")'");
       }
    }
 
@@ -129,20 +142,32 @@ public class FunctionRegistry {
       if (tokenFunctions.containsKey(id)) {
          return tokenFunctions.get(id);
       } else {
-         throw new Exception("Unknown token function '" + id + "'");
+         throw new Exception("Unknown token function '" + jvmBasicParser.tokenNames[id] + " (" + id + ")'  ");
       }
    }
 
    private void populateRuleRegistry() {
-      ruleFunctions.put(jvmBasicParser.RULE_prog, new PROGFunction());
-      ruleFunctions.put(jvmBasicParser.RULE_amprstmt, new PROGFunction());
+      ruleFunctions.put(jvmBasicParser.RULE_prog, new progRule());
+      ruleFunctions.put(jvmBasicParser.RULE_amprstmt, new amprstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_line, new lineRule());
+      ruleFunctions.put(jvmBasicParser.RULE_linenumber, new linenumberRule());
+      ruleFunctions.put(jvmBasicParser.RULE_statement, new statementRule());
+      ruleFunctions.put(jvmBasicParser.RULE_printstmt1, new printRule());
+      ruleFunctions.put(jvmBasicParser.RULE_printlist, new printlistRule());
+      ruleFunctions.put(jvmBasicParser.RULE_expression, new expressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_relationalExpression, new relationalExpressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_addingExpression, new addingExpressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_multiplyingExpression, new multiplyingExpressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_exponentExpression, new exponentExpressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_signExpression, new signExpressionRule());
+      ruleFunctions.put(jvmBasicParser.RULE_func, new funcRule());
    }
 
    private void populateTokenRegistry() {
+      tokenFunctions.put(jvmBasicParser.PRINT, new PRINTToken());
       tokenFunctions.put(jvmBasicParser.REM, new REMFunction());
-      tokenFunctions.put(jvmBasicParser.PRINT, new PRINTFunction());
-      tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALFunction());
-      tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERFunction());
+      tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALToken());
+      tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERToken());
       tokenFunctions.put(jvmBasicLexer.PLUS, new PLUSFunction());
       tokenFunctions.put(jvmBasicParser.TIMES, new TIMESFunction());
       tokenFunctions.put(jvmBasicParser.CR, new CRFunction());
@@ -191,7 +216,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.DATA, new DATAFunction());
       tokenFunctions.put(jvmBasicParser.READ, new READFunction());
       tokenFunctions.put(jvmBasicParser.RESTORE, new RESTOREFunction());
-      tokenFunctions.put(jvmBasicParser.QUESTION, new PRINTFunction());
+      tokenFunctions.put(jvmBasicParser.QUESTION, new printRule());
       tokenFunctions.put(jvmBasicParser.SPC, new SPCFunction());
       tokenFunctions.put(jvmBasicParser.FLOAT, new FLOATFunction());
       tokenFunctions.put(jvmBasicParser.VTAB, new VTABFunction());

@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  */
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.FunctionRegistry;
@@ -46,6 +47,27 @@ public class Dispatcher {
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in dispatch at line " + generationContext.getLineNumber(), e);
+      }
+   }
+
+   /**
+    * dispatch to all children of the current context
+    */
+   public static boolean dispatchChildren(GenerationContext generationContext) throws Exception {
+      try {
+         if (null != generationContext.getParseTree()) {
+            for (int i = 0; i < generationContext.getParseTree().getChildCount(); i++) {
+               final ParseTree parseTree = generationContext.getParseTree().getChild(i);
+               final GenerationContext childGenerationContext = new GenerationContext(generationContext, parseTree);
+               // final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(childGenerationContext);
+               // final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
+               // statementsProcessor.process(defaultStatementProcessor);
+               Dispatcher.dispatch(childGenerationContext);
+            }
+         }
+         return true;
+      } catch (final Exception e) {
+         throw new Exception("Exception in dispatchChildren at line " + generationContext.getLineNumber(), e);
       }
    }
 }
