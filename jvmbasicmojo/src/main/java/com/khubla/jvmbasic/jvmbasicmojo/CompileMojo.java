@@ -96,7 +96,7 @@ public class CompileMojo extends AbstractMojo {
       try {
          final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
          final String classname = FilenameUtil.classNameFromFileName(file.getName());
-         System.out.println("Compiling '" + file.getName() + "'");
+         System.out.println("Compiling '" + file.getName() + "' to class '" + classname + "'");
          final byte[] byteCode = jvmBasicCompiler.compile(new FileInputStream(file), classname, verbose);
          JVMBasicCompiler.writeClassFile(byteCode, classname, targetDir);
       } catch (final Exception e) {
