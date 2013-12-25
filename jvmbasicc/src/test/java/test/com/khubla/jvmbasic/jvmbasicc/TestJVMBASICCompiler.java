@@ -81,8 +81,23 @@ public class TestJVMBASICCompiler {
       testSingleBASFile("src/test/resources/bas/a/hello.bas");
    }
 
-   @Test(enabled = true)
+   @Test(enabled = false)
    public void testEBas() {
       testSingleBASFile("src/test/resources/bas/a/e.bas");
+   }
+
+   @Test(enabled = false)
+   public void testPrintBas() {
+      testSingleBASFile("src/test/resources/bas/a/print.bas");
+   }
+
+   @Test(enabled = false)
+   public void testIfBas() {
+      testSingleBASFile("src/test/resources/bas/a/if.bas");
+   }
+
+   @Test(enabled = true)
+   public void testForBas() {
+      testSingleBASFile("src/test/resources/bas/a/for.bas");
    }
 }
