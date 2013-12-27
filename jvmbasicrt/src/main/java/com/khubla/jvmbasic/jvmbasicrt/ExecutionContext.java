@@ -23,6 +23,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * The execution context is essentially the RAM for the BASIC program. It contains the variables and a value stack.
+ * 
  * @author tome
  */
 public class ExecutionContext {
