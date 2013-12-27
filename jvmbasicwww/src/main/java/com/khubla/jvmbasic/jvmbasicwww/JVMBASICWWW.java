@@ -41,7 +41,6 @@ public class JVMBASICWWW {
     */
    private static final String PORT_OPTION = "port";
 
-   @SuppressWarnings("static-access")
    public static void main(String[] args) {
       try {
          System.out.println("khubla.com jvmBasic www server");

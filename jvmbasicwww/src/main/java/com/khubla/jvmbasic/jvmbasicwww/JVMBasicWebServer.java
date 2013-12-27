@@ -47,6 +47,7 @@ public class JVMBasicWebServer {
     * accept incoming connections
     */
    public void listen() throws Exception {
+      ServerSocket serverSocket = null;
       try {
          /*
           * thread pool
@@ -56,7 +57,7 @@ public class JVMBasicWebServer {
          /*
           * listener
           */
-         final ServerSocket serverSocket = new ServerSocket(serverConfiguration.getPort());
+         serverSocket = new ServerSocket(serverConfiguration.getPort());
          Socket clientSocket = null;
          while (true) {
             try {
@@ -75,6 +76,11 @@ public class JVMBasicWebServer {
          }
       } catch (final Exception e) {
          throw new Exception("Exception in accept", e);
+      } finally {
+         if (null != serverSocket) {
+            serverSocket.close();
+            serverSocket = null;
+         }
       }
    }
 }
