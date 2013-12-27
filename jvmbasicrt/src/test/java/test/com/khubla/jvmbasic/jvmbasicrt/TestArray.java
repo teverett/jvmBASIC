@@ -29,12 +29,33 @@ public class TestArray {
    @Test
    public void testArray() {
       try {
+         /*
+          * create array
+          */
          final Array array = new Array();
+         /*
+          * currently empty
+          */
          final int[] indices = { 1, 2, };
          Assert.assertNull(array.getValue(indices));
+         Assert.assertTrue(array.size() == 0);
+         /*
+          * a value
+          */
          final Value value = new Value("343434");
          array.putValue(value, indices);
          Assert.assertNotNull(array.getValue(indices));
+         Assert.assertTrue(array.size() == 1);
+         /*
+          * get back an empty cell
+          */
+         Value v = array.getValue(new int[] { 6, 1 });
+         Assert.assertTrue(null == v);
+         /*
+          * get back the cell we put
+          */
+         v = array.getValue(new int[] { 1, 2 });
+         Assert.assertTrue(v.getInteger() == 343434);
       } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();

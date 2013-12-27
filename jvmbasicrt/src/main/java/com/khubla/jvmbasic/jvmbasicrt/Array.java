@@ -19,13 +19,13 @@ package com.khubla.jvmbasic.jvmbasicrt;
 import java.util.Hashtable;
 
 /**
- * implements a BASIC-like multidimensional array
+ * implements a BASIC-like multidimensional array of Values. The indices are arbitrary indices on orthogonal axes.
  * 
  * @author tome
  */
 public class Array {
    /**
-    * the actual store is a hashtable
+    * the actual store is a Hashtable
     */
    private final Hashtable<String, Value> data = new Hashtable<String, Value>();
 
@@ -35,8 +35,8 @@ public class Array {
    private String generateKey(int[] indices) {
       String ret = "";
       for (int i = 0; i < indices.length; i++) {
-         ret += indices;
-         if (i != indices.length) {
+         ret += indices[i];
+         if (i != (indices.length - 1)) {
             ret += ":";
          }
       }
