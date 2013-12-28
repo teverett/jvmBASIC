@@ -19,7 +19,10 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.FunctionRegistry;
 
@@ -27,6 +30,11 @@ import com.khubla.jvmbasic.jvmbasicc.function.FunctionRegistry;
  * dispatcher
  */
 public class Dispatcher {
+   /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(Dispatcher.class);
+
    /**
     * dispatch
     */
@@ -37,10 +45,12 @@ public class Dispatcher {
             if (o.getClass() == CommonToken.class) {
                final CommonToken commonToken = (CommonToken) o;
                final Function function = FunctionRegistry.getInstance().getTokenFunction(commonToken.getType());
+               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for token '" + jvmBasicParser.tokenNames[commonToken.getType()] + "'");
                return function.execute(generationContext);
             } else {
                final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
                final Function function = FunctionRegistry.getInstance().getRuleFunction(parserRuleContext.getRuleIndex());
+               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for rule '" + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "'");
                return function.execute(generationContext);
             }
          }
@@ -62,12 +72,16 @@ public class Dispatcher {
                // final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(childGenerationContext);
                // final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
                // statementsProcessor.process(defaultStatementProcessor);
-               Dispatcher.dispatch(childGenerationContext);
+               try {
+                  Dispatcher.dispatch(childGenerationContext);
+               } catch (final Exception e) {
+                  throw new Exception("Exception in dispatchChildren at line " + childGenerationContext.getLineNumber(), e);
+               }
             }
          }
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in dispatchChildren at line " + generationContext.getLineNumber(), e);
+         throw new Exception("Exception in dispatchChildren", e);
       }
    }
 }

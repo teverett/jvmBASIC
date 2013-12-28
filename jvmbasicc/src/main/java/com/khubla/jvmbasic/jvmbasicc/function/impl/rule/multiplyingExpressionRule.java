@@ -66,7 +66,10 @@ public class multiplyingExpressionRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V");
             return true;
          } else {
-            throw new Exception("multiplyingExpressionRule requires two or more values");
+            /*
+             * do nothing
+             */
+            return true;
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);
