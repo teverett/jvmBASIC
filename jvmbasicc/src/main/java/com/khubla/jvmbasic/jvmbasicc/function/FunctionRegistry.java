@@ -151,6 +151,7 @@ public class FunctionRegistry {
    private void populateTokenRegistry() {
       tokenFunctions.put(jvmBasicParser.EQ, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.PRINT, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.QUESTION, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.COMMENT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALToken());
       tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERToken());
@@ -210,5 +211,6 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.LET, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LIST, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.RUN, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.REM, new DefaultToken());
    }
 }
