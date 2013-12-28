@@ -2,6 +2,9 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements;
 
 import java.util.TreeMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
@@ -9,6 +12,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LinesDatabase;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIterator;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIteratorCallback;
+import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -31,6 +35,10 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIteratorCallback
  */
 public class StatementsDatabase implements Analyser, StatementIteratorCallback {
    /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
+   /**
     * all lines
     */
    private final TreeMap<Integer, StatementDeclaration> statements = new TreeMap<Integer, StatementDeclaration>();
@@ -51,10 +59,10 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
       /*
        * walk the statements
        */
-      System.out.println("Statements");
+      logger.info("Statements");
       for (final StatementDeclaration statementDeclaration : statements.values()) {
-         System.out.println("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex()
-               + "] " + statementDeclaration.getAmprstmtContext().getText());
+         logger.info("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex() + "] "
+               + statementDeclaration.getAmprstmtContext().getText());
       }
    }
 

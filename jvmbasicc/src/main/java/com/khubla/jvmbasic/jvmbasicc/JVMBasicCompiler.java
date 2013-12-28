@@ -28,6 +28,8 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
@@ -40,11 +42,17 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
 import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
+import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /**
  * @author tom
  */
 public class JVMBasicCompiler {
+   /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
+
    /**
     * parse an input file
     */
@@ -69,7 +77,7 @@ public class JVMBasicCompiler {
     */
    public static void writeClassFile(byte[] byteCode, String classname, String outputDirectory) throws Exception {
       try {
-         System.out.println("Writing class '" + classname + "' to file '" + classname + ".class'");
+         logger.info("Writing class '" + classname + "' to file '" + classname + ".class'");
          if (null != byteCode) {
             FileOutputStream fos = null;
             if (null != outputDirectory) {
@@ -95,7 +103,7 @@ public class JVMBasicCompiler {
          /*
           * a message
           */
-         System.out.println("Parsing input for classname: '" + classname + "'");
+         logger.info("Parsing input for classname: '" + classname + "'");
          /*
           * get tree
           */
@@ -108,7 +116,7 @@ public class JVMBasicCompiler {
          /*
           * a message
           */
-         System.out.println("Generating Bytecode for class '" + classname + "'");
+         logger.info("Generating Bytecode for class '" + classname + "'");
          /*
           * class
           */
@@ -158,7 +166,7 @@ public class JVMBasicCompiler {
       final InputStream inputStream = new FileInputStream(filename);
       final String className = FilenameUtil.classNameFromFileName(filename);
       if (verboseOutput) {
-         System.out.println("Compiling '" + filename + "' to class: '" + className + "'");
+         logger.info("Compiling '" + filename + "' to class: '" + className + "'");
       }
       return this.compile(inputStream, className, verboseOutput);
    }
@@ -343,7 +351,7 @@ public class JVMBasicCompiler {
          /*
           * show the static analysis
           */
-         System.out.println("Static analyis results for '" + classname + "'");
+         logger.info("Static analyis results for '" + classname + "'");
          programStaticAnalysis.showAnalysisResults();
          /*
           * recurse into the parse tree
@@ -366,10 +374,10 @@ public class JVMBasicCompiler {
          /*
           * show all the other local variables
           */
-         System.out.println("JVM local variables");
+         logger.info("JVM local variables");
          for (int i = 1; i < (GenerationContext.getLocalvariables().size() + 1); i++) {
             final LocalVariableDeclaration lvd = GenerationContext.getLocalvariables().get(i);
-            System.out.println("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
+            logger.info("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
          }
          /*
           * we are done

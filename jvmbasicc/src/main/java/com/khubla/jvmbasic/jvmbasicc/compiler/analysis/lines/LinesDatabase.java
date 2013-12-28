@@ -3,6 +3,8 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines;
 import java.util.TreeMap;
 
 import org.objectweb.asm.Label;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
@@ -10,6 +12,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIterator;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIteratorCallback;
+import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -31,6 +34,10 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIteratorCallback;
  * @author tom
  */
 public class LinesDatabase implements LineIteratorCallback, Analyser {
+   /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
    /**
     * all lines
     */
@@ -56,9 +63,9 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
 
    @Override
    public void dumpAnalysis() throws Exception {
-      System.out.println("Lines");
+      logger.info("Lines");
       for (final LineDeclaration lineDeclaraction : lines.values()) {
-         System.out.print("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
+         logger.info("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
       }
    }
 

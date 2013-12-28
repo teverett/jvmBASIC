@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatastmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
+import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -29,6 +32,10 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
  * @author tom
  */
 public class DatasDatabase implements Analyser {
+   /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
    /**
     * DATA declarations
     */
