@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicrt;
+package com.khubla.jvmbasic.jvmbasicrt.support;
 
 import java.io.InputStream;
 import java.io.OutputStream;

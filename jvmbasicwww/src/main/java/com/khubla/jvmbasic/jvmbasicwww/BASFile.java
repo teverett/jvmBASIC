@@ -24,7 +24,7 @@ import java.net.URLClassLoader;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
-import com.khubla.jvmbasic.jvmbasicrt.Loader;
+import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
 
 /**
  * A simple index of all the BAS files

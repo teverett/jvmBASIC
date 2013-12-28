@@ -23,7 +23,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
-import com.khubla.jvmbasic.jvmbasicrt.Loader;
+import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
 
 /**
  * test compiler
