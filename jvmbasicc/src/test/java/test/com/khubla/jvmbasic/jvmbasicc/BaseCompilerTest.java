@@ -1,5 +1,13 @@
 package test.com.khubla.jvmbasic.jvmbasicc;
 
+import java.io.File;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+
+import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
+import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -16,49 +24,20 @@ package test.com.khubla.jvmbasic.jvmbasicc;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import java.io.File;
-
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
-import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
-
 /**
  * test compiler
  * 
  * @author tom
  */
-public class TestJVMBASICCompiler {
+public abstract class BaseCompilerTest {
    /**
     * parse tree dir
     */
-   private static final String TESTOUTPUT = "jvmbasic-test-output/";
+   protected static final String TESTOUTPUT = "jvmbasic-test-output/";
 
    @BeforeTest
    public void setup() {
       new File(TESTOUTPUT).mkdirs();
-   }
-
-   @Test(enabled = true)
-   public void testEBas() {
-      testSingleBASFile("src/test/resources/bas/a/e.bas");
-   }
-
-   @Test(enabled = false)
-   public void testForBas() {
-      testSingleBASFile("src/test/resources/bas/a/for.bas");
-   }
-
-   @Test(enabled = true)
-   public void testHelloBas() {
-      testSingleBASFile("src/test/resources/bas/a/hello.bas");
-   }
-
-   @Test(enabled = false)
-   public void testIfBas() {
-      testSingleBASFile("src/test/resources/bas/a/if.bas");
    }
 
    /**
@@ -70,12 +49,7 @@ public class TestJVMBASICCompiler {
       Loader.invokeMainMethod(instance);
    }
 
-   @Test(enabled = false)
-   public void testPrintBas() {
-      testSingleBASFile("src/test/resources/bas/a/print.bas");
-   }
-
-   private void testSingleBASFile(String filename) {
+   public void testSingleBASFile(String filename) {
       try {
          /*
           * compile to class file

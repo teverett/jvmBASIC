@@ -145,6 +145,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_varname, new varnameRule());
       ruleFunctions.put(jvmBasicParser.RULE_exprlist, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_ifstmt, new ifstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_liststmt, new DefaultRule());
    }
 
    private void populateTokenRegistry() {
@@ -205,5 +206,9 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.HTAB, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.CALL, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.INCLUDE, new INCLUDEFunction());
+      tokenFunctions.put(jvmBasicParser.CLEAR, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.LET, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.LIST, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.RUN, new DefaultToken());
    }
 }
