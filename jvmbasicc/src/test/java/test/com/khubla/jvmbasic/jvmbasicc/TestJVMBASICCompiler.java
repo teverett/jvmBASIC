@@ -41,7 +41,7 @@ public class TestJVMBASICCompiler {
       new File(TESTOUTPUT).mkdirs();
    }
 
-   @Test(enabled = false)
+   @Test(enabled = true)
    public void testEBas() {
       testSingleBASFile("src/test/resources/bas/a/e.bas");
    }
