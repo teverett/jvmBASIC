@@ -30,15 +30,11 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.GOTOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INCLUDEFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INPUTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.INTFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.LEFTFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.LENFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.MIDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.MINUSFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RETURNFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.RIGHTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RNDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.SEMICOLONFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.STEPFunction;
@@ -51,11 +47,15 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.atnfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.cosfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.ifstmtRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.leftfuncRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.lenfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.linenumberRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.logfuncRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.midfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.rightfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.sinfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.sqrfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.tanfuncRule;
@@ -154,6 +154,10 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_tanfunc, new tanfuncRule());
       ruleFunctions.put(jvmBasicParser.RULE_sqrfunc, new sqrfuncRule());
       ruleFunctions.put(jvmBasicParser.RULE_absfunc, new absfuncRule());
+      ruleFunctions.put(jvmBasicParser.RULE_lenfunc, new lenfuncRule());
+      ruleFunctions.put(jvmBasicParser.RULE_leftfunc, new leftfuncRule());
+      ruleFunctions.put(jvmBasicParser.RULE_rightfunc, new rightfuncRule());
+      ruleFunctions.put(jvmBasicParser.RULE_midfunc, new midfuncRule());
    }
 
    private void populateTokenRegistry() {
@@ -191,7 +195,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.COLON, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.GOTO, new GOTOFunction());
       tokenFunctions.put(jvmBasicParser.SQR, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.LEN, new LENFunction());
+      tokenFunctions.put(jvmBasicParser.LEN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SIN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.COS, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.TAN, new DefaultToken());
@@ -201,9 +205,9 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.INTF, new INTFunction());
       tokenFunctions.put(jvmBasicParser.GOSUB, new GOSUBFunction());
       tokenFunctions.put(jvmBasicParser.RETURN, new RETURNFunction());
-      tokenFunctions.put(jvmBasicParser.MID, new MIDFunction());
-      tokenFunctions.put(jvmBasicParser.LEFT, new LEFTFunction());
-      tokenFunctions.put(jvmBasicParser.RIGHT, new RIGHTFunction());
+      tokenFunctions.put(jvmBasicParser.MID, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.LEFT, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.RIGHT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.STR, new STRFunction());
       tokenFunctions.put(jvmBasicParser.VAL, new VALFunction());
       tokenFunctions.put(jvmBasicParser.DATA, new DATAFunction());
