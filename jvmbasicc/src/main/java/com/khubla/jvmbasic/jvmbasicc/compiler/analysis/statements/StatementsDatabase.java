@@ -12,7 +12,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LinesDatabase;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIterator;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIteratorCallback;
-import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -37,7 +36,7 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
    /**
     * logger
     */
-   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
+   private static final Logger logger = LoggerFactory.getLogger(StatementsDatabase.class);
    /**
     * all lines
     */

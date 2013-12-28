@@ -18,7 +18,6 @@ package test.com.khubla.jvmbasic.jvmbasicc.antlr;
  */
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -29,7 +28,6 @@ import org.testng.annotations.Test;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
-import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 import com.khubla.jvmbasic.jvmbasicc.util.TestUtil;
 
 /**
@@ -63,9 +61,7 @@ public class TestParserLexer {
                System.out.println("Parsing: " + filename);
                try {
                   final ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
-                  final String fn = TESTOUTPUT + FilenameUtil.classNameFromFileName(filename) + ".txt";
-                  final FileOutputStream fos = new FileOutputStream(fn);
-                  final TreePrinter treePrinter = new TreePrinter(fos);
+                  final TreePrinter treePrinter = new TreePrinter();
                   treePrinter.printTree(parseTree);
                } catch (final Exception e) {
                   failures++;

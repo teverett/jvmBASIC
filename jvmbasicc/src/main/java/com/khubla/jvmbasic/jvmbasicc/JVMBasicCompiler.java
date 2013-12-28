@@ -42,7 +42,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
 import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
-import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /**
  * @author tom
@@ -51,7 +50,7 @@ public class JVMBasicCompiler {
    /**
     * logger
     */
-   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
+   private static final Logger logger = LoggerFactory.getLogger(JVMBasicCompiler.class);
 
    /**
     * parse an input file

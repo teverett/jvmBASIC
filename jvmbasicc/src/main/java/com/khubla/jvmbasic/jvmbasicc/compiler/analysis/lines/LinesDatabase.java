@@ -12,7 +12,6 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIterator;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIteratorCallback;
-import com.khubla.jvmbasic.jvmbasicrt.ExecutionContext;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -37,7 +36,7 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
    /**
     * logger
     */
-   private static final Logger logger = LoggerFactory.getLogger(ExecutionContext.class);
+   private static final Logger logger = LoggerFactory.getLogger(LinesDatabase.class);
    /**
     * all lines
     */
