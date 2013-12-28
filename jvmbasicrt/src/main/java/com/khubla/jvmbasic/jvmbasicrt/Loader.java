@@ -65,9 +65,6 @@ public class Loader {
    }
 
    public static void setInputStream(Object instance, InputStream inputStream) throws IllegalAccessException, Exception {
-      /*
-       * find the field inputstream
-       */
       final Field inputStreamField = instance.getClass().getField("inputStream");
       if (null != inputStreamField) {
          inputStreamField.set(instance, inputStream);
