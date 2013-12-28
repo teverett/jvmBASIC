@@ -101,6 +101,7 @@ public class TestJVMBASICCompiler {
          /*
           * try it
           */
+         System.out.println("Running class '" + classname + "'");
          testInvocation(o);
       } catch (final Exception e) {
          e.printStackTrace();
