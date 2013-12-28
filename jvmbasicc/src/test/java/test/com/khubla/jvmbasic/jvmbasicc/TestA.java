@@ -51,4 +51,9 @@ public class TestA extends BaseCompilerTest {
    public void testSimpleIfBas() {
       testSingleBASFile("src/test/resources/bas/a/simpleif.bas");
    }
+
+   @Test(enabled = true)
+   public void testMathBas() {
+      testSingleBASFile("src/test/resources/bas/a/math.bas");
+   }
 }

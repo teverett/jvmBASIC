@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -31,7 +31,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * </code>
  *         </p>
  */
-public class LTFunction extends BaseFunction {
+public class LTToken extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
