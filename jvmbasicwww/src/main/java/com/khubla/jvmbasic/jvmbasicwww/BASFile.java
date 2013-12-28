@@ -19,14 +19,12 @@ package com.khubla.jvmbasic.jvmbasicwww;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
 import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
+import com.khubla.jvmbasic.jvmbasicrt.Loader;
 
 /**
  * A simple index of all the BAS files
@@ -75,32 +73,14 @@ public class BASFile {
           */
          final Object instance = clazz.newInstance();
          /*
-          * find the field inputstream
+          * set streams
           */
-         final Field inputStreamField = clazz.getField("inputStream");
-         if (null != inputStreamField) {
-            inputStreamField.set(instance, inputStream);
-         } else {
-            throw new Exception("Unable to find inputStream field");
-         }
+         Loader.setInputStream(instance, inputStream);
+         Loader.setOutputStreamField(instance, outputStream);
          /*
-          * find the field outputstream
+          * invoke
           */
-         final Field outputStreamField = clazz.getField("outputStream");
-         if (null != outputStreamField) {
-            outputStreamField.set(instance, new PrintStream(outputStream));
-         } else {
-            throw new Exception("Unable to find outputStream field");
-         }
-         /*
-          * find the program method
-          */
-         final Method programMethod = clazz.getMethod("program");
-         if (null != programMethod) {
-            programMethod.invoke(instance);
-         } else {
-            throw new Exception("Unable to find program method");
-         }
+         Loader.invokeMainMethod(instance);
       } catch (final Exception e) {
          throw new Exception("Exception in callBASClassInstance", e);
       }

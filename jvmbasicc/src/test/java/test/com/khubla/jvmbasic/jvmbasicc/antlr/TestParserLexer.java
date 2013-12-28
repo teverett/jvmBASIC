@@ -63,8 +63,8 @@ public class TestParserLexer {
                System.out.println("Parsing: " + filename);
                try {
                   final ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
-                  String fn = TESTOUTPUT + FilenameUtil.classNameFromFileName(filename) + ".txt";
-                  FileOutputStream fos = new FileOutputStream(fn);
+                  final String fn = TESTOUTPUT + FilenameUtil.classNameFromFileName(filename) + ".txt";
+                  final FileOutputStream fos = new FileOutputStream(fn);
                   final TreePrinter treePrinter = new TreePrinter(fos);
                   treePrinter.printTree(parseTree);
                } catch (final Exception e) {

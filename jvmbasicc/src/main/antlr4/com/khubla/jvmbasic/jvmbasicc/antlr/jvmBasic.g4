@@ -86,7 +86,7 @@ exponentExpression : signExpression (EXPONENT signExpression)*;
 multiplyingExpression  : exponentExpression ((TIMES|DIV) exponentExpression)*;
 addingExpression : multiplyingExpression ((PLUS|MINUS) multiplyingExpression)*;
 relationalExpression  : addingExpression ((relop) addingExpression)*;
-expression: relationalExpression ((AND|OR) relationalExpression)*;
+expression: func | (relationalExpression ((AND|OR) relationalExpression)*);
 
 // lists
 var: varname varsuffix?;
