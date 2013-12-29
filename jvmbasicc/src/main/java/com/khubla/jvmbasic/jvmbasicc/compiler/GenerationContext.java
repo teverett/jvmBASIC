@@ -17,7 +17,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import java.util.Hashtable;
-import java.util.Stack;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.ClassWriter;
@@ -86,10 +85,6 @@ public class GenerationContext {
     * local variable allocation index
     */
    private static int localVariableIndex = 1;
-   /**
-    * compiler stack
-    */
-   private final Stack<String> compilerStack;
 
    /**
     * copy ctor
@@ -101,7 +96,6 @@ public class GenerationContext {
       className = parent.className;
       forDeclarations = parent.forDeclarations;
       lineNumber = parent.lineNumber;
-      compilerStack = parent.compilerStack;
    }
 
    /**
@@ -114,7 +108,6 @@ public class GenerationContext {
       className = parent.className;
       forDeclarations = parent.forDeclarations;
       this.lineNumber = lineNumber;
-      compilerStack = parent.compilerStack;
    }
 
    public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, ParseTree parseTree, StaticAnalysis staticAnalysis) {
@@ -125,7 +118,6 @@ public class GenerationContext {
       programStaticAnalysis = staticAnalysis;
       forDeclarations = new Hashtable<String, ForDeclaration>();
       lineNumber = 0;
-      compilerStack = new Stack<String>();
    }
 
    /**
@@ -156,10 +148,6 @@ public class GenerationContext {
 
    public ClassWriter getClassWriter() {
       return classWriter;
-   }
-
-   public Stack<String> getCompilerStack() {
-      return compilerStack;
    }
 
    public int getLineNumber() {

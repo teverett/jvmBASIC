@@ -42,9 +42,9 @@ public class midfuncRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 7 values, of which are ( <string>, <start>, <length> )
+          * there should be 8 values. grammar is "MID LPAREN expression COMMA expression COMMA expression RPAREN;"
           */
-         if (generationContext.getParseTree().getChildCount() == 7) {
+         if (generationContext.getParseTree().getChildCount() == 8) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -73,7 +73,7 @@ public class midfuncRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V");
             return true;
          } else {
-            throw new Exception("Invalid number of values passed to DIM");
+            throw new Exception("Invalid number of values passed to midfuncRule");
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

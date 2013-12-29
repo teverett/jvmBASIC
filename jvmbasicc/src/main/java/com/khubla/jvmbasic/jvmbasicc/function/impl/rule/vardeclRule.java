@@ -16,21 +16,28 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.VardeclContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
+import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 
 /**
  * @author tome
  */
-public class varnameRule extends BaseFunction {
+public class vardeclRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * get the name onto the stack
+          * get the name, which consists of a varname node and optionally a varsuffix such as "$" or "%"
           */
-         final String varName = generationContext.getParseTree().getChild(0).getText();
-         generationContext.getCompilerStack().push(varName);
+         final VardeclContext vardeclContext = (VardeclContext) generationContext.getParseTree();
+         final String varName = VariableNameUtil.getVariableName(vardeclContext);
+         /*
+          * push it
+          */
+         RTLHelper.push(generationContext, varName);
          /*
           * keep going, without recursing down
           */

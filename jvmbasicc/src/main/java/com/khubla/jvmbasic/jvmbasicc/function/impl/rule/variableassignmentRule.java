@@ -18,10 +18,13 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  */
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ExprlistContext;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.VardeclContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
+import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 
 /**
  * @author tome
@@ -43,13 +46,23 @@ public class variableassignmentRule extends BaseFunction {
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * recurse into the children
+          * the tree should have 3 sub nodes like this "variableassignment : vardecl EQ exprlist"
           */
-         Dispatcher.dispatchChildren(generationContext);
-         /*
-          * the tree should have 3 sub nodes
-          */
-         final String variableName = generationContext.getCompilerStack().pop();
+         String variableName = null;
+         if (generationContext.getParseTree().getChildCount() == 3) {
+            /*
+             * get the variable name
+             */
+            variableName = VariableNameUtil.getVariableName((VardeclContext) generationContext.getParseTree().getChild(0));
+            /*
+             * get the tree for the value. this should push the value onto the ExecutionContextStack
+             */
+            final ExprlistContext exprlistContext = (ExprlistContext) generationContext.getParseTree().getChild(2);
+            final GenerationContext subGenerationContext = new GenerationContext(generationContext, exprlistContext);
+            Dispatcher.dispatch(subGenerationContext);
+         } else {
+            throw new Exception("Invalid number of arguments '" + generationContext.getParseTree().getChildCount() + "'");
+         }
          /*
           * store the top of the stack into slot 1
           */

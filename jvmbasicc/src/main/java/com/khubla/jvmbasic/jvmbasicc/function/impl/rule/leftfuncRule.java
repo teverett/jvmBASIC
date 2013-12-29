@@ -41,9 +41,9 @@ public class leftfuncRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 5 values, of which are ( <string>, <length> )
+          * there should be 6 values. grammar is "LEFT LPAREN expression COMMA expression RPAREN"
           */
-         if (generationContext.getParseTree().getChildCount() == 5) {
+         if (generationContext.getParseTree().getChildCount() == 6) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -65,7 +65,7 @@ public class leftfuncRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V");
             return true;
          } else {
-            throw new Exception("Invalid number of values passed to LEFT");
+            throw new Exception("Invalid number of values passed to leftfuncRule");
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);
