@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -29,7 +29,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *         executionContext.push(StringFunctions.STR(executionContext.resolveValue(executionContext.pop())));
  *         </p>
  */
-public class STRFunction extends BaseFunction {
+public class strfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -38,9 +38,9 @@ public class STRFunction extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 3 values, of which are ( <var> )
+          * there should be 4
           */
-         if (generationContext.getParseTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -55,7 +55,7 @@ public class STRFunction extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V");
             return true;
          } else {
-            throw new Exception("STR requires a value");
+            throw new Exception("strfuncRule requires a value");
          }
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

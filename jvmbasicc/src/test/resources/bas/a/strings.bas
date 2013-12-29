@@ -4,3 +4,5 @@
 40 PRINT LEFT$(S$,2)
 50 PRINT MID$(S$,1,1)
 60 PRINT "abc";"xyz"
+70 PRINT STR$(11.2)
+
