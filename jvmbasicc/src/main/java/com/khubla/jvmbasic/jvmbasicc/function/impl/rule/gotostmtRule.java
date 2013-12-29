@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -25,18 +25,18 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tome
  */
-public class GOTOFunction extends BaseFunction {
+public class gotostmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * we expect a single argument, a line number
+          * we expect 2 arguments
           */
-         if (generationContext.getParseTree().getChildCount() == 1) {
+         if (generationContext.getParseTree().getChildCount() == 2) {
             /*
              * get the line number
              */
-            final int lineNumber = Integer.parseInt(generationContext.getChildValue(0));
+            final int lineNumber = Integer.parseInt(generationContext.getChildValue(1));
             /*
              * find the label for the line number
              */

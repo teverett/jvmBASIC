@@ -86,4 +86,9 @@ public class TestA extends BaseCompilerTest {
    public void testDataBas() {
       testSingleBASFile("src/test/resources/bas/a/data.bas");
    }
+
+   @Test(enabled = true)
+   public void testGotoBas() {
+      testSingleBASFile("src/test/resources/bas/a/goto.bas");
+   }
 }

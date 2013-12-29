@@ -23,7 +23,6 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ENDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GOSUBFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.GOTOFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
@@ -37,6 +36,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.cosfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.datastmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.dimstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.gotostmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.ifstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.includestmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.inputstmtRule;
@@ -165,6 +165,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_datastmt, new datastmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_varlist, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_dimstmt, new dimstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_gotostmt, new gotostmtRule());
    }
 
    private void populateTokenRegistry() {
@@ -199,7 +200,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.DIV, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SEMICOLON, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.COLON, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.GOTO, new GOTOFunction());
+      tokenFunctions.put(jvmBasicParser.GOTO, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SQR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LEN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SIN, new DefaultToken());
