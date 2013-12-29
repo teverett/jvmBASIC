@@ -66,4 +66,9 @@ public class TestA extends BaseCompilerTest {
    public void testExpressionsBas() {
       testSingleBASFile("src/test/resources/bas/a/expressions.bas");
    }
+
+   @Test(enabled = true)
+   public void testIncludeBas() {
+      testSingleBASFile("src/test/resources/bas/a/include.bas");
+   }
 }

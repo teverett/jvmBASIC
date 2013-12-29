@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -22,14 +22,10 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tome
  */
-public class INCLUDEFunction extends BaseFunction {
+public class includestmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         generationContext.getChildValue(0);
-         /*
-          * load it
-          */
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);
