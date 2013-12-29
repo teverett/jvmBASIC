@@ -44,8 +44,21 @@ public class DatasDatabase implements Analyser, GenericContextIteratorCallback<D
 
    @Override
    public void analyse(ProgContext progContext) throws Exception {
-      GenericContextIterator<DatastmtContext> genericContextIterator = new GenericContextIterator<DatastmtContext>(DatastmtContext.class);
+      final GenericContextIterator<DatastmtContext> genericContextIterator = new GenericContextIterator<DatastmtContext>(DatastmtContext.class);
       genericContextIterator.interate(progContext, this);
+   }
+
+   @Override
+   public void context(DatastmtContext datastmtContext) {
+      final List<String> dataValues = new ArrayList<String>();
+      for (int j = 1; j < datastmtContext.getChildCount(); j = j + 2) {
+         final DatumContext datumContext = (DatumContext) datastmtContext.getChild(j);
+         final String v = datumContext.getText();
+         dataValues.add(v);
+      }
+      final String[] ret = new String[dataValues.size()];
+      dataValues.toArray(ret);
+      data = ret;
    }
 
    @Override
@@ -63,18 +76,5 @@ public class DatasDatabase implements Analyser, GenericContextIteratorCallback<D
 
    public String[] getData() {
       return data;
-   }
-
-   @Override
-   public void context(DatastmtContext datastmtContext) {
-      final List<String> dataValues = new ArrayList<String>();
-      for (int j = 1; j < datastmtContext.getChildCount(); j = j + 2) {
-         DatumContext datumContext = (DatumContext) datastmtContext.getChild(j);
-         final String v = datumContext.getText();
-         dataValues.add(v);
-      }
-      final String[] ret = new String[dataValues.size()];
-      dataValues.toArray(ret);
-      data = ret;
    }
 }
