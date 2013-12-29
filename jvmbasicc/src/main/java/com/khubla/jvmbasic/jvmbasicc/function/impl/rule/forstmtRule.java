@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -69,10 +69,13 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *  
  * </code>
  * </p>
+ * <p>
+ * forstmt : FOR vardecl EQ expression TO expression (STEP expression)? ;
+ * </p>
  * 
  * @author tome
  */
-public class FORFunction extends BaseFunction {
+public class forstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -103,9 +106,9 @@ public class FORFunction extends BaseFunction {
          GenerationContext.addLocalVariable(generationContext.getLineNumber(), "LINE" + generationContext.getLineNumber() + "step", stepLocalVariableIndex);
          GenerationContext.addLocalVariable(generationContext.getLineNumber(), "LINE" + generationContext.getLineNumber() + "counter", counterLocalVariableIndex);
          /*
-          * If there are 5 parameters they are "<variablename> = <fromfar> TO <tovar>
+          * If there are 6 parameters
           */
-         if (generationContext.getParseTree().getChildCount() == 5) {
+         if (generationContext.getParseTree().getChildCount() == 6) {
             /*
              * push the step value of 1
              */
@@ -113,35 +116,35 @@ public class FORFunction extends BaseFunction {
             /*
              * recurse into the to, to get the value of the from onto the execution context stack
              */
-            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(4));
+            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(5));
             Dispatcher.dispatch(toGenerationContext);
             /*
              * recurse into the from, to get the value of the from onto the execution context stack
              */
-            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
+            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(3));
             Dispatcher.dispatch(fromGenerationContext);
          }
          /*
-          * If there are 5 parameters they are "<variablename> = <fromfar> TO <tovar> STEP <varname>
+          * If there are 8 parameters
           */
-         else if (generationContext.getParseTree().getChildCount() == 7) {
+         else if (generationContext.getParseTree().getChildCount() == 8) {
             /*
              * recurse into the step, to get the value of the from onto the execution context stack
              */
-            final GenerationContext stepGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(6));
+            final GenerationContext stepGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(7));
             Dispatcher.dispatch(stepGenerationContext);
             /*
              * recurse into the to, to get the value of the from onto the execution context stack
              */
-            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(4));
+            final GenerationContext toGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(5));
             Dispatcher.dispatch(toGenerationContext);
             /*
              * recurse into the from, to get the value of the from onto the execution context stack
              */
-            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
+            final GenerationContext fromGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(3));
             Dispatcher.dispatch(fromGenerationContext);
          } else {
-            throw new Exception("Invalid number of parameters to FOR");
+            throw new Exception("Invalid number of parameters to forstmtRule");
          }
          /*
           * store this loop

@@ -27,7 +27,7 @@ public class TestA extends BaseCompilerTest {
       testSingleBASFile("src/test/resources/bas/a/e.bas");
    }
 
-   @Test(enabled = false)
+   @Test(enabled = true)
    public void testForBas() {
       testSingleBASFile("src/test/resources/bas/a/for.bas");
    }
