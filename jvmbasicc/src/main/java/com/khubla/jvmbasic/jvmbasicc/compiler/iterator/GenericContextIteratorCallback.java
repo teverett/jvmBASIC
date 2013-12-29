@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.datas;
+package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -19,5 +19,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.datas;
 /**
  * @author tom
  */
-public class Data {
+public interface GenericContextIteratorCallback<T> {
+   void context(T t);
 }

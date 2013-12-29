@@ -3,13 +3,15 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.datas;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatastmtContext;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatumContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
+import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.GenericContextIterator;
+import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.GenericContextIteratorCallback;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -30,7 +32,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Analyser;
 /**
  * @author tom
  */
-public class DatasDatabase implements Analyser {
+public class DatasDatabase implements Analyser, GenericContextIteratorCallback<DatastmtContext> {
    /**
     * logger
     */
@@ -42,46 +44,37 @@ public class DatasDatabase implements Analyser {
 
    @Override
    public void analyse(ProgContext progContext) throws Exception {
-      processDATADeclarations(progContext);
+      GenericContextIterator<DatastmtContext> genericContextIterator = new GenericContextIterator<DatastmtContext>(DatastmtContext.class);
+      genericContextIterator.interate(progContext, this);
    }
 
    @Override
    public void dumpAnalysis() throws Exception {
-      // TODO Auto-generated method stub
+      /*
+       * walk the datums
+       */
+      logger.info("Datums");
+      if (null != data) {
+         for (final String datum : data) {
+            logger.info(datum);
+         }
+      }
    }
 
    public String[] getData() {
       return data;
    }
 
-   /**
-    * find all the DATA declarations
-    */
-   private void processDATADeclarations(ParseTree parseTree) throws Exception {
-      try {
-         for (int i = 0; i < parseTree.getChildCount(); i++) {
-            final ParseTree subTree = parseTree.getChild(i);
-            if (null != subTree) {
-               final Object o = subTree.getPayload();
-               if (o.getClass() == DatastmtContext.class) {
-                  final List<String> dataValues = new ArrayList<String>();
-                  for (int j = 0; j < subTree.getChildCount(); j += 2) {
-                     final String v = subTree.getChild(j).getText();
-                     dataValues.add(v);
-                  }
-                  final String[] ret = new String[dataValues.size()];
-                  dataValues.toArray(ret);
-                  data = ret;
-               } else {
-                  /*
-                   * recurse
-                   */
-                  processDATADeclarations(subTree);
-               }
-            }
-         }
-      } catch (final Exception e) {
-         throw new Exception("Exception in processDATADeclarations", e);
+   @Override
+   public void context(DatastmtContext datastmtContext) {
+      final List<String> dataValues = new ArrayList<String>();
+      for (int j = 1; j < datastmtContext.getChildCount(); j = j + 2) {
+         DatumContext datumContext = (DatumContext) datastmtContext.getChild(j);
+         final String v = datumContext.getText();
+         dataValues.add(v);
       }
+      final String[] ret = new String[dataValues.size()];
+      dataValues.toArray(ret);
+      data = ret;
    }
 }
