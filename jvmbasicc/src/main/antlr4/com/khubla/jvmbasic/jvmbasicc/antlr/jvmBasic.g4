@@ -21,11 +21,11 @@ grammar jvmBasic;
 prog : line+ ;
 
 // a line starts with an INT and ends with a CR
-line : (linenumber ((amprstmt (COLON amprstmt?)*) | COMMENT | REM) (CR | EOF)) | CR;
+line : (linenumber ((amprstmt (COLON amprstmt?)*) | (COMMENT | REM)) (CR | EOF)) | CR;
 amperoper: AMPERSAND;
 linenumber: NUMBER;
-amprstmt: (amperoper? statement) | COMMENT | REM;
-statement : (LOAD | SAVE | RESTORE | TRACE| NOTRACE | FLASH | INVERSE| GR| NORMAL | SHLOAD | returnstmt | CLEAR | RUN | endstmt | STOP | TEXT | HOME | HGR | HGR2) |amptstmt| popstmt | liststmt| storestmt| getstmt | recallstmt |instmt| prstmt |onerrstmt| hlinstmt|vlinstmt|colorstmt| speedstmt |scalestmt|rotstmt| hcolorstmt| himemstmt| lomemstmt | printstmt1 |pokestmt | plotstmt| ongotostmt |ongosubstmt| ifstmt |nextstmt| forstmt | inputstmt | tabstmt | dimstmt | gotostmt | gosubstmt | callstmt |readstmt| hplotstmt | vplotstmt | vtabstmnt| htabstmnt|waitstmt |datastmt| xdrawstmt | drawstmt |defstmt| letstmt | includestmt;
+amprstmt: (amperoper? statement) | (COMMENT | REM);
+statement : (LOAD | SAVE  | TRACE| NOTRACE | FLASH | INVERSE| GR| NORMAL | SHLOAD | CLEAR | RUN  | STOP | TEXT | HOME | HGR | HGR2)| endstmt|  returnstmt| restorestmt |amptstmt| popstmt | liststmt| storestmt| getstmt | recallstmt |instmt| prstmt |onerrstmt| hlinstmt|vlinstmt|colorstmt| speedstmt |scalestmt|rotstmt| hcolorstmt| himemstmt| lomemstmt | printstmt1 |pokestmt | plotstmt| ongotostmt |ongosubstmt| ifstmt |nextstmt| forstmt | inputstmt | tabstmt | dimstmt | gotostmt | gosubstmt | callstmt |readstmt| hplotstmt | vplotstmt | vtabstmnt| htabstmnt|waitstmt |datastmt| xdrawstmt | drawstmt |defstmt| letstmt | includestmt;
 vardecl	: var ( LPAREN exprlist RPAREN)*;
 printstmt1: (PRINT | QUESTION) printlist?;
 printlist : expression (COMMA | SEMICOLON)? printlist*;
@@ -81,6 +81,7 @@ amptstmt: AMPERSAND expression;
 includestmt : INCLUDE expression;
 endstmt: END;
 returnstmt: RETURN;
+restorestmt: RESTORE;
 
 // expressions and such
 func : (NUMBER  | STRINGLITERAL | FLOAT) | vardecl | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);

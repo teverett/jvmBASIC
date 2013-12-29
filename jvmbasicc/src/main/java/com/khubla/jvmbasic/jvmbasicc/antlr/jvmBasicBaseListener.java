@@ -646,6 +646,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     * The default implementation does nothing.
     */
    @Override
+   public void enterRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
    public void enterReturnstmt(@NotNull jvmBasicParser.ReturnstmtContext ctx) {
    }
 
@@ -1538,6 +1547,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     */
    @Override
    public void exitRelop(@NotNull jvmBasicParser.RelopContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
+   public void exitRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx) {
    }
 
    /**

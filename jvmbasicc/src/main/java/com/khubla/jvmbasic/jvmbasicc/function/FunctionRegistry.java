@@ -22,8 +22,6 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.STEPFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.DefaultRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.absfuncRule;
@@ -49,6 +47,8 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRul
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printlistRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.readstmtRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.restorestmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.returnstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.rightfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.rndfuncRule;
@@ -169,6 +169,8 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_gosubstmt, new gosubstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_endstmt, new endstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_returnstmt, new returnstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_readstmt, new readstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_restorestmt, new restorestmtRule());
    }
 
    private void populateTokenRegistry() {
@@ -221,8 +223,8 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.STR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.VAL, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.DATA, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.READ, new READFunction());
-      tokenFunctions.put(jvmBasicParser.RESTORE, new RESTOREFunction());
+      tokenFunctions.put(jvmBasicParser.READ, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.RESTORE, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SPC, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.FLOAT, new FLOATToken());
       tokenFunctions.put(jvmBasicParser.VTAB, new DefaultToken());

@@ -492,6 +492,13 @@ public interface jvmBasicListener extends ParseTreeListener {
    void enterRelop(@NotNull jvmBasicParser.RelopContext ctx);
 
    /**
+    * Enter a parse tree produced by {@link jvmBasicParser#restorestmt}.
+    * 
+    * @param ctx the parse tree
+    */
+   void enterRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx);
+
+   /**
     * Enter a parse tree produced by {@link jvmBasicParser#returnstmt}.
     * 
     * @param ctx the parse tree
@@ -1183,6 +1190,13 @@ public interface jvmBasicListener extends ParseTreeListener {
     * @param ctx the parse tree
     */
    void exitRelop(@NotNull jvmBasicParser.RelopContext ctx);
+
+   /**
+    * Exit a parse tree produced by {@link jvmBasicParser#restorestmt}.
+    * 
+    * @param ctx the parse tree
+    */
+   void exitRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#returnstmt}.
