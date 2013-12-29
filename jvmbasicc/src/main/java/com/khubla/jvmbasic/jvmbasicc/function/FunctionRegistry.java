@@ -20,7 +20,6 @@ import java.util.Hashtable;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.DIMFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ENDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.GOSUBFunction;
@@ -36,6 +35,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.addingExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.atnfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.cosfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.datastmtRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.dimstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.ifstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.includestmtRule;
@@ -164,6 +164,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_inputstmt, new inputstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_datastmt, new datastmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_varlist, new DefaultRule());
+      ruleFunctions.put(jvmBasicParser.RULE_dimstmt, new dimstmtRule());
    }
 
    private void populateTokenRegistry() {
@@ -193,7 +194,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.THEN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LTE, new LTEToken());
       tokenFunctions.put(jvmBasicParser.GTE, new GTEToken());
-      tokenFunctions.put(jvmBasicParser.DIM, new DIMFunction());
+      tokenFunctions.put(jvmBasicParser.DIM, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.ABS, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.DIV, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.SEMICOLON, new DefaultToken());

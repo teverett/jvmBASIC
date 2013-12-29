@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -25,19 +25,18 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * 
  * @author tome
  */
-public class DIMFunction extends BaseFunction {
+public class dimstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
           * so the subtree under the <DIM> here will be <varname> <NUMBER> )
           */
-         if (generationContext.getParseTree().getChildCount() == 4) {
+         if (generationContext.getParseTree().getChildCount() == 2) {
             /*
-             * get the variable name
+             * get the variable name onto the execution context
              */
-            final GenerationContext nameGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(0));
-            Dispatcher.dispatch(nameGenerationContext);
+            Dispatcher.dispatchChildren(generationContext);
             /*
              * executionContext.setVariable(executionContext.pop().getString(), new Value(new Array()));
              */

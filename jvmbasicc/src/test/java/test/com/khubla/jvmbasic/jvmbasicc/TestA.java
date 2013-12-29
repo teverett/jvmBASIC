@@ -78,6 +78,11 @@ public class TestA extends BaseCompilerTest {
    }
 
    @Test(enabled = true)
+   public void testDimBas() {
+      testSingleBASFile("src/test/resources/bas/a/dim.bas");
+   }
+
+   @Test(enabled = true)
    public void testDataBas() {
       testSingleBASFile("src/test/resources/bas/a/data.bas");
    }
