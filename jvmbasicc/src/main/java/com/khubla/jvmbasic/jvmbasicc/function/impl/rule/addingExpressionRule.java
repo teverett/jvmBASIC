@@ -41,7 +41,7 @@ public class addingExpressionRule extends BaseFunction {
             /*
              * sign
              */
-            String sign = generationContext.getParseTree().getChild(1).getText();
+            final String sign = generationContext.getParseTree().getChild(1).getText();
             if (sign.compareTo("+") == 0) {
                /*
                 * add

@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -29,7 +29,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *         executionContext.push(StringFunctions.LEN(this.executionContext.resolveValue(executionContext.pop())));
  *         </p>
  */
-public class VALFunction extends BaseFunction {
+public class valfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -38,9 +38,9 @@ public class VALFunction extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 3 values, of which are ( <var> )
+          * there should be 4 values
           */
-         if (generationContext.getParseTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);

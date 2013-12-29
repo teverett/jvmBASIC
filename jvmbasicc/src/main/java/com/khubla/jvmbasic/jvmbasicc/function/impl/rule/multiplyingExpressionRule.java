@@ -44,7 +44,7 @@ public class multiplyingExpressionRule extends BaseFunction {
             /*
              * sign
              */
-            String sign = generationContext.getParseTree().getChild(1).getText();
+            final String sign = generationContext.getParseTree().getChild(1).getText();
             if (sign.compareTo("*") == 0) {
                generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
                generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
