@@ -160,6 +160,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     * The default implementation does nothing.
     */
    @Override
+   public void enterEndstmt(@NotNull jvmBasicParser.EndstmtContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
    public void enterEveryRule(@NotNull ParserRuleContext ctx) {
    }
 
@@ -637,6 +646,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     * The default implementation does nothing.
     */
    @Override
+   public void enterReturnstmt(@NotNull jvmBasicParser.ReturnstmtContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
    public void enterRightfunc(@NotNull jvmBasicParser.RightfuncContext ctx) {
    }
 
@@ -1034,6 +1052,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     */
    @Override
    public void exitDrawstmt(@NotNull jvmBasicParser.DrawstmtContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
+   public void exitEndstmt(@NotNull jvmBasicParser.EndstmtContext ctx) {
    }
 
    /**
@@ -1511,6 +1538,15 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     */
    @Override
    public void exitRelop(@NotNull jvmBasicParser.RelopContext ctx) {
+   }
+
+   /**
+    * {@inheritDoc}
+    * <p/>
+    * The default implementation does nothing.
+    */
+   @Override
+   public void exitReturnstmt(@NotNull jvmBasicParser.ReturnstmtContext ctx) {
    }
 
    /**

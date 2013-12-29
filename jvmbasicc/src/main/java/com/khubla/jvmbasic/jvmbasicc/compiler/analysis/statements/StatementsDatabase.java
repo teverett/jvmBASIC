@@ -65,6 +65,10 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
       }
    }
 
+   public StatementDeclaration findStatementDeclaration(LineDeclaration lineDeclaration) {
+      return statements.get(lineDeclaration.getBasicLine());
+   }
+
    public TreeMap<Integer, StatementDeclaration> getStatements() {
       return statements;
    }

@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -22,13 +22,11 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tome
  */
-public class RETURNFunction extends BaseFunction {
+public class endstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
-         /*
-          * signal that we are done iterating lines
-          */
+         // done
          return false;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

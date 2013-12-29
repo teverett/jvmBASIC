@@ -20,13 +20,10 @@ import java.util.Hashtable;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.ENDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.GOSUBFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.NEXTFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.READFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.RESTOREFunction;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.RETURNFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.STEPFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.DefaultRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.absfuncRule;
@@ -35,7 +32,9 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.atnfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.cosfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.datastmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.dimstmtRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.endstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.gosubstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.gotostmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.ifstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.includestmtRule;
@@ -50,6 +49,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRul
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printlistRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.returnstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.rightfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.rndfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.sinfuncRule;
@@ -166,6 +166,9 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_varlist, new DefaultRule());
       ruleFunctions.put(jvmBasicParser.RULE_dimstmt, new dimstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_gotostmt, new gotostmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_gosubstmt, new gosubstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_endstmt, new endstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_returnstmt, new returnstmtRule());
    }
 
    private void populateTokenRegistry() {
@@ -183,7 +186,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.NEXT, new NEXTFunction());
       tokenFunctions.put(jvmBasicParser.TO, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.STEP, new STEPFunction());
-      tokenFunctions.put(jvmBasicParser.END, new ENDFunction());
+      tokenFunctions.put(jvmBasicParser.END, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.RND, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LPAREN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.RPAREN, new DefaultToken());
@@ -210,8 +213,8 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.LOG, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.EXP, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.INTF, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.GOSUB, new GOSUBFunction());
-      tokenFunctions.put(jvmBasicParser.RETURN, new RETURNFunction());
+      tokenFunctions.put(jvmBasicParser.GOSUB, new DefaultToken());
+      tokenFunctions.put(jvmBasicParser.RETURN, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.MID, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LEFT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.RIGHT, new DefaultToken());

@@ -1,7 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.processor;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 
 /*
@@ -37,31 +36,6 @@ public class StatementsProcessor {
           */
          for (final StatementDeclaration statementDeclaration : programStaticAnalysis.getStatementsDatabase().getStatements().values()) {
             statementProcessor.processStatement(statementDeclaration);
-         }
-      } catch (final Exception e) {
-         throw new Exception("Exception in process", e);
-      }
-   }
-
-   /**
-    * process from a specific line
-    */
-   public void ProcessFromLine(int lineNumber, StatementProcessor statementProcessor) throws Exception {
-      try {
-         /*
-          * find the line
-          */
-         final LineDeclaration lineDeclaration = programStaticAnalysis.getLinesDatabase().getLine(lineNumber);
-         while (null != lineDeclaration) {
-            /*
-             * walk the statements
-             */
-            // for (final Statement statement : lineDeclaration.getStatements()) {
-            // if (false == statementProcessor.processStatement(statement)) {
-            // return;
-            // }
-            // }
-            // lineDeclaration = getLine(getNextLineNumber(lineDeclaration.getBasicLine()));
          }
       } catch (final Exception e) {
          throw new Exception("Exception in process", e);

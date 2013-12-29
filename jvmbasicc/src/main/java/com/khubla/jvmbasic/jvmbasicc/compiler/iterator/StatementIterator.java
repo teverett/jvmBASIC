@@ -1,6 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.iterator;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
@@ -42,31 +43,34 @@ public class StatementIterator implements LineIteratorCallback {
 
    @Override
    public void line(LineContext lineContext) {
-      final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
-      final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
-      lineContext.start.getLine();
-      int lineIndex = 0;
-      for (int i = 0; i < lineContext.getChildCount(); i++) {
-         /*
-          * parse the sub tree
-          */
-         final ParseTree subTree = lineContext.getChild(i);
-         /*
-          * check
-          */
-         if (subTree.getClass() == AmprstmtContext.class) {
+      final ParseTree subTree = lineContext.getChild(0);
+      if (subTree.getClass() != TerminalNodeImpl.class) {
+         final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
+         final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
+         lineContext.start.getLine();
+         int lineIndex = 0;
+         for (int i = 0; i < lineContext.getChildCount(); i++) {
             /*
-             * get the line declaration
+             * parse the sub tree
              */
-            final LineDeclaration lineDeclaration = linesDatabase.getLine(basicLineNumber);
+            final ParseTree subTree2 = lineContext.getChild(i);
             /*
-             * Line declaration
+             * check
              */
-            statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree, lineIndex);
-            /*
-             * next statement on the line
-             */
-            lineIndex++;
+            if (subTree2.getClass() == AmprstmtContext.class) {
+               /*
+                * get the line declaration
+                */
+               final LineDeclaration lineDeclaration = linesDatabase.getLine(basicLineNumber);
+               /*
+                * Line declaration
+                */
+               statementIteratorCallback.statement(lineDeclaration, (AmprstmtContext) subTree2, lineIndex);
+               /*
+                * next statement on the line
+                */
+               lineIndex++;
+            }
          }
       }
    }

@@ -2,6 +2,8 @@ package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines;
 
 import java.util.TreeMap;
 
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.objectweb.asm.Label;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,9 +86,12 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
 
    @Override
    public void line(LineContext lineContext) {
-      final LinenumberContext linenumberContext = (LinenumberContext) lineContext.getChild(0);
-      final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
-      final int codeLineNumber = lineContext.start.getLine();
-      addLine(lineContext, codeLineNumber, basicLineNumber);
+      final ParseTree subTree = lineContext.getChild(0);
+      if (subTree.getClass() != TerminalNodeImpl.class) {
+         final LinenumberContext linenumberContext = (LinenumberContext) subTree;
+         final int basicLineNumber = Integer.parseInt(linenumberContext.getText());
+         final int codeLineNumber = lineContext.start.getLine();
+         addLine(lineContext, codeLineNumber, basicLineNumber);
+      }
    }
 }

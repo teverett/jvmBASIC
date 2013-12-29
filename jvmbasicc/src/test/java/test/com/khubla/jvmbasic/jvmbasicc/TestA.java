@@ -91,4 +91,9 @@ public class TestA extends BaseCompilerTest {
    public void testGotoBas() {
       testSingleBASFile("src/test/resources/bas/a/goto.bas");
    }
+
+   @Test(enabled = true)
+   public void testGosubBas() {
+      testSingleBASFile("src/test/resources/bas/a/gosub.bas");
+   }
 }

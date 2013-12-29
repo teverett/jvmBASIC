@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -16,9 +16,10 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.DefaultStatementProcessor;
+import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
-import com.khubla.jvmbasic.jvmbasicc.compiler.processor.StatementsProcessor;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -29,24 +30,31 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * 
  * @author tome
  */
-public class GOSUBFunction extends BaseFunction {
+public class gosubstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
          /*
-          * we expect a single argument, a line number
+          * 2 children
           */
-         if (generationContext.getParseTree().getChildCount() == 1) {
+         if (generationContext.getParseTree().getChildCount() == 2) {
             /*
              * get the line number
              */
-            final int lineNumber = Integer.parseInt(generationContext.getChildValue(0));
+            final int lineNumber = Integer.parseInt(generationContext.getChildValue(1));
+            /*
+             * get the line
+             */
+            final LineDeclaration lineDeclaration = GenerationContext.getProgramStaticAnalysis().getLinesDatabase().getLine(lineNumber);
+            /*
+             * get the statement
+             */
+            final StatementDeclaration statementDeclaration = GenerationContext.getProgramStaticAnalysis().getStatementsDatabase().findStatementDeclaration(lineDeclaration);
             /*
              * iterate from the line number to a RETURN
              */
-            final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(generationContext);
-            final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
-            statementsProcessor.ProcessFromLine(lineNumber, defaultStatementProcessor);
+            final GenerationContext gosubGenerationContext = new GenerationContext(generationContext, statementDeclaration.getAmprstmtContext());
+            Dispatcher.dispatchChildren(gosubGenerationContext);
          }
          return true;
       } catch (final Exception e) {
