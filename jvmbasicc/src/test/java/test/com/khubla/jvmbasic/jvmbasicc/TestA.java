@@ -26,13 +26,38 @@ import org.testng.annotations.Test;
  */
 public class TestA extends BaseCompilerTest {
    @Test(enabled = true)
+   public void testDataBas() {
+      testSingleBASFile("src/test/resources/bas/a/data.bas");
+   }
+
+   @Test(enabled = true)
+   public void testDimBas() {
+      testSingleBASFile("src/test/resources/bas/a/dim.bas");
+   }
+
+   @Test(enabled = true)
    public void testEBas() {
       testSingleBASFile("src/test/resources/bas/a/e.bas");
+   }
+
+   @Test(enabled = true)
+   public void testExpressionsBas() {
+      testSingleBASFile("src/test/resources/bas/a/expressions.bas");
    }
 
    @Test(enabled = false)
    public void testForBas() {
       testSingleBASFile("src/test/resources/bas/a/for.bas");
+   }
+
+   @Test(enabled = true)
+   public void testGosubBas() {
+      testSingleBASFile("src/test/resources/bas/a/gosub.bas");
+   }
+
+   @Test(enabled = false)
+   public void testGotoBas() {
+      testSingleBASFile("src/test/resources/bas/a/goto.bas");
    }
 
    @Test(enabled = true)
@@ -43,50 +68,6 @@ public class TestA extends BaseCompilerTest {
    @Test(enabled = false)
    public void testIfBas() {
       testSingleBASFile("src/test/resources/bas/a/if.bas");
-   }
-
-   @Test(enabled = false)
-   public void testPrintBas() {
-      testSingleBASFile("src/test/resources/bas/a/print.bas");
-   }
-
-   @Test(enabled = false)
-   public void testSimpleIfBas() {
-      testSingleBASFile("src/test/resources/bas/a/simpleif.bas");
-   }
-
-   @Test(enabled = true)
-   public void testMathBas() {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      testSingleBASFile("src/test/resources/bas/a/math.bas", System.in, baos);
-      String[] results = baos.toString().split("\n");
-      Assert.assertTrue(results[0].compareTo("-0.4161468365471424") == 0);
-      Assert.assertTrue(results[1].compareTo("1.1071487177940904") == 0);
-      Assert.assertTrue(results[2].compareTo("0.6931471805599453") == 0);
-      Assert.assertTrue(results[3].compareTo("0.9092974268256817") == 0);
-      Assert.assertTrue(results[4].compareTo("-2.185039863261519") == 0);
-      Assert.assertTrue(results[5].compareTo("4.0") == 0);
-      Assert.assertTrue(results[6].compareTo("2.0") == 0);
-      Assert.assertTrue(results[8].compareTo("12.0") == 0);
-   }
-
-   @Test(enabled = true)
-   public void testStringsBas() {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      testSingleBASFile("src/test/resources/bas/a/strings.bas", System.in, baos);
-      String[] results = baos.toString().split("\n");
-      Assert.assertTrue(results[0].compareTo("6") == 0);
-      Assert.assertTrue(results[1].compareTo("23") == 0);
-      Assert.assertTrue(results[2].compareTo("ab") == 0);
-      Assert.assertTrue(results[3].compareTo("b") == 0);
-      Assert.assertTrue(results[4].compareTo("abcxyz") == 0);
-      Assert.assertTrue(results[5].compareTo("11.2") == 0);
-      Assert.assertTrue(results[6].compareTo("500") == 0);
-   }
-
-   @Test(enabled = true)
-   public void testExpressionsBas() {
-      testSingleBASFile("src/test/resources/bas/a/expressions.bas");
    }
 
    @Test(enabled = true)
@@ -100,22 +81,41 @@ public class TestA extends BaseCompilerTest {
    }
 
    @Test(enabled = true)
-   public void testDimBas() {
-      testSingleBASFile("src/test/resources/bas/a/dim.bas");
-   }
-
-   @Test(enabled = true)
-   public void testDataBas() {
-      testSingleBASFile("src/test/resources/bas/a/data.bas");
+   public void testMathBas() {
+      final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      testSingleBASFile("src/test/resources/bas/a/math.bas", System.in, baos);
+      final String[] results = baos.toString().split("\n");
+      Assert.assertTrue(results[0].compareTo("-0.4161468365471424") == 0);
+      Assert.assertTrue(results[1].compareTo("1.1071487177940904") == 0);
+      Assert.assertTrue(results[2].compareTo("0.6931471805599453") == 0);
+      Assert.assertTrue(results[3].compareTo("0.9092974268256817") == 0);
+      Assert.assertTrue(results[4].compareTo("-2.185039863261519") == 0);
+      Assert.assertTrue(results[5].compareTo("4.0") == 0);
+      Assert.assertTrue(results[6].compareTo("2.0") == 0);
+      Assert.assertTrue(results[8].compareTo("12.0") == 0);
    }
 
    @Test(enabled = false)
-   public void testGotoBas() {
-      testSingleBASFile("src/test/resources/bas/a/goto.bas");
+   public void testPrintBas() {
+      testSingleBASFile("src/test/resources/bas/a/print.bas");
+   }
+
+   @Test(enabled = false)
+   public void testSimpleIfBas() {
+      testSingleBASFile("src/test/resources/bas/a/simpleif.bas");
    }
 
    @Test(enabled = true)
-   public void testGosubBas() {
-      testSingleBASFile("src/test/resources/bas/a/gosub.bas");
+   public void testStringsBas() {
+      final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      testSingleBASFile("src/test/resources/bas/a/strings.bas", System.in, baos);
+      final String[] results = baos.toString().split("\n");
+      Assert.assertTrue(results[0].compareTo("6") == 0);
+      Assert.assertTrue(results[1].compareTo("23") == 0);
+      Assert.assertTrue(results[2].compareTo("ab") == 0);
+      Assert.assertTrue(results[3].compareTo("b") == 0);
+      Assert.assertTrue(results[4].compareTo("abcxyz") == 0);
+      Assert.assertTrue(results[5].compareTo("11.2") == 0);
+      Assert.assertTrue(results[6].compareTo("500") == 0);
    }
 }

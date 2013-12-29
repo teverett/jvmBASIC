@@ -51,6 +51,10 @@ public abstract class BaseCompilerTest {
       Loader.invokeMainMethod(instance);
    }
 
+   public void testSingleBASFile(String filename) {
+      testSingleBASFile(filename, System.in, System.out);
+   }
+
    public void testSingleBASFile(String filename, InputStream inputStream, OutputStream outputStream) {
       try {
          /*
@@ -83,9 +87,5 @@ public abstract class BaseCompilerTest {
          e.printStackTrace();
          Assert.fail();
       }
-   }
-
-   public void testSingleBASFile(String filename) {
-      testSingleBASFile(filename, System.in, System.out);
    }
 }
