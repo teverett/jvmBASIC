@@ -3,3 +3,4 @@
 30 PRINT RIGHT$(S$,2)
 40 PRINT LEFT$(S$,2)
 50 PRINT MID$(S$,1,1)
+60 PRINT "abc";"xyz"
