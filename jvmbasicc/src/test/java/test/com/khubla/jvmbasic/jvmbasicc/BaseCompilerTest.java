@@ -1,6 +1,8 @@
 package test.com.khubla.jvmbasic.jvmbasicc;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -43,13 +45,13 @@ public abstract class BaseCompilerTest {
    /**
     * try running the generated class file
     */
-   private void testInvocation(Object instance) throws IllegalAccessException, Exception {
-      Loader.setInputStream(instance, System.in);
-      Loader.setOutputStreamField(instance, System.out);
+   public void testInvocation(Object instance, InputStream inputStream, OutputStream outputStream) throws IllegalAccessException, Exception {
+      Loader.setInputStream(instance, inputStream);
+      Loader.setOutputStreamField(instance, outputStream);
       Loader.invokeMainMethod(instance);
    }
 
-   public void testSingleBASFile(String filename) {
+   public void testSingleBASFile(String filename, InputStream inputStream, OutputStream outputStream) {
       try {
          /*
           * compile to class file
@@ -76,10 +78,14 @@ public abstract class BaseCompilerTest {
           * try it
           */
          System.out.println("Running class '" + classname + "'");
-         testInvocation(o);
+         testInvocation(o, inputStream, outputStream);
       } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();
       }
+   }
+
+   public void testSingleBASFile(String filename) {
+      testSingleBASFile(filename, System.in, System.out);
    }
 }

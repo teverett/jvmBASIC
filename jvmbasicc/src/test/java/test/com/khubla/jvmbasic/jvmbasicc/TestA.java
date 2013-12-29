@@ -16,6 +16,9 @@ package test.com.khubla.jvmbasic.jvmbasicc;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import java.io.ByteArrayOutputStream;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -54,7 +57,17 @@ public class TestA extends BaseCompilerTest {
 
    @Test(enabled = true)
    public void testMathBas() {
-      testSingleBASFile("src/test/resources/bas/a/math.bas");
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      testSingleBASFile("src/test/resources/bas/a/math.bas", System.in, baos);
+      String[] results = baos.toString().split("\n");
+      Assert.assertTrue(results[0].compareTo("-0.4161468365471424") == 0);
+      Assert.assertTrue(results[1].compareTo("1.1071487177940904") == 0);
+      Assert.assertTrue(results[2].compareTo("0.6931471805599453") == 0);
+      Assert.assertTrue(results[3].compareTo("0.9092974268256817") == 0);
+      Assert.assertTrue(results[4].compareTo("-2.185039863261519") == 0);
+      Assert.assertTrue(results[5].compareTo("4.0") == 0);
+      Assert.assertTrue(results[6].compareTo("2.0") == 0);
+      Assert.assertTrue(results[8].compareTo("12.0") == 0);
    }
 
    @Test(enabled = true)
