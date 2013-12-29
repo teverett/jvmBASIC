@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -41,7 +41,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *         </code>
  *         </p>
  */
-public class INPUTFunction extends BaseFunction {
+public class inputstmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -52,7 +52,7 @@ public class INPUTFunction extends BaseFunction {
          /*
           * input with a prompt? INPUT <prompt> , <variable>
           */
-         if (generationContext.getParseTree().getChildCount() == 3) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             /*
              * swap the stack arguments so we have the prompt on top and the variable name next
              */

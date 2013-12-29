@@ -71,4 +71,9 @@ public class TestA extends BaseCompilerTest {
    public void testIncludeBas() {
       testSingleBASFile("src/test/resources/bas/a/include.bas");
    }
+
+   @Test(enabled = true)
+   public void testInputBas() {
+      testSingleBASFile("src/test/resources/bas/a/input.bas");
+   }
 }
