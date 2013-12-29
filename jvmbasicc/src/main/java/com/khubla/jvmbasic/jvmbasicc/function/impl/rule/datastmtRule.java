@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -22,7 +22,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tom
  */
-public class DATAFunction extends BaseFunction {
+public class datastmtRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {

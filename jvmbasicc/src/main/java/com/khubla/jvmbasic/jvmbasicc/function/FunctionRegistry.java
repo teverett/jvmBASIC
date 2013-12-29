@@ -20,7 +20,6 @@ import java.util.Hashtable;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.DATAFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.DIMFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.ENDFunction;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.FORFunction;
@@ -36,6 +35,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.absfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.addingExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.atnfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.cosfuncRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.datastmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.exponentExpressionRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.ifstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.includestmtRule;
@@ -162,6 +162,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_valfunc, new valfuncRule());
       ruleFunctions.put(jvmBasicParser.RULE_includestmt, new includestmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_inputstmt, new inputstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_datastmt, new datastmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_varlist, new DefaultRule());
    }
 
@@ -214,7 +215,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.RIGHT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.STR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.VAL, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.DATA, new DATAFunction());
+      tokenFunctions.put(jvmBasicParser.DATA, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.READ, new READFunction());
       tokenFunctions.put(jvmBasicParser.RESTORE, new RESTOREFunction());
       tokenFunctions.put(jvmBasicParser.SPC, new DefaultToken());
