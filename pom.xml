@@ -9,7 +9,7 @@
       <commons-cli.version>1.2</commons-cli.version>
       <commons-io.version>2.4</commons-io.version>
       <testng.version>6.8.5</testng.version>
-      <target.jvm>1.6</target.jvm>
+      <target.jvm>1.7</target.jvm>
       <logback.version>1.0.13</logback.version>
    </properties>
    <modules>
