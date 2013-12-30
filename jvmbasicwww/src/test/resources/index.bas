@@ -7,7 +7,7 @@
 2020 ? "</head>"
 3000 ? "<body>"
 3005 ? "<img src='khubla_logo_basic_color.png'>"
-3100 PRINT "<h1>Welcome to <a href='https://github.com/khubla/jvmBASIC'>jvmBASIC</a> web server</h1>"
+3100 PRINT "<h1>Welcome to <a href='https://github.com/teverett/jvmBASIC'>jvmBASIC</a> web server</h1>"
 3110 PRINT "HTTP request is: ";request
 3200 ? "</body>"
 3300 ? "</html>"
