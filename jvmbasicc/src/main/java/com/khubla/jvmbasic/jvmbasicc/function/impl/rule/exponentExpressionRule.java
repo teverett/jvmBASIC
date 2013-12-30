@@ -35,15 +35,20 @@ public class exponentExpressionRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * pop the argument and apply abs
+          * exponentiate if there were 3 args
           */
-         generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-         generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-         generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-         generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "EXP", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;");
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V");
+         if (generationContext.getParseTree().getChildCount() == 3) {
+            /*
+             * pop the argument and apply exp
+             */
+            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
+            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "EXP", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;");
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V");
+         }
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

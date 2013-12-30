@@ -32,8 +32,13 @@ public class TestExamples extends BaseCompilerTest {
       testSingleBASFile("src/test/resources/bas/examples/subprint.bas");
    }
 
-   @Test(enabled = true)
+   @Test(enabled = false)
    public void testExample1Bas() {
       testSingleBASFile("src/test/resources/bas/examples/example1.bas");
+   }
+
+   @Test(enabled = false)
+   public void testBeerBas() {
+      testSingleBASFile("src/test/resources/bas/examples/beer.bas");
    }
 }
