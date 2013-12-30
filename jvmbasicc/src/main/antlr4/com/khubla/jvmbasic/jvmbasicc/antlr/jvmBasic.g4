@@ -25,7 +25,7 @@ line : (linenumber ((amprstmt (COLON amprstmt?)*) | (COMMENT | REM)) (CR | EOF))
 amperoper: AMPERSAND;
 linenumber: NUMBER;
 amprstmt: (amperoper? statement) | (COMMENT | REM);
-statement : (LOAD | SAVE  | TRACE| NOTRACE | FLASH | INVERSE| GR| NORMAL | SHLOAD | CLEAR | RUN  | STOP | TEXT | HOME | HGR | HGR2)| endstmt|  returnstmt| restorestmt |amptstmt| popstmt | liststmt| storestmt| getstmt | recallstmt |instmt| prstmt |onerrstmt| hlinstmt|vlinstmt|colorstmt| speedstmt |scalestmt|rotstmt| hcolorstmt| himemstmt| lomemstmt | printstmt1 |pokestmt | plotstmt| ongotostmt |ongosubstmt| ifstmt |nextstmt| forstmt | inputstmt | tabstmt | dimstmt | gotostmt | gosubstmt | callstmt |readstmt| hplotstmt | vplotstmt | vtabstmnt| htabstmnt|waitstmt |datastmt| xdrawstmt | drawstmt |defstmt| letstmt | includestmt;
+statement : (LOAD | SAVE  | TRACE| NOTRACE | FLASH | INVERSE| GR| NORMAL | SHLOAD | CLEAR | RUN  | STOP | TEXT | HOME | HGR | HGR2)| endstmt|  returnstmt| restorestmt |amptstmt| popstmt | liststmt| storestmt| getstmt | recallstmt |instmt| prstmt |onerrstmt| hlinstmt|vlinstmt|colorstmt| speedstmt |scalestmt|rotstmt| hcolorstmt| himemstmt| lomemstmt | printstmt1 |pokestmt | plotstmt| ongotostmt |ongosubstmt| ifstmt | forstmt | inputstmt | tabstmt | dimstmt | gotostmt | gosubstmt | callstmt |readstmt| hplotstmt | vplotstmt | vtabstmnt| htabstmnt|waitstmt |datastmt| xdrawstmt | drawstmt |defstmt| letstmt | includestmt;
 vardecl	: var ( LPAREN exprlist RPAREN)*;
 printstmt1: (PRINT | QUESTION) printlist?;
 printlist : expression (COMMA | SEMICOLON)? printlist*;
@@ -37,8 +37,7 @@ gte : GTE | (GT EQ) | (EQ GT);
 lte : LTE | (LT EQ) | (EQ LT);
 neq : NEQ;
 ifstmt : IF expression THEN? (statement | linenumber);
-forstmt : FOR  vardecl EQ expression TO expression (STEP expression)? ;
-nextstmt : NEXT varlist?;
+forstmt : FOR  vardecl EQ expression TO expression (STEP expression)? statement NEXT vardecl?; 
 inputstmt : INPUT (STRINGLITERAL (COMMA| SEMICOLON))? varlist;
 readstmt: READ varlist;
 dimstmt : DIM varlist;

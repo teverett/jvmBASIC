@@ -72,7 +72,7 @@ import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
  * </code>
  * </p>
  * <p>
- * forstmt : FOR vardecl EQ expression TO expression (STEP expression)? ;
+ * forstmt : FOR vardecl EQ expression TO expression (STEP expression)? statement NEXT vardecl?; ;
  * </p>
  * 
  * @author tome
@@ -84,7 +84,7 @@ public class forstmtRule extends BaseFunction {
          /*
           * variables to collect
           */
-         VardeclContext vardeclContext = (VardeclContext) generationContext.getParseTree().getChild(1);
+         final VardeclContext vardeclContext = (VardeclContext) generationContext.getParseTree().getChild(1);
          final String variableName = VariableNameUtil.getVariableName(vardeclContext);
          /*
           * get the indices
@@ -101,9 +101,10 @@ public class forstmtRule extends BaseFunction {
          GenerationContext.addLocalVariable(generationContext.getLineNumber(), "LINE" + generationContext.getLineNumber() + "step", stepLocalVariableIndex);
          GenerationContext.addLocalVariable(generationContext.getLineNumber(), "LINE" + generationContext.getLineNumber() + "counter", counterLocalVariableIndex);
          /*
-          * If there are 6 parameters
+          * If there are no STEP parameters
           */
-         if (generationContext.getParseTree().getChildCount() == 6) {
+         final int parameterCount = generationContext.getParseTree().getChildCount();
+         if ((parameterCount == 9) || (parameterCount == 8)) {
             /*
              * push the step value of 1
              */
@@ -120,9 +121,9 @@ public class forstmtRule extends BaseFunction {
             Dispatcher.dispatch(fromGenerationContext);
          }
          /*
-          * If there are 8 parameters
+          * If there are STEP parameters
           */
-         else if (generationContext.getParseTree().getChildCount() == 8) {
+         else if ((parameterCount == 11) || (parameterCount == 10)) {
             /*
              * recurse into the step, to get the value of the from onto the execution context stack
              */

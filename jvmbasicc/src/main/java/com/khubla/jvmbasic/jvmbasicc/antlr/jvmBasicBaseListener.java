@@ -484,15 +484,6 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     * The default implementation does nothing.
     */
    @Override
-   public void enterNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx) {
-   }
-
-   /**
-    * {@inheritDoc}
-    * <p/>
-    * The default implementation does nothing.
-    */
-   @Override
    public void enterOnerrstmt(@NotNull jvmBasicParser.OnerrstmtContext ctx) {
    }
 
@@ -1385,15 +1376,6 @@ public class jvmBasicBaseListener implements jvmBasicListener {
     */
    @Override
    public void exitNeq(@NotNull jvmBasicParser.NeqContext ctx) {
-   }
-
-   /**
-    * {@inheritDoc}
-    * <p/>
-    * The default implementation does nothing.
-    */
-   @Override
-   public void exitNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx) {
    }
 
    /**
