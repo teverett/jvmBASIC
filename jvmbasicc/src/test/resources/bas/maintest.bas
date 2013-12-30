@@ -29,7 +29,7 @@
 245 REM *********** PRINT *********
 250 PRINT "xx"
 260 REM *********** FOR *********
-270 FOR i=10 TO 15 STEP 20 
+270 FOR i=10 TO 15 STEP 20
 275 FOR i=10 TO 15 
 260 REM *********** NEXT *********
 261 NEXT i

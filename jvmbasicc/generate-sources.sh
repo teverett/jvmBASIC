@@ -1,3 +1,1 @@
-mvn clean antlr3:antlr
-
-
+mvn clean antlr4:antlr4

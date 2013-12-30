@@ -1,5 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.compiler.processor.StatementProcessor;
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -16,9 +19,6 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.Statement;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StatementProcessor;
-
 /**
  * @author tome
  */
@@ -36,7 +36,7 @@ public class DefaultStatementProcessor implements StatementProcessor {
    }
 
    @Override
-   public boolean processStatement(Statement statement) throws Exception {
+   public boolean processStatement(StatementDeclaration statement) throws Exception {
       try {
          /*
           * first statement on the line?
@@ -54,7 +54,7 @@ public class DefaultStatementProcessor implements StatementProcessor {
          /*
           * process the statement
           */
-         final GenerationContext subGenerationContext = new GenerationContext(generationContext, statement.getCommonTree(), statement.getLineDeclaration().getBasicLine());
+         final GenerationContext subGenerationContext = new GenerationContext(generationContext, statement.getAmprstmtContext(), statement.getLineDeclaration().getBasicLine());
          return Dispatcher.dispatch(subGenerationContext);
       } catch (final Exception e) {
          throw new Exception("Exception in processStatement at basic line: '" + statement.getLineDeclaration().getBasicLine() + "' on input line: '" + statement.getLineDeclaration().getCodeLine()

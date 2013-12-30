@@ -16,7 +16,11 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import org.antlr.runtime.Token;
+import org.antlr.v4.runtime.CommonToken;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
@@ -27,19 +31,57 @@ import com.khubla.jvmbasic.jvmbasicc.function.FunctionRegistry;
  */
 public class Dispatcher {
    /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(Dispatcher.class);
+
+   /**
     * dispatch
     */
    public static boolean dispatch(GenerationContext generationContext) throws Exception {
       try {
-         if (null != generationContext.getCommonTree()) {
-            final Token token = generationContext.getCommonTree().getToken();
-            final String tokenName = jvmBasicParser.tokenNames[token.getType()];
-            final Function function = FunctionRegistry.getInstance().getFunction(tokenName);
-            return function.execute(generationContext);
+         if (null != generationContext.getParseTree()) {
+            final Object o = generationContext.getParseTree().getPayload();
+            if (o.getClass() == CommonToken.class) {
+               final CommonToken commonToken = (CommonToken) o;
+               final Function function = FunctionRegistry.getInstance().getTokenFunction(commonToken.getType());
+               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for token '" + jvmBasicParser.tokenNames[commonToken.getType()] + "'");
+               return function.execute(generationContext);
+            } else {
+               final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
+               final Function function = FunctionRegistry.getInstance().getRuleFunction(parserRuleContext.getRuleIndex());
+               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for rule '" + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "'");
+               return function.execute(generationContext);
+            }
          }
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in dispatch at line " + generationContext.getLineNumber(), e);
+      }
+   }
+
+   /**
+    * dispatch to all children of the current context
+    */
+   public static boolean dispatchChildren(GenerationContext generationContext) throws Exception {
+      try {
+         if (null != generationContext.getParseTree()) {
+            for (int i = 0; i < generationContext.getParseTree().getChildCount(); i++) {
+               final ParseTree parseTree = generationContext.getParseTree().getChild(i);
+               final GenerationContext childGenerationContext = new GenerationContext(generationContext, parseTree);
+               // final DefaultStatementProcessor defaultStatementProcessor = new DefaultStatementProcessor(childGenerationContext);
+               // final StatementsProcessor statementsProcessor = new StatementsProcessor(GenerationContext.getProgramStaticAnalysis());
+               // statementsProcessor.process(defaultStatementProcessor);
+               try {
+                  Dispatcher.dispatch(childGenerationContext);
+               } catch (final Exception e) {
+                  throw new Exception("Exception in dispatchChildren at line " + childGenerationContext.getLineNumber(), e);
+               }
+            }
+         }
+         return true;
+      } catch (final Exception e) {
+         throw new Exception("Exception in dispatchChildren", e);
       }
    }
 }

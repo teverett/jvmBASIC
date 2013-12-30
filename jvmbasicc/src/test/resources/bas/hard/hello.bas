@@ -1,5 +1,5 @@
  1 LET T$ = "GOODBYE, WORLD!"
-  2 LET R = 5:GX = 3:GY = 2:O = 3:XC = R + GX:YC = R * 2 + GY
+ 2 LET R = 5:GX = 3:GY = 2:O = 3:XC = R + GX:YC = R * 2 + GY
   3 TEXT : HOME : TEXT : HGR : HCOLOR= 7: HPLOT 0,0: CALL 62454: HCOLOR= 6
   4 LET L =  LEN (T$): FOR I = 1 TO L:K =  ASC ( MID$ (T$,I,1)):XO = XC:YO = YC: GOSUB 5:XC = XO + 1:YC = YO: GOSUB 7: NEXT : END 
   5 IF K > 64 THEN K = K + LC: GOSUB 20:LC = 32: RETURN 

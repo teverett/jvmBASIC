@@ -34,7 +34,7 @@ public class RequestProcessor implements Runnable {
    /**
     * the index
     */
-   private static final String INDEX = "INDEX.bas";
+   private static final String INDEX = "index.bas";
    /**
     * config
     */

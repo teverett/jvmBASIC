@@ -1,0 +1,12 @@
+10 REM this is a comment
+20 PRINT "13"
+30 PRINT "hi"
+40 PRINT 10
+50 PRINT 15.55
+60 LET x = 12
+70 PRINT "hihi"
+80 PRINT x
+90 LET y = 1+2
+100 LET z = 3*6
+110 LET d= y+z
+120 PRINT d

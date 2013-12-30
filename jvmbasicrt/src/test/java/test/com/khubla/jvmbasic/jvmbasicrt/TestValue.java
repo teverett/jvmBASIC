@@ -32,8 +32,14 @@ public class TestValue {
          final Value v = new Value(new Array());
          Assert.assertTrue(v.getType() == Value.Type.ARRAY);
          Assert.assertTrue(v.arraySize() == 0);
-         final int[] indices = new int[1]; // a single dimensional array
-         indices[0] = 13; // 13'th element in the first dimension
+         /*
+          * a single dimensional array
+          */
+         final int[] indices = new int[1];
+         /*
+          * 13'th element in the first dimension
+          */
+         indices[0] = 13;
          Assert.assertTrue(v.getArrayValue(indices) == null);
          final Value db = new Value(13.3);
          v.setArrayValue(indices, db);
@@ -46,10 +52,23 @@ public class TestValue {
    }
 
    @Test
+   public void testSetBoolean() {
+      try {
+         final Value v = new Value(false);
+         Assert.assertTrue(v.getType() == Value.Type.BOOLEAN);
+      } catch (final Exception e) {
+         e.printStackTrace();
+         Assert.fail();
+      }
+   }
+
+   @Test
    public void testSetDouble() {
       try {
          final Value v = new Value("12.2");
          Assert.assertTrue(v.getType() == Value.Type.DOUBLE);
+         final Value v2 = new Value(12.2);
+         Assert.assertTrue(v2.getType() == Value.Type.DOUBLE);
       } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();
@@ -61,6 +80,8 @@ public class TestValue {
       try {
          final Value v = new Value("12");
          Assert.assertTrue(v.getType() == Value.Type.INTEGER);
+         final Value v2 = new Value(12);
+         Assert.assertTrue(v2.getType() == Value.Type.INTEGER);
       } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();

@@ -17,71 +17,52 @@ package com.khubla.jvmbasic.jvmbasicc;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.LocalVariableDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ProgramStaticAnalysis;
+import com.khubla.jvmbasic.jvmbasicc.compiler.TreePrinter;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 import com.khubla.jvmbasic.jvmbasicc.function.Function;
-import com.khubla.jvmbasic.jvmbasicc.function.impl.PROGFunction;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
+import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /**
  * @author tom
  */
 public class JVMBasicCompiler {
    /**
-    * generate the class name from the supplied BASIC filename
+    * logger
     */
-   public static String classNameFromFileName(String filename) {
-      return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
-   }
-
-   /**
-    * dump a tree to the console
-    */
-   public static void dumpTree(CommonTree commonTree, int indent) {
-      if (null != commonTree) {
-         StringBuffer sb = new StringBuffer(indent);
-         if (commonTree.getParent() == null) {
-            if (null != commonTree.getText()) {
-               System.out.println(sb.toString() + commonTree.getText().toString());
-            }
-         }
-         for (int i = 0; i < indent; i++) {
-            sb = sb.append("   ");
-         }
-         for (int i = 0; i < commonTree.getChildCount(); i++) {
-            System.out.println(sb.toString() + " " + jvmBasicParser.tokenNames[commonTree.getChild(i).getType()] + " " + commonTree.getChild(i).toString());
-            dumpTree((CommonTree) commonTree.getChild(i), indent + 1);
-         }
-      }
-   }
+   private static final Logger logger = LoggerFactory.getLogger(JVMBasicCompiler.class);
 
    /**
     * parse an input file
     */
-   public static CommonTree parse(InputStream inputStream) throws Exception {
+   public static ProgContext parse(InputStream inputStream) throws Exception {
       try {
          if (null != inputStream) {
             final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(inputStream));
             final CommonTokenStream tokens = new CommonTokenStream(jvmBasicLexer);
             final jvmBasicParser jvmBasicParser = new jvmBasicParser(tokens);
-            final jvmBasicParser.prog_return ret = jvmBasicParser.prog();
-            final CommonTree tree = (CommonTree) ret.getTree();
-            return tree;
+            jvmBasicParser.setBuildParseTree(true);
+            return jvmBasicParser.prog();
          } else {
             throw new IllegalArgumentException();
          }
@@ -95,7 +76,7 @@ public class JVMBasicCompiler {
     */
    public static void writeClassFile(byte[] byteCode, String classname, String outputDirectory) throws Exception {
       try {
-         System.out.println("Writing class '" + classname + "' to file '" + classname + ".class'");
+         logger.info("Writing class '" + classname + "' to file '" + classname + ".class'");
          if (null != byteCode) {
             FileOutputStream fos = null;
             if (null != outputDirectory) {
@@ -121,19 +102,20 @@ public class JVMBasicCompiler {
          /*
           * a message
           */
-         System.out.println("Parsing input");
+         logger.info("Parsing input for classname: '" + classname + "'");
          /*
           * get tree
           */
-         final CommonTree commonTree = parse(inputStream);
+         final ProgContext progContext = parse(inputStream);
          /*
-          * dump tree
+          * print tree
           */
-         dumpTree(commonTree, 0);
+         final TreePrinter treePrinter = new TreePrinter();
+         treePrinter.printTree(progContext);
          /*
           * a message
           */
-         System.out.println("Generating Bytecode for class '" + classname + "'");
+         logger.info("Generating Bytecode for class '" + classname + "'");
          /*
           * class
           */
@@ -165,7 +147,7 @@ public class JVMBasicCompiler {
          /*
           * program
           */
-         generateProgram(classname, classWriter, commonTree);
+         generateProgram(classname, classWriter, progContext);
          /*
           * generate the class
           */
@@ -173,6 +155,33 @@ public class JVMBasicCompiler {
          return classWriter.toByteArray();
       } catch (final Exception e) {
          throw new Exception("Exception in compile", e);
+      }
+   }
+
+   /**
+    * compile. This method generates the class definition
+    */
+   public byte[] compile(String filename, boolean verboseOutput) throws Exception {
+      final InputStream inputStream = new FileInputStream(filename);
+      final String className = FilenameUtil.classNameFromFileName(filename);
+      if (verboseOutput) {
+         logger.info("Compiling '" + filename + "' to class: '" + className + "'");
+      }
+      return this.compile(inputStream, className, verboseOutput);
+   }
+
+   /**
+    * compile a BAS file to a class file and return the classname
+    */
+   public String compileToClassfile(String filename, String outputDir, boolean verboseOutput) throws Exception {
+      try {
+         final FileInputStream fis = new FileInputStream(filename);
+         final String className = FilenameUtil.classNameFromFileName(filename);
+         final byte[] classbytes = compile(fis, className, verboseOutput);
+         writeClassFile(classbytes, className, outputDir);
+         return className;
+      } catch (final Exception e) {
+         throw new Exception("Exception in compileToClassfile", e);
       }
    }
 
@@ -324,7 +333,7 @@ public class JVMBasicCompiler {
     * Java prototype is "public program()"
     * </p>
     */
-   protected void generateProgram(String classname, ClassWriter classWriter, CommonTree commonTree) throws Exception {
+   protected void generateProgram(String classname, ClassWriter classWriter, ProgContext progContext) throws Exception {
       try {
          final MethodVisitor methodVisitor = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "program", "()V", null, new String[] { "java/lang/Exception" });
          methodVisitor.visitCode();
@@ -336,17 +345,18 @@ public class JVMBasicCompiler {
          /*
           * do the static analysis
           */
-         final ProgramStaticAnalysis programStaticAnalysis = new ProgramStaticAnalysis();
-         programStaticAnalysis.performStaticAnalysis(commonTree);
+         final StaticAnalysis programStaticAnalysis = new StaticAnalysis();
+         programStaticAnalysis.performStaticAnalysis(progContext);
          /*
           * show the static analysis
           */
-         programStaticAnalysis.dumpStaticAnalysis();
+         logger.info("Static analyis results for '" + classname + "'");
+         programStaticAnalysis.showAnalysisResults();
          /*
           * recurse into the parse tree
           */
-         final Function function = new PROGFunction();
-         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, commonTree, programStaticAnalysis);
+         final Function function = new progRule();
+         final GenerationContext generationContext = new GenerationContext(classname, methodVisitor, classWriter, progContext, programStaticAnalysis);
          function.execute(generationContext);
          /*
           * return
@@ -363,10 +373,10 @@ public class JVMBasicCompiler {
          /*
           * show all the other local variables
           */
-         System.out.println("JVM local variables");
+         logger.info("JVM local variables");
          for (int i = 1; i < (GenerationContext.getLocalvariables().size() + 1); i++) {
             final LocalVariableDeclaration lvd = GenerationContext.getLocalvariables().get(i);
-            System.out.println("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
+            logger.info("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
          }
          /*
           * we are done

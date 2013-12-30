@@ -18,12 +18,12 @@ package com.khubla.jvmbasic.jvmbasicc.compiler;
  */
 import java.util.Hashtable;
 
-import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ForDeclaration;
-import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.ProgramStaticAnalysis;
+import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
 
 /**
  * @author tome
@@ -37,7 +37,7 @@ public class GenerationContext {
       return localVariables;
    }
 
-   public static ProgramStaticAnalysis getProgramStaticAnalysis() {
+   public static StaticAnalysis getProgramStaticAnalysis() {
       return programStaticAnalysis;
    }
 
@@ -60,7 +60,7 @@ public class GenerationContext {
    /**
     * the commonTree
     */
-   private final CommonTree commonTree;
+   private final ParseTree parseTree;
    /**
     * all FOR declarations
     */
@@ -76,7 +76,7 @@ public class GenerationContext {
    /**
     * the static analysis
     */
-   private static ProgramStaticAnalysis programStaticAnalysis = null;
+   private static StaticAnalysis programStaticAnalysis = null;
    /**
     * all the variables
     */
@@ -89,9 +89,9 @@ public class GenerationContext {
    /**
     * copy ctor
     */
-   public GenerationContext(GenerationContext parent, CommonTree commonTree) {
+   public GenerationContext(GenerationContext parent, ParseTree parseTree) {
       methodVisitor = parent.methodVisitor;
-      this.commonTree = commonTree;
+      this.parseTree = parseTree;
       classWriter = parent.classWriter;
       className = parent.className;
       forDeclarations = parent.forDeclarations;
@@ -101,18 +101,18 @@ public class GenerationContext {
    /**
     * copy ctor
     */
-   public GenerationContext(GenerationContext parent, CommonTree commonTree, int lineNumber) {
+   public GenerationContext(GenerationContext parent, ParseTree parseTree, int lineNumber) {
       methodVisitor = parent.methodVisitor;
-      this.commonTree = commonTree;
+      this.parseTree = parseTree;
       classWriter = parent.classWriter;
       className = parent.className;
       forDeclarations = parent.forDeclarations;
       this.lineNumber = lineNumber;
    }
 
-   public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, CommonTree commonTree, ProgramStaticAnalysis staticAnalysis) {
+   public GenerationContext(String className, MethodVisitor methodVisitor, ClassWriter classWriter, ParseTree parseTree, StaticAnalysis staticAnalysis) {
       this.methodVisitor = methodVisitor;
-      this.commonTree = commonTree;
+      this.parseTree = parseTree;
       this.classWriter = classWriter;
       this.className = className;
       programStaticAnalysis = staticAnalysis;
@@ -132,9 +132,9 @@ public class GenerationContext {
     */
    public String getChildValue(int i) throws Exception {
       try {
-         if (null != commonTree) {
-            final CommonTree commonTree = (CommonTree) this.commonTree.getChildren().get(i);
-            return commonTree.getText();
+         if (null != parseTree) {
+            final ParseTree childParseTree = parseTree.getChild(i);
+            return childParseTree.getText();
          }
          return null;
       } catch (final Exception e) {
@@ -148,10 +148,6 @@ public class GenerationContext {
 
    public ClassWriter getClassWriter() {
       return classWriter;
-   }
-
-   public CommonTree getCommonTree() {
-      return commonTree;
    }
 
    public int getLineNumber() {
@@ -169,11 +165,15 @@ public class GenerationContext {
       return methodVisitor;
    }
 
+   public ParseTree getParseTree() {
+      return parseTree;
+   }
+
    /**
     * read data
     */
    public String readData() {
-      return programStaticAnalysis.getData()[dataPointer++];
+      return programStaticAnalysis.getDatasDatabase().getData()[dataPointer++];
    }
 
    /**
