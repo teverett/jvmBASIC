@@ -8,4 +8,7 @@
 80 PRINT x
 90 PRINT -2*-2
 100 PRINT -2 - -2
+110 LET y = 4*5
+120 PRINT y
+
 

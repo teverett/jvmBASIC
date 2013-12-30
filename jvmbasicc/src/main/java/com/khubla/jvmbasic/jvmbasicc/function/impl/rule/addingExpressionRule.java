@@ -16,8 +16,11 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import org.antlr.v4.runtime.CommonToken;
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AddingExpressionContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
@@ -39,10 +42,11 @@ public class addingExpressionRule extends BaseFunction {
           */
          if (generationContext.getParseTree().getChildCount() == 3) {
             /*
-             * sign
+             * operation
              */
-            final String sign = generationContext.getParseTree().getChild(1).getText();
-            if (sign.compareTo("+") == 0) {
+            final AddingExpressionContext addingExpressionContext = (AddingExpressionContext) generationContext.getParseTree();
+            final CommonToken commonToken = (CommonToken) addingExpressionContext.getChild(1).getPayload();
+            if (commonToken.getType() == jvmBasicParser.PLUS) {
                /*
                 * add
                 */

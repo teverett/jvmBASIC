@@ -51,6 +51,7 @@ public class TestA extends BaseCompilerTest {
       Assert.assertTrue(results[3].compareTo("1.4") == 0);
       Assert.assertTrue(results[4].compareTo("4.0") == 0);
       Assert.assertTrue(results[5].compareTo("0.0") == 0);
+      Assert.assertTrue(results[6].compareTo("20.0") == 0);
    }
 
    @Test(enabled = true)

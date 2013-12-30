@@ -16,8 +16,11 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import org.antlr.v4.runtime.CommonToken;
 import org.objectweb.asm.Opcodes;
 
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.MultiplyingExpressionContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
@@ -42,10 +45,11 @@ public class multiplyingExpressionRule extends BaseFunction {
           */
          if (generationContext.getParseTree().getChildCount() == 3) {
             /*
-             * sign
+             * operation
              */
-            final String sign = generationContext.getParseTree().getChild(1).getText();
-            if (sign.compareTo("*") == 0) {
+            final MultiplyingExpressionContext multiplyingExpressionContext = (MultiplyingExpressionContext) generationContext.getParseTree();
+            final CommonToken commonToken = (CommonToken) multiplyingExpressionContext.getChild(1).getPayload();
+            if (commonToken.getType() == jvmBasicParser.TIMES) {
                generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
                generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
                generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
