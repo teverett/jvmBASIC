@@ -17,6 +17,8 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.token;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import org.antlr.v4.runtime.Token;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
@@ -26,6 +28,11 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * @author tome
  */
 public class STRINGLITERALToken extends BaseFunction {
+   /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(NUMBERToken.class);
+
    @Override
    public boolean execute(GenerationContext generationContext) throws Exception {
       try {
@@ -34,6 +41,10 @@ public class STRINGLITERALToken extends BaseFunction {
           */
          final Token token = (Token) generationContext.getParseTree().getPayload();
          final String literal = token.getText();
+         /*
+          * found literal
+          */
+         logger.info("Found literal '" + literal + "'");
          /*
           * push onto value stack
           */
