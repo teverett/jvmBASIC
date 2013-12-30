@@ -116,8 +116,8 @@ to run the example use:
 
 `sh run.sh` and point your browser to `http://localhost:8080/`
 
-Travis
+Travis Status
 ---------
 
-The Travis build is [https://travis-ci.org/teverett/jvmBASIC](https://travis-ci.org/teverett/jvmBASIC)
+<img src="https://api.travis-ci.org/teverett/jvmBASIC.png">
 
