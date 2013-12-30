@@ -180,6 +180,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicParser.STRINGLITERAL, new STRINGLITERALToken());
       tokenFunctions.put(jvmBasicParser.NUMBER, new NUMBERToken());
       tokenFunctions.put(jvmBasicLexer.PLUS, new DefaultToken());
+      tokenFunctions.put(jvmBasicLexer.MINUS, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.TIMES, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.CR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LETTERS, new LETTERSToken());

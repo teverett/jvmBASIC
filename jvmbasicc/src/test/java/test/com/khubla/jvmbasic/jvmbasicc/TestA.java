@@ -46,6 +46,9 @@ public class TestA extends BaseCompilerTest {
       testSingleBASFile("src/test/resources/bas/a/expressions.bas", System.in, baos);
       final String[] results = baos.toString().split("\n");
       Assert.assertTrue(results[0].compareTo("3.0") == 0);
+      Assert.assertTrue(results[1].compareTo("-2.0") == 0);
+      Assert.assertTrue(results[2].compareTo("35.0") == 0);
+      Assert.assertTrue(results[3].compareTo("1.4") == 0);
    }
 
    @Test(enabled = true)
