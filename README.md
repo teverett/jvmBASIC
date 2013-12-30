@@ -76,7 +76,7 @@ The grammar
 
 The ANTLR grammar is at 
 
-`jvmbasicc/src/main/antlr3/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g`
+[https://github.com/teverett/jvmBASIC/blob/master/jvmbasicc/src/main/antlr4/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4](https://github.com/teverett/jvmBASIC/blob/master/jvmbasicc/src/main/antlr4/com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4)
 
 There is an excellent ANTLR grammar editor here:
 
@@ -120,19 +120,4 @@ Travis
 ---------
 
 The Travis build is [https://travis-ci.org/teverett/jvmBASIC](https://travis-ci.org/teverett/jvmBASIC)
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
 
