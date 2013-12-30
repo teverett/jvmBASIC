@@ -114,7 +114,8 @@ public class TestA extends BaseCompilerTest {
       final ByteArrayOutputStream baos = new ByteArrayOutputStream();
       testSingleBASFile("src/test/resources/bas/a/simpleif.bas", System.in, baos);
       final String[] results = baos.toString().split("\n");
-      Assert.assertTrue(results[0].compareTo("hi") == 0);
+      Assert.assertTrue(results[0].compareTo("ok1") == 0);
+      Assert.assertTrue(results[1].compareTo("ok2") == 0);
    }
 
    @Test(enabled = true)

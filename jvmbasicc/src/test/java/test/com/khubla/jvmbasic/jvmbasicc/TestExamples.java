@@ -22,6 +22,16 @@ import org.testng.annotations.Test;
  * @author tom
  */
 public class TestExamples extends BaseCompilerTest {
+   @Test(enabled = false)
+   public void testBeerBas() {
+      testSingleBASFile("src/test/resources/bas/examples/beer.bas");
+   }
+
+   @Test(enabled = false)
+   public void testExample1Bas() {
+      testSingleBASFile("src/test/resources/bas/examples/example1.bas");
+   }
+
    @Test(enabled = true)
    public void testPrintBas() {
       testSingleBASFile("src/test/resources/bas/examples/print.bas");
@@ -30,15 +40,5 @@ public class TestExamples extends BaseCompilerTest {
    @Test(enabled = true)
    public void testsSubprintBas() {
       testSingleBASFile("src/test/resources/bas/examples/subprint.bas");
-   }
-
-   @Test(enabled = false)
-   public void testExample1Bas() {
-      testSingleBASFile("src/test/resources/bas/examples/example1.bas");
-   }
-
-   @Test(enabled = false)
-   public void testBeerBas() {
-      testSingleBASFile("src/test/resources/bas/examples/beer.bas");
    }
 }
