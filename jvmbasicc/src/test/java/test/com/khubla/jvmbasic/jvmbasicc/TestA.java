@@ -108,9 +108,12 @@ public class TestA extends BaseCompilerTest {
       testSingleBASFile("src/test/resources/bas/a/print.bas");
    }
 
-   @Test(enabled = false)
+   @Test(enabled = true)
    public void testSimpleIfBas() {
-      testSingleBASFile("src/test/resources/bas/a/simpleif.bas");
+      final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      testSingleBASFile("src/test/resources/bas/a/simpleif.bas", System.in, baos);
+      final String[] results = baos.toString().split("\n");
+      Assert.assertTrue(results[0].compareTo("hi") == 0);
    }
 
    @Test(enabled = true)

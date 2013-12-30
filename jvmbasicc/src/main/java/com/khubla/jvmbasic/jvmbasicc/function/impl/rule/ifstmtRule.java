@@ -31,6 +31,9 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *  if (true == executionContext.pop().getBoolean()) {
  * </code>
  *         </p>
+ *         <p>
+ *         ifstmt : IF expression THEN? (statement | linenumber);
+ *         </p>
  */
 public class ifstmtRule extends BaseFunction {
    @Override
