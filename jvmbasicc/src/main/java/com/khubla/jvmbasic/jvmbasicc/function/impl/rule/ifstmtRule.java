@@ -41,9 +41,10 @@ public class ifstmtRule extends BaseFunction {
       try {
          if (generationContext.getParseTree().getChildCount() == 4) {
             /*
-             * so the subtree under the <IF> here will be <relational operator tree> <THEN> <statement>
+             * dispatch into the test
              */
-            Dispatcher.dispatchChildren(generationContext);
+            final GenerationContext testGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(1));
+            Dispatcher.dispatchChildren(testGenerationContext);
             /*
              * check the result
              */
@@ -60,8 +61,8 @@ public class ifstmtRule extends BaseFunction {
             /*
              * process the contained tree
              */
-            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
-            Dispatcher.dispatch(conditionalGenerationContext);
+            final GenerationContext statementGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(3));
+            Dispatcher.dispatch(statementGenerationContext);
             /*
              * label to skip to
              */
@@ -70,9 +71,10 @@ public class ifstmtRule extends BaseFunction {
             return true;
          } else if (generationContext.getParseTree().getChildCount() == 3) {
             /*
-             * so the subtree under the <IF> here will be <relational operator tree> <statement>
+             * dispatch into the test
              */
-            Dispatcher.dispatchChildren(generationContext);
+            final GenerationContext testGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(1));
+            Dispatcher.dispatchChildren(testGenerationContext);
             /*
              * check the result
              */
@@ -89,8 +91,8 @@ public class ifstmtRule extends BaseFunction {
             /*
              * process the contained tree
              */
-            final GenerationContext conditionalGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(1));
-            Dispatcher.dispatch(conditionalGenerationContext);
+            final GenerationContext statementGenerationContext = new GenerationContext(generationContext, generationContext.getParseTree().getChild(2));
+            Dispatcher.dispatch(statementGenerationContext);
             /*
              * label to skip to
              */
