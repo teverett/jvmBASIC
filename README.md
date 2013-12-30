@@ -119,5 +119,5 @@ to run the example use:
 Travis Status
 ---------
 
-<img src="https://api.travis-ci.org/teverett/jvmBASIC.png">
+<a href="https://travis-ci.org/"><img src="https://api.travis-ci.org/teverett/jvmBASIC.png"></a>
 
