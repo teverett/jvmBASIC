@@ -16,10 +16,12 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.VardeclContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
+import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 
 /**
  * A typical for loop looks like:
@@ -82,15 +84,8 @@ public class forstmtRule extends BaseFunction {
          /*
           * variables to collect
           */
-         final String variableName = generationContext.getChildValue(0);
-         // String fromName = generationContext.getChildValue(2);
-         // String toName = generationContext.getChildValue(4);
-         // String stepName;
-         // if (generationContext.getCommonTree().getChildCount() == 5) {
-         // stepName = "1";
-         // } else {
-         // stepName = generationContext.getChildValue(6);
-         // }
+         VardeclContext vardeclContext = (VardeclContext) generationContext.getParseTree().getChild(1);
+         final String variableName = VariableNameUtil.getVariableName(vardeclContext);
          /*
           * get the indices
           */
