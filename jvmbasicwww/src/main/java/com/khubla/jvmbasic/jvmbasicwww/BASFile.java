@@ -19,11 +19,11 @@ package com.khubla.jvmbasic.jvmbasicwww;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLClassLoader;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
-import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
 
 /**
@@ -33,6 +33,10 @@ import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
  */
 public class BASFile {
    /**
+    * logger
+    */
+   private static final Logger logger = LoggerFactory.getLogger(BASFile.class);
+   /**
     * the BAS file
     */
    private final File basFile;
@@ -41,13 +45,13 @@ public class BASFile {
     */
    private File classFile;
    /**
-    * the class
-    */
-   private Class<?> clazz;
-   /**
     * the class dir
     */
    private final String classdir;
+   /**
+    * classname
+    */
+   private String className;
 
    /**
     * ctor
@@ -63,15 +67,20 @@ public class BASFile {
    public void callBASClassInstance(InputStream inputStream, OutputStream outputStream) throws Exception {
       try {
          /*
-          * compile
+          * check if needs compile compile
           */
          if (true == needsCompile()) {
-            compile(classdir);
+            /*
+             * compile
+             */
+            final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
+            logger.info("Compiling '" + basFile.getName() + "'");
+            className = jvmBasicCompiler.compileToClassfile(basFile.getAbsolutePath(), classdir, true);
          }
          /*
-          * get instance
+          * load
           */
-         final Object instance = clazz.newInstance();
+         final Object instance = Loader.load(className, new File(classdir).getAbsolutePath() + "/");
          /*
           * set streams
           */
@@ -84,45 +93,6 @@ public class BASFile {
       } catch (final Exception e) {
          throw new Exception("Exception in callBASClassInstance", e);
       }
-   }
-
-   /**
-    * compile
-    */
-   private void compile(String classdir) throws Exception {
-      try {
-         /*
-          * compile
-          */
-         final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
-         System.out.println("Compiling '" + basFile.getName() + "'");
-         final String className = jvmBasicCompiler.compileToClassfile(basFile.getName(), classdir, true);
-         classFile = new File(classdir + "/" + className + ".class");
-         /*
-          * load with the class loader
-          */
-         final URL[] urls = new URL[] { new URL(new File(classdir).getAbsolutePath()) };
-         final URLClassLoader classLoader = new URLClassLoader(urls);
-         try {
-            clazz = classLoader.loadClass(getClassname());
-         } catch (final Exception e) {
-            throw e;
-         } finally {
-            classLoader.close();
-         }
-         if (null == clazz) {
-            throw new Exception("Unable to load class '" + getClassname() + "'");
-         }
-      } catch (final Exception e) {
-         throw new Exception("Exception in compileBASFile", e);
-      }
-   }
-
-   /**
-    * get the name of the generated JVM class
-    */
-   public String getClassname() {
-      return FilenameUtil.classNameFromFileName(basFile.getName());
    }
 
    /**

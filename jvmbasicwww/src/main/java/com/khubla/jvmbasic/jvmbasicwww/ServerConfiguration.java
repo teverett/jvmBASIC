@@ -60,7 +60,7 @@ public class ServerConfiguration {
                   /*
                    * check?
                    */
-                  if (files[i].getName().toLowerCase().trim().endsWith(".bas")) {
+                  if (files[i].getName().trim().endsWith(".bas")) {
                      /*
                       * the file
                       */
@@ -68,7 +68,7 @@ public class ServerConfiguration {
                      /*
                       * remember it
                       */
-                     basFiles.put(basFile.getClassname() + ".bas", basFile);
+                     basFiles.put(files[i].getName().trim(), basFile);
                   }
                }
             }
