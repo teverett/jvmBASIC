@@ -49,7 +49,7 @@ public class Loader {
          } catch (final Exception e) {
             throw e;
          } finally {
-            urlClassLoader.close();
+            // urlClassLoader.close();
          }
          /*
           * get an instance
