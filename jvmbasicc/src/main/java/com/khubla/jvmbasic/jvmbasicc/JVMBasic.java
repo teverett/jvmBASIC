@@ -22,11 +22,10 @@ import java.io.InputStream;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.PosixParser;
 
 import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
@@ -60,31 +59,16 @@ public class JVMBasic {
           * options
           */
          final Options options = new Options();
-         OptionBuilder.withArgName(OUTPUT_OPTION);
-         OptionBuilder.isRequired(false);
-         OptionBuilder.withType(String.class);
-         OptionBuilder.hasArg();
-         OptionBuilder.withDescription("target directory to output to");
-         final Option oo = OptionBuilder.create(OUTPUT_OPTION);
+         Option oo = Option.builder().argName(OUTPUT_OPTION).longOpt(OUTPUT_OPTION).type(String.class).hasArg().required(false).desc("target directory to output to").build();
          options.addOption(oo);
-         OptionBuilder.withArgName(FILE_OPTION);
-         OptionBuilder.isRequired();
-         OptionBuilder.withType(String.class);
-         OptionBuilder.hasArg();
-         OptionBuilder.withDescription("file to compile");
-         final Option fo = OptionBuilder.create(FILE_OPTION);
-         options.addOption(fo);
-         OptionBuilder.withArgName(VERBOSE_OPTION);
-         OptionBuilder.hasArg();
-         OptionBuilder.withDescription("verbose output");
-         OptionBuilder.isRequired(false);
-         OptionBuilder.withType(Boolean.class);
-         final Option vo = OptionBuilder.create(VERBOSE_OPTION);
-         options.addOption(vo);
+         oo = Option.builder().argName(FILE_OPTION).longOpt(FILE_OPTION).type(String.class).hasArg().required(true).desc("file to compile").build();
+         options.addOption(oo);
+         oo = Option.builder().argName(VERBOSE_OPTION).longOpt(VERBOSE_OPTION).type(String.class).hasArg().required(false).desc("verbose output").build();
+         options.addOption(oo);
          /*
           * parse
           */
-         final CommandLineParser parser = new PosixParser();
+         final CommandLineParser parser = new DefaultParser();
          CommandLine cmd = null;
          try {
             cmd = parser.parse(options, args);
