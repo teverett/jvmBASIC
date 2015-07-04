@@ -20,7 +20,7 @@ import java.util.Hashtable;
 
 /**
  * implements a BASIC-like multidimensional array of Values. The indices are arbitrary indices on orthogonal axes.
- * 
+ *
  * @author tome
  */
 public class Array {

@@ -29,6 +29,23 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.StaticAnalysis;
  * @author tome
  */
 public class GenerationContext {
+   /**
+    * data pointer
+    */
+   private static int dataPointer = 0;
+   /**
+    * the static analysis
+    */
+   private static StaticAnalysis programStaticAnalysis = null;
+   /**
+    * all the variables
+    */
+   private final static Hashtable<Integer, LocalVariableDeclaration> localVariables = new Hashtable<Integer, LocalVariableDeclaration>();
+   /**
+    * local variable allocation index
+    */
+   private static int localVariableIndex = 1;
+
    public static void addLocalVariable(int basicLine, String name, int index) {
       localVariables.put(index, new LocalVariableDeclaration(basicLine, name, index));
    }
@@ -69,22 +86,6 @@ public class GenerationContext {
     * current BASIC line number
     */
    private final int lineNumber;
-   /**
-    * data pointer
-    */
-   private static int dataPointer = 0;
-   /**
-    * the static analysis
-    */
-   private static StaticAnalysis programStaticAnalysis = null;
-   /**
-    * all the variables
-    */
-   private final static Hashtable<Integer, LocalVariableDeclaration> localVariables = new Hashtable<Integer, LocalVariableDeclaration>();
-   /**
-    * local variable allocation index
-    */
-   private static int localVariableIndex = 1;
 
    /**
     * copy ctor

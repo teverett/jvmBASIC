@@ -29,7 +29,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * executionContext.setVariable(executionContext.pop().getAsString(), executionContext.pop());
  * </code>
  * </p>
- * 
+ *
  * @author tome
  */
 public class readstmtRule extends BaseFunction {
@@ -69,8 +69,7 @@ public class readstmtRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable",
-               "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable", "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

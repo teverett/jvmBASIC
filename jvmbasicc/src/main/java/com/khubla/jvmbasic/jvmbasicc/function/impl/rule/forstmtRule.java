@@ -26,28 +26,28 @@ import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 /**
  * A typical for loop looks like:
  * <p>
- * 
+ *
  * <pre>
  * FOR I = <x> TO <y> STEP <z>", and then "NEXT I"
  * </pre>
- * 
+ *
  * </p>
  * The impl in the FOR looks like the below. This will allocate 3 local variables in the frame.
  * <p>
- * 
+ *
  * <pre>
  * int start = executionContext.resolveValue(executionContext.pop()).getInteger();
  * int end = executionContext.resolveValue(executionContext.pop()).getInteger();
  * int step = executionContext.resolveValue(executionContext.pop()).getInteger();
  * int i = start;
  * executionContext.setVariable('I', i);
- * 
+ *
  * </pre>
- * 
+ *
  * </p>
  * The loop code, in the next looks like
  * <p>
- * 
+ *
  * <pre>
  *   if (i < end) {
  *    i=i+step;
@@ -55,26 +55,26 @@ import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
  *    JMP <label>
  * }
  * </pre>
- * 
+ *
  * </p>
  * The JMP is implemented with a goto
- * 
+ *
  * <pre>
  * generationContext.getMethodVisitor().visitJumpInsn(Opcodes.GOTO, loopTargetLabel);
  * </pre>
- * 
+ *
  * @author tome
  */
 /**
  * <p>
  * <code>
- *  
+ *
  * </code>
  * </p>
  * <p>
  * forstmt : FOR vardecl EQ expression TO expression (STEP expression)? statement NEXT vardecl?; ;
  * </p>
- * 
+ *
  * @author tome
  */
 public class forstmtRule extends BaseFunction {
@@ -154,8 +154,7 @@ public class forstmtRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(GETFIELD, generationContext.getClassName(), "executionContext", "Lcom/khubla/jvmbasic/jvmbasicrt/ExecutionContext;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue",
-               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
+         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "getInteger", "()Ljava/lang/Integer;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I");
          generationContext.getMethodVisitor().visitVarInsn(ISTORE, fromLocalVariableIndex);
@@ -167,8 +166,7 @@ public class forstmtRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(GETFIELD, generationContext.getClassName(), "executionContext", "Lcom/khubla/jvmbasic/jvmbasicrt/ExecutionContext;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue",
-               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
+         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "getInteger", "()Ljava/lang/Integer;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I");
          generationContext.getMethodVisitor().visitVarInsn(ISTORE, toLocalVariableIndex);
@@ -180,8 +178,7 @@ public class forstmtRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(GETFIELD, generationContext.getClassName(), "executionContext", "Lcom/khubla/jvmbasic/jvmbasicrt/ExecutionContext;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue",
-               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
+         generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "resolveValue", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "getInteger", "()Ljava/lang/Integer;");
          generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I");
          generationContext.getMethodVisitor().visitVarInsn(ISTORE, stepLocalVariableIndex);

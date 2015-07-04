@@ -22,7 +22,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * a DIM in BASIC declares an array. the RT code stores arrays as Hashtables, so we dont actually care how many dimensions there are.
- * 
+ *
  * @author tome
  */
 public class dimstmtRule extends BaseFunction {
@@ -52,8 +52,7 @@ public class dimstmtRule extends BaseFunction {
             generationContext.getMethodVisitor().visitInsn(DUP);
             generationContext.getMethodVisitor().visitMethodInsn(INVOKESPECIAL, "com/khubla/jvmbasic/jvmbasicrt/Array", "<init>", "()V");
             generationContext.getMethodVisitor().visitMethodInsn(INVOKESPECIAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "<init>", "(Lcom/khubla/jvmbasic/jvmbasicrt/Array;)V");
-            generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "setVariable",
-                  "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
+            generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "setVariable", "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
          }
          return true;
       } catch (final Exception e) {

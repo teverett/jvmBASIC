@@ -60,8 +60,7 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
        */
       logger.info("Statements");
       for (final StatementDeclaration statementDeclaration : statements.values()) {
-         logger.info("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex() + "] "
-               + statementDeclaration.getAmprstmtContext().getText());
+         logger.info("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex() + "] " + statementDeclaration.getAmprstmtContext().getText());
       }
    }
 

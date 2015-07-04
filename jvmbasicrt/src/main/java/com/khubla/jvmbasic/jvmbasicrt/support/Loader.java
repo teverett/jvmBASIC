@@ -26,7 +26,7 @@ import java.net.URLClassLoader;
  */
 /**
  * A simple wrapper which loads a JVMBasic class
- * 
+ *
  * @author tome
  */
 public class Loader {

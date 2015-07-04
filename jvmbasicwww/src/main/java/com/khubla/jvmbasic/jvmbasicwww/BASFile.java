@@ -28,7 +28,7 @@ import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
 
 /**
  * A simple index of all the BAS files
- * 
+ *
  * @author tome
  */
 public class BASFile {

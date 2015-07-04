@@ -32,7 +32,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  *         </p>
  *         <p>
  *         <code>
- *       executionContext.push("\"" + new BufferedReader(new InputStreamReader(System.in)).readLine() + "\""); 
+ *       executionContext.push("\"" + new BufferedReader(new InputStreamReader(System.in)).readLine() + "\"");
  *         </code>
  *         </p>
  *         <p>
@@ -110,8 +110,7 @@ public class inputstmtRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;");
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable",
-               "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable", "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V");
          return true;
       } catch (final Exception e) {
          throw new Exception("Exception in execute", e);

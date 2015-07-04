@@ -27,7 +27,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  * <p>
  * In order to be simple reliable, we inline the GOSUBs. It's not possible to implement gosub as methods since there could be a GOTO into the middle of any GOSUB. Such is BASIC! *
  * </p>
- * 
+ *
  * @author tome
  */
 public class gosubstmtRule extends BaseFunction {

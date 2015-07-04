@@ -52,8 +52,7 @@ public class JVMBasicWebServer {
          /*
           * thread pool
           */
-         final ExecutorService executorService = new ThreadPoolExecutor(maxThreads, maxThreads, 1, TimeUnit.MINUTES, new ArrayBlockingQueue<Runnable>(maxThreads, true),
-               new ThreadPoolExecutor.CallerRunsPolicy());
+         final ExecutorService executorService = new ThreadPoolExecutor(maxThreads, maxThreads, 1, TimeUnit.MINUTES, new ArrayBlockingQueue<Runnable>(maxThreads, true), new ThreadPoolExecutor.CallerRunsPolicy());
          /*
           * listener
           */

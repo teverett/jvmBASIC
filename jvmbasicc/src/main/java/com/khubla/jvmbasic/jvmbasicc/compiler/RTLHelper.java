@@ -20,7 +20,7 @@ import org.objectweb.asm.Opcodes;
 
 /**
  * common methods to generate code to do various runtime things
- * 
+ *
  * @author tome
  */
 public class RTLHelper {

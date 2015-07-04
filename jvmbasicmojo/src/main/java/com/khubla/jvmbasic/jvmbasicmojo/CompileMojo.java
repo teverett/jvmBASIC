@@ -18,7 +18,7 @@ import com.khubla.jvmbasic.jvmbasicc.JVMBasicCompiler;
  */
 /**
  * jvmBASIC compiler
- * 
+ *
  * @author tome
  */
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, requiresProject = true, threadSafe = false)
@@ -44,6 +44,7 @@ public class CompileMojo extends AbstractMojo {
    @Component
    private MavenProject project;
 
+   @Override
    public void execute() throws MojoExecutionException, MojoFailureException {
       try {
          if (null != project) {

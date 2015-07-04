@@ -28,7 +28,7 @@ import com.khubla.jvmbasic.jvmbasicrt.support.Loader;
  */
 /**
  * test compiler
- * 
+ *
  * @author tom
  */
 public abstract class BaseCompilerTest {
