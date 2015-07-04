@@ -379,9 +379,12 @@ public class JVMBasicCompiler {
             logger.info("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
          }
          /*
+          * max stack 255 max variables 10
+          */
+         methodVisitor.visitMaxs(255, 10);
+         /*
           * we are done
           */
-         methodVisitor.visitMaxs(0, 1);
          methodVisitor.visitEnd();
       } catch (final Exception e) {
          throw new Exception("Exception in generateProgram", e);

@@ -89,16 +89,16 @@ public class JVMBasic {
          final String outputDirectory = cmd.getOptionValue(OUTPUT_OPTION);
          if (null != filename) {
             /*
-             * compiler
-             */
-            final JVMBasicCompiler asbCompiler = new JVMBasicCompiler();
-            /*
              * filename
              */
             filename = System.getProperty("user.dir") + "/" + filename;
             final File fl = new File(filename);
             filename = fl.getCanonicalPath();
             if (true == fl.exists()) {
+               /*
+                * compiler
+                */
+               final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
                /*
                 * get input stream
                 */
@@ -111,7 +111,7 @@ public class JVMBasic {
                 * compile
                 */
                final String className = fn;
-               final byte[] byteCode = asbCompiler.compile(inputStream, className, verbose);
+               final byte[] byteCode = jvmBasicCompiler.compile(inputStream, className, verbose);
                /*
                 * write
                 */

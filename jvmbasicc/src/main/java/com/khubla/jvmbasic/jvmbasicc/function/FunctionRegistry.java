@@ -112,7 +112,7 @@ public class FunctionRegistry {
       if (tokenFunctions.containsKey(id)) {
          return tokenFunctions.get(id);
       } else {
-         throw new Exception("Unknown token function '" + jvmBasicParser.tokenNames[id] + " (" + id + ")'  ");
+         throw new Exception("Unknown token function '" + jvmBasicParser.VOCABULARY.getDisplayName(id) + " (" + id + ")'  ");
       }
    }
 

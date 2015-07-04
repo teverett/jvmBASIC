@@ -1,7 +1,6 @@
-// Generated from com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4 by ANTLR 4.1
+// Generated from com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4 by ANTLR 4.5
 package com.khubla.jvmbasic.jvmbasicc.antlr;
 
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -10,1387 +9,1345 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 public interface jvmBasicListener extends ParseTreeListener {
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#absfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAbsfunc(@NotNull jvmBasicParser.AbsfuncContext ctx);
+   void enterAbsfunc(jvmBasicParser.AbsfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#addingExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAddingExpression(@NotNull jvmBasicParser.AddingExpressionContext ctx);
+   void enterAddingExpression(jvmBasicParser.AddingExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#amperoper}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAmperoper(@NotNull jvmBasicParser.AmperoperContext ctx);
+   void enterAmperoper(jvmBasicParser.AmperoperContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#amprstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAmprstmt(@NotNull jvmBasicParser.AmprstmtContext ctx);
+   void enterAmprstmt(jvmBasicParser.AmprstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#amptstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAmptstmt(@NotNull jvmBasicParser.AmptstmtContext ctx);
+   void enterAmptstmt(jvmBasicParser.AmptstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#ascfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAscfunc(@NotNull jvmBasicParser.AscfuncContext ctx);
+   void enterAscfunc(jvmBasicParser.AscfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#atnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterAtnfunc(@NotNull jvmBasicParser.AtnfuncContext ctx);
+   void enterAtnfunc(jvmBasicParser.AtnfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#callstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterCallstmt(@NotNull jvmBasicParser.CallstmtContext ctx);
+   void enterCallstmt(jvmBasicParser.CallstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#chrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterChrfunc(@NotNull jvmBasicParser.ChrfuncContext ctx);
+   void enterChrfunc(jvmBasicParser.ChrfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#colorstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterColorstmt(@NotNull jvmBasicParser.ColorstmtContext ctx);
+   void enterColorstmt(jvmBasicParser.ColorstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#cosfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterCosfunc(@NotNull jvmBasicParser.CosfuncContext ctx);
+   void enterCosfunc(jvmBasicParser.CosfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#datastmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterDatastmt(@NotNull jvmBasicParser.DatastmtContext ctx);
+   void enterDatastmt(jvmBasicParser.DatastmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#datum}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterDatum(@NotNull jvmBasicParser.DatumContext ctx);
+   void enterDatum(jvmBasicParser.DatumContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#defstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterDefstmt(@NotNull jvmBasicParser.DefstmtContext ctx);
+   void enterDefstmt(jvmBasicParser.DefstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#dimstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterDimstmt(@NotNull jvmBasicParser.DimstmtContext ctx);
+   void enterDimstmt(jvmBasicParser.DimstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#drawstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterDrawstmt(@NotNull jvmBasicParser.DrawstmtContext ctx);
+   void enterDrawstmt(jvmBasicParser.DrawstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#endstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterEndstmt(@NotNull jvmBasicParser.EndstmtContext ctx);
+   void enterEndstmt(jvmBasicParser.EndstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#expfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterExpfunc(@NotNull jvmBasicParser.ExpfuncContext ctx);
+   void enterExpfunc(jvmBasicParser.ExpfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#exponentExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterExponentExpression(@NotNull jvmBasicParser.ExponentExpressionContext ctx);
+   void enterExponentExpression(jvmBasicParser.ExponentExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#expression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterExpression(@NotNull jvmBasicParser.ExpressionContext ctx);
+   void enterExpression(jvmBasicParser.ExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#exprlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterExprlist(@NotNull jvmBasicParser.ExprlistContext ctx);
+   void enterExprlist(jvmBasicParser.ExprlistContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#fnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterFnfunc(@NotNull jvmBasicParser.FnfuncContext ctx);
+   void enterFnfunc(jvmBasicParser.FnfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#forstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterForstmt(@NotNull jvmBasicParser.ForstmtContext ctx);
+   void enterForstmt(jvmBasicParser.ForstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#frefunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterFrefunc(@NotNull jvmBasicParser.FrefuncContext ctx);
+   void enterFrefunc(jvmBasicParser.FrefuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#func}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterFunc(@NotNull jvmBasicParser.FuncContext ctx);
+   void enterFunc(jvmBasicParser.FuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#getstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterGetstmt(@NotNull jvmBasicParser.GetstmtContext ctx);
+   void enterGetstmt(jvmBasicParser.GetstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#gosubstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterGosubstmt(@NotNull jvmBasicParser.GosubstmtContext ctx);
+   void enterGosubstmt(jvmBasicParser.GosubstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#gotostmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterGotostmt(@NotNull jvmBasicParser.GotostmtContext ctx);
-
-   /**
-    * Enter a parse tree produced by {@link jvmBasicParser#gte}.
-    *
-    * @param ctx the parse tree
-    */
-   void enterGte(@NotNull jvmBasicParser.GteContext ctx);
+   void enterGotostmt(jvmBasicParser.GotostmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#hcolorstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterHcolorstmt(@NotNull jvmBasicParser.HcolorstmtContext ctx);
+   void enterHcolorstmt(jvmBasicParser.HcolorstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#himemstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterHimemstmt(@NotNull jvmBasicParser.HimemstmtContext ctx);
+   void enterHimemstmt(jvmBasicParser.HimemstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#hlinstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterHlinstmt(@NotNull jvmBasicParser.HlinstmtContext ctx);
+   void enterHlinstmt(jvmBasicParser.HlinstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#hplotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterHplotstmt(@NotNull jvmBasicParser.HplotstmtContext ctx);
+   void enterHplotstmt(jvmBasicParser.HplotstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#htabstmnt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterHtabstmnt(@NotNull jvmBasicParser.HtabstmntContext ctx);
+   void enterHtabstmnt(jvmBasicParser.HtabstmntContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#ifstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterIfstmt(@NotNull jvmBasicParser.IfstmtContext ctx);
+   void enterIfstmt(jvmBasicParser.IfstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#includestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterIncludestmt(@NotNull jvmBasicParser.IncludestmtContext ctx);
+   void enterIncludestmt(jvmBasicParser.IncludestmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#inputstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterInputstmt(@NotNull jvmBasicParser.InputstmtContext ctx);
+   void enterInputstmt(jvmBasicParser.InputstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#instmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterInstmt(@NotNull jvmBasicParser.InstmtContext ctx);
+   void enterInstmt(jvmBasicParser.InstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#intfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterIntfunc(@NotNull jvmBasicParser.IntfuncContext ctx);
+   void enterIntfunc(jvmBasicParser.IntfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#leftfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLeftfunc(@NotNull jvmBasicParser.LeftfuncContext ctx);
+   void enterLeftfunc(jvmBasicParser.LeftfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#lenfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLenfunc(@NotNull jvmBasicParser.LenfuncContext ctx);
+   void enterLenfunc(jvmBasicParser.LenfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#letstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLetstmt(@NotNull jvmBasicParser.LetstmtContext ctx);
+   void enterLetstmt(jvmBasicParser.LetstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#line}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLine(@NotNull jvmBasicParser.LineContext ctx);
+   void enterLine(jvmBasicParser.LineContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#linenumber}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLinenumber(@NotNull jvmBasicParser.LinenumberContext ctx);
+   void enterLinenumber(jvmBasicParser.LinenumberContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#liststmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterListstmt(@NotNull jvmBasicParser.ListstmtContext ctx);
+   void enterListstmt(jvmBasicParser.ListstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#logfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLogfunc(@NotNull jvmBasicParser.LogfuncContext ctx);
+   void enterLogfunc(jvmBasicParser.LogfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#lomemstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterLomemstmt(@NotNull jvmBasicParser.LomemstmtContext ctx);
-
-   /**
-    * Enter a parse tree produced by {@link jvmBasicParser#lte}.
-    *
-    * @param ctx the parse tree
-    */
-   void enterLte(@NotNull jvmBasicParser.LteContext ctx);
+   void enterLomemstmt(jvmBasicParser.LomemstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#midfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterMidfunc(@NotNull jvmBasicParser.MidfuncContext ctx);
+   void enterMidfunc(jvmBasicParser.MidfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#multiplyingExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterMultiplyingExpression(@NotNull jvmBasicParser.MultiplyingExpressionContext ctx);
-
-   /**
-    * Enter a parse tree produced by {@link jvmBasicParser#neq}.
-    *
-    * @param ctx the parse tree
-    */
-   void enterNeq(@NotNull jvmBasicParser.NeqContext ctx);
+   void enterMultiplyingExpression(jvmBasicParser.MultiplyingExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#onerrstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterOnerrstmt(@NotNull jvmBasicParser.OnerrstmtContext ctx);
+   void enterOnerrstmt(jvmBasicParser.OnerrstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#ongosubstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterOngosubstmt(@NotNull jvmBasicParser.OngosubstmtContext ctx);
+   void enterOngosubstmt(jvmBasicParser.OngosubstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#ongotostmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterOngotostmt(@NotNull jvmBasicParser.OngotostmtContext ctx);
+   void enterOngotostmt(jvmBasicParser.OngotostmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#pdlfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPdlfunc(@NotNull jvmBasicParser.PdlfuncContext ctx);
+   void enterPdlfunc(jvmBasicParser.PdlfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#peekfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPeekfunc(@NotNull jvmBasicParser.PeekfuncContext ctx);
+   void enterPeekfunc(jvmBasicParser.PeekfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#plotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPlotstmt(@NotNull jvmBasicParser.PlotstmtContext ctx);
+   void enterPlotstmt(jvmBasicParser.PlotstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#pokestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPokestmt(@NotNull jvmBasicParser.PokestmtContext ctx);
+   void enterPokestmt(jvmBasicParser.PokestmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#popstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPopstmt(@NotNull jvmBasicParser.PopstmtContext ctx);
+   void enterPopstmt(jvmBasicParser.PopstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#posfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPosfunc(@NotNull jvmBasicParser.PosfuncContext ctx);
+   void enterPosfunc(jvmBasicParser.PosfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#printlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPrintlist(@NotNull jvmBasicParser.PrintlistContext ctx);
+   void enterPrintlist(jvmBasicParser.PrintlistContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#printstmt1}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPrintstmt1(@NotNull jvmBasicParser.Printstmt1Context ctx);
+   void enterPrintstmt1(jvmBasicParser.Printstmt1Context ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#prog}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterProg(@NotNull jvmBasicParser.ProgContext ctx);
+   void enterProg(jvmBasicParser.ProgContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#prstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterPrstmt(@NotNull jvmBasicParser.PrstmtContext ctx);
+   void enterPrstmt(jvmBasicParser.PrstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#readstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterReadstmt(@NotNull jvmBasicParser.ReadstmtContext ctx);
+   void enterReadstmt(jvmBasicParser.ReadstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#recallstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRecallstmt(@NotNull jvmBasicParser.RecallstmtContext ctx);
+   void enterRecallstmt(jvmBasicParser.RecallstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#relationalExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRelationalExpression(@NotNull jvmBasicParser.RelationalExpressionContext ctx);
+   void enterRelationalExpression(jvmBasicParser.RelationalExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#relop}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRelop(@NotNull jvmBasicParser.RelopContext ctx);
+   void enterRelop(jvmBasicParser.RelopContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#restorestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx);
+   void enterRestorestmt(jvmBasicParser.RestorestmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#returnstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterReturnstmt(@NotNull jvmBasicParser.ReturnstmtContext ctx);
+   void enterReturnstmt(jvmBasicParser.ReturnstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#rightfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRightfunc(@NotNull jvmBasicParser.RightfuncContext ctx);
+   void enterRightfunc(jvmBasicParser.RightfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#rndfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRndfunc(@NotNull jvmBasicParser.RndfuncContext ctx);
+   void enterRndfunc(jvmBasicParser.RndfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#rotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterRotstmt(@NotNull jvmBasicParser.RotstmtContext ctx);
+   void enterRotstmt(jvmBasicParser.RotstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#scalestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterScalestmt(@NotNull jvmBasicParser.ScalestmtContext ctx);
+   void enterScalestmt(jvmBasicParser.ScalestmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#scrnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterScrnfunc(@NotNull jvmBasicParser.ScrnfuncContext ctx);
+   void enterScrnfunc(jvmBasicParser.ScrnfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#sgnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSgnfunc(@NotNull jvmBasicParser.SgnfuncContext ctx);
+   void enterSgnfunc(jvmBasicParser.SgnfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#signExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSignExpression(@NotNull jvmBasicParser.SignExpressionContext ctx);
+   void enterSignExpression(jvmBasicParser.SignExpressionContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#sinfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSinfunc(@NotNull jvmBasicParser.SinfuncContext ctx);
+   void enterSinfunc(jvmBasicParser.SinfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#spcfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSpcfunc(@NotNull jvmBasicParser.SpcfuncContext ctx);
+   void enterSpcfunc(jvmBasicParser.SpcfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#speedstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSpeedstmt(@NotNull jvmBasicParser.SpeedstmtContext ctx);
+   void enterSpeedstmt(jvmBasicParser.SpeedstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#sqrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterSqrfunc(@NotNull jvmBasicParser.SqrfuncContext ctx);
+   void enterSqrfunc(jvmBasicParser.SqrfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#statement}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterStatement(@NotNull jvmBasicParser.StatementContext ctx);
+   void enterStatement(jvmBasicParser.StatementContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#storestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterStorestmt(@NotNull jvmBasicParser.StorestmtContext ctx);
+   void enterStorestmt(jvmBasicParser.StorestmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#strfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterStrfunc(@NotNull jvmBasicParser.StrfuncContext ctx);
+   void enterStrfunc(jvmBasicParser.StrfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#tabstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterTabstmt(@NotNull jvmBasicParser.TabstmtContext ctx);
+   void enterTabstmt(jvmBasicParser.TabstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#tanfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterTanfunc(@NotNull jvmBasicParser.TanfuncContext ctx);
+   void enterTanfunc(jvmBasicParser.TanfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#usrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterUsrfunc(@NotNull jvmBasicParser.UsrfuncContext ctx);
+   void enterUsrfunc(jvmBasicParser.UsrfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#valfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterValfunc(@NotNull jvmBasicParser.ValfuncContext ctx);
+   void enterValfunc(jvmBasicParser.ValfuncContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#var}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVar(@NotNull jvmBasicParser.VarContext ctx);
+   void enterVar(jvmBasicParser.VarContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#vardecl}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVardecl(@NotNull jvmBasicParser.VardeclContext ctx);
+   void enterVardecl(jvmBasicParser.VardeclContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#variableassignment}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVariableassignment(@NotNull jvmBasicParser.VariableassignmentContext ctx);
+   void enterVariableassignment(jvmBasicParser.VariableassignmentContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#varlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVarlist(@NotNull jvmBasicParser.VarlistContext ctx);
+   void enterVarlist(jvmBasicParser.VarlistContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#varname}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVarname(@NotNull jvmBasicParser.VarnameContext ctx);
+   void enterVarname(jvmBasicParser.VarnameContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#varsuffix}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVarsuffix(@NotNull jvmBasicParser.VarsuffixContext ctx);
+   void enterVarsuffix(jvmBasicParser.VarsuffixContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#vlinstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVlinstmt(@NotNull jvmBasicParser.VlinstmtContext ctx);
+   void enterVlinstmt(jvmBasicParser.VlinstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#vplotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
+   void enterVplotstmt(jvmBasicParser.VplotstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#vtabstmnt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterVtabstmnt(@NotNull jvmBasicParser.VtabstmntContext ctx);
+   void enterVtabstmnt(jvmBasicParser.VtabstmntContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#waitstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterWaitstmt(@NotNull jvmBasicParser.WaitstmtContext ctx);
+   void enterWaitstmt(jvmBasicParser.WaitstmtContext ctx);
 
    /**
     * Enter a parse tree produced by {@link jvmBasicParser#xdrawstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void enterXdrawstmt(@NotNull jvmBasicParser.XdrawstmtContext ctx);
+   void enterXdrawstmt(jvmBasicParser.XdrawstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#absfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAbsfunc(@NotNull jvmBasicParser.AbsfuncContext ctx);
+   void exitAbsfunc(jvmBasicParser.AbsfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#addingExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAddingExpression(@NotNull jvmBasicParser.AddingExpressionContext ctx);
+   void exitAddingExpression(jvmBasicParser.AddingExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#amperoper}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAmperoper(@NotNull jvmBasicParser.AmperoperContext ctx);
+   void exitAmperoper(jvmBasicParser.AmperoperContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#amprstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAmprstmt(@NotNull jvmBasicParser.AmprstmtContext ctx);
+   void exitAmprstmt(jvmBasicParser.AmprstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#amptstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAmptstmt(@NotNull jvmBasicParser.AmptstmtContext ctx);
+   void exitAmptstmt(jvmBasicParser.AmptstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#ascfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAscfunc(@NotNull jvmBasicParser.AscfuncContext ctx);
+   void exitAscfunc(jvmBasicParser.AscfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#atnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitAtnfunc(@NotNull jvmBasicParser.AtnfuncContext ctx);
+   void exitAtnfunc(jvmBasicParser.AtnfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#callstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitCallstmt(@NotNull jvmBasicParser.CallstmtContext ctx);
+   void exitCallstmt(jvmBasicParser.CallstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#chrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitChrfunc(@NotNull jvmBasicParser.ChrfuncContext ctx);
+   void exitChrfunc(jvmBasicParser.ChrfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#colorstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitColorstmt(@NotNull jvmBasicParser.ColorstmtContext ctx);
+   void exitColorstmt(jvmBasicParser.ColorstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#cosfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitCosfunc(@NotNull jvmBasicParser.CosfuncContext ctx);
+   void exitCosfunc(jvmBasicParser.CosfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#datastmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitDatastmt(@NotNull jvmBasicParser.DatastmtContext ctx);
+   void exitDatastmt(jvmBasicParser.DatastmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#datum}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitDatum(@NotNull jvmBasicParser.DatumContext ctx);
+   void exitDatum(jvmBasicParser.DatumContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#defstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitDefstmt(@NotNull jvmBasicParser.DefstmtContext ctx);
+   void exitDefstmt(jvmBasicParser.DefstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#dimstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitDimstmt(@NotNull jvmBasicParser.DimstmtContext ctx);
+   void exitDimstmt(jvmBasicParser.DimstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#drawstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitDrawstmt(@NotNull jvmBasicParser.DrawstmtContext ctx);
+   void exitDrawstmt(jvmBasicParser.DrawstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#endstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitEndstmt(@NotNull jvmBasicParser.EndstmtContext ctx);
+   void exitEndstmt(jvmBasicParser.EndstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#expfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitExpfunc(@NotNull jvmBasicParser.ExpfuncContext ctx);
+   void exitExpfunc(jvmBasicParser.ExpfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#exponentExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitExponentExpression(@NotNull jvmBasicParser.ExponentExpressionContext ctx);
+   void exitExponentExpression(jvmBasicParser.ExponentExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#expression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitExpression(@NotNull jvmBasicParser.ExpressionContext ctx);
+   void exitExpression(jvmBasicParser.ExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#exprlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitExprlist(@NotNull jvmBasicParser.ExprlistContext ctx);
+   void exitExprlist(jvmBasicParser.ExprlistContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#fnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitFnfunc(@NotNull jvmBasicParser.FnfuncContext ctx);
+   void exitFnfunc(jvmBasicParser.FnfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#forstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitForstmt(@NotNull jvmBasicParser.ForstmtContext ctx);
+   void exitForstmt(jvmBasicParser.ForstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#frefunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitFrefunc(@NotNull jvmBasicParser.FrefuncContext ctx);
+   void exitFrefunc(jvmBasicParser.FrefuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#func}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitFunc(@NotNull jvmBasicParser.FuncContext ctx);
+   void exitFunc(jvmBasicParser.FuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#getstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitGetstmt(@NotNull jvmBasicParser.GetstmtContext ctx);
+   void exitGetstmt(jvmBasicParser.GetstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#gosubstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitGosubstmt(@NotNull jvmBasicParser.GosubstmtContext ctx);
+   void exitGosubstmt(jvmBasicParser.GosubstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#gotostmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitGotostmt(@NotNull jvmBasicParser.GotostmtContext ctx);
-
-   /**
-    * Exit a parse tree produced by {@link jvmBasicParser#gte}.
-    *
-    * @param ctx the parse tree
-    */
-   void exitGte(@NotNull jvmBasicParser.GteContext ctx);
+   void exitGotostmt(jvmBasicParser.GotostmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#hcolorstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitHcolorstmt(@NotNull jvmBasicParser.HcolorstmtContext ctx);
+   void exitHcolorstmt(jvmBasicParser.HcolorstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#himemstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitHimemstmt(@NotNull jvmBasicParser.HimemstmtContext ctx);
+   void exitHimemstmt(jvmBasicParser.HimemstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#hlinstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitHlinstmt(@NotNull jvmBasicParser.HlinstmtContext ctx);
+   void exitHlinstmt(jvmBasicParser.HlinstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#hplotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitHplotstmt(@NotNull jvmBasicParser.HplotstmtContext ctx);
+   void exitHplotstmt(jvmBasicParser.HplotstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#htabstmnt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitHtabstmnt(@NotNull jvmBasicParser.HtabstmntContext ctx);
+   void exitHtabstmnt(jvmBasicParser.HtabstmntContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#ifstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitIfstmt(@NotNull jvmBasicParser.IfstmtContext ctx);
+   void exitIfstmt(jvmBasicParser.IfstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#includestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitIncludestmt(@NotNull jvmBasicParser.IncludestmtContext ctx);
+   void exitIncludestmt(jvmBasicParser.IncludestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#inputstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitInputstmt(@NotNull jvmBasicParser.InputstmtContext ctx);
+   void exitInputstmt(jvmBasicParser.InputstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#instmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitInstmt(@NotNull jvmBasicParser.InstmtContext ctx);
+   void exitInstmt(jvmBasicParser.InstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#intfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitIntfunc(@NotNull jvmBasicParser.IntfuncContext ctx);
+   void exitIntfunc(jvmBasicParser.IntfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#leftfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLeftfunc(@NotNull jvmBasicParser.LeftfuncContext ctx);
+   void exitLeftfunc(jvmBasicParser.LeftfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#lenfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLenfunc(@NotNull jvmBasicParser.LenfuncContext ctx);
+   void exitLenfunc(jvmBasicParser.LenfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#letstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLetstmt(@NotNull jvmBasicParser.LetstmtContext ctx);
+   void exitLetstmt(jvmBasicParser.LetstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#line}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLine(@NotNull jvmBasicParser.LineContext ctx);
+   void exitLine(jvmBasicParser.LineContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#linenumber}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLinenumber(@NotNull jvmBasicParser.LinenumberContext ctx);
+   void exitLinenumber(jvmBasicParser.LinenumberContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#liststmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitListstmt(@NotNull jvmBasicParser.ListstmtContext ctx);
+   void exitListstmt(jvmBasicParser.ListstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#logfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLogfunc(@NotNull jvmBasicParser.LogfuncContext ctx);
+   void exitLogfunc(jvmBasicParser.LogfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#lomemstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitLomemstmt(@NotNull jvmBasicParser.LomemstmtContext ctx);
-
-   /**
-    * Exit a parse tree produced by {@link jvmBasicParser#lte}.
-    *
-    * @param ctx the parse tree
-    */
-   void exitLte(@NotNull jvmBasicParser.LteContext ctx);
+   void exitLomemstmt(jvmBasicParser.LomemstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#midfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitMidfunc(@NotNull jvmBasicParser.MidfuncContext ctx);
+   void exitMidfunc(jvmBasicParser.MidfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#multiplyingExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitMultiplyingExpression(@NotNull jvmBasicParser.MultiplyingExpressionContext ctx);
-
-   /**
-    * Exit a parse tree produced by {@link jvmBasicParser#neq}.
-    *
-    * @param ctx the parse tree
-    */
-   void exitNeq(@NotNull jvmBasicParser.NeqContext ctx);
+   void exitMultiplyingExpression(jvmBasicParser.MultiplyingExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#onerrstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitOnerrstmt(@NotNull jvmBasicParser.OnerrstmtContext ctx);
+   void exitOnerrstmt(jvmBasicParser.OnerrstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#ongosubstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitOngosubstmt(@NotNull jvmBasicParser.OngosubstmtContext ctx);
+   void exitOngosubstmt(jvmBasicParser.OngosubstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#ongotostmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitOngotostmt(@NotNull jvmBasicParser.OngotostmtContext ctx);
+   void exitOngotostmt(jvmBasicParser.OngotostmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#pdlfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPdlfunc(@NotNull jvmBasicParser.PdlfuncContext ctx);
+   void exitPdlfunc(jvmBasicParser.PdlfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#peekfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPeekfunc(@NotNull jvmBasicParser.PeekfuncContext ctx);
+   void exitPeekfunc(jvmBasicParser.PeekfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#plotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPlotstmt(@NotNull jvmBasicParser.PlotstmtContext ctx);
+   void exitPlotstmt(jvmBasicParser.PlotstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#pokestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPokestmt(@NotNull jvmBasicParser.PokestmtContext ctx);
+   void exitPokestmt(jvmBasicParser.PokestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#popstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPopstmt(@NotNull jvmBasicParser.PopstmtContext ctx);
+   void exitPopstmt(jvmBasicParser.PopstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#posfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPosfunc(@NotNull jvmBasicParser.PosfuncContext ctx);
+   void exitPosfunc(jvmBasicParser.PosfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#printlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPrintlist(@NotNull jvmBasicParser.PrintlistContext ctx);
+   void exitPrintlist(jvmBasicParser.PrintlistContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#printstmt1}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPrintstmt1(@NotNull jvmBasicParser.Printstmt1Context ctx);
+   void exitPrintstmt1(jvmBasicParser.Printstmt1Context ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#prog}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitProg(@NotNull jvmBasicParser.ProgContext ctx);
+   void exitProg(jvmBasicParser.ProgContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#prstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitPrstmt(@NotNull jvmBasicParser.PrstmtContext ctx);
+   void exitPrstmt(jvmBasicParser.PrstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#readstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitReadstmt(@NotNull jvmBasicParser.ReadstmtContext ctx);
+   void exitReadstmt(jvmBasicParser.ReadstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#recallstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRecallstmt(@NotNull jvmBasicParser.RecallstmtContext ctx);
+   void exitRecallstmt(jvmBasicParser.RecallstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#relationalExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRelationalExpression(@NotNull jvmBasicParser.RelationalExpressionContext ctx);
+   void exitRelationalExpression(jvmBasicParser.RelationalExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#relop}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRelop(@NotNull jvmBasicParser.RelopContext ctx);
+   void exitRelop(jvmBasicParser.RelopContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#restorestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRestorestmt(@NotNull jvmBasicParser.RestorestmtContext ctx);
+   void exitRestorestmt(jvmBasicParser.RestorestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#returnstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitReturnstmt(@NotNull jvmBasicParser.ReturnstmtContext ctx);
+   void exitReturnstmt(jvmBasicParser.ReturnstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#rightfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRightfunc(@NotNull jvmBasicParser.RightfuncContext ctx);
+   void exitRightfunc(jvmBasicParser.RightfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#rndfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRndfunc(@NotNull jvmBasicParser.RndfuncContext ctx);
+   void exitRndfunc(jvmBasicParser.RndfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#rotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitRotstmt(@NotNull jvmBasicParser.RotstmtContext ctx);
+   void exitRotstmt(jvmBasicParser.RotstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#scalestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitScalestmt(@NotNull jvmBasicParser.ScalestmtContext ctx);
+   void exitScalestmt(jvmBasicParser.ScalestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#scrnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitScrnfunc(@NotNull jvmBasicParser.ScrnfuncContext ctx);
+   void exitScrnfunc(jvmBasicParser.ScrnfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#sgnfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSgnfunc(@NotNull jvmBasicParser.SgnfuncContext ctx);
+   void exitSgnfunc(jvmBasicParser.SgnfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#signExpression}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSignExpression(@NotNull jvmBasicParser.SignExpressionContext ctx);
+   void exitSignExpression(jvmBasicParser.SignExpressionContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#sinfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSinfunc(@NotNull jvmBasicParser.SinfuncContext ctx);
+   void exitSinfunc(jvmBasicParser.SinfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#spcfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSpcfunc(@NotNull jvmBasicParser.SpcfuncContext ctx);
+   void exitSpcfunc(jvmBasicParser.SpcfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#speedstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSpeedstmt(@NotNull jvmBasicParser.SpeedstmtContext ctx);
+   void exitSpeedstmt(jvmBasicParser.SpeedstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#sqrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitSqrfunc(@NotNull jvmBasicParser.SqrfuncContext ctx);
+   void exitSqrfunc(jvmBasicParser.SqrfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#statement}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitStatement(@NotNull jvmBasicParser.StatementContext ctx);
+   void exitStatement(jvmBasicParser.StatementContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#storestmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitStorestmt(@NotNull jvmBasicParser.StorestmtContext ctx);
+   void exitStorestmt(jvmBasicParser.StorestmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#strfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitStrfunc(@NotNull jvmBasicParser.StrfuncContext ctx);
+   void exitStrfunc(jvmBasicParser.StrfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#tabstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitTabstmt(@NotNull jvmBasicParser.TabstmtContext ctx);
+   void exitTabstmt(jvmBasicParser.TabstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#tanfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitTanfunc(@NotNull jvmBasicParser.TanfuncContext ctx);
+   void exitTanfunc(jvmBasicParser.TanfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#usrfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitUsrfunc(@NotNull jvmBasicParser.UsrfuncContext ctx);
+   void exitUsrfunc(jvmBasicParser.UsrfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#valfunc}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitValfunc(@NotNull jvmBasicParser.ValfuncContext ctx);
+   void exitValfunc(jvmBasicParser.ValfuncContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#var}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVar(@NotNull jvmBasicParser.VarContext ctx);
+   void exitVar(jvmBasicParser.VarContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#vardecl}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVardecl(@NotNull jvmBasicParser.VardeclContext ctx);
+   void exitVardecl(jvmBasicParser.VardeclContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#variableassignment}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVariableassignment(@NotNull jvmBasicParser.VariableassignmentContext ctx);
+   void exitVariableassignment(jvmBasicParser.VariableassignmentContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#varlist}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVarlist(@NotNull jvmBasicParser.VarlistContext ctx);
+   void exitVarlist(jvmBasicParser.VarlistContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#varname}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVarname(@NotNull jvmBasicParser.VarnameContext ctx);
+   void exitVarname(jvmBasicParser.VarnameContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#varsuffix}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVarsuffix(@NotNull jvmBasicParser.VarsuffixContext ctx);
+   void exitVarsuffix(jvmBasicParser.VarsuffixContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#vlinstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVlinstmt(@NotNull jvmBasicParser.VlinstmtContext ctx);
+   void exitVlinstmt(jvmBasicParser.VlinstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#vplotstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
+   void exitVplotstmt(jvmBasicParser.VplotstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#vtabstmnt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitVtabstmnt(@NotNull jvmBasicParser.VtabstmntContext ctx);
+   void exitVtabstmnt(jvmBasicParser.VtabstmntContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#waitstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitWaitstmt(@NotNull jvmBasicParser.WaitstmtContext ctx);
+   void exitWaitstmt(jvmBasicParser.WaitstmtContext ctx);
 
    /**
     * Exit a parse tree produced by {@link jvmBasicParser#xdrawstmt}.
-    *
+    * 
     * @param ctx the parse tree
     */
-   void exitXdrawstmt(@NotNull jvmBasicParser.XdrawstmtContext ctx);
+   void exitXdrawstmt(jvmBasicParser.XdrawstmtContext ctx);
 }

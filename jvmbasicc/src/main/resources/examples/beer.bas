@@ -3,7 +3,7 @@
 30 INPUT "Enter bottles of beer ",num
 40 GOSUB 1000
 50 LET num = num-1
-60 IF num >= 1 THEN GOTO 40
+60 IF num > 1 THEN GOTO 40
 70 PRINT "no more beer"
 1000 REM this prints the bottles of beer
 1010 PRINT num;" bottles of beer on the wall"

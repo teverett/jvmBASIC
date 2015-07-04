@@ -58,7 +58,7 @@ public class TreePrinter implements SimpleTreeWalkerCallback {
    @Override
    public void token(CommonToken commonToken, int ctxlevel) {
       if (commonToken.getType() != -1) {
-         logger.info(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.tokenNames[commonToken.getType()] + "] " + commonToken.getText());
+         logger.info(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.VOCABULARY.getDisplayName(commonToken.getType()) + "] " + commonToken.getText());
       }
    }
 }

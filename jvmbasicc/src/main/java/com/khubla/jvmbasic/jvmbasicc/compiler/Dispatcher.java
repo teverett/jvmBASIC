@@ -45,7 +45,7 @@ public class Dispatcher {
             if (o.getClass() == CommonToken.class) {
                final CommonToken commonToken = (CommonToken) o;
                final Function function = FunctionRegistry.getInstance().getTokenFunction(commonToken.getType());
-               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for token '" + jvmBasicParser.tokenNames[commonToken.getType()] + "'");
+               logger.info("Dispatching to '" + function.getClass().getSimpleName() + "' for token '" + jvmBasicParser.VOCABULARY.getDisplayName(commonToken.getType()) + "'");
                return function.execute(generationContext);
             } else {
                final ParserRuleContext parserRuleContext = (ParserRuleContext) o;
