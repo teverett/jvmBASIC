@@ -206,7 +206,7 @@ public class JVMBasicCompiler {
          final Label l0 = new Label();
          methodVisitor.visitLabel(l0);
          methodVisitor.visitVarInsn(Opcodes.ALOAD, 0);
-         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>", "()V");
+         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
          /*
           * create a new execution context and assign it
           */
@@ -215,7 +215,7 @@ public class JVMBasicCompiler {
          methodVisitor.visitVarInsn(Opcodes.ALOAD, 0);
          methodVisitor.visitTypeInsn(Opcodes.NEW, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT);
          methodVisitor.visitInsn(Opcodes.DUP);
-         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "<init>", "()V");
+         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "<init>", "()V", false);
          methodVisitor.visitFieldInsn(Opcodes.PUTFIELD, className, RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          /*
           * return
@@ -272,7 +272,7 @@ public class JVMBasicCompiler {
           */
          methodVisitor.visitTypeInsn(Opcodes.NEW, classname);
          methodVisitor.visitInsn(Opcodes.DUP);
-         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, classname, "<init>", "()V");
+         methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, classname, "<init>", "()V", false);
          methodVisitor.visitVarInsn(Opcodes.ASTORE, 1);
          /*
           * assign the input stream
@@ -291,7 +291,7 @@ public class JVMBasicCompiler {
           */
          methodVisitor.visitLabel(l0);
          methodVisitor.visitVarInsn(Opcodes.ALOAD, 1);
-         methodVisitor.visitMethodInsn(Opcodes.INVOKEVIRTUAL, classname, "program", "()V");
+         methodVisitor.visitMethodInsn(Opcodes.INVOKEVIRTUAL, classname, "program", "()V", false);
          methodVisitor.visitLabel(l1);
          final Label l4 = new Label();
          methodVisitor.visitJumpInsn(Opcodes.GOTO, l4);
@@ -302,7 +302,7 @@ public class JVMBasicCompiler {
          methodVisitor.visitLabel(l5);
          methodVisitor.visitLineNumber(21, l5);
          methodVisitor.visitVarInsn(Opcodes.ALOAD, 2);
-         methodVisitor.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Exception", "printStackTrace", "()V");
+         methodVisitor.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Exception", "printStackTrace", "()V", false);
          /*
           * return
           */

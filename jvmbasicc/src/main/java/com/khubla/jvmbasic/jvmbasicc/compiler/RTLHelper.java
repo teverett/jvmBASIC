@@ -44,8 +44,8 @@ public class RTLHelper {
       generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
       generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), EXECUTIONCONTEXT_NAME, JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
       generationContext.getMethodVisitor().visitLdcInsn(new Double(db));
-      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Double", "valueOf", "(D)Ljava/lang/Double;");
-      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V");
+      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Double", "valueOf", "(D)Ljava/lang/Double;", false);
+      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V", false);
    }
 
    /**
@@ -60,8 +60,8 @@ public class RTLHelper {
       generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
       generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), EXECUTIONCONTEXT_NAME, JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
       generationContext.getMethodVisitor().visitIntInsn(Opcodes.BIPUSH, i);
-      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;");
-      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Integer;)V");
+      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
+      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Integer;)V", false);
    }
 
    /**
@@ -76,6 +76,6 @@ public class RTLHelper {
       generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
       generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), EXECUTIONCONTEXT_NAME, JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
       generationContext.getMethodVisitor().visitLdcInsn(str);
-      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V");
+      generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V", false);
    }
 }
