@@ -1,10 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.datas;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatastmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.DatumContext;
@@ -34,10 +32,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.GenericContextIteratorCal
  */
 public class DatasDatabase implements Analyser, GenericContextIteratorCallback<DatastmtContext> {
    /**
-    * logger
-    */
-   private static final Logger logger = LoggerFactory.getLogger(DatasDatabase.class);
-   /**
     * DATA declarations
     */
    private String[] data;
@@ -62,14 +56,14 @@ public class DatasDatabase implements Analyser, GenericContextIteratorCallback<D
    }
 
    @Override
-   public void dumpAnalysis() throws Exception {
+   public void dumpAnalysis(PrintWriter printWriter) throws Exception {
       /*
        * walk the datums
        */
-      logger.info("Datums");
+      printWriter.println("Datums");
       if (null != data) {
          for (final String datum : data) {
-            logger.info(datum);
+            printWriter.println(datum);
          }
       }
    }

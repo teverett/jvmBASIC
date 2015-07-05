@@ -1,5 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
+import java.io.PrintWriter;
+
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 
 /*
@@ -21,5 +23,5 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
 public interface Analyser {
    void analyse(ProgContext progContext) throws Exception;
 
-   void dumpAnalysis() throws Exception;
+   void dumpAnalysis(PrintWriter printWriter) throws Exception;
 }

@@ -1,25 +1,9 @@
 package com.khubla.jvmbasic.jvmbasicc;
 
-/*
- * jvmBasic Copyright 2012, khubla.com
- *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -74,20 +58,12 @@ public class JVMBasicCompiler {
    /**
     * write the supplied bytecode given the class name and an option output directory
     */
-   public static void writeClassFile(byte[] byteCode, String classname, String outputDirectory) throws Exception {
+   private static void writeClassFile(byte[] byteCode, OutputStream outputStream) throws Exception {
       try {
-         logger.info("Writing class '" + classname + "' to file '" + classname + ".class'");
          if (null != byteCode) {
-            FileOutputStream fos = null;
-            if (null != outputDirectory) {
-               new File(outputDirectory).mkdirs();
-               fos = new FileOutputStream(outputDirectory + "/" + classname + ".class");
-            } else {
-               fos = new FileOutputStream(classname + ".class");
-            }
-            fos.write(byteCode);
-            fos.flush();
-            fos.close();
+            outputStream.write(byteCode);
+            outputStream.flush();
+            outputStream.close();
          }
       } catch (final Exception e) {
          throw new Exception("Exception in writeClassFile", e);
@@ -97,7 +73,7 @@ public class JVMBasicCompiler {
    /**
     * compile. This method generates the class definition
     */
-   public byte[] compile(InputStream inputStream, String classname, boolean verboseOutput) throws Exception {
+   private byte[] compile(InputStream inputStream, OutputStream astOutputStream, OutputStream staticAnalysisOutputStream, String classname, boolean verboseOutput) throws Exception {
       try {
          /*
           * a message
@@ -110,7 +86,7 @@ public class JVMBasicCompiler {
          /*
           * print tree
           */
-         final TreePrinter treePrinter = new TreePrinter();
+         final TreePrinter treePrinter = new TreePrinter(astOutputStream);
          treePrinter.printTree(progContext);
          /*
           * a message
@@ -147,7 +123,7 @@ public class JVMBasicCompiler {
          /*
           * program
           */
-         generateProgram(classname, classWriter, progContext);
+         generateProgram(classname, classWriter, progContext, staticAnalysisOutputStream);
          /*
           * generate the class
           */
@@ -159,26 +135,17 @@ public class JVMBasicCompiler {
    }
 
    /**
-    * compile. This method generates the class definition
-    */
-   public byte[] compile(String filename, boolean verboseOutput) throws Exception {
-      final InputStream inputStream = new FileInputStream(filename);
-      final String className = FilenameUtil.classNameFromFileName(filename);
-      if (verboseOutput) {
-         logger.info("Compiling '" + filename + "' to class: '" + className + "'");
-      }
-      return this.compile(inputStream, className, verboseOutput);
-   }
-
-   /**
     * compile a BAS file to a class file and return the classname
     */
-   public String compileToClassfile(String filename, String outputDir, boolean verboseOutput) throws Exception {
+   public String compileToClassfile(String basFileName, String outputDirectory, boolean verboseOutput) throws Exception {
       try {
-         final FileInputStream fis = new FileInputStream(filename);
-         final String className = FilenameUtil.classNameFromFileName(filename);
-         final byte[] classbytes = compile(fis, className, verboseOutput);
-         writeClassFile(classbytes, className, outputDir);
+         final FileInputStream basInputStream = new FileInputStream(basFileName);
+         final String className = FilenameUtil.classNameFromFileName(basFileName);
+         final FileOutputStream astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(className), outputDirectory);
+         final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(className), outputDirectory);
+         final FileOutputStream staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(className), outputDirectory);
+         final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, className, verboseOutput);
+         writeClassFile(classbytes, classOutputStream);
          return className;
       } catch (final Exception e) {
          throw new Exception("Exception in compileToClassfile", e);
@@ -333,7 +300,7 @@ public class JVMBasicCompiler {
     * Java prototype is "public program()"
     * </p>
     */
-   protected void generateProgram(String classname, ClassWriter classWriter, ProgContext progContext) throws Exception {
+   protected void generateProgram(String classname, ClassWriter classWriter, ProgContext progContext, OutputStream staticAnalysisOutputStream) throws Exception {
       try {
          final MethodVisitor methodVisitor = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "program", "()V", null, new String[] { "java/lang/Exception" });
          methodVisitor.visitCode();
@@ -348,10 +315,9 @@ public class JVMBasicCompiler {
          final StaticAnalysis programStaticAnalysis = new StaticAnalysis();
          programStaticAnalysis.performStaticAnalysis(progContext);
          /*
-          * show the static analysis
+          * dump the static analysis
           */
-         logger.info("Static analyis results for '" + classname + "'");
-         programStaticAnalysis.showAnalysisResults();
+         programStaticAnalysis.showAnalysisResults(staticAnalysisOutputStream);
          /*
           * recurse into the parse tree
           */

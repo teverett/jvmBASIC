@@ -1,5 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -58,11 +61,14 @@ public class StaticAnalysis {
    /**
     * show analysis results
     */
-   public void showAnalysisResults() throws Exception {
+   public void showAnalysisResults(OutputStream staticAnalysisOutputStream) throws Exception {
       try {
+         final PrintWriter printWriter = new PrintWriter(staticAnalysisOutputStream);
          for (int i = 0; i < analysers.length; i++) {
-            analysers[i].dumpAnalysis();
+            analysers[i].dumpAnalysis(printWriter);
          }
+         printWriter.flush();
+         printWriter.close();
       } catch (final Exception e) {
          throw new Exception("Exception in showAnalysisResults", e);
       }

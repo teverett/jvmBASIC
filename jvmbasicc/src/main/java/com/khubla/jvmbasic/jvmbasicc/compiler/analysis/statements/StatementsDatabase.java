@@ -1,9 +1,7 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements;
 
+import java.io.PrintWriter;
 import java.util.TreeMap;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.AmprstmtContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.ProgContext;
@@ -34,10 +32,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.StatementIteratorCallback
  */
 public class StatementsDatabase implements Analyser, StatementIteratorCallback {
    /**
-    * logger
-    */
-   private static final Logger logger = LoggerFactory.getLogger(StatementsDatabase.class);
-   /**
     * all lines
     */
    private final TreeMap<Integer, StatementDeclaration> statements = new TreeMap<Integer, StatementDeclaration>();
@@ -54,13 +48,13 @@ public class StatementsDatabase implements Analyser, StatementIteratorCallback {
    }
 
    @Override
-   public void dumpAnalysis() throws Exception {
+   public void dumpAnalysis(PrintWriter printWriter) throws Exception {
       /*
        * walk the statements
        */
-      logger.info("Statements");
+      printWriter.println("Statements");
       for (final StatementDeclaration statementDeclaration : statements.values()) {
-         logger.info("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex() + "] " + statementDeclaration.getAmprstmtContext().getText());
+         printWriter.println("[" + statementDeclaration.getLineDeclaration().getCodeLine() + ":" + statementDeclaration.getLineDeclaration().getBasicLine() + ":" + statementDeclaration.getLineIndex() + "] " + statementDeclaration.getAmprstmtContext().getText());
       }
    }
 

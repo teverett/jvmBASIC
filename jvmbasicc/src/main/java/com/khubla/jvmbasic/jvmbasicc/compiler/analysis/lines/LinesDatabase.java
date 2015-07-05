@@ -1,12 +1,11 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines;
 
+import java.io.PrintWriter;
 import java.util.TreeMap;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.objectweb.asm.Label;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LineContext;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.LinenumberContext;
@@ -36,10 +35,6 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.LineIteratorCallback;
  */
 public class LinesDatabase implements LineIteratorCallback, Analyser {
    /**
-    * logger
-    */
-   private static final Logger logger = LoggerFactory.getLogger(LinesDatabase.class);
-   /**
     * all lines
     */
    private final TreeMap<Integer, LineDeclaration> lines = new TreeMap<Integer, LineDeclaration>();
@@ -63,10 +58,10 @@ public class LinesDatabase implements LineIteratorCallback, Analyser {
    }
 
    @Override
-   public void dumpAnalysis() throws Exception {
-      logger.info("Lines");
+   public void dumpAnalysis(PrintWriter printWriter) throws Exception {
+      printWriter.println("Lines");
       for (final LineDeclaration lineDeclaraction : lines.values()) {
-         logger.info("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
+         printWriter.println("[" + lineDeclaraction.getCodeLine() + ":" + lineDeclaraction.getBasicLine() + "] " + lineDeclaraction.getLineContext().getText());
       }
    }
 

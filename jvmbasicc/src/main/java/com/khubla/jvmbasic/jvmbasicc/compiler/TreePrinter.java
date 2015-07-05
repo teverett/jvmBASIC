@@ -1,5 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.compiler;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.ParserRuleContext;
 /*
@@ -19,8 +22,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalker;
@@ -31,9 +32,20 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.iterator.SimpleTreeWalkerCallback;
  */
 public class TreePrinter implements SimpleTreeWalkerCallback {
    /**
-    * logger
+    * PrintWriter
     */
-   private static final Logger logger = LoggerFactory.getLogger(TreePrinter.class);
+   private final PrintWriter printWriter;
+
+   /**
+    * ctor
+    */
+   public TreePrinter(OutputStream astOutputStream) {
+      if (null != astOutputStream) {
+         printWriter = new PrintWriter(astOutputStream);
+      } else {
+         printWriter = new PrintWriter(System.out);
+      }
+   }
 
    private String indentString(int ctxlevel) {
       StringBuffer sb = new StringBuffer(ctxlevel);
@@ -45,7 +57,7 @@ public class TreePrinter implements SimpleTreeWalkerCallback {
 
    @Override
    public void parserRule(ParserRuleContext parserRuleContext, int ctxlevel) {
-      logger.info(indentString(ctxlevel) + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
+      printWriter.println(indentString(ctxlevel) + "[" + parserRuleContext.getRuleIndex() + " " + jvmBasicParser.ruleNames[parserRuleContext.getRuleIndex()] + "]");
    }
 
    /**
@@ -53,12 +65,14 @@ public class TreePrinter implements SimpleTreeWalkerCallback {
     */
    public void printTree(ParseTree t) {
       SimpleTreeWalker.iterate(t, this);
+      printWriter.flush();
+      printWriter.close();
    }
 
    @Override
    public void token(CommonToken commonToken, int ctxlevel) {
       if (commonToken.getType() != -1) {
-         logger.info(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.VOCABULARY.getDisplayName(commonToken.getType()) + "] " + commonToken.getText());
+         printWriter.println(indentString(ctxlevel) + "[" + commonToken.getType() + " " + jvmBasicParser.VOCABULARY.getDisplayName(commonToken.getType()) + "] " + commonToken.getText());
       }
    }
 }

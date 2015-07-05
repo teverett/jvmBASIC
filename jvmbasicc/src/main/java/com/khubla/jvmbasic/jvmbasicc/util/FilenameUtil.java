@@ -1,6 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicc.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -23,9 +25,44 @@ import java.io.File;
  */
 public class FilenameUtil {
    /**
+    * get AST filename from ClassName
+    */
+   public static String astFileNameFromClassName(String classname) {
+      return classname + ".ast.txt";
+   }
+
+   /**
+    * get Class filename from ClassName
+    */
+   public static String classFileNameFromClassName(String classname) {
+      return classname + ".class";
+   }
+
+   /**
     * generate the class name from the supplied BASIC filename
     */
    public static String classNameFromFileName(String filename) {
       return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+   }
+
+   /**
+    * get an output stream for a file
+    */
+   public static FileOutputStream getOutputStream(String filename, String dir) throws IOException {
+      String fullFN = null;
+      if (null != dir) {
+         fullFN = dir + "/" + filename;
+         new File(dir).mkdirs();
+      } else {
+         fullFN = filename;
+      }
+      return new FileOutputStream(fullFN);
+   }
+
+   /**
+    * get Static Analysis filename from ClassName
+    */
+   public static String staticAnalyisFileNameFromClassName(String classname) {
+      return classname + ".analysis.txt";
    }
 }

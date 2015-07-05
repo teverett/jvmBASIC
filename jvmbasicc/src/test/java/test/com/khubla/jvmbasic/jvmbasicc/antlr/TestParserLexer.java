@@ -61,7 +61,7 @@ public class TestParserLexer {
                System.out.println("Parsing: " + filename);
                try {
                   final ParseTree parseTree = JVMBasicCompiler.parse(inputStream);
-                  final TreePrinter treePrinter = new TreePrinter();
+                  final TreePrinter treePrinter = new TreePrinter(null);
                   treePrinter.printTree(parseTree);
                } catch (final Exception e) {
                   failures++;

@@ -17,8 +17,6 @@ package com.khubla.jvmbasic.jvmbasicc;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -26,8 +24,6 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-
-import com.khubla.jvmbasic.jvmbasicc.util.FilenameUtil;
 
 /**
  * @author tom
@@ -85,39 +81,25 @@ public class JVMBasic {
          /*
           * get the file
           */
-         String filename = cmd.getOptionValue(FILE_OPTION);
+         final String filename = cmd.getOptionValue(FILE_OPTION);
          final String outputDirectory = cmd.getOptionValue(OUTPUT_OPTION);
          if (null != filename) {
             /*
              * filename
              */
-            filename = System.getProperty("user.dir") + "/" + filename;
-            final File fl = new File(filename);
-            filename = fl.getCanonicalPath();
+            final String basFileName = System.getProperty("user.dir") + "/" + filename;
+            final File fl = new File(basFileName);
             if (true == fl.exists()) {
                /*
                 * compiler
                 */
                final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
                /*
-                * get input stream
-                */
-               final InputStream inputStream = new FileInputStream(filename);
-               /*
-                * output filename
-                */
-               final String fn = FilenameUtil.classNameFromFileName(filename);
-               /*
                 * compile
                 */
-               final String className = fn;
-               final byte[] byteCode = jvmBasicCompiler.compile(inputStream, className, verbose);
-               /*
-                * write
-                */
-               JVMBasicCompiler.writeClassFile(byteCode, className, outputDirectory);
+               jvmBasicCompiler.compileToClassfile(basFileName, outputDirectory, verbose);
             } else {
-               throw new Exception("Unable to find: '" + filename + "'");
+               throw new Exception("Unable to find: '" + basFileName + "'");
             }
          } else {
             throw new Exception("File was not supplied");
