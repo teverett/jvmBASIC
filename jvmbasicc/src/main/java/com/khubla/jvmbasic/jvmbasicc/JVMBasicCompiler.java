@@ -3,7 +3,9 @@ package com.khubla.jvmbasic.jvmbasicc;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Reader;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -42,7 +44,8 @@ public class JVMBasicCompiler {
    public static ProgContext parse(InputStream inputStream) throws Exception {
       try {
          if (null != inputStream) {
-            final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(inputStream));
+            Reader reader = new InputStreamReader(inputStream, "UTF-8");
+            final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(reader));
             final CommonTokenStream tokens = new CommonTokenStream(jvmBasicLexer);
             final jvmBasicParser jvmBasicParser = new jvmBasicParser(tokens);
             jvmBasicParser.setBuildParseTree(true);
