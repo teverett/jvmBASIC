@@ -4,7 +4,7 @@
 40 PRINT x
 50 LET x = 7*5
 60 PRINT x
-70 LET x = 7/5;
+70 LET x = 7/5
 80 PRINT x
 90 PRINT -2*-2
 100 PRINT -2 - -2
