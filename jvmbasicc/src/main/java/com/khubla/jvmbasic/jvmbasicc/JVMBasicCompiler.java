@@ -230,7 +230,7 @@ public class JVMBasicCompiler {
          final Label l3 = new Label();
          methodVisitor.visitLabel(l3);
          methodVisitor.visitLocalVariable("this", "L" + className + ";", null, l0, l3, 0);
-         methodVisitor.visitMaxs(3, 1);
+         methodVisitor.visitMaxs(0, 0);
          methodVisitor.visitEnd();
       } catch (final Exception e) {
          throw new Exception("Exception in generateInit", e);
@@ -320,7 +320,7 @@ public class JVMBasicCompiler {
          /*
           * done
           */
-         methodVisitor.visitMaxs(2, 3);
+         methodVisitor.visitMaxs(0, 0);
          methodVisitor.visitEnd();
       } catch (final Exception e) {
          throw new Exception("Exception in generateMain", e);
@@ -381,7 +381,7 @@ public class JVMBasicCompiler {
          /*
           * max stack 1024 max variables 1024
           */
-         methodVisitor.visitMaxs(1024, 1024);
+         methodVisitor.visitMaxs(0, 0);
          /*
           * we are done
           */
