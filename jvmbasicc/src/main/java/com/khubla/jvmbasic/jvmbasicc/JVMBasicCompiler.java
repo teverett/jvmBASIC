@@ -379,9 +379,9 @@ public class JVMBasicCompiler {
             logger.info("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
          }
          /*
-          * max stack 255 max variables 10
+          * max stack 1024 max variables 1024
           */
-         methodVisitor.visitMaxs(255, 10);
+         methodVisitor.visitMaxs(1024, 1024);
          /*
           * we are done
           */

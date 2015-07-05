@@ -1,0 +1,4 @@
+50 LET num=20
+60 IF num >= 1 THEN GOTO 100
+70 PRINT "ug"
+100 PRINT "ffff"
