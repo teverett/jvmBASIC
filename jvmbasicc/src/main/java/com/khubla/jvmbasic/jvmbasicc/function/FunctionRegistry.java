@@ -166,7 +166,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_returnstmt, new returnstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_readstmt, new readstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_restorestmt, new restorestmtRule());
-      ruleFunctions.put(jvmBasicParser.RULE_forstmt, new forstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_forstmt1, new forstmtRule());
    }
 
    private void populateTokenRegistry() {

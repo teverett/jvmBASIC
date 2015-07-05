@@ -149,15 +149,25 @@ public interface jvmBasicListener extends ParseTreeListener {
 	 */
 	void exitIfstmt(jvmBasicParser.IfstmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link jvmBasicParser#forstmt}.
+	 * Enter a parse tree produced by {@link jvmBasicParser#forstmt1}.
 	 * @param ctx the parse tree
 	 */
-	void enterForstmt(jvmBasicParser.ForstmtContext ctx);
+	void enterForstmt1(jvmBasicParser.Forstmt1Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link jvmBasicParser#forstmt}.
+	 * Exit a parse tree produced by {@link jvmBasicParser#forstmt1}.
 	 * @param ctx the parse tree
 	 */
-	void exitForstmt(jvmBasicParser.ForstmtContext ctx);
+	void exitForstmt1(jvmBasicParser.Forstmt1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#forstmt2}.
+	 * @param ctx the parse tree
+	 */
+	void enterForstmt2(jvmBasicParser.Forstmt2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#forstmt2}.
+	 * @param ctx the parse tree
+	 */
+	void exitForstmt2(jvmBasicParser.Forstmt2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link jvmBasicParser#nextstmt}.
 	 * @param ctx the parse tree
