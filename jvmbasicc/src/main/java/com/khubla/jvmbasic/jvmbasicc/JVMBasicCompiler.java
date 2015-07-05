@@ -89,10 +89,6 @@ public class JVMBasicCompiler {
          final TreePrinter treePrinter = new TreePrinter(astOutputStream);
          treePrinter.printTree(progContext);
          /*
-          * a message
-          */
-         logger.info("Generating Bytecode for class '" + classname + "'");
-         /*
           * class
           */
          final ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
