@@ -5,6 +5,9 @@
 /**/.settings/
 /**/target
 /**/test-output
+/**/*.ast.txt
+/**/*.analysis.txt
+/**/*.class
 jvmbasicc/jvmbasic-test-output
 jvmbasicwww/classfiles
 demo/jvmbasicrt.jar

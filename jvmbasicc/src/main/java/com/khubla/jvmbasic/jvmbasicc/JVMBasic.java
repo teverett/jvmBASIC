@@ -91,6 +91,10 @@ public class JVMBasic {
             final File fl = new File(basFileName);
             if (true == fl.exists()) {
                /*
+                * show the filename
+                */
+               System.out.println("Compiling: " + fl.getCanonicalFile());
+               /*
                 * compiler
                 */
                final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
