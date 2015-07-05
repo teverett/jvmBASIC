@@ -44,7 +44,7 @@ public class JVMBasicCompiler {
    public static ProgContext parse(InputStream inputStream) throws Exception {
       try {
          if (null != inputStream) {
-            Reader reader = new InputStreamReader(inputStream, "UTF-8");
+            final Reader reader = new InputStreamReader(inputStream, "UTF-8");
             final jvmBasicLexer jvmBasicLexer = new jvmBasicLexer(new ANTLRInputStream(reader));
             final CommonTokenStream tokens = new CommonTokenStream(jvmBasicLexer);
             final jvmBasicParser jvmBasicParser = new jvmBasicParser(tokens);
