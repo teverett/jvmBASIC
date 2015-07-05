@@ -108,7 +108,7 @@ jvmBASIC WWW
 
 jvmBASIC WWW is a very simple web server that produces HTML output from BASIC files.  To run it use a command line similar to this:
 
-`java -jar target/jvmbasicwww.jar -sourcedir src/test/resources -classdir classfiles/ -port 8080`
+`java -jar target/jvmbasicwww.jar -sourcedir www -classdir www/classfiles/ -port 8080`
 
 The basic files to compile are the directory specified by -sourcedir and the generated classes are in the directory specified by -classdir.  The HTTP port to bind is specified by -port.  The default page is served by INDEX.bas.
 
