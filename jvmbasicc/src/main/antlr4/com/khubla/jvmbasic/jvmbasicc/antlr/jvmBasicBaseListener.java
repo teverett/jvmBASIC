@@ -1017,6 +1017,19 @@ public class jvmBasicBaseListener implements jvmBasicListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterSqrfunc(@NotNull jvmBasicParser.SqrfuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1238,19 +1251,6 @@ public class jvmBasicBaseListener implements jvmBasicListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterVardecl(@NotNull jvmBasicParser.VardeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1258,6 +1258,19 @@ public class jvmBasicBaseListener implements jvmBasicListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitVardecl(@NotNull jvmBasicParser.VardeclContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

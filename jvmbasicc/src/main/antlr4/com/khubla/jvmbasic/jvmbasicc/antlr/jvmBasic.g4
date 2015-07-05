@@ -45,7 +45,7 @@ letstmt : LET? variableassignment;
 variableassignment : vardecl EQ exprlist;
 relop :(GTE) | (GT EQ) | (EQ GT) | LTE | (LT EQ) | (EQ LT) | NEQ | EQ | GT | LT;
 ifstmt : IF expression THEN? (statement | linenumber);
-forstmt : FOR  vardecl EQ expression TO expression (STEP expression)?;
+forstmt : FOR vardecl EQ expression TO expression (STEP expression)? (statement NEXT vardecl?)?;
 nextstmt: NEXT vardecl?;
 inputstmt : INPUT (STRINGLITERAL (COMMA| SEMICOLON))? varlist;
 readstmt: READ varlist;

@@ -855,6 +855,17 @@ public interface jvmBasicListener extends ParseTreeListener {
 	void exitSpcfunc(@NotNull jvmBasicParser.SpcfuncContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#nextstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#nextstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitNextstmt(@NotNull jvmBasicParser.NextstmtContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link jvmBasicParser#sqrfunc}.
 	 * @param ctx the parse tree
 	 */
@@ -1042,17 +1053,6 @@ public interface jvmBasicListener extends ParseTreeListener {
 	void exitAtnfunc(@NotNull jvmBasicParser.AtnfuncContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link jvmBasicParser#vplotstmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link jvmBasicParser#vplotstmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link jvmBasicParser#vardecl}.
 	 * @param ctx the parse tree
 	 */
@@ -1062,4 +1062,15 @@ public interface jvmBasicListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVardecl(@NotNull jvmBasicParser.VardeclContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#vplotstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#vplotstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitVplotstmt(@NotNull jvmBasicParser.VplotstmtContext ctx);
 }
