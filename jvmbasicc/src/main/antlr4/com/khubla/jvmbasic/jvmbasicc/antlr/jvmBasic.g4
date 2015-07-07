@@ -49,7 +49,7 @@ ifstmt : IF expression THEN? (statement | linenumber);
 forstmt1 : FOR vardecl EQ expression TO expression (STEP expression)? (statement NEXT vardecl?)?;
 // for stmt 2 puts the for, the statment, and the next on 3 lines.  It needs "nextstmt"
 forstmt2 : FOR vardecl EQ expression TO expression (STEP expression)?;
-nextstmt: NEXT vardecl?;
+nextstmt: NEXT vardecl? (',' vardecl)*;
 inputstmt : INPUT (STRINGLITERAL (COMMA| SEMICOLON))? varlist;
 readstmt: READ varlist;
 dimstmt : DIM varlist;
