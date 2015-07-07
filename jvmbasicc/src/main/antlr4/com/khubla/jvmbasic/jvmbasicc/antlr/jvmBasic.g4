@@ -29,10 +29,10 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // a program is a collection of lines
-prog : line+ ;
+prog : line+ EOF;
 
-// a line starts with an INT and ends with a CR
-line : (linenumber ((amprstmt (COLON amprstmt?)*) | (COMMENT | REM)) (CR | EOF)) | CR;
+// a line starts with an INT
+line : (linenumber ((amprstmt (COLON amprstmt?)*) | (COMMENT | REM)) );
 amperoper: AMPERSAND;
 linenumber: NUMBER;
 amprstmt: (amperoper? statement) | (COMMENT | REM);
@@ -259,5 +259,4 @@ STRINGLITERAL : '"' ~["\r\n]* '"';
 LETTERS	:('a'..'z' |'A'..'Z' )+;
 NUMBER : ('0'..'9')+ ( ('e' | 'E')  NUMBER)*;
 FLOAT : ('0'..'9')* '.' ('0'..'9')+ ( ('e' | 'E') ('0'..'9')+)*;
-CR : [\r\n]+;
-WS : [ \t]+ -> channel(HIDDEN);
+WS : [ \r\n\t]+ -> channel(HIDDEN);
