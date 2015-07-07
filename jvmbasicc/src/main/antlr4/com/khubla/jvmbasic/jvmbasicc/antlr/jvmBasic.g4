@@ -95,7 +95,7 @@ returnstmt: RETURN;
 restorestmt: RESTORE;
 
 // expressions and such
-func : (NUMBER  | STRINGLITERAL | FLOAT) | vardecl | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
+func : (NUMBER  | STRINGLITERAL | FLOAT) | tabfunc | vardecl | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
 signExpression : NOT? ((PLUS|MINUS))* func;
 exponentExpression : signExpression (EXPONENT signExpression)*;
 multiplyingExpression  : exponentExpression ((TIMES|DIV) exponentExpression)*;
@@ -138,6 +138,7 @@ sgnfunc : SGN LPAREN expression RPAREN;
 expfunc : EXP LPAREN expression RPAREN;
 logfunc : LOG LPAREN expression RPAREN;
 absfunc : ABS LPAREN expression RPAREN;
+tabfunc : TAB LPAREN expression RPAREN;
 
 DOLLAR: '$';
 PERCENT: '%';
