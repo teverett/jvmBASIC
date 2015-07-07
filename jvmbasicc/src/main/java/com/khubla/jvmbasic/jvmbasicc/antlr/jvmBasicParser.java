@@ -79,21 +79,17 @@ public class jvmBasicParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'$'", "'%'", "'RETURN'", "'PRINT'", "'GOTO'", "'GOSUB'", "'IF'", 
-		"'NEXT'", "'THEN'", "'REM'", "'CHR$'", "'MID$'", "'LEFT$'", "'RIGHT$'", 
-		"'STR$'", "'('", "')'", "'+'", "'-'", "'*'", "'/'", "'CLEAR'", "'>: '", 
-		"'<: '", "'>'", "'<'", "'< >'", "','", "'LIST'", "'RUN'", "'END'", "'LET'", 
-		"'='", "'FOR'", "'TO'", "'STEP'", "'INPUT'", "';'", "'DIM'", "'SQR'", 
-		"':'", "'TEXT'", "'HGR'", "'HGR2'", "'LEN'", "'CALL'", "'ASC'", "'HPLOT'", 
-		"'VPLOT'", "'PR#'", "'IN#'", "'VTAB'", "'HTAB'", "'HOME'", "'ON'", "'PDL'", 
-		"'PLOT'", "'PEEK'", "'POKE'", "'INT'", "'STOP'", "'HIMEM'", "'LOMEM'", 
-		"'FLASH'", "'INVERSE'", "'NORMAL'", "'ONERR'", "'SPC'", "'FRE'", "'POS'", 
-		"'USR'", "'TRACE'", "'NOTRACE'", "'AND'", "'OR'", "'DATA'", "'WAIT'", 
-		"'READ'", "'XDRAW'", "'DRAW'", "'AT'", "'DEF'", "'FN'", "'VAL'", "'TAB'", 
-		"'SPEED'", "'ROT'", "'SCALE'", "'COLOR'", "'HCOLOR'", "'HLIN'", "'VLIN'", 
-		"'SCRN'", "'POP'", "'SHLOAD'", "'SIN'", "'COS'", "'TAN'", "'ATN'", "'RND'", 
-		"'SGN'", "'EXP'", "'LOG'", "'ABS'", "'STORE'", "'RECALL'", "'GET'", "'^'", 
-		"'&'", "'GR'", "'NOT'", "'RESTORE'", "'SAVE'", "'LOAD'", "'?'", "'INCLUDE'"
+		null, "'$'", "'%'", null, null, null, null, null, null, null, null, "'CHR$'", 
+		"'MID$'", "'LEFT$'", "'RIGHT$'", "'STR$'", "'('", "')'", "'+'", "'-'", 
+		"'*'", "'/'", null, "'>: '", "'<: '", "'>'", "'<'", "'< >'", "','", null, 
+		null, null, null, "'='", null, null, null, null, "';'", null, null, "':'", 
+		null, null, null, null, null, null, null, null, "'PR#'", "'IN#'", null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, "'^'", "'&'", null, null, null, 
+		null, null, "'?'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "DOLLAR", "PERCENT", "RETURN", "PRINT", "GOTO", "GOSUB", "IF", "NEXT", 
