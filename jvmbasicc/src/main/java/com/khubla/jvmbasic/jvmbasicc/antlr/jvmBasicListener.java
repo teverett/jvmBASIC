@@ -998,4 +998,14 @@ public interface jvmBasicListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAbsfunc(jvmBasicParser.AbsfuncContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#tabfunc}.
+	 * @param ctx the parse tree
+	 */
+	void enterTabfunc(jvmBasicParser.TabfuncContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#tabfunc}.
+	 * @param ctx the parse tree
+	 */
+	void exitTabfunc(jvmBasicParser.TabfuncContext ctx);
 }

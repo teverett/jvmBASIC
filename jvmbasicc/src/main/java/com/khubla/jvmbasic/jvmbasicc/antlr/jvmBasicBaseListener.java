@@ -1200,6 +1200,18 @@ public class jvmBasicBaseListener implements jvmBasicListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAbsfunc(jvmBasicParser.AbsfuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTabfunc(jvmBasicParser.TabfuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTabfunc(jvmBasicParser.TabfuncContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
