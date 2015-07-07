@@ -139,6 +139,16 @@ public interface jvmBasicListener extends ParseTreeListener {
 	 */
 	void exitRelop(jvmBasicParser.RelopContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#neq}.
+	 * @param ctx the parse tree
+	 */
+	void enterNeq(jvmBasicParser.NeqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#neq}.
+	 * @param ctx the parse tree
+	 */
+	void exitNeq(jvmBasicParser.NeqContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link jvmBasicParser#ifstmt}.
 	 * @param ctx the parse tree
 	 */

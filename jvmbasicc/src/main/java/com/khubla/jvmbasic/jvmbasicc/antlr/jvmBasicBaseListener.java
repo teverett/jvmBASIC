@@ -173,6 +173,18 @@ public class jvmBasicBaseListener implements jvmBasicListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNeq(jvmBasicParser.NeqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNeq(jvmBasicParser.NeqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfstmt(jvmBasicParser.IfstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
