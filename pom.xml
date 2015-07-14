@@ -19,6 +19,7 @@
       <module>jvmbasicwww</module>
       <module>jvmbasicmojo</module>
       <module>examples</module>
+      <module>jvmvb6c</module>
       <module>vb6</module>        
    </modules>
    <build>
