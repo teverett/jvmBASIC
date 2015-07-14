@@ -1,1 +1,1 @@
-100 PRINT "HI"
+10 PRINT "HI jvmbasic!"
