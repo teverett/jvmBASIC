@@ -609,6 +609,16 @@ public interface jvmBasicListener extends ParseTreeListener {
 	 */
 	void exitRestorestmt(jvmBasicParser.RestorestmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link jvmBasicParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(jvmBasicParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jvmBasicParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(jvmBasicParser.NumberContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link jvmBasicParser#func}.
 	 * @param ctx the parse tree
 	 */

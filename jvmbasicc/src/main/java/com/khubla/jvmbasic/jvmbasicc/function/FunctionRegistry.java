@@ -42,6 +42,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.linenumberRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.logfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.midfuncRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.multiplyingExpressionRule;
+import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.numberstmtRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.printlistRule;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.progRule;
@@ -167,6 +168,7 @@ public class FunctionRegistry {
       ruleFunctions.put(jvmBasicParser.RULE_readstmt, new readstmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_restorestmt, new restorestmtRule());
       ruleFunctions.put(jvmBasicParser.RULE_forstmt1, new forstmtRule());
+      ruleFunctions.put(jvmBasicParser.RULE_number, new numberstmtRule());
    }
 
    private void populateTokenRegistry() {

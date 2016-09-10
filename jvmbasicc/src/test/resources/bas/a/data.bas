@@ -1,4 +1,4 @@
-20 DATA 1,3,5,7,9
+20 DATA 1,3,5,-7,9
 30 PRINT "hi"
 40 READ y
 50 PRINT y

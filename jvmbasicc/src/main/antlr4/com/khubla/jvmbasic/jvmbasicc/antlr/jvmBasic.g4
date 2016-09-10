@@ -68,7 +68,7 @@ htabstmnt : HTAB expression;
 himemstmt: HIMEM COLON expression;
 lomemstmt: LOMEM COLON expression;
 datastmt: DATA datum (COMMA datum?)*;
-datum: NUMBER  | STRINGLITERAL | FLOAT;
+datum: number | STRINGLITERAL;
 waitstmt: WAIT expression COMMA expression (COMMA expression)?;
 xdrawstmt: XDRAW expression (AT expression COMMA expression)?;
 drawstmt: DRAW expression (AT expression COMMA expression)?;
@@ -95,7 +95,8 @@ returnstmt: RETURN;
 restorestmt: RESTORE;
 
 // expressions and such
-func : (NUMBER  | STRINGLITERAL | FLOAT) | tabfunc | vardecl | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
+number: '-'? (NUMBER | FLOAT);
+func : STRINGLITERAL | number | tabfunc | vardecl | chrfunc | sqrfunc | lenfunc | strfunc | ascfunc| scrnfunc  | midfunc | pdlfunc | peekfunc | intfunc | spcfunc | frefunc | posfunc | usrfunc |leftfunc | valfunc | rightfunc|fnfunc|sinfunc | cosfunc |tanfunc|atnfunc|rndfunc|sgnfunc|expfunc|logfunc|absfunc | (LPAREN expression RPAREN);
 signExpression : NOT? ((PLUS|MINUS))* func;
 exponentExpression : signExpression (EXPONENT signExpression)*;
 multiplyingExpression  : exponentExpression ((TIMES|DIV) exponentExpression)*;
