@@ -56,6 +56,14 @@ public class TestA extends BaseCompilerTest {
    }
 
    @Test(enabled = true)
+   public void testSimpleMathBas() {
+      final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      testSingleBASFile("src/test/resources/bas/a/simplemath.bas", System.in, baos);
+      final String[] results = baos.toString().split("\n");
+      // Assert.assertTrue(results[0].compareTo("0.0") == 0);
+   }
+
+   @Test(enabled = true)
    public void testForBas() {
       testSingleBASFile("src/test/resources/bas/a/for.bas");
    }

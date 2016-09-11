@@ -1,4 +1,4 @@
-// Generated from com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4 by ANTLR 4.5
+// Generated from com/khubla/jvmbasic/jvmbasicc/antlr/jvmBasic.g4 by ANTLR 4.5.3
 package com.khubla.jvmbasic.jvmbasicc.antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class jvmBasicParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -257,6 +257,7 @@ public class jvmBasicParser extends Parser {
 			setState(209);
 			linenumber();
 			setState(221);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
@@ -488,6 +489,7 @@ public class jvmBasicParser extends Parser {
 				{
 				{
 				setState(228);
+				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 				case 1:
 					{
@@ -711,6 +713,7 @@ public class jvmBasicParser extends Parser {
 		int _la;
 		try {
 			setState(283);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1182,6 +1185,7 @@ public class jvmBasicParser extends Parser {
 				consume();
 			}
 			setState(297);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
@@ -1449,6 +1453,7 @@ public class jvmBasicParser extends Parser {
 		enterRule(_localctx, 24, RULE_relop);
 		try {
 			setState(335);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1797,6 +1802,7 @@ public class jvmBasicParser extends Parser {
 			}
 
 			setState(364);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				{
@@ -2331,6 +2337,7 @@ public class jvmBasicParser extends Parser {
 			setState(414);
 			match(HPLOT);
 			setState(419);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
 			case 1:
 				{
@@ -2416,6 +2423,7 @@ public class jvmBasicParser extends Parser {
 			setState(431);
 			match(VPLOT);
 			setState(436);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 			case 1:
 				{
@@ -2879,6 +2887,7 @@ public class jvmBasicParser extends Parser {
 				setState(491);
 				match(COMMA);
 				setState(493);
+				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
 				case 1:
 					{
@@ -3845,6 +3854,7 @@ public class jvmBasicParser extends Parser {
 			setState(596);
 			match(LIST);
 			setState(598);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,35,_ctx) ) {
 			case 1:
 				{
@@ -3898,6 +3908,7 @@ public class jvmBasicParser extends Parser {
 			setState(600);
 			match(POP);
 			setState(605);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,36,_ctx) ) {
 			case 1:
 				{
@@ -4930,6 +4941,7 @@ public class jvmBasicParser extends Parser {
 		int _la;
 		try {
 			setState(714);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,46,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
