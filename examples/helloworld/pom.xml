@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>com.khubla.jvmbasic</groupId>
 			<artifactId>jvmbasicrt</artifactId>
-			<version>2.2-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -22,7 +22,7 @@
 			<plugin>
 				<groupId>com.khubla.jvmbasic</groupId>
 				<artifactId>jvmbasic-maven-plugin</artifactId>
-				<version>2.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<executions>
 					<execution>
 						<goals>
