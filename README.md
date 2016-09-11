@@ -7,6 +7,36 @@ jvmBASIC is a bytecode compiler which is capable of consuming a BASIC file (.bas
 
 In order to use the generated .class file from Java code, the public class members "inputStream" and "outputStream" must be set, in order for the BASIC program to consume input and produce output.
 
+Travis Status
+---------
+
+<a href="https://travis-ci.org/teverett/jvmBASIC"><img src="https://api.travis-ci.org/teverett/jvmBASIC.png"></a>
+
+
+
+Maven Coordinates
+-------------------
+
+jvmBasicCC
+
+```
+<groupId>com.khubla.jvmbasic</groupId>
+<artifactId>jvmbasicc</artifactId>
+<version>2.2-SNAPSHOT</version>
+<packaging>jar</packaging>
+```
+
+jvmBasicRT
+
+```
+<groupId>com.khubla.jvmbasic</groupId>
+<artifactId>jvmbasicrt</artifactId>
+<version>2.2-SNAPSHOT</version>
+<packaging>jar</packaging>
+```
+
+
+
 License
 ---------
 
@@ -116,8 +146,5 @@ to run the example use:
 
 `sh run.sh` and point your browser to `http://localhost:8080/`
 
-Travis Status
----------
 
-<a href="https://travis-ci.org/teverett/jvmBASIC"><img src="https://api.travis-ci.org/teverett/jvmBASIC.png"></a>
 
