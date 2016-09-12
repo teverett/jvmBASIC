@@ -111,7 +111,7 @@ printstmt1
    ;
 
 printlist
-   : expression (COMMA | SEMICOLON)? printlist*
+   : expression ((COMMA | SEMICOLON) printlist)*
    ;
 
 getstmt
@@ -332,7 +332,7 @@ restorestmt
 
 // expressions and such
 number
-   : '-'? (NUMBER | FLOAT)
+   :  ('+' | '-')? (NUMBER | FLOAT)
    ;
 
 func
@@ -387,7 +387,7 @@ addingExpression
    ;
 
 relationalExpression
-   : addingExpression ((relop) addingExpression)*
+   : addingExpression ((relop) addingExpression)?
    ;
 
 expression

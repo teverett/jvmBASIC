@@ -50,8 +50,7 @@ public class TestA extends BaseCompilerTest {
       Assert.assertTrue(results[2].compareTo("35.0") == 0);
       Assert.assertTrue(results[3].compareTo("1.4") == 0);
       Assert.assertTrue(results[4].compareTo("4.0") == 0);
-      // this is -2 - -2 and it's totally wrong!
-      // Assert.assertTrue(results[5].compareTo("0.0") == 0);
+      Assert.assertTrue(results[5].compareTo("0.0") == 0);
       Assert.assertTrue(results[6].compareTo("20.0") == 0);
    }
 
@@ -60,7 +59,7 @@ public class TestA extends BaseCompilerTest {
       final ByteArrayOutputStream baos = new ByteArrayOutputStream();
       testSingleBASFile("src/test/resources/bas/a/simplemath.bas", System.in, baos);
       final String[] results = baos.toString().split("\n");
-      // Assert.assertTrue(results[0].compareTo("0.0") == 0);
+      Assert.assertTrue(results[0].compareTo("0.0") == 0);
    }
 
    @Test(enabled = true)
