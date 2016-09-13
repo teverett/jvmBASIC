@@ -37,6 +37,14 @@ public class JVMBasicCompiler {
     * logger
     */
    private static final Logger logger = LoggerFactory.getLogger(JVMBasicCompiler.class);
+   /**
+    * max stack size
+    */
+   private static final int MAX_STACK = 1024;
+   /**
+    * max variables
+    */
+   private static final int MAX_VARIABLES = 1024;
 
    /**
     * parse an input file
@@ -344,9 +352,9 @@ public class JVMBasicCompiler {
             logger.info("variable: " + lvd.getName() + " declared on line: " + lvd.getBasicLine() + " frame index: " + lvd.getIndex());
          }
          /*
-          * max stack 1024 max variables 1024
+          * max stack and max variables
           */
-         methodVisitor.visitMaxs(0, 0);
+         methodVisitor.visitMaxs(MAX_STACK, MAX_VARIABLES);
          /*
           * we are done
           */

@@ -37,9 +37,19 @@ public class TestEasy extends BaseCompilerTest {
       testSingleBASFile("src/test/resources/bas/easy/clear.bas");
    }
 
+   @Test(enabled = false)
+   public void testGtBas() {
+      testSingleBASFile("src/test/resources/bas/easy/gt.bas");
+   }
+
    @Test(enabled = true)
    public void testListBas() {
       testSingleBASFile("src/test/resources/bas/easy/list.bas");
+   }
+
+   @Test(enabled = false)
+   public void testPrintBas() {
+      testSingleBASFile("src/test/resources/bas/easy/print.bas");
    }
 
    @Test(enabled = true)
