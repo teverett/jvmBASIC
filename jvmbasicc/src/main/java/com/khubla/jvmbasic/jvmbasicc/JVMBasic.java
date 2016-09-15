@@ -101,7 +101,7 @@ public class JVMBasic {
                /*
                 * compile
                 */
-               jvmBasicCompiler.compileToClassfile(basFileName, outputDirectory, verbose);
+               jvmBasicCompiler.compileToClassfile(basFileName, null, outputDirectory, verbose);
             } else {
                throw new Exception("Unable to find: '" + basFileName + "'");
             }

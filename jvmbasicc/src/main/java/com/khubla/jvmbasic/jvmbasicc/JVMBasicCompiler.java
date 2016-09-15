@@ -144,10 +144,10 @@ public class JVMBasicCompiler {
    /**
     * compile a BAS file to a class file and return the classname
     */
-   public String compileToClassfile(String basFileName, String outputDirectory, boolean verboseOutput) throws Exception {
+   public String compileToClassfile(String basFileName, String packageName, String outputDirectory, boolean verboseOutput) throws Exception {
       try {
          final FileInputStream basInputStream = new FileInputStream(basFileName);
-         final String className = FilenameUtil.classNameFromFileName(basFileName);
+         final String className = FilenameUtil.classNameFromFileName(basFileName, packageName);
          final FileOutputStream astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(className), outputDirectory);
          final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(className), outputDirectory);
          final FileOutputStream staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(className), outputDirectory);

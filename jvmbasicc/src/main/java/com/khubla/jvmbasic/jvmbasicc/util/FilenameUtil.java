@@ -41,8 +41,12 @@ public class FilenameUtil {
    /**
     * generate the class name from the supplied BASIC filename
     */
-   public static String classNameFromFileName(String filename) {
-      return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+   public static String classNameFromFileName(String filename, String packageName) {
+      if (null == packageName) {
+         return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+      } else {
+         return packageName + "." + new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+      }
    }
 
    /**

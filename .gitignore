@@ -1,4 +1,5 @@
 /**/*.log
+/**/*.log.zip
 /**/.DS_Store
 /**/.project
 /**/.classpath

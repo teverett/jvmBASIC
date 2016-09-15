@@ -75,7 +75,7 @@ public class BASFile {
              */
             final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
             logger.info("Compiling '" + basFile.getName() + "'");
-            className = jvmBasicCompiler.compileToClassfile(basFile.getAbsolutePath(), classdir, true);
+            className = jvmBasicCompiler.compileToClassfile(basFile.getAbsolutePath(), null, classdir, true);
          }
          /*
           * load

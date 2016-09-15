@@ -1,6 +1,8 @@
 package com.khubla.jvmbasic.jvmbasicmojo;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -34,6 +36,11 @@ public class CompileMojo extends AbstractMojo {
    @Parameter
    private String targetDir = "target/classes/";
    /**
+    * file extension
+    */
+   @Parameter
+   private final String fileExtension = "bas";
+   /**
     * verbose
     */
    @Parameter
@@ -59,21 +66,39 @@ public class CompileMojo extends AbstractMojo {
          /*
           * get the sources
           */
-         final File sourceDirFile = new File(sourceDir);
-         if (sourceDirFile.exists()) {
-            final File[] files = sourceDirFile.listFiles();
-            if (null != files) {
-               for (int i = 0; i < files.length; i++) {
-                  processFile(files[i]);
-               }
+         final List<String> sourceFiles = this.getBASFiles(sourceDir);
+         if (null != sourceFiles) {
+            for (final String sourceFile : sourceFiles) {
+               System.out.println("Processing: '" + sourceFile + "'");
+               final File file = new File(sourceFile);
+               processFile(file);
             }
-         } else {
-            throw new Exception("Unable to find directory '" + sourceDir + "'");
          }
       } catch (final Exception e) {
          e.printStackTrace();
          throw new MojoExecutionException("Unable execute mojo", e);
       }
+   }
+
+   public List<String> getBASFiles(String dir) throws Exception {
+      return getBASFiles(dir, new ArrayList<String>());
+   }
+
+   private List<String> getBASFiles(String dir, List<String> files) throws Exception {
+      final File file = new File(dir);
+      final String[] list = file.list();
+      for (int i = 0; i < list.length; i++) {
+         final String fileName = file.getAbsolutePath() + "/" + list[i];
+         final File f2 = new File(fileName);
+         if (f2.isDirectory()) {
+            getBASFiles(fileName + "/", files);
+         } else {
+            if (f2.getName().toLowerCase().endsWith(fileExtension)) {
+               files.add(f2.getAbsolutePath());
+            }
+         }
+      }
+      return files;
    }
 
    public String getSourceDir() {
@@ -94,7 +119,14 @@ public class CompileMojo extends AbstractMojo {
    private void processFile(File file) throws Exception {
       try {
          final JVMBasicCompiler jvmBasicCompiler = new JVMBasicCompiler();
-         final String classname = jvmBasicCompiler.compileToClassfile(file.getAbsolutePath(), targetDir, verbose);
+         String relativePath = file.getAbsolutePath().substring(new File(this.sourceDir).getAbsolutePath().length() + 1);
+         String packageName;
+         if (relativePath.length() > file.getName().length()) {
+            packageName = relativePath.substring(0, relativePath.length() - (file.getName().length() + 1)).replace(File.separatorChar, '.');
+         } else {
+            packageName = null;
+         }
+         final String classname = jvmBasicCompiler.compileToClassfile(file.getAbsolutePath(), packageName, targetDir, verbose);
          System.out.println("Compiled '" + file.getName() + "' to class '" + classname + "'");
       } catch (final Exception e) {
          throw e;
