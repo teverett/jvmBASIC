@@ -43,9 +43,9 @@ public class FilenameUtil {
     */
    public static String classNameFromFileName(String filename, String packageName) {
       if (null == packageName) {
-         return new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+         return new File(filename).getName().replaceAll(".bas", "");
       } else {
-         return packageName + "." + new File(filename).getName().replaceAll(".bas", "").toUpperCase();
+         return packageName + "." + new File(filename).getName().replaceAll(".bas", "");
       }
    }
 
