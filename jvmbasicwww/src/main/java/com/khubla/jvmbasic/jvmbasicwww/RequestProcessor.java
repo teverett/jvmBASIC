@@ -113,7 +113,10 @@ public class RequestProcessor implements Runnable {
          /*
           * context path
           */
-         final String parameters = getRequest(requestline);
+         String parameters = getRequest(requestline);
+         if (null == parameters) {
+            parameters = "";
+         }
          /*
           * is a .bas?
           */

@@ -28,17 +28,29 @@ import org.apache.commons.cli.Options;
  */
 public class JVMBASICWWW {
    /**
-    * dir option
+    * sourcedir option
     */
    private static final String SOURCEDIR_OPTION = "sourcedir";
+   /**
+    * sourcedir default
+    */
+   private static final String SOURCEDIR_DEFAULT = "www";
    /**
     * classdir option
     */
    private static final String CLASSDIR_OPTION = "classdir";
    /**
+    * classdir default
+    */
+   private static final String CLASSDIR_DEFAULT = "www/classes";
+   /**
     * port option
     */
    private static final String PORT_OPTION = "port";
+   /**
+    * port default
+    */
+   private static final String PORT_DEFAULT = "8080";
 
    public static void main(String[] args) {
       try {
@@ -68,18 +80,15 @@ public class JVMBASICWWW {
          /*
           * input dir
           */
-         final String sourceDir = cmd.getOptionValue(SOURCEDIR_OPTION);
+         final String sourceDir = cmd.getOptionValue(SOURCEDIR_OPTION, SOURCEDIR_DEFAULT);
          /*
           * class dir
           */
-         final String classdir = cmd.getOptionValue(CLASSDIR_OPTION);
+         final String classdir = cmd.getOptionValue(CLASSDIR_OPTION, CLASSDIR_DEFAULT);
          /*
           * port
           */
-         int port = 80;
-         if (cmd.hasOption(PORT_OPTION)) {
-            port = Integer.parseInt(cmd.getOptionValue(PORT_OPTION));
-         }
+         int port = Integer.parseInt(cmd.getOptionValue(PORT_OPTION, PORT_DEFAULT));
          /*
           * output the config
           */
