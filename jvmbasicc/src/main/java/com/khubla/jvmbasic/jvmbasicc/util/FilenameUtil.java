@@ -49,6 +49,15 @@ public class FilenameUtil {
       }
    }
 
+   public static String classNameWithoutPackage(String classname) {
+      String ret = classname;
+      final int i = classname.lastIndexOf('.');
+      if (i != -1) {
+         ret = classname.substring(i + 1);
+      }
+      return ret;
+   }
+
    /**
     * get an output stream for a file
     */

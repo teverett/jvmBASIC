@@ -147,13 +147,14 @@ public class JVMBasicCompiler {
    public String compileToClassfile(String basFileName, String packageName, String outputDirectory, boolean verboseOutput) throws Exception {
       try {
          final FileInputStream basInputStream = new FileInputStream(basFileName);
-         final String className = FilenameUtil.classNameFromFileName(basFileName, packageName);
-         final FileOutputStream astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(className), outputDirectory);
-         final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(className), outputDirectory);
-         final FileOutputStream staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(className), outputDirectory);
-         final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, className, verboseOutput);
+         final String fullClassName = FilenameUtil.classNameFromFileName(basFileName, packageName);
+         final String shortClassName = FilenameUtil.classNameWithoutPackage(fullClassName);
+         final FileOutputStream astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(shortClassName), outputDirectory);
+         final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(shortClassName), outputDirectory);
+         final FileOutputStream staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(shortClassName), outputDirectory);
+         final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, fullClassName, verboseOutput);
          writeClassFile(classbytes, classOutputStream);
-         return className;
+         return fullClassName;
       } catch (final Exception e) {
          throw new Exception("Exception in compileToClassfile", e);
       }
