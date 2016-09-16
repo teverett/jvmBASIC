@@ -97,8 +97,10 @@ public class JVMBasicCompiler {
          /*
           * print tree
           */
-         final TreePrinter treePrinter = new TreePrinter(astOutputStream);
-         treePrinter.printTree(progContext);
+         if (null != astOutputStream) {
+            final TreePrinter treePrinter = new TreePrinter(astOutputStream);
+            treePrinter.printTree(progContext);
+         }
          /*
           * class
           */
@@ -144,14 +146,20 @@ public class JVMBasicCompiler {
    /**
     * compile a BAS file to a class file and return the classname
     */
-   public String compileToClassfile(String basFileName, String packageName, String outputDirectory, boolean verboseOutput) throws Exception {
+   public String compileToClassfile(String basFileName, String packageName, String outputDirectory, boolean verboseOutput, boolean outputAST, boolean outputStaticAnalysis) throws Exception {
       try {
          final FileInputStream basInputStream = new FileInputStream(basFileName);
          final String fullClassName = FilenameUtil.classNameFromFileName(basFileName, packageName);
          final String shortClassName = FilenameUtil.classNameWithoutPackage(fullClassName);
-         final FileOutputStream astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(shortClassName), outputDirectory);
-         final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(shortClassName), outputDirectory);
-         final FileOutputStream staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(shortClassName), outputDirectory);
+         FileOutputStream astOutputStream = null;
+         if (outputAST) {
+            astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(fullClassName), outputDirectory);
+         }
+         final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(shortClassName), FilenameUtil.packageOutputDir(packageName, outputDirectory));
+         FileOutputStream staticAnalysisOutputStream = null;
+         if (outputStaticAnalysis) {
+            staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(fullClassName), outputDirectory);
+         }
          final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, fullClassName, verboseOutput);
          writeClassFile(classbytes, classOutputStream);
          return fullClassName;
@@ -325,7 +333,9 @@ public class JVMBasicCompiler {
          /*
           * dump the static analysis
           */
-         programStaticAnalysis.showAnalysisResults(staticAnalysisOutputStream);
+         if (null != staticAnalysisOutputStream) {
+            programStaticAnalysis.showAnalysisResults(staticAnalysisOutputStream);
+         }
          /*
           * recurse into the parse tree
           */

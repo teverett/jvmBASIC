@@ -130,19 +130,9 @@ public class CompileMojo extends AbstractMojo {
             packageName = null;
          }
          /*
-          * figure out full target dir
-          */
-         String fullTargetDir = targetDir;
-         if (null != packageName) {
-            fullTargetDir = targetDir + packageName.replace('.', File.separatorChar);
-         }
-         /*
           * compile
           */
-         final String classname = jvmBasicCompiler.compileToClassfile(file.getAbsolutePath(), packageName, fullTargetDir, verbose);
-         /*
-          * figure out taget dir
-          */
+         final String classname = jvmBasicCompiler.compileToClassfile(file.getAbsolutePath(), packageName, targetDir, verbose, false, false);
          System.out.println("Compiled '" + file.getName() + "' to class '" + classname + "'");
       } catch (final Exception e) {
          throw e;

@@ -41,15 +41,25 @@ public class Loader {
 
    public static Object load(String className, String directory) throws Exception {
       try {
-         final URL classURL = new URL("file://" + directory);
+         ClassLoader classLoader = null;
          Class<?> clazz = null;
-         final URLClassLoader urlClassLoader = new URLClassLoader(new URL[] { classURL });
+         if (null != directory) {
+            final URL classURL = new URL("file://" + directory);
+            classLoader = new URLClassLoader(new URL[] { classURL });
+         } else {
+            classLoader = ClassLoader.getSystemClassLoader();
+         }
          try {
-            clazz = urlClassLoader.loadClass(className);
+            clazz = classLoader.loadClass(className);
          } catch (final Exception e) {
             throw e;
          } finally {
-            urlClassLoader.close();
+            /*
+             * URL classloaders need to be closed
+             */
+            if (classLoader instanceof URLClassLoader) {
+               ((URLClassLoader) classLoader).close();
+            }
          }
          /*
           * get an instance

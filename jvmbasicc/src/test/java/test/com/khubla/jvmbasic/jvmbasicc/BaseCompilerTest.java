@@ -61,7 +61,7 @@ public abstract class BaseCompilerTest {
           * compile to class file
           */
          final JVMBasicCompiler compiler = new JVMBasicCompiler();
-         final String classname = compiler.compileToClassfile(filename, null, TESTOUTPUT, true);
+         final String classname = compiler.compileToClassfile(filename, null, TESTOUTPUT, true, true, true);
          Assert.assertNotNull(classname);
          final File generatedClassFile = new File(TESTOUTPUT + classname + ".class");
          /*

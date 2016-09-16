@@ -39,6 +39,17 @@ public class FilenameUtil {
    }
 
    /**
+    * get the full output dir for a package
+    */
+   public static String packageOutputDir(String packageName, String targetDir) {
+      if (null != packageName) {
+         return targetDir + packageName.replace('.', File.separatorChar);
+      } else {
+         return targetDir;
+      }
+   }
+
+   /**
     * generate the class name from the supplied BASIC filename
     */
    public static String classNameFromFileName(String filename, String packageName) {
