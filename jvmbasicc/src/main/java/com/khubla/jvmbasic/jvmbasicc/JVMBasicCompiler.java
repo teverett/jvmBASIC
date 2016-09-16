@@ -1,5 +1,6 @@
 package com.khubla.jvmbasic.jvmbasicc;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -84,7 +85,8 @@ public class JVMBasicCompiler {
    /**
     * compile. This method generates the class definition
     */
-   private byte[] compile(InputStream inputStream, OutputStream astOutputStream, OutputStream staticAnalysisOutputStream, String classname, boolean verboseOutput) throws Exception {
+   private byte[] compile(InputStream inputStream, OutputStream astOutputStream, OutputStream staticAnalysisOutputStream, String classname, boolean verboseOutput, String inputFileName)
+         throws Exception {
       try {
          /*
           * a message
@@ -106,6 +108,7 @@ public class JVMBasicCompiler {
           */
          final ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
          classWriter.visit(Opcodes.V1_6, Opcodes.ACC_PUBLIC, classname, null, "java/lang/Object", null);
+         classWriter.visitSource(inputFileName, null);
          /*
           * the execution context
           */
@@ -148,19 +151,41 @@ public class JVMBasicCompiler {
     */
    public String compileToClassfile(String basFileName, String packageName, String outputDirectory, boolean verboseOutput, boolean outputAST, boolean outputStaticAnalysis) throws Exception {
       try {
+         /*
+          * short filename
+          */
+         String shortFileName = new File(basFileName).getName();
+         /*
+          * input stream
+          */
          final FileInputStream basInputStream = new FileInputStream(basFileName);
+         /*
+          * figure out class names from the file name and package name
+          */
          final String fullClassName = FilenameUtil.classNameFromFileName(basFileName, packageName);
          final String shortClassName = FilenameUtil.classNameWithoutPackage(fullClassName);
          FileOutputStream astOutputStream = null;
+         /*
+          * AST?
+          */
          if (outputAST) {
             astOutputStream = FilenameUtil.getOutputStream(FilenameUtil.astFileNameFromClassName(fullClassName), outputDirectory);
          }
          final FileOutputStream classOutputStream = FilenameUtil.getOutputStream(FilenameUtil.classFileNameFromClassName(shortClassName), FilenameUtil.packageOutputDir(packageName, outputDirectory));
+         /*
+          * Analysis?
+          */
          FileOutputStream staticAnalysisOutputStream = null;
          if (outputStaticAnalysis) {
             staticAnalysisOutputStream = FilenameUtil.getOutputStream(FilenameUtil.staticAnalyisFileNameFromClassName(fullClassName), outputDirectory);
          }
-         final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, fullClassName, verboseOutput);
+         /*
+          * compile
+          */
+         final byte[] classbytes = compile(basInputStream, astOutputStream, staticAnalysisOutputStream, fullClassName, verboseOutput, shortFileName);
+         /*
+          * write output
+          */
          writeClassFile(classbytes, classOutputStream);
          return fullClassName;
       } catch (final Exception e) {
