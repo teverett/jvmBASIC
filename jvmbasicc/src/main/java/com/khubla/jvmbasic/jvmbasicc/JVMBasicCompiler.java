@@ -46,6 +46,10 @@ public class JVMBasicCompiler {
     * max variables
     */
    private static final int MAX_VARIABLES = 1024;
+   /**
+    * Opcodes
+    */
+   private static int OUTPUT_OPCODES = Opcodes.V1_6;
 
    /**
     * parse an input file
@@ -107,7 +111,7 @@ public class JVMBasicCompiler {
           * class
           */
          final ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
-         classWriter.visit(Opcodes.V1_6, Opcodes.ACC_PUBLIC, classname, null, "java/lang/Object", null);
+         classWriter.visit(OUTPUT_OPCODES, Opcodes.ACC_PUBLIC | Opcodes.ACC_SUPER, classname, null, "java/lang/Object", null);
          classWriter.visitSource(inputFileName, null);
          /*
           * the execution context
