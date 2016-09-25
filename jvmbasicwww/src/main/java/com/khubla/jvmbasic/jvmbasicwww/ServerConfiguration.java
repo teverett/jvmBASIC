@@ -38,19 +38,19 @@ public class ServerConfiguration {
    /**
     * class files
     */
-   private final HashMap<String, BASFile> basFiles = new HashMap<String, BASFile>();
+   private final HashMap<String, BSPFile> bspFiles = new HashMap<String, BSPFile>();
 
    public ServerConfiguration(String sourceDir, String classdir, int port) throws Exception {
       this.sourceDir = sourceDir;
       this.classdir = classdir;
       this.port = port;
-      findAllBASFiles();
+      findAllBSPFiles();
    }
 
    /**
-    * find all the BAS files
+    * find all the BSP files
     */
-   private void findAllBASFiles() throws Exception {
+   private void findAllBSPFiles() throws Exception {
       try {
          final File inputDir = new File(sourceDir);
          if (inputDir.exists()) {
@@ -60,15 +60,15 @@ public class ServerConfiguration {
                   /*
                    * check?
                    */
-                  if (files[i].getName().trim().endsWith(".bas")) {
+                  if (files[i].getName().trim().endsWith(BSPFile.BSP)) {
                      /*
                       * the file
                       */
-                     final BASFile basFile = new BASFile(files[i], classdir);
+                     final BSPFile bspFile = new BSPFile(files[i], classdir);
                      /*
                       * remember it
                       */
-                     basFiles.put(files[i].getName().trim(), basFile);
+                     bspFiles.put(files[i].getName().trim(), bspFile);
                   }
                }
             }
@@ -78,8 +78,8 @@ public class ServerConfiguration {
       }
    }
 
-   public HashMap<String, BASFile> getBasFiles() {
-      return basFiles;
+   public HashMap<String, BSPFile> getBspFiles() {
+      return bspFiles;
    }
 
    public String getClassdir() {

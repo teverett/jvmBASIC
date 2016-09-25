@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<link href='jvmbasic.css' rel='stylesheet' type='text/css'>
+		<meta name='server' content='khubla.com jvmBASIC' />
+	</head>
+	<body>
+	<img src='khubla_logo_basic_color.png'>
+	<h1>Welcome to <a href='https://github.com/teverett/jvmBASIC'>jvmBASIC</a> web server</h1>
+	<% PRINT "HTTP request is: ";request %>
+	</body>
+</html>

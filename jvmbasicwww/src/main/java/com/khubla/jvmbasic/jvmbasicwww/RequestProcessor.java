@@ -34,7 +34,7 @@ public class RequestProcessor implements Runnable {
    /**
     * the index
     */
-   private static final String INDEX = "index.bas";
+   private static final String INDEX = "index.bsp";
    /**
     * config
     */
@@ -118,15 +118,15 @@ public class RequestProcessor implements Runnable {
             parameters = "";
          }
          /*
-          * is a .bas?
+          * is a .bsp?
           */
-         if (contextPath.trim().toLowerCase().endsWith(".bas")) {
+         if (contextPath.trim().toLowerCase().endsWith(BSPFile.BSP)) {
             /*
              * get the file record
              */
-            final BASFile basFile = serverConfiguration.getBasFiles().get(contextPath);
-            if (null != basFile) {
-               basFile.callBASClassInstance(new ByteArrayInputStream(parameters.getBytes()), socket.getOutputStream());
+            final BSPFile bspFile = serverConfiguration.getBspFiles().get(contextPath);
+            if (null != bspFile) {
+               bspFile.invoke(new ByteArrayInputStream(parameters.getBytes()), socket.getOutputStream());
             } else {
                throw new Exception("Unable to find BAS file for context path '" + contextPath + "'");
             }
