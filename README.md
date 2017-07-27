@@ -12,6 +12,11 @@ Travis Status
 
 <a href="https://travis-ci.org/teverett/jvmBASIC"><img src="https://api.travis-ci.org/teverett/jvmBASIC.png"></a>
 
+Coverity Status
+----------
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/13299/badge.svg"/>
+</a>
 
 
 Maven Coordinates
