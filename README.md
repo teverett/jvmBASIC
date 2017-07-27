@@ -14,6 +14,7 @@ Travis Status
 
 Coverity Status
 ----------
+<a href="https://scan.coverity.com/projects/teverett-jvmbasic">
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/13299/badge.svg"/>
 </a>
