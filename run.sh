@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cp jvmbasicrt/target/jvmbasicrt.jar .
 cp jvmbasicc/target/jvmbasicc.jar .
 java -jar jvmbasicc.jar -file jvmbasicc/src/main/resources/examples/print.bas
