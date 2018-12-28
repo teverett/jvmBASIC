@@ -11,7 +11,7 @@
 	</parent>
 	<properties>
 		<asm.version>5.0.4</asm.version>
-		<antlr.version>4.7.1</antlr.version>
+		<antlr.version>4.7.2</antlr.version>
 	</properties>
 	<dependencies>
 		<dependency>
