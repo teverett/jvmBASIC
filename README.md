@@ -20,7 +20,7 @@ jvmBasicCC
 ```
 <groupId>com.khubla.jvmbasic</groupId>
 <artifactId>jvmbasicc</artifactId>
-<version>2.2-SNAPSHOT</version>
+<version>2.3.0-SNAPSHOT</version>
 <packaging>jar</packaging>
 ```
 
@@ -29,7 +29,7 @@ jvmBasicRT
 ```
 <groupId>com.khubla.jvmbasic</groupId>
 <artifactId>jvmbasicrt</artifactId>
-<version>2.2-SNAPSHOT</version>
+<version>2.3.0-SNAPSHOT</version>
 <packaging>jar</packaging>
 ```
 
