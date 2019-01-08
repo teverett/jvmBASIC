@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -24,13 +24,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
-/**
- * @author tome
- *         <p>
- *         executionContext.push(StringFunctions.STR(executionContext.resolveValue(executionContext.pop())));
- *         </p>
- */
-public class strfuncRule extends BaseFunction {
+public class rightfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
@@ -39,9 +33,9 @@ public class strfuncRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 4
+          * there should be 6 values. grammar is "RIGHT LPAREN expression COMMA expression RPAREN"
           */
-         if (generationContext.getParseTree().getChildCount() == 4) {
+         if (generationContext.getParseTree().getChildCount() == 6) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -51,12 +45,19 @@ public class strfuncRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
                   "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "STR",
-                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/String;", false);
+            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
+            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
+                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "RIGHT",
+                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/String;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V", false);
             return true;
          } else {
-            throw new Exception("strfuncRule requires a value");
+            throw new Exception("Invalid number of values passed to rightfuncRule");
          }
       } catch (final Exception e) {
          throw new JVMBasicFunctionException("Exception in execute", e);

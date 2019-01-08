@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -26,24 +26,31 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
+ *         <p>
+ *         executionContext.push(Math.SQR(this.executionContext.resolveValue(executionContext.pop())));
+ *         </p>
  */
-public class logfuncRule extends BaseFunction {
+public class sqrfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
-          * get the argument
+          * get the operands
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * pop the argument and apply abs
+          * pop the argument and apply sqr
           */
+         generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+         generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "LOG", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
+               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "SQR", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V", false);
          return true;
       } catch (final Exception e) {

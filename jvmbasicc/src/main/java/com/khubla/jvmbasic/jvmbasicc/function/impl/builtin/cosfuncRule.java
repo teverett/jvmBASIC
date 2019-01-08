@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -27,7 +27,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 /**
  * @author tome
  */
-public class sinfuncRule extends BaseFunction {
+public class cosfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
@@ -43,7 +43,7 @@ public class sinfuncRule extends BaseFunction {
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "SIN", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "COS", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V", false);
          return true;
       } catch (final Exception e) {

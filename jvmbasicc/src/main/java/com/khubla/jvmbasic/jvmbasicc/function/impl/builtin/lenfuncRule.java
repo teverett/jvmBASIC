@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -26,25 +26,30 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
+ *         <p>
+ *         executionContext.push(StringFunctions.LEN(this.executionContext.resolveValue(executionContext.pop())));
+ *         </p>
  */
-public class intfuncRule extends BaseFunction {
+public class lenfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
-          * get the argument
+          * get the operands
           */
          Dispatcher.dispatchChildren(generationContext);
-         /*
-          * pop the argument and apply abs
-          */
+         generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
+         generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "INT", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
+               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "LEN",
+               "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Integer;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Integer;)V", false);
          return true;
       } catch (final Exception e) {
          throw new JVMBasicFunctionException("Exception in execute", e);

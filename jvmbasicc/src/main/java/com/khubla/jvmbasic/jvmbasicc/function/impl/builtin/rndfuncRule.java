@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -26,25 +26,39 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
  * @author tome
+ *         <p>
+ *         Generates a random integer b/t 1 and the supplied argument.
+ *         </p>
+ *         <p>
+ *         <code>
+ *         this.executionContext.push(new Random().nextInt(this.executionContext.pop().getInteger()));
+ *         </code>
+ *         </p>
  */
-public class cosfuncRule extends BaseFunction {
+public class rndfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
-          * get the argument
+          * get the operands
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * pop the argument and apply abs
+          * declare the local var Random
           */
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
+         generationContext.getMethodVisitor().visitTypeInsn(Opcodes.NEW, "java/util/Random");
+         generationContext.getMethodVisitor().visitInsn(Opcodes.DUP);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESPECIAL, "java/util/Random", "<init>", "()V", false);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, RTLHelper.JASIC_RUNTIME_MATH, "COS", "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/Double;", false);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Double;)V", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "getInteger", "()Ljava/lang/Integer;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/util/Random", "nextInt", "(I)I", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/Integer;)V", false);
          return true;
       } catch (final Exception e) {
          throw new JVMBasicFunctionException("Exception in execute", e);

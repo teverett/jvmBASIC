@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -25,16 +25,12 @@ import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
- * <p>
- * <code>
- *       executionContext.push(StringFunctions.MID(executionContext.resolveValue(executionContext.pop()), executionContext.resolveValue(executionContext.pop()),
- *           executionContext.resolveValue(executionContext.pop())));
- * </code>
- * </p>
- *
  * @author tome
+ *         <p>
+ *         executionContext.push(StringFunctions.STR(executionContext.resolveValue(executionContext.pop())));
+ *         </p>
  */
-public class midfuncRule extends BaseFunction {
+public class strfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
@@ -43,9 +39,9 @@ public class midfuncRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 8 values. grammar is "MID LPAREN expression COMMA expression COMMA expression RPAREN;"
+          * there should be 4
           */
-         if (generationContext.getParseTree().getChildCount() == 8) {
+         if (generationContext.getParseTree().getChildCount() == 4) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
             generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -55,26 +51,12 @@ public class midfuncRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
                   "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
-                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-            generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
-            generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
-                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "MID",
-                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;Lcom/khubla/jvmbasic/jvmbasicrt/Value;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/String;", false);
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "STR",
+                  "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/String;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V", false);
             return true;
          } else {
-            throw new Exception("Invalid number of values passed to midfuncRule");
+            throw new Exception("strfuncRule requires a value");
          }
       } catch (final Exception e) {
          throw new JVMBasicFunctionException("Exception in execute", e);

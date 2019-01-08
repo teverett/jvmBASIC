@@ -1,4 +1,4 @@
-package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
+package com.khubla.jvmbasic.jvmbasicc.function.impl.builtin;
 
 /*
  * jvmBasic Copyright 2012, khubla.com
@@ -24,7 +24,16 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
 import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
-public class rightfuncRule extends BaseFunction {
+/**
+ * <p>
+ * <code>
+ * executionContext.push(StringFunctions.LEFT(executionContext.resolveValue(executionContext.pop()), executionContext.resolveValue(executionContext.pop())));
+ * </code>
+ * </p>
+ *
+ * @author tome
+ */
+public class leftfuncRule extends BaseFunction {
    @Override
    public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
@@ -33,7 +42,7 @@ public class rightfuncRule extends BaseFunction {
           */
          Dispatcher.dispatchChildren(generationContext);
          /*
-          * there should be 6 values. grammar is "RIGHT LPAREN expression COMMA expression RPAREN"
+          * there should be 6 values. grammar is "LEFT LPAREN expression COMMA expression RPAREN"
           */
          if (generationContext.getParseTree().getChildCount() == 6) {
             generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 0);
@@ -52,12 +61,12 @@ public class rightfuncRule extends BaseFunction {
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "pop", "()Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "resolveValue",
                   "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Lcom/khubla/jvmbasic/jvmbasicrt/Value;", false);
-            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "RIGHT",
+            generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKESTATIC, "com/khubla/jvmbasic/jvmbasicrt/StringFunctions", "LEFT",
                   "(Lcom/khubla/jvmbasic/jvmbasicrt/Value;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)Ljava/lang/String;", false);
             generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "push", "(Ljava/lang/String;)V", false);
             return true;
          } else {
-            throw new Exception("Invalid number of values passed to rightfuncRule");
+            throw new Exception("Invalid number of values passed to leftfuncRule");
          }
       } catch (final Exception e) {
          throw new JVMBasicFunctionException("Exception in execute", e);
