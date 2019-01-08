@@ -71,25 +71,6 @@
 				<version>3.7.1</version>
 			</plugin>
 			<plugin>
-				<groupId>com.diffplug.spotless</groupId>
-				<artifactId>spotless-maven-plugin</artifactId>
-				<version>${spotless.version}</version>
-				<configuration>
-					<lineEndings>UNIX</lineEndings>
-					<encoding>UTF-8</encoding>
-					<java>
-						<eclipse>
-							<file>${maven.multiModuleProjectDirectory}/format.eclipse.xml</file>
-							<version>4.7.1</version>
-						</eclipse>
-						<removeUnusedImports />
-						<importOrder>
-							<file>${maven.multiModuleProjectDirectory}/format.importorder</file>
-						</importOrder>
-					</java>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>3.0.0-M2</version>
@@ -119,7 +100,7 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.9</version>
+						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -130,7 +111,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.1.0</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -143,7 +124,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.1.0</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
