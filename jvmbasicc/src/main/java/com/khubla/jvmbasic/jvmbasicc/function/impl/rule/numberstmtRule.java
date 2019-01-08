@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -25,7 +26,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  */
 public class numberstmtRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * get the argument
@@ -39,7 +40,7 @@ public class numberstmtRule extends BaseFunction {
          }
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

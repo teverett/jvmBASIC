@@ -23,6 +23,7 @@ import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.VardeclContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 
@@ -43,7 +44,7 @@ import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
  */
 public class variableassignmentRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * the tree should have 3 sub nodes like this "variableassignment : vardecl EQ exprlist"
@@ -77,10 +78,11 @@ public class variableassignmentRule extends BaseFunction {
          generationContext.getMethodVisitor().visitFieldInsn(Opcodes.GETFIELD, generationContext.getClassName(), RTLHelper.EXECUTIONCONTEXT_NAME, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT_TYPE);
          generationContext.getMethodVisitor().visitLdcInsn(variableName);
          generationContext.getMethodVisitor().visitVarInsn(Opcodes.ALOAD, 1);
-         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable", "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V", false);
+         generationContext.getMethodVisitor().visitMethodInsn(Opcodes.INVOKEVIRTUAL, RTLHelper.JASIC_RUNTIME_EXECUTIONCONTEXT, "setVariable",
+               "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V", false);
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

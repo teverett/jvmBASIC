@@ -17,6 +17,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -24,14 +25,14 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  */
 public class datastmtRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * do nothing, we did it already in the PROG declaration
           */
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

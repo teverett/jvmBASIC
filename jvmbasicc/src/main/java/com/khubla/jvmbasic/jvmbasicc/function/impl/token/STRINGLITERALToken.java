@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -34,7 +35,7 @@ public class STRINGLITERALToken extends BaseFunction {
    private static final Logger logger = LoggerFactory.getLogger(NUMBERToken.class);
 
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * get the literal
@@ -51,7 +52,7 @@ public class STRINGLITERALToken extends BaseFunction {
          RTLHelper.push(generationContext, literal);
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

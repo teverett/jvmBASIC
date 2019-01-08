@@ -19,6 +19,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser.VardeclContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.RTLHelper;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
 
@@ -27,7 +28,7 @@ import com.khubla.jvmbasic.jvmbasicc.util.VariableNameUtil;
  */
 public class vardeclRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * get the name, which consists of a varname node and optionally a varsuffix such as "$" or "%"
@@ -43,7 +44,7 @@ public class vardeclRule extends BaseFunction {
           */
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

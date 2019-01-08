@@ -18,6 +18,7 @@ package com.khubla.jvmbasic.jvmbasicc.function.impl.rule;
  */
 import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -27,7 +28,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  */
 public class dimstmtRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * so the subtree under the <DIM> here will be <varname> <NUMBER> )
@@ -52,11 +53,12 @@ public class dimstmtRule extends BaseFunction {
             generationContext.getMethodVisitor().visitInsn(DUP);
             generationContext.getMethodVisitor().visitMethodInsn(INVOKESPECIAL, "com/khubla/jvmbasic/jvmbasicrt/Array", "<init>", "()V", false);
             generationContext.getMethodVisitor().visitMethodInsn(INVOKESPECIAL, "com/khubla/jvmbasic/jvmbasicrt/Value", "<init>", "(Lcom/khubla/jvmbasic/jvmbasicrt/Array;)V", false);
-            generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "setVariable", "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V", false);
+            generationContext.getMethodVisitor().visitMethodInsn(INVOKEVIRTUAL, "com/khubla/jvmbasic/jvmbasicrt/ExecutionContext", "setVariable",
+                  "(Ljava/lang/String;Lcom/khubla/jvmbasic/jvmbasicrt/Value;)V", false);
          }
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

@@ -20,6 +20,7 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -27,7 +28,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  */
 public class gotostmtRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * we expect 2 arguments
@@ -55,7 +56,7 @@ public class gotostmtRule extends BaseFunction {
          }
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }

@@ -20,6 +20,7 @@ import com.khubla.jvmbasic.jvmbasicc.compiler.Dispatcher;
 import com.khubla.jvmbasic.jvmbasicc.compiler.GenerationContext;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.lines.LineDeclaration;
 import com.khubla.jvmbasic.jvmbasicc.compiler.analysis.statements.StatementDeclaration;
+import com.khubla.jvmbasic.jvmbasicc.exception.JVMBasicFunctionException;
 import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
 
 /**
@@ -32,7 +33,7 @@ import com.khubla.jvmbasic.jvmbasicc.function.BaseFunction;
  */
 public class gosubstmtRule extends BaseFunction {
    @Override
-   public boolean execute(GenerationContext generationContext) throws Exception {
+   public boolean execute(GenerationContext generationContext) throws JVMBasicFunctionException {
       try {
          /*
           * 2 children
@@ -58,7 +59,7 @@ public class gosubstmtRule extends BaseFunction {
          }
          return true;
       } catch (final Exception e) {
-         throw new Exception("Exception in execute", e);
+         throw new JVMBasicFunctionException("Exception in execute", e);
       }
    }
 }
