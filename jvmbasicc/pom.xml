@@ -67,7 +67,7 @@
 			<artifactId>jvmbasicrt</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
-			<scope>test</scope>
+		<!-- <scope>test</scope> -->	
 		</dependency>
 	</dependencies>
 	<build>

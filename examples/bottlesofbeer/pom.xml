@@ -24,6 +24,13 @@
 				<groupId>com.khubla.jvmbasic</groupId>
 				<artifactId>jvmbasic-maven-plugin</artifactId>
 				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

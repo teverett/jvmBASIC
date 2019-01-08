@@ -11,7 +11,7 @@
    </parent>
    <modules>
       <module>example1</module>
-      <module>bottlesofbeer</module>
+ <!--      <module>bottlesofbeer</module> -->
       <module>helloworld</module>
 <!--       <module>oregontrail</module> -->
    </modules>
