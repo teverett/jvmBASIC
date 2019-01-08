@@ -63,15 +63,30 @@ Notes on the implementation
 * Math functions and string functions are implemented in the jvmBasic runtime jar "jvmbasicrt.jar"
 * BASIC types are implemented by the class "Value" in jvmbasicrt.jar
 
-Getting Started
+Running an example
 ---------
 
-Getting started
+* build jvmBASIC: `mvn clean package install`
+* use the script `run_bas.sh` to run an example:
 
-* cd to the "demo" directory
-* Optionally edit the BASIC file "bottlesofbeer.bas"
-* run "update.sh" to copy the jvmBasicc.jar and jvmBasicrt.jar files into the demo directory
-* run "run.sh" to compile the BAS file, produce a jar and run the jar
+<pre>
+sh run_bas.sh hellojvmBASIC.bas
+</pre>
+
+The output should look very much like:
+<pre>
+shrek:jvmBASIC tom$ sh run_bas.sh hellojvmBASIC.bas 
+Running BASIC file hellojvmBASIC.bas
+khubla.com jvmBASIC Compiler
+Compiling: /Users/tom/projects/jvmBASIC/hellojvmBASIC.bas
+added manifest
+adding: hellojvmBASIC.class(in = 1402) (out= 740)(deflated 47%)
+19:17:44.698 [main] INFO com.khubla.jvmbasic.jvmbasicrt.ExecutionContext - pushing String: '"hello from jvmBASIC"'
+19:17:44.701 [main] INFO com.khubla.jvmbasic.jvmbasicrt.ExecutionContext - popping hello from jvmBASIC
+hello from jvmBASIC
+shrek:jvmBASIC tom$ 
+</pre>
+
 
 Using jvmBASICC
 ---------
