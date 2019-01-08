@@ -8,6 +8,8 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+import com.khubla.jvmbasic.jvmbasicrt.exception.JVMBasicRTException;
+
 /*
  * jvmBasic Copyright 2012, khubla.com
  *
@@ -30,16 +32,20 @@ import java.net.URLClassLoader;
  * @author tome
  */
 public class Loader {
-   public static void invokeMainMethod(Object instance) throws Exception {
-      final Method programMethod = instance.getClass().getMethod("program");
-      if (null != programMethod) {
-         programMethod.invoke(instance);
-      } else {
-         throw new Exception("Unable to find program method");
+   public static void invokeMainMethod(Object instance) throws JVMBasicRTException {
+      try {
+         final Method programMethod = instance.getClass().getMethod("program");
+         if (null != programMethod) {
+            programMethod.invoke(instance);
+         } else {
+            throw new JVMBasicRTException("Unable to find program method");
+         }
+      } catch (final Exception e) {
+         throw new JVMBasicRTException("Exception in invokeMainMethod", e);
       }
    }
 
-   public static Object load(String className, String directory) throws Exception {
+   public static Object load(String className, String directory) throws JVMBasicRTException {
       try {
          ClassLoader classLoader = null;
          Class<?> clazz = null;
@@ -70,25 +76,33 @@ public class Loader {
           */
          return o;
       } catch (final Exception e) {
-         throw new Exception("Exception in load", e);
+         throw new JVMBasicRTException("Exception in load", e);
       }
    }
 
-   public static void setInputStream(Object instance, InputStream inputStream) throws IllegalAccessException, Exception {
-      final Field inputStreamField = instance.getClass().getField("inputStream");
-      if (null != inputStreamField) {
-         inputStreamField.set(instance, inputStream);
-      } else {
-         throw new Exception("Unable to find inputStream field");
+   public static void setInputStream(Object instance, InputStream inputStream) throws JVMBasicRTException {
+      try {
+         final Field inputStreamField = instance.getClass().getField("inputStream");
+         if (null != inputStreamField) {
+            inputStreamField.set(instance, inputStream);
+         } else {
+            throw new Exception("Unable to find inputStream field");
+         }
+      } catch (final Exception e) {
+         throw new JVMBasicRTException("Exception in setInputStream", e);
       }
    }
 
-   public static void setOutputStreamField(Object instance, OutputStream outputStream) throws IllegalAccessException, Exception {
-      final Field outputStreamField = instance.getClass().getField("outputStream");
-      if (null != outputStreamField) {
-         outputStreamField.set(instance, new PrintStream(outputStream));
-      } else {
-         throw new Exception("Unable to find outputStream field");
+   public static void setOutputStreamField(Object instance, OutputStream outputStream) throws JVMBasicRTException {
+      try {
+         final Field outputStreamField = instance.getClass().getField("outputStream");
+         if (null != outputStreamField) {
+            outputStreamField.set(instance, new PrintStream(outputStream));
+         } else {
+            throw new Exception("Unable to find outputStream field");
+         }
+      } catch (final Exception e) {
+         throw new JVMBasicRTException("Exception in setOutputStreamField", e);
       }
    }
 }

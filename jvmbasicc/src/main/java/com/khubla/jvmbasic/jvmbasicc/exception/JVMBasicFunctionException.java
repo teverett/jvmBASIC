@@ -2,7 +2,7 @@ package com.khubla.jvmbasic.jvmbasicc.exception;
 
 public class JVMBasicFunctionException extends JVMBasicException {
    /**
-    * 
+    *
     */
    private static final long serialVersionUID = 1L;
 

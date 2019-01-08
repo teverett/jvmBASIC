@@ -158,7 +158,7 @@ public class JVMBasicCompiler {
          /*
           * short filename
           */
-         String shortFileName = new File(basFileName).getName();
+         final String shortFileName = new File(basFileName).getName();
          /*
           * input stream
           */

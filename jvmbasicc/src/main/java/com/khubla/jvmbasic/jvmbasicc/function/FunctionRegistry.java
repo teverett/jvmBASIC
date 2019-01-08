@@ -18,6 +18,8 @@ package com.khubla.jvmbasic.jvmbasicc.function;
  */
 import java.util.Hashtable;
 
+import org.antlr.v4.runtime.Recognizer;
+
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicLexer;
 import com.khubla.jvmbasic.jvmbasicc.antlr.jvmBasicParser;
 import com.khubla.jvmbasic.jvmbasicc.function.impl.rule.DefaultRule;
@@ -182,7 +184,7 @@ public class FunctionRegistry {
       tokenFunctions.put(jvmBasicLexer.MINUS, new DefaultToken());
       tokenFunctions.put(jvmBasicLexer.EXPONENT, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.TIMES, new DefaultToken());
-      tokenFunctions.put(jvmBasicParser.EOF, new DefaultToken());
+      tokenFunctions.put(Recognizer.EOF, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.LETTERS, new LETTERSToken());
       tokenFunctions.put(jvmBasicParser.FOR, new DefaultToken());
       tokenFunctions.put(jvmBasicParser.NEXT, new DefaultToken());
