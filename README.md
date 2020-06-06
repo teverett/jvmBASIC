@@ -1,4 +1,4 @@
-[![Travis](https://api.travis-ci.org/teverett/jvmBASIC.png)](https://travis-ci.org/teverett/jvmBASIC)
+![CI](https://github.com/teverett/jvmBASIC/workflows/CI/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dae9bbea869d4757a7d3a2578bd79348)](https://www.codacy.com/app/teverett/jvmBASIC?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=teverett/jvmBASIC&amp;utm_campaign=Badge_Grade)
 
 jvmBASIC
