@@ -1,7 +1,0 @@
-language: java
-jdk:
-  - openjdk12
-sudo: required
-build_script:
-  - mvn clean package install   
-
