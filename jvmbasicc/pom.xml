@@ -10,7 +10,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<properties>
-		<asm.version>8.0.1</asm.version>
+		<asm.version>9.0</asm.version>
 		<antlr.version>4.8-1</antlr.version>
 	</properties>
 	<dependencies>
