@@ -11,7 +11,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<properties>
-		<maven.version>3.6.2</maven.version>
+		<maven.version>3.9.0</maven.version>
 	</properties>
 	<dependencies>
 		<dependency>
