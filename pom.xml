@@ -32,7 +32,7 @@
 	<properties>
 		<commons-cli.version>1.8.0</commons-cli.version>
 		<commons-io.version>2.15.1</commons-io.version>
-		<testng.version>7.10.1</testng.version>
+		<testng.version>7.10.2</testng.version>
 		<target.jvm>21</target.jvm>
 		<logback.version>1.5.4</logback.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
